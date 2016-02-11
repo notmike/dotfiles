@@ -1,0 +1,5 @@
+#!/bin/sh
+# so the terminal app "ranger" can open new terminal in last directory
+export AUTOCD="$(realpath "$1")"
+
+$SHELL
