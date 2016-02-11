@@ -1,7 +1,3 @@
-search x11
-shell sudo nvim %s
-rename disconnect-bluetooth-headset.sh
-search ep
 shell mpv %s
 shell vlc %s
 search ssh
@@ -31,9 +27,9 @@ shell
 shell git clone https://wes_ccny@bitbucket.org/wes_ccny/csc212-projects.git
 search git
 shell mkdir hi
+search nvim
 rename .vimrc
 rename .vim
-open_with 
 open_with vim
 rename .vimrc-Other
 rename .vimrc-New
@@ -45,6 +41,10 @@ search range
 search rang
 rename rifle.conf-BAK
 shell mkdir Labs
-delete
 search i3
-search nvim
+shell umount veracrypt3
+open_with 
+p
+delete
+shell -p unzip %s
+shell sha256sum %s

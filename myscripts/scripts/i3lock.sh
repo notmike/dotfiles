@@ -18,3 +18,4 @@
 dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Pause
 IMAGE=$HOME/Pictures/lockscreen.png
 i3lock -i $IMAGE
+systemctl suspend

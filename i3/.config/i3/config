@@ -325,8 +325,8 @@ exec --no-startup-id udiskie
 exec_always --no-startup-id numlockx on
 exec_always --no-startup-id ~/scripts/setbg.sh
 exec --no-startup-id pulseaudio --start
-exec --no-startup-id redshift #-r -l 40.742:-73.769
-exec --no-startup-id redshift-gtk
+exec --no-startup-id redshift -r -l 40.742:-73.769
+#exec --no-startup-id redshift-gtk
 exec dropbox
 exec --no-startup-id guake
 exec --no-startup-id clipit
