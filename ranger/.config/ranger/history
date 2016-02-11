@@ -1,0 +1,50 @@
+search x11
+shell sudo nvim %s
+rename disconnect-bluetooth-headset.sh
+search ep
+shell mpv %s
+shell vlc %s
+search ssh
+shell mkdir id_ed25519
+search drop
+search prog
+shell git status
+shell git pull
+shell thunar
+search hannah
+shell md5sum %s
+shell sudo rm bitch2
+shell sudo rm yaourt-tmp-mg
+;
+rename books.png
+search sc
+rename .sh
+rename batterydd.sh
+rename 
+shell -p %s
+shell -p myip
+bulkrename %s
+s
+search 
+
+shell 
+shell git clone https://wes_ccny@bitbucket.org/wes_ccny/csc212-projects.git
+search git
+shell mkdir hi
+rename .vimrc
+rename .vim
+open_with 
+open_with vim
+rename .vimrc-Other
+rename .vimrc-New
+search vim
+rename .vim-BAK
+search ranger
+search doc
+search range
+search rang
+rename rifle.conf-BAK
+shell mkdir Labs
+delete
+search i3
+search nvim
