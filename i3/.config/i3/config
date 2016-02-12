@@ -322,6 +322,7 @@ colors {
 exec --no-startup-id xset s 3600 3600
 exec --no-startup-id xset -dpms
 exec --no-startup-id udiskie
+# Nvidia command to fix weird tearing issues when watching video
 exec --no-stacked-id nvidia-settings --assign CurrentMetaMode="nvidia-auto-select +0+0 { ForceFullCompositionPipeline = On }"
 exec_always --no-startup-id numlockx on
 exec_always --no-startup-id ~/scripts/setbg.sh
