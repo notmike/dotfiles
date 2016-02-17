@@ -144,7 +144,7 @@ bindsym $mod+a focus parent
 # NAMES FOR WORKSPACES variables
 set $workspace1 "1  term"
 set $workspace2 "2   web"
-set $workspace3 "3 "
+set $workspace3 "3  school"
 set $workspace4 "4 "
 set $workspace5 "5   code"
 set $workspace6 "6 "
@@ -328,8 +328,10 @@ exec_always --no-startup-id numlockx on
 exec_always --no-startup-id ~/scripts/setbg.sh
 exec --no-startup-id pulseaudio --start
 exec --no-startup-id redshift -r -l 40.742:-73.769
+# redshift-gtk will give you the tray icon
 #exec --no-startup-id redshift-gtk
 exec dropbox
+exec teamviewer
 exec --no-startup-id guake
 exec --no-startup-id clipit
 exec --no-startup-id Pavucontrol
