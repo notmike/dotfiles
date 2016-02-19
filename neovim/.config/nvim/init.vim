@@ -48,11 +48,10 @@ set smartcase              " Override ignorecase if pattern contains upper case.
 " Define <Leader> key.
 let mapleader = ';'
 
-" Switch colon with semi-colon.
-"nnoremap ; :
-"nnoremap : ;
-"vnoremap ; :
-"vnoremap : ;
+" Save & Quit Shortcuts.
+nnoremap <Leader>s :w<Enter>
+nnoremap <Leader>q :q<Enter>
+nnoremap <Leader>qq :q!<Enter>
 
 " Exit insert mode.
 inoremap jj <esc>
