@@ -120,6 +120,10 @@ alias drop='cd /mnt/R2D2/Dropbox'
 # just need to flip all the output bits of the orig file, and flip NOTs after also
 #alias espresso='espresso -o eqntott'
 
+# Firefox aliases
+alias ff='(firefox &> /dev/null && pkill at-spi &)'
+alias fp='(firefox -private &> /dev/null && pkill at-spi &)'
+
 # test if firstshred server is up/alive (does 4 pings)
 alias fsup='sudo hping3 -c 4 -V -S -p 3340 24.153.238.2'
 
@@ -186,6 +190,10 @@ alias python2=/usr/bin/python2.7
 # For opening Quartus
 # alias quartus='(~/altera/13.0sp1/quartus/bin/quartus --64bit &)'
 
+# for mispellings of "ranger"
+alias ragner='ranger'
+alias rg='ranger'
+
 # shortcut for reboot
 alias reboot='sudo reboot'
 
@@ -224,6 +232,9 @@ alias vpn2='sudo openvpn --config /etc/openvpn/Switzerland.conf'
 
 # convert jpgs to 30% size and 90% of quality
 alias webconvert='for file in *.jpg; do convert "$file" -quality 90 -resize 30% "web_$file"; done'
+
+# reload zshrc changes w/out exiting terminal session
+alias zshreload="source ~/.zshrc"
 
 # so the terminal app "ranger" can open new terminal in last directory
 cd "$AUTOCD"
