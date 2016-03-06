@@ -1,0 +1,82 @@
+URxvt.perl-ext-common: default,clipboard,vtwheel,safe-paste,matcher
+URxvt.matcher.button: 1
+URxvt.matcher.rend.0: Uline Bold fg5
+URxvt.url-launcher: /usr/bin/chromium
+!! URXVT COPY PASTE SHORTCUTS
+!!------------------------------------------------
+URxvt.keysym.M-c: 			perl:clipboard:copy
+URxvt.keysym.M-v: 			perl:clipboard:pasteq
+!!------------------------------------------------
+URxvt.urgentOnBell: true
+URxvt.scrollBar: false
+URxvt.font: xft:SourceCodePro-Medium:size=10
+!URxvt.transparent:	true
+URxvt.shading:		15
+URxvt.iso14755: false
+URxvt.iso14755_52: false
+! Fade the text by the given percentage when focus is lost
+URxvt*fading:  30
+! Turn on/off hold window after exit support. If enabled, urxvt will not immediately destroy its window !when the program executed within it exits. 
+! Instead, it will wait till it is being killed or closed by the user.
+URxvt*hold: true
+
+
+
+
+!-- Xft settings -- !
+Xft.dpi:        96
+Xft.antialias:  true
+Xft.rgba:       rgb
+Xft.hinting:    true
+Xft.hintstyle:  hintfull
+
+!TomorrowNightEighties
+#define t_background        #2d2d2d
+#define t_current_line      #393939
+#define t_selection      	#515151
+#define t_foreground      	#cccccc
+#define t_comment	     	#999999
+#define t_red		     	#f2777a
+#define t_orange	     	#f99157
+#define t_yellow        	#ffcc66
+#define t_green	        	#99cc99
+#define t_aqua	        	#66cccc
+#define t_blue	        	#6699cc
+#define t_purple        	#cc99cc
+
+
+*.foreground:   t_foreground
+*.background:   t_background
+*.cursorColor:  #aeafad
+
+! Black / Grey
+*.color0:       #000000
+*.color8:       #666666
+
+! Red / Bright Red
+*.color1:       t_red
+*.color9:       #FF3334
+
+! Green + Bright Green
+*.color2:       t_green
+*.color10:      #9ec400
+
+! Yellow (Orange) + Bright Yellow (Yellow)
+*.color3:       t_orange
+*.color11:      t_yellow
+
+! Blue + Bright Blue
+*.color4:       t_blue
+*.color12:      t_blue
+
+! Magenta (Purple) + Bright Magenta
+*.color5:       t_purple
+*.color13:      #b777e0
+
+! Cyan (Aqua) + Bright Cyan
+*.color6:       t_aqua
+*.color14:      #54ced6
+
+! Light Grey (Selection) + White (Current Line)
+*.color7:       t_selection
+*.color15:      t_current_line

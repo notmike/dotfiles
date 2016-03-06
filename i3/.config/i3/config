@@ -366,4 +366,4 @@ bindcode Control+Mod1+Shift+58 exec remmina -c /home/mg/.remmina/1428266238982.r
 bindcode Control+Mod1+Shift+31 exec remmina -c /home/mg/.remmina/1437506957152.remmina
 
 # Ranger Shortcut
-bindcode Control+Mod1+38 exec gnome-terminal -e ranger
+bindcode Control+Mod1+38 exec urxvt -e ranger

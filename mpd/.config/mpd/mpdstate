@@ -1,8 +1,8 @@
 sw_volume: 0
 audio_device_state:1:pulse audio
-state: pause
-current: 3
-time: 74.199000
+state: play
+current: 15
+time: 89.036000
 random: 0
 repeat: 0
 single: 0
@@ -25,4 +25,29 @@ playlist_begin
 11:Ratatat/Remixes, Volume II/12 Freestyle (Beans).mp3
 12:Ratatat/Remixes, Volume II/13 Dead Wrong (Notorious B.I.G.).mp3
 13:Ratatat/Remixes, Volume II/14 We Gon' Ride (Saigon & U.G.K.).mp3
+14:Ratatat/Remixes, Volume I/01 Brooklyn Zoo & Ratatat - Intro.mp3
+15:Ratatat/Remixes, Volume I/02 beanie sigel & dirt mcgirt - when.mp3
+16:Ratatat/Remixes, Volume I/03 missy elliot - hot.mp3
+17:Ratatat/Remixes, Volume I/04 raekwon - smith bros..mp3
+18:Ratatat/Remixes, Volume I/05 kanye west - get em high.mp3
+19:Ratatat/Remixes, Volume I/06 g-unit - stunt 101.mp3
+20:Ratatat/Remixes, Volume I/07 Dizzee Rascal - Fix Up.mp3
+21:Ratatat/Remixes, Volume I/08 Method Man & Buddah Monk of Brook.mp3
+22:Ratatat/Remixes, Volume I/09 Lazer Life of Brooklyn Zoo - Free.mp3
+23:Ratatat/Remixes, Volume I/10 Raekwon & Ghostface - Cutting It.mp3
+24:Ratatat/Remixes, Volume I/11 L.O.X - Dirty Riders.mp3
+25:Ratatat/Remixes, Volume I/12 Jay-Z - Sunshine.mp3
+26:Ratatat/Remixes, Volume I/13 Missy Elliot - Wake Up.mp3
+27:Ratatat/Remixes, Volume I/14 Ghostface Killah & Jadakiss - Run.mp3
+28:Ratatat/Ratatat/01 Seventeen Years.mp3
+29:Ratatat/Ratatat/02 El Pico.mp3
+30:Ratatat/Ratatat/03 Crips.mp3
+31:Ratatat/Ratatat/04 Desert Eagle.mp3
+32:Ratatat/Ratatat/05 Everest.mp3
+33:Ratatat/Ratatat/06 Bustelo.mp3
+34:Ratatat/Ratatat/07 Breaking Away.mp3
+35:Ratatat/Ratatat/08 Lapland.mp3
+36:Ratatat/Ratatat/09 Germany To Germany.mp3
+37:Ratatat/Ratatat/10 Spanish Armada.mp3
+38:Ratatat/Ratatat/11 Cherry.mp3
 playlist_end
