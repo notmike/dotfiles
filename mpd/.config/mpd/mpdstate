@@ -1,0 +1,28 @@
+sw_volume: 0
+audio_device_state:1:pulse audio
+state: pause
+current: 3
+time: 74.199000
+random: 0
+repeat: 0
+single: 0
+consume: 0
+crossfade: 0
+mixrampdb: 0.000000
+mixrampdelay: -1.000000
+playlist_begin
+0:Ratatat/Remixes, Volume II/01 Stomp (Young Buck, T.I. & Ludacri.mp3
+1:Ratatat/Remixes, Volume II/02 Party & Bullshit (Biggie Smalls).mp3
+2:Ratatat/Remixes, Volume II/03 Allure (Jay-Z & Notorious B.I.G.).mp3
+3:Ratatat/Remixes, Volume II/04 The Mule (Z-Ro, Devin the Dude &.mp3
+4:Ratatat/Remixes, Volume II/05 Shorty Wanna Ride (Young Buck).mp3
+5:Ratatat/Remixes, Volume II/06 Glock Nines (Beanie Sigel & Jay-Z.mp3
+6:Ratatat/Remixes, Volume II/07 Freestyle (Despot).mp3
+7:Ratatat/Remixes, Volume II/08 Alright (Memphis Bleek).mp3
+8:Ratatat/Remixes, Volume II/09 Three Kings (Slim Thug, T.I. & Bu.mp3
+9:Ratatat/Remixes, Volume II/10 Over Here (Young Jeezy & Bun-B).mp3
+10:Ratatat/Remixes, Volume II/11 Diamonds (Kanye West).mp3
+11:Ratatat/Remixes, Volume II/12 Freestyle (Beans).mp3
+12:Ratatat/Remixes, Volume II/13 Dead Wrong (Notorious B.I.G.).mp3
+13:Ratatat/Remixes, Volume II/14 We Gon' Ride (Saigon & U.G.K.).mp3
+playlist_end

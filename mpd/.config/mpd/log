@@ -1,0 +1,16 @@
+Mar 05 19:42 : client: [0] opened from [::1]:57270
+Mar 05 19:43 : client: [0] closed
+Mar 05 19:43 : client: [1] opened from [::1]:57384
+Mar 05 19:44 : client: [1] closed
+Mar 05 20:49 : client: [0] opened from [::1]:34446
+Mar 05 20:49 : client: [0] closed
+Mar 05 20:49 : client: [1] opened from [::1]:34452
+Mar 05 20:57 : client: [1] closed
+Mar 05 23:33 : player: played "Ratatat/Remixes, Volume II/01 Stomp (Young Buck, T.I. & Ludacri.mp3"
+Mar 06 13:40 : client: [0] opened from [::1]:43590
+Mar 06 13:40 : player: played "Ratatat/Remixes, Volume II/01 Stomp (Young Buck, T.I. & Ludacri.mp3"
+Mar 06 13:44 : player: played "Ratatat/Remixes, Volume II/01 Stomp (Young Buck, T.I. & Ludacri.mp3"
+Mar 06 13:49 : player: played "Ratatat/Remixes, Volume II/01 Stomp (Young Buck, T.I. & Ludacri.mp3"
+Mar 06 13:53 : player: played "Ratatat/Remixes, Volume II/02 Party & Bullshit (Biggie Smalls).mp3"
+Mar 06 13:57 : player: played "Ratatat/Remixes, Volume II/03 Allure (Jay-Z & Notorious B.I.G.).mp3"
+Mar 06 14:16 : pulse_output: failed to connect the stream: Connection terminated
