@@ -19,6 +19,9 @@ URxvt*fading:  30
 ! Turn on/off hold window after exit support. If enabled, urxvt will not immediately destroy its window !when the program executed within it exits. 
 ! Instead, it will wait till it is being killed or closed by the user.
 URxvt*hold: true
+! terminal padding
+URxvt.internalBorder: 5
+!URxvt.externalBorder: 0
 
 
 

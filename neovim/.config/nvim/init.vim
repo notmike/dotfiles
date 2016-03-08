@@ -46,12 +46,7 @@ set smartcase              " Override ignorecase if pattern contains upper case.
 " -----------------------------------------------------------------------------
 
 " Define <Leader> key.
-let mapleader = ';'
-
-" Save & Quit Shortcuts.
-nnoremap <Leader>s :w<Enter>
-nnoremap <Leader>q :q<Enter>
-nnoremap <Leader>qq :q!<Enter>
+let mapleader = ','
 
 " Exit insert mode.
 inoremap jj <esc>
@@ -59,6 +54,12 @@ inoremap jj <esc>
 " scroll the viewport faster
 nnoremap <C-e> 3<C-e>
 nnoremap <C-y> 3<C-y>
+
+" Switch colon with semi-colon.
+nnoremap ; :
+nnoremap : ;
+vnoremap ; :
+vnoremap : ;
 
 " copy and paste
 vmap <C-c> "+yi
