@@ -84,6 +84,7 @@ Plug 'vim-airline/vim-airline'          " Pretty Statusline
 Plug 'vim-airline/vim-airline-themes'   " Themes for Airline status bar
 Plug 'scrooloose/syntastic'             " Syntax linter
 Plug 'tpope/vim-surround'               " Surround code w/ parenthesis
+Plug 'easymotion/vim-easymotion'        " navigate documents reallllly fast!
 call plug#end()
 
 "}}}

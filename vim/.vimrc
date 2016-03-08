@@ -207,6 +207,7 @@ Plug 'tpope/vim-repeat'             " Enable repeat for tpope's plugins.
 Plug 'w0ng/vim-hybrid'              " Dark colorscheme.
 Plug 'vim-airline/vim-airline'          " Pretty Statusline
 Plug 'vim-airline/vim-airline-themes'   " Themes for Airline status bar
+Plug 'easymotion/vim-easymotion'    " Move around screen fast!
 
 Plug 'Chiel92/vim-autoformat'       " Integrate external code formatters.
 "Plug 'LaTeX-Box-Team/LaTeX-Box'     " Set of LaTeX editing tools.
@@ -406,4 +407,9 @@ nnoremap <Leader>2 :TagbarToggle<CR>
 "nnoremap <Leader>l :call ToggleLocationList()<CR>
 "nnoremap <Leader>q :call ToggleQuickfixList()<CR>
 
+"}}}
+" Plugin Settings - EasyMotion {{{
+" -----------------------------------------------------------------------------
+
+"map <Leader> <Plug>(easymotion-prefix)
 "}}}
