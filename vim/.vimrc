@@ -22,6 +22,7 @@ syntax on                  " Enable syntax highlighting.
 " Options - Appearance {{{
 " -----------------------------------------------------------------------------
 
+set cursorline             " Highlights current line
 set colorcolumn=80         " Show right column in a highlighted colour.
 set completeopt-=preview   " Do not show preview window for ins-completion.
 set diffopt+=foldcolumn:0  " Do not show fold indicator column in diff mode.
@@ -39,7 +40,6 @@ set ttyfast                " Indicate fast terminal more smoother redrawing.
 "}}}
 " Options - Behaviour {{{
 " -----------------------------------------------------------------------------
-
 set clipboard=unnamed
 set backspace=2            " Allow <BS> and <Del> over everything.
 set hidden                 " Hide when switching buffers instead of unloading.
@@ -57,7 +57,7 @@ let g:tex_flavor = 'latex' " Treat *.tex file extensions as LaTeX files.
 
 " Default folding options.
 set foldignore=            " Do not ignore any characters for indent folding.
-set foldlevelstart=0      " Always start editing with all folds open.
+set foldlevelstart=99      " Always start editing with all folds open. 0=all closed, 99=all open
 set foldmethod=indent      " Form folds by lines with equal indent.
 set foldnestmax=10         " Limit fold levels for indent and syntax folding.
 
@@ -200,6 +200,7 @@ vnoremap yy "+y
 " Requires https://github.com/junegunn/vim-plug
 call plug#begin('~/.vim/plugged')
 
+Plug 'sjl/gundo.vim'
 Plug 'scrooloose/nerdtree'          " File explorer window.
 Plug 'junegunn/vim-easy-align'      " Text alignment by characters.
 Plug 'tpope/vim-surround'           " Quoting/parenthesizing made simple.
@@ -413,3 +414,6 @@ nnoremap <Leader>2 :TagbarToggle<CR>
 
 "map <Leader> <Plug>(easymotion-prefix)
 "}}}
+"
+
+nnoremap <leader>u :GundoToggle<CR>  " toggle gundo
