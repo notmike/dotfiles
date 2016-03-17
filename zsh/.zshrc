@@ -74,6 +74,27 @@ source $ZSH/oh-my-zsh.sh
    export EDITOR='vim'
  fi
 
+
+throwaway_cpp() {
+  local tdir=$(mktemp -d /tmp/deleteme-XXX)
+  cd $tdir
+  sed -e 's/LD\s*:=.*$/LD       := $(CXX)/' \
+   < ~/.vim/skeletons/skeleton.make > Makefile
+  cat > test.cpp <<"EOF"
+#include <stdio.h>
+#include <stdlib.h>
+#include <iostream>
+
+int main() {
+
+return 0;
+}
+EOF
+vim test.cpp
+}
+
+
+
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
@@ -138,7 +159,7 @@ alias grep='grep --color=auto'
 alias home='cd ~'
 
 #i3 config shortcut
-alias i3config='nvim ~/.config/i3/config'
+alias i3config='vim ~/.config/i3/config'
 
 # lists personal fav imagemagick commands
 alias imagecommands='cat /mnt/R2D2/Dropbox/Programs/LINUX/imagemagick-commands.txt'

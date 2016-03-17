@@ -19,4 +19,3 @@ dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPl
 IMAGE=$HOME/Pictures/Wallpapers/bleeding-mountains.png
 #IMAGE=$HOME/Pictures/lockscreen.png
 i3lock -i $IMAGE
-systemctl suspend
