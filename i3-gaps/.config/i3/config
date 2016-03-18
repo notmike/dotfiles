@@ -208,17 +208,11 @@ bindcode Control+Mod1+46 workspace next
 
 
 # Program Workspaces
-#assign [clasystem starved for free memory as well with thisss="Urxvt"] $workspace1
-#assign [class="Firefox"] $workspace2
-#assign [class="chromium"] $workspace2
-assign [class="sublime-text"] $workspace5
 assign [class="(?)Steam"] $workspace7 
-assign [instance="remmina"] $workspace9
 assign [instance="spotify"] $workspace10
 assign [class="Pavucontrol"] $workspace10
 
 # Floating windows
-#for_window [class="Pavucontrol"] floating enable
 for_window [class="Steam"] floating enable
 
 # reload the configuration file
@@ -226,9 +220,6 @@ bindsym $mod+Shift+c reload
 
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
-
-# exit i3 (logs you out of your X session)
-#bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # Power menu
 set $sysmenu   "  [r]estart - [l]ogout - re[b]oot - po[w]eroff  "
@@ -315,7 +306,7 @@ bar {
      separator_symbol " "
      bindsym button5 nop
      bindsym button4 nop
-     tray_output primary
+    # tray_output primary
     # tray_padding 0  
 colors {
      separator #65737E
@@ -327,30 +318,6 @@ colors {
      urgent_workspace #ae4544 #ae4544 #ffffff
   }
 }
-
-#set screen blanking to 1 hour,  https://wiki.archlinux.org/index.php/Display_Power_Management_Signaling
-exec --no-startup-id xset s 3600 3600
-exec --no-startup-id xset -dpms
-exec --no-startup-id udiskie
-# Nvidia command to fix weird tearing issues when watching video
-# exec --no-stacked-id nvidia-settings --assign CurrentMetaMode="nvidia-auto-select +0+0 { ForceFullCompositionPipeline = On }"
-exec_always --no-startup-id numlockx on
-exec_always --no-startup-id ~/scripts/setbg.sh
-exec --no-startup-id pulseaudio --start
-exec --no-startup-id redshift -r -l 40.742:-73.769
-# redshift-gtk will give you the tray icon
-#exec --no-startup-id redshift-gtk
-exec dropbox
-exec --no-startup-id guake
-exec --no-startup-id clipit
-exec --no-startup-id launchy
-# the -f for compton will give it fade transitioning
-exec_always compton -f
-exec deluge
-exec_always --no-startup-id xrdb ~/.Xresources
-exec --no-startup-id google-musicmanager
-exec --no-startup-id mpd ~/.config/mpd/mpd.conf
-exec --no-startup-id dunst 
 
 # Screenshots
 bindsym Print exec scrot 'Screenshot-$wx$h-%Y.%m.%d-%T.png' -e 'mv $f ~/Pictures/Screenshots/'
@@ -376,3 +343,31 @@ bindcode Control+Mod1+Shift+31 exec remmina -c /home/mg/.remmina/1437506957152.r
 
 # Ranger Shortcut
 bindcode Control+Mod1+38 exec urxvt -e ranger
+
+
+#######################################################
+#                  Auto Starts                        #
+#######################################################
+#set screen blanking to 1 hour,  https://wiki.archlinux.org/index.php/Display_Power_Management_Signaling
+exec --no-startup-id xset s 3600 3600
+exec --no-startup-id xset -dpms
+exec --no-startup-id udiskie
+# Nvidia command to fix weird tearing issues when watching video
+# exec --no-stacked-id nvidia-settings --assign CurrentMetaMode="nvidia-auto-select +0+0 { ForceFullCompositionPipeline = On }"
+exec_always --no-startup-id numlockx on
+exec_always --no-startup-id ~/scripts/setbg.sh
+exec --no-startup-id pulseaudio --start
+exec --no-startup-id redshift -r -l 40.742:-73.769
+exec dropbox
+exec --no-startup-id guake
+exec --no-startup-id clipit
+exec --no-startup-id launchy
+# the -f for compton will give it fade transitioning
+exec_always compton -f
+exec deluge
+exec_always --no-startup-id xrdb ~/.Xresources
+exec --no-startup-id google-musicmanager
+exec --no-startup-id mpd ~/.config/mpd/mpd.conf
+exec --no-startup-id dunst 
+
+

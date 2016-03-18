@@ -22,7 +22,7 @@ color=$(tput setaf 1)
 usewall=0
 
 # The default image to use if usewall=0
-img="$HOME/Pictures/Wallpapers/Wall036.jpg"
+img="$HOME/Pictures/Wallpapers/bleeding-mountains.png"
 
 # Image width/height/offset
 width=160
