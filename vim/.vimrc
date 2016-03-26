@@ -249,7 +249,7 @@ let g:airline_left_sep = ''        " Remove arrow symbols.
 let g:airline_left_alt_sep = ''    " Remove arrow symbols.
 let g:airline_right_sep = ''       " Remove arrow symbols.
 let g:airline_right_alt_sep = ''   " Remove arrow symbols.
-let g:airline_theme = 'base16_eighties'    " Use current theme.
+let g:airline_theme = 'gruvbox'    " Use current theme.
 set laststatus=2
 
 
