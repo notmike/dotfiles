@@ -47,7 +47,6 @@ Xft.hinting:    true
 Xft.hintstyle:  hintfull
 
 
-! vim: set ft=xdefaults:
 ! -----------------------------------------------------------------------------
 ! File: gruvbox-dark.xresources
 ! Description: Retro groove colorscheme generalized
@@ -125,7 +124,6 @@ URxvt.color246: #a89984
 URxvt.color248: #bdae93
 URxvt.color250: #d5c4a1
 
-! vim: ft=xdefaults
 
 /* !TomorrowNightEighties */
 /* #define t_background        #2d2d2d */

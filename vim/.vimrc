@@ -6,7 +6,9 @@
 " -----------------------------------------------------------------------------
 set background=dark
 let base16colorspace=256
+let g:gruvbox_italic=1
 colorscheme gruvbox 
+let g:gruvbox_contrast_dark="soft"
 
 "}}}
 " Options - Compatibility {{{
@@ -209,7 +211,7 @@ Plug 'w0ng/vim-hybrid'              " Dark colorscheme.
 Plug 'vim-airline/vim-airline'          " Pretty Statusline
 Plug 'vim-airline/vim-airline-themes'   " Themes for Airline status bar
 Plug 'easymotion/vim-easymotion'    " Move around screen fast!
-
+Plug 'morhetz/gruvbox'              " Color scheme gruvbox
 Plug 'Chiel92/vim-autoformat'       " Integrate external code formatters.
 "Plug 'LaTeX-Box-Team/LaTeX-Box'     " Set of LaTeX editing tools.
 Plug 'Shougo/context_filetype.vim'  " Get current context for autocompletion.
@@ -307,19 +309,6 @@ if exists('plugs') && has_key(plugs, 'fzf.vim')
   " Find pattern in files with ag.
   nnoremap <Leader>f :FzfAg<CR>
 endif
-
-"}}}
-" Plugin Settings - colorscheme  (orig hybrid scheme) {{{
-" -----------------------------------------------------------------------------
-"let g:hybrid_custom_term_colors = 1
-"let g:hybrid_reduced_contrast = 1
-"let $NVIM_TUI_ENABLE_TRUE_COLOR=1 " Use 24-bit color, supported in iTerm2 2.9.
-
-"try
-   " colorscheme Tomorrow-Night-Eighties
-"catch /:E185:/
-  " Silently ignore if colorscheme not found.
-"endtry
 
 "}}}
 " Plugin Settings - latex-box {{{
