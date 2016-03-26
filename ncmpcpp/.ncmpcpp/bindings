@@ -186,10 +186,10 @@ def_key "delete"
 def_key "delete"
   delete_stored_playlist
 
-def_key "right"
+def_key "l"
   next_column
 
-def_key "right"
+def_key "l"
   slave_screen
 
 # def_key "right"
@@ -198,10 +198,10 @@ def_key "right"
 def_key "+"
   volume_up
 
-def_key "left"
+def_key "h"
   previous_column
 
-def_key "left"
+def_key "h"
   master_screen
 
 # def_key "left"
@@ -387,7 +387,7 @@ def_key "I"
 def_key "g"
   jump_to_position_in_song
 
-def_key "l"
+def_key ";"
   show_lyrics
 
 def_key "v"

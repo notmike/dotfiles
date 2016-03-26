@@ -6,7 +6,7 @@
 " -----------------------------------------------------------------------------
 set background=dark
 let base16colorspace=256
-colorscheme Tomorrow-Night-Eighties
+colorscheme gruvbox 
 
 "}}}
 " Options - Compatibility {{{
@@ -414,6 +414,8 @@ nnoremap <Leader>2 :TagbarToggle<CR>
 
 "map <Leader> <Plug>(easymotion-prefix)
 "}}}
-"
+" Plugin Settings - Gundo Undo {{{
+" -----------------------------------------------------------------------------
 
 nnoremap <leader>u :GundoToggle<CR>  " toggle gundo
+"}}}
