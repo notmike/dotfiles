@@ -112,6 +112,24 @@ man() {
 # export ARCHFLAGS="-arch x86_64"
 
 
+# Completion
+    # faster?
+    zstyle ':completion::complete:*' use-cache 1
+    # case insensitive
+    zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
+    zstyle ':completion:*' verbose yes
+    # for PID
+    zstyle ':completion:*:*:kill:*' menu yes select
+    zstyle ':completion:*:kill:*' force-list always
+    # color completion
+    zstyle ':completion:*' list-colors "=(#b) #([0-9]#)*=36=31"
+    # separate man page sections
+    zstyle ':completion"*"manuals' separate-sections true
+    # don't complete current directory
+    zstyle ':completion:*' ignore-parents parent pwd
+
+
 # ####################################################################################
 # ############# ALIAS ############# ALIAS ############# ALIAS ############# ALIAS ####
 # ####################################################################################

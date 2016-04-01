@@ -40,14 +40,14 @@ floating_maximum_size -1 x -1
 font pango: Terminus, FontAwesome Regular 10
 
 # COLORS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-set $edgecolor		     #5e8395
-set $edge-color2	     #000000
-set $old-bg-color        #2f343f
-set $bg-color            #5e8395
-set $inactive-bg-color   #2f343f
-set $text-color          #f3f4f5
-set $inactive-text-color #676E7D
-set $urgent-bg-color     #E53935
+set $border                 #504945
+set $edge-color             #282828
+set $old-bg-color           #2f343f
+set $bg-color               #5e8395
+set $inactive-bg-color      #282828
+set $text-color             #f3f4f5
+set $inactive-text-color    #676E7D
+set $urgent-bg-color        #E53935
 
 # window colors
 #
@@ -59,17 +59,16 @@ set $urgent-bg-color     #E53935
 # indistinguishable from single windows outside of a split container.
 #
 #                       border              background         text                 indicator           
-client.focused          #8FA1B3            $bg-color          $text-color           $bg-color
+client.focused          $border            $border            $text-color           $border
 client.focused_inactive $inactive-bg-color $inactive-bg-color $inactive-text-color  $inactive-bg-color
-client.unfocused        $edge-color2	   $inactive-bg-color $inactive-text-color  $inactive-bg-color
+client.unfocused        $edge-color 	   $inactive-bg-color $inactive-text-color  $inactive-bg-color
 client.urgent           $urgent-bg-color   $urgent-bg-color   $text-color           $bg-color
 client.placeholder      $edge-color        $bg-color          $text-color           $bg-color
 client.background       #ffffff
 
 
 # Program Menu Launcher
-bindsym $mod+d exec rofi -show run -lines 5 -eh 2 -width 100 -padding 600 -opacity "85" -bw 0 -bc "$old-bg-color" -bg "$old-bg-color" -fg "$text-color" -hlbg "$old-bg-color" -hlfg "#9575cd" -font "Source Code Pro 18"
-
+bindsym $mod+d exec --no-startup-id ~/scripts/i3/rofi.sh
 
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -317,16 +316,17 @@ bar {
      separator_symbol " "
      bindsym button5 nop
      bindsym button4 nop
-    # tray_output primary
+    # COMMENT OUT "tray_output primary" to get tray notifications back !
+    tray_output primary
     # tray_padding 0  
 colors {
-     separator #65737E
-     background #2B303B
-     statusline #c7c7c7
-     focused_workspace  #586e75 #586e75 #ffffff
+     separator #1d2021
+     background #1d2021
+     statusline #fb4934
+     focused_workspace  #665c54 #665c54 #ffffff
      active_workspace #2d2d2d #2d2d2d #ffffff
-     inactive_workspace #455057 #455057 #c7c7c7
-     urgent_workspace #ae4544 #ae4544 #ffffff
+     inactive_workspace #3c3836 #3c3836 #c7c7c7
+     urgent_workspace #cc241d #cc241d #ffffff
   }
 }
 
@@ -366,18 +366,20 @@ exec --no-startup-id udiskie
 exec urxvtd -q -o -f
 # Nvidia command to fix weird tearing issues when watching video
 # exec --no-stacked-id nvidia-settings --assign CurrentMetaMode="nvidia-auto-select +0+0 { ForceFullCompositionPipeline = On }"
+
+# the -f for compton will give it fade transitioning
+exec_always --no-startup-id compton -f
 exec_always --no-startup-id numlockx on
+exec_always --no-startup-id xrdb ~/.Xresources
 exec_always --no-startup-id ~/scripts/setbg.sh
+
 exec --no-startup-id pulseaudio --start
 exec --no-startup-id redshift -r -l 40.742:-73.769
 exec dropbox
 exec --no-startup-id guake
 exec --no-startup-id clipit
 exec --no-startup-id launchy
-# the -f for compton will give it fade transitioning
-exec_always compton -f
 exec deluge
-exec_always --no-startup-id xrdb ~/.Xresources
 exec --no-startup-id google-musicmanager
 exec --no-startup-id mpd ~/.config/mpd/mpd.conf
 exec --no-startup-id dunst 
