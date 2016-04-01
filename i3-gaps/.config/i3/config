@@ -82,7 +82,7 @@ bindsym $mod+d exec rofi -show run -lines 5 -eh 2 -width 100 -padding 600 -opaci
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec urxvtc
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -363,6 +363,7 @@ bindcode Control+Mod1+38 exec urxvt -e ranger
 exec --no-startup-id xset s 3600 3600
 exec --no-startup-id xset -dpms
 exec --no-startup-id udiskie
+exec urxvtd -q -o -f
 # Nvidia command to fix weird tearing issues when watching video
 # exec --no-stacked-id nvidia-settings --assign CurrentMetaMode="nvidia-auto-select +0+0 { ForceFullCompositionPipeline = On }"
 exec_always --no-startup-id numlockx on
