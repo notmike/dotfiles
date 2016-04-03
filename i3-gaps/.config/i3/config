@@ -316,8 +316,8 @@ bar {
      separator_symbol " "
      bindsym button5 nop
      bindsym button4 nop
-    # COMMENT OUT "tray_output primary" to get tray notifications back !
-    tray_output primary
+    # COMMENT OUT "tray_output none/primary" to get tray notifications back !
+    tray_output none
     # tray_padding 0  
 colors {
      separator #1d2021
