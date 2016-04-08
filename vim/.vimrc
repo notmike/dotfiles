@@ -177,24 +177,6 @@ vmap <C-v> c<ESC>"+p
 imap <C-v> <ESC>"+pa
 vnoremap yy "+y
 
-"nnoremap <Leader>y "*y
-"nnoremap <Leader>p "*p
-"nnoremap <Leader>P "*P
-
-"" Delete (cut) to clipboard.
-"vnoremap <Leader>x "*x
-"nnoremap <Leader>x "*x
-
-" Yank (copy) to clipboard.
-"vnoremap <Leader>y "*y
-"nnoremap <Leader>y "*y
-
-" Put (paste) from clipboard.
-"nnoremap <Leader>p "*p
-"vnoremap <Leader>p "*p
-"nnoremap <Leader><S-P> "*P
-"vnoremap <Leader><S-P> "*P
-
 ""}}}
 " Plugins Install {{{
 " -----------------------------------------------------------------------------
@@ -202,26 +184,22 @@ vnoremap yy "+y
 " Requires https://github.com/junegunn/vim-plug
 call plug#begin('~/.vim/plugged')
 
-Plug 'sjl/gundo.vim'
-Plug 'scrooloose/nerdtree'          " File explorer window.
-Plug 'junegunn/vim-easy-align'      " Text alignment by characters.
-Plug 'tpope/vim-surround'           " Quoting/parenthesizing made simple.
-Plug 'tpope/vim-repeat'             " Enable repeat for tpope's plugins.
-Plug 'w0ng/vim-hybrid'              " Dark colorscheme.
+Plug 'sjl/gundo.vim'                    " Fancy Undo Screen
+Plug 'scrooloose/nerdtree'              " File explorer window.
+Plug 'junegunn/vim-easy-align'          " Text alignment by characters.
+Plug 'tpope/vim-surround'               " Quoting/parenthesizing made simple.
+Plug 'tpope/vim-repeat'                 " Enable repeat for tpope's plugins.
 Plug 'vim-airline/vim-airline'          " Pretty Statusline
 Plug 'vim-airline/vim-airline-themes'   " Themes for Airline status bar
-Plug 'easymotion/vim-easymotion'    " Move around screen fast!
-Plug 'morhetz/gruvbox'              " Color scheme gruvbox
-Plug 'Chiel92/vim-autoformat'       " Integrate external code formatters.
-"Plug 'LaTeX-Box-Team/LaTeX-Box'     " Set of LaTeX editing tools.
-Plug 'Shougo/context_filetype.vim'  " Get current context for autocompletion.
-"Plug 'bling/vim-airline'            " Pretty statusline.
-Plug 'benekastah/neomake'           " Asynchronous syntax checking with make.
-Plug 'majutsushi/tagbar'            " Display tags in a split window.
-"Plug 'milkypostman/vim-togglelist'  " Toggle Location List and Quickfix windows.
-Plug 'plasticboy/vim-markdown'      " Markdown Vim Mode.
-Plug 'tpope/vim-commentary'         " Commenting made simple.
-Plug 'tpope/vim-fugitive'           " Git wrapper.
+Plug 'easymotion/vim-easymotion'        " Move around screen fast!
+Plug 'morhetz/gruvbox'                  " Color scheme gruvbox
+Plug 'Chiel92/vim-autoformat'           " Integrate external code formatters.
+Plug 'Shougo/context_filetype.vim'      " Get current context for autocompletion.
+Plug 'benekastah/neomake'               " Asynchronous syntax checking with make.
+Plug 'majutsushi/tagbar'                " Display tags in a split window.
+Plug 'plasticboy/vim-markdown'          " Markdown Vim Mode.
+Plug 'tpope/vim-commentary'             " Commenting made simple.
+Plug 'tpope/vim-fugitive'               " Git wrapper.
 
 
 " Plugins to enable only for Neovim.
@@ -387,21 +365,6 @@ let g:tagbar_left = 1 " Open the Tagbar window on the left side.
 " Toggle Tagbar window.
 nnoremap <Leader>2 :TagbarToggle<CR>
 
-"}}}
-" Plugin Settings - togglelist {{{
-" -----------------------------------------------------------------------------
-
-"let g:toggle_list_no_mappings = 1 " Disable default mappings.
-
-" Toggle Quickfix and Location List windows.
-"nnoremap <Leader>l :call ToggleLocationList()<CR>
-"nnoremap <Leader>q :call ToggleQuickfixList()<CR>
-
-"}}}
-" Plugin Settings - EasyMotion {{{
-" -----------------------------------------------------------------------------
-
-"map <Leader> <Plug>(easymotion-prefix)
 "}}}
 " Plugin Settings - Gundo Undo {{{
 " -----------------------------------------------------------------------------

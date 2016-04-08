@@ -224,6 +224,7 @@ assign [class="Pavucontrol"] $workspace10
 
 # Floating windows
 for_window [class="Steam"] floating enable
+for_window [class="Wine"] floating enable
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -317,7 +318,7 @@ bar {
      bindsym button5 nop
      bindsym button4 nop
     # COMMENT OUT "tray_output none/primary" to get tray notifications back !
-    tray_output none
+    #tray_output none
     # tray_padding 0  
 colors {
      separator #1d2021
