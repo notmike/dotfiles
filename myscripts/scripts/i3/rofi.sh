@@ -1,3 +1,30 @@
 #!/bin/bash
-#rofi -show run -lines 10 -eh 2 -width 100 -padding 600 -opacity "90" -bw 0 -bc"#282828" -bg "#282828" -fg "$text-color" -hlbg "#282828" -hlfg "#b8bb26" -font "Source Code Pro 15" -separator-style none
-rofi -modi "run,drun" -show run -lines 8 -line-margin 5 -eh 1 -width 700 -padding 25 -location 0 -opacity "90" -bw 0 -bc "#282828" -bg "#282828" -fg "#FFFFFF" -hlbg "#282828" -hlfg "#b8bb26" -font "Source Code Pro Semibold 10"
+
+# THEMING
+# With rofi 0.15.4 we have a new way of specifying colors, the old settings still apply (for now). To enable the new setup, set rofi.color-enabled to true. The new setup allows you to specify colors per state, similar to i3 Currently 3 states exists:
+
+# normal Normal row.
+# urgent Highlighted row (urgent)
+# active Highlighted row (active)
+# For each state the following 5 colors must be set:
+
+# bg Background color row
+# fg Text color
+# bgalt Background color alternating row
+# hlfg Foreground color selected row
+# hlbg Background color selected row
+# The window background and border color should be specified separate. The key color-window contains a pair background,border. An example for Xresources file:
+
+# ! State:           'bg',     'fg',     'bgalt',  'hlbg',   'hlfg'
+# rofi.color-normal: #fdf6e3,  #002b36,  #eee8d5,  #586e75,  #eee8d5
+# rofi.color-urgent: #fdf6e3,  #dc322f,  #eee8d5,  #dc322f,  #fdf6e3
+# rofi.color-active: #fdf6e3,  #268bd2,  #eee8d5,  #268bd2,  #fdf6e3
+
+# !                  'background', 'border'
+# rofi.color-window: #fdf6e3,      #002b36
+# Same settings can also be specified on command-line:
+
+# rofi -color-normal "#fdf6e3,#002b36,#eee8d5,#586e75,#eee8d5"
+
+
+rofi -modi "run,drun" -show run -color-window "#282828,#282828" -color-normal "#282828,#ffffff,#282828,#282828,#b8bb26" -lines 8 -line-margin 5 -eh 1 -width 700 -padding 25 -location 0 -opacity "90" -bw 0 -font "Source Code Pro Semibold 10"

@@ -171,8 +171,8 @@ alias drop='cd /mnt/R2D2/Dropbox'
 #alias espresso='espresso -o eqntott'
 
 # Firefox aliases
-alias ff='(firefox &> /dev/null && pkill at-spi &)'
-alias fp='(firefox -private &> /dev/null && pkill at-spi &)'
+alias ff='nohup firefox &>/dev/null &'
+alias fp='nohup firefox -private &>/dev/null &'
 
 # test if firstshred server is up/alive (does 4 pings)
 alias fsup='sudo hping3 -c 4 -V -S -p 3340 24.153.238.2'
@@ -270,6 +270,9 @@ alias shutdown='sudo shutdown -h now'
 
 # check internet speeds!
 alias speedtest='speedtest-cli'
+
+# fix broken spotify
+alias spotify='nohup spotify --force-device-scale-factor=1.0000001 &>/dev/null &'
 
 # For opening Tor in background subshell
 alias tor='(/usr/bin/tor-browser-en &)'

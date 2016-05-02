@@ -68,7 +68,7 @@ client.background       #ffffff
 
 
 # Program Menu Launcher
-bindsym $mod+d exec --no-startup-id ~/scripts/i3/rofi.sh
+bindsym $mod+d --release exec --no-startup-id "~/scripts/i3/rofi.sh"
 
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -334,6 +334,7 @@ colors {
 # Screenshots
 bindsym Print exec scrot 'Screenshot-$wx$h-%Y.%m.%d-%T.png' -e 'mv $f ~/Pictures/Screenshots/'
 bindsym Shift+Print exec scrot -u 'Screenshot-$wx$h-%Y.%m.%d-%T.png' -e 'mv $f ~/Pictures/Screenshots/'
+bindsym $mod+Print --release exec --no-startup-id "maim ~/Pictures/Screenshots/$(date +%F-%T).png -s -c 1,0,0,0.6"
 
 # lock w/ suspend
 bindsym $mod+Shift+x exec ~/scripts/i3lock.sh
@@ -373,7 +374,8 @@ exec_always --no-startup-id compton -f
 exec_always --no-startup-id numlockx on
 exec_always --no-startup-id xrdb ~/.Xresources
 exec_always --no-startup-id ~/scripts/setbg.sh
-
+# "xset r rate ..." makes keyrate faster
+exec_always --no-startup-id xset r rate 250 30
 exec --no-startup-id pulseaudio --start
 exec --no-startup-id redshift -r -l 40.742:-73.769
 exec dropbox
