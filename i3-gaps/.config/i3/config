@@ -290,6 +290,8 @@ bindcode Control+Mod1+Shift+19 exec --no-startup-id pactl set-sink-mute bluez_si
 
 # cntrl+alt+shift+z
 bindcode Control+Mod1+Shift+52 exec playerctl play-pause
+# cntrl+win+alt+shift+z (for ncmcpp)
+bindcode Control+$mod+Mod1+Shift+52 exec mpc toggle
 # cntrl+alt+shift+s
 bindcode Control+Mod1+Shift+39 exec playerctl next
 # cntrl+alt+shift+a
