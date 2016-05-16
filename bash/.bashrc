@@ -66,7 +66,7 @@ function extract()      # Handy Extract Program
 }
 
 # Default Editor
-export VISUAL="nvim" 
+export VISUAL="vim" 
 
 # Increase History size
 export HISTFILESIZE=20000
