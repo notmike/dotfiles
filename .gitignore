@@ -13,4 +13,4 @@
 /ncmpcpp/.ncmpcpp/patterns.list
 /neovim/.config/nvim/plugged/
 /neovim/.config/nvim/.init.vim-rplugin~
-/zsh/.oh-my-zsh/
+#/zsh/.oh-my-zsh/
