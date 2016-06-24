@@ -294,8 +294,12 @@ bindcode Control+Mod1+Shift+52 exec playerctl play-pause
 bindcode Control+$mod+Mod1+Shift+52 exec mpc toggle
 # cntrl+alt+shift+s
 bindcode Control+Mod1+Shift+39 exec playerctl next
+# cntrl+win+alt+shift+s (for ncmcpp)
+bindcode Control+$mod+Mod1+Shift+39 exec mpc next
 # cntrl+alt+shift+a
 bindcode Control+Mod1+Shift+38 exec playerctl previous
+# cntrl+win+alt+shift+a (for ncmcpp)
+bindcode Control+$mod+Mod1+Shift+38 exec mpc prev
 
 # If not using udiskie or someother automount tool, can use this binding
 #bindsym $mod+m exec --no-startup-id "udisksctl mount -b /dev/sdb1 && gnome-terminal -x ranger /media/$USER/"
@@ -378,7 +382,6 @@ exec_always --no-startup-id xrdb ~/.Xresources
 exec_always --no-startup-id ~/scripts/setbg.sh
 # "xset r rate ..." makes keyrate faster
 exec_always --no-startup-id xset r rate 250 30
-exec --no-startup-id pulseaudio --start
 exec --no-startup-id redshift -r -l 40.742:-73.769
 exec dropbox
 exec --no-startup-id guake
@@ -388,5 +391,4 @@ exec deluge
 exec --no-startup-id google-musicmanager
 exec --no-startup-id mpd ~/.config/mpd/mpd.conf
 exec --no-startup-id dunst 
-
-
+exec --no-startup-id pulseaudio --start

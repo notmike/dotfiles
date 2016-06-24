@@ -250,6 +250,9 @@ alias reboot='sudo reboot'
 # remove 
 alias remove='sudo pacman -Rs'
 
+# remove colons from filenames (and replace w/ underscores)
+alias removecolons='~/scripts/removecolon.sh'
+
 # rename multiple files in sequential order
 alias renamem='j=1;for i in *.jpg; do mv "$i" "$j".jpg; let j=j+1;done'
 
