@@ -19,4 +19,4 @@ dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPl
 $HOME/scripts/disconnect-bluetooth-headset.sh
 #IMAGE=$HOME/Pictures/Wallpapers/bleeding-mountains.png
 IMAGE=$HOME/Pictures/lockscreen.png
-i3lock -i $IMAGE
+i3lock -n -i $IMAGE
