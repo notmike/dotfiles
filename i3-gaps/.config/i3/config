@@ -372,12 +372,9 @@ exec --no-startup-id xset s 3600 3600
 exec --no-startup-id xset -dpms
 exec --no-startup-id udiskie
 exec urxvtd -q -o -f
-# Nvidia command to fix weird tearing issues when watching video
-# exec --no-stacked-id nvidia-settings --assign CurrentMetaMode="nvidia-auto-select +0+0 { ForceFullCompositionPipeline = On }"
 
 # the -f for compton will give it fade transitioning
 exec_always --no-startup-id compton -f
-exec_always --no-startup-id numlockx on
 exec_always --no-startup-id xrdb ~/.Xresources
 exec_always --no-startup-id ~/scripts/setbg.sh
 # "xset r rate ..." makes keyrate faster
@@ -388,9 +385,6 @@ exec --no-startup-id guake
 exec --no-startup-id clipit
 exec --no-startup-id launchy
 exec deluge
-exec --no-startup-id google-musicmanager
-exec --no-startup-id mpd ~/.config/mpd/mpd.conf
 exec --no-startup-id dunst 
-exec --no-startup-id pulseaudio --start
 exec --no-startup-id nm-applet
 exec --no-startup-id xss-lock -- i3lock -n -i $HOME/Pictures/lockscreen-laptop.png &
