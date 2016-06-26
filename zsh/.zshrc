@@ -153,6 +153,9 @@ alias autostart='gnome-session-properties'
 # For going to last directory
 alias back='cd -'
 
+# See what programs are using bandwidth
+alias checknetwork='nethogs'
+
 # Clean all the tmp folders
 alias cleanup='bleachbit --clean system.cache system.localizations system.trash system.tmp'
 alias cleanupsu='sudo bleachbit --clean system.cache system.localizations system.trash system.tmp'
