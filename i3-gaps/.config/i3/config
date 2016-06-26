@@ -261,11 +261,14 @@ mode "  " {
      bindsym Escape mode "default"
 }
 
+# Screen Brightness Bindings
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10
 
 # Volume & Media Bindings
-  # bindsym XF86AudioLowerVolume exec --no-startup-id pulseaudio-ctl down
-  # bindsym XF86AudioRaiseVolume exec --no-startup-id pulseaudio-ctl up
-  # bindsym XF86AudioMute exec --no-startup-id pulseaudio-ctl mute
+  bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 5-  
+  bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 5+
+  bindsym XF86AudioMute exec --no-startup-id amixer set Master toggle
   # bindsym XF86AudioPlay exec playerctl play-pause
   # bindsym XF86AudioNext exec playerctl next
   # bindsym XF86AudioPrev exec playerctl previous
@@ -274,32 +277,32 @@ mode "  " {
 # cntrl+alt+(shift)+- 
 # when using "shift" you adjust the bluetooth volume
 bindcode Control+Mod1+20 exec --no-startup-id pactl set-sink-volume alsa_output.pci-0000_01_00.1.hdmi-stereo-extra2 -5%
-bindcode Control+Mod1+Shift+20 exec --no-startup-id pactl set-sink-volume bluez_sink.44_5E_F3_AB_67_A0 -5%
+# bindcode Control+Mod1+Shift+20 exec --no-startup-id pactl set-sink-volume bluez_sink.44_5E_F3_AB_67_A0 -5%
 
 #bindcode Control+Mod1+Shift+21 exec --no-startup-id pulseaudio-ctl up
 # cntrl+alt+(shift)++
 # when using "shift" you adjust the bluetooth volume
 bindcode Control+Mod1+21 exec --no-startup-id pactl set-sink-volume alsa_output.pci-0000_01_00.1.hdmi-stereo-extra2 +5%
-bindcode Control+Mod1+Shift+21 exec --no-startup-id pactl set-sink-volume bluez_sink.44_5E_F3_AB_67_A0 +5%
+# bindcode Control+Mod1+Shift+21 exec --no-startup-id pactl set-sink-volume bluez_sink.44_5E_F3_AB_67_A0 +5%
 
 #bindcode Control+Mod1+Shift+19 exec --no-startup-id pulseaudio-ctl mute
 # cntrl+alt+(shift)+0
 # when using "shift" you adjust the bluetooth volume
 bindcode Control+Mod1+19 exec --no-startup-id pactl set-sink-mute alsa_output.pci-0000_01_00.1.hdmi-stereo-extra2 toggle
-bindcode Control+Mod1+Shift+19 exec --no-startup-id pactl set-sink-mute bluez_sink.44_5E_F3_AB_67_A0 toggle
+# bindcode Control+Mod1+Shift+19 exec --no-startup-id pactl set-sink-mute bluez_sink.44_5E_F3_AB_67_A0 toggle
 
 # cntrl+alt+shift+z
 bindcode Control+Mod1+Shift+52 exec playerctl play-pause
 # cntrl+win+alt+shift+z (for ncmcpp)
-bindcode Control+$mod+Mod1+Shift+52 exec mpc toggle
+# bindcode Control+$mod+Mod1+Shift+52 exec mpc toggle
 # cntrl+alt+shift+s
 bindcode Control+Mod1+Shift+39 exec playerctl next
 # cntrl+win+alt+shift+s (for ncmcpp)
-bindcode Control+$mod+Mod1+Shift+39 exec mpc next
+#bindcode Control+$mod+Mod1+Shift+39 exec mpc next
 # cntrl+alt+shift+a
 bindcode Control+Mod1+Shift+38 exec playerctl previous
 # cntrl+win+alt+shift+a (for ncmcpp)
-bindcode Control+$mod+Mod1+Shift+38 exec mpc prev
+#bindcode Control+$mod+Mod1+Shift+38 exec mpc prev
 
 # If not using udiskie or someother automount tool, can use this binding
 #bindsym $mod+m exec --no-startup-id "udisksctl mount -b /dev/sdb1 && gnome-terminal -x ranger /media/$USER/"
@@ -356,9 +359,9 @@ bindcode Control+Mod1+Shift+56 exec ~/scripts/disconnect-bluetooth-headset.sh
 
 #remmina shortcuts
 #cntrl+alt+shift+m to launch my work login 
-bindcode Control+Mod1+Shift+58 exec remmina -c /home/mg/.remmina/1428266238982.remmina
+bindcode Control+Mod1+Shift+58 exec remmina -c ~/.remmina/1428266238982.remmina
 #cntrl+alt+shift+i to launch the main work server login 
-bindcode Control+Mod1+Shift+31 exec remmina -c /home/mg/.remmina/1437506957152.remmina
+bindcode Control+Mod1+Shift+31 exec remmina -c ~/.remmina/1437506957152.remmina
 
 # Ranger Shortcut
 bindcode Control+Mod1+38 exec urxvt -e ranger
@@ -367,8 +370,8 @@ bindcode Control+Mod1+38 exec urxvt -e ranger
 #######################################################
 #                  Auto Starts                        #
 #######################################################
-#set screen blanking to 1 hour,  https://wiki.archlinux.org/index.php/Display_Power_Management_Signaling
-exec --no-startup-id xset s 3600 3600
+#set screen blanking to 10 minutes,  https://wiki.archlinux.org/index.php/Display_Power_Management_Signaling
+exec --no-startup-id xset s 600 600
 exec --no-startup-id xset -dpms
 exec --no-startup-id udiskie
 exec urxvtd -q -o -f
