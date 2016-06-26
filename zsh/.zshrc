@@ -294,3 +294,5 @@ alias zshreload="source ~/.zshrc"
 
 # so the terminal app "ranger" can open new terminal in last directory
 cd "$AUTOCD"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

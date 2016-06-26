@@ -23,8 +23,8 @@ mouse_warping output
 # i3 Gaps
 smart_gaps on
 smart_borders on
-gaps inner 8
-gaps outer 4
+gaps inner 5
+gaps outer 2
 
 ### Borders ###
 new_window pixel 1
@@ -40,7 +40,7 @@ floating_maximum_size -1 x -1
 font pango: Terminus, FontAwesome Regular 10
 
 # COLORS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-set $border                 #504945
+set $border                 #458588
 set $edge-color             #282828
 set $old-bg-color           #2f343f
 set $bg-color               #5e8395
@@ -392,3 +392,5 @@ exec --no-startup-id google-musicmanager
 exec --no-startup-id mpd ~/.config/mpd/mpd.conf
 exec --no-startup-id dunst 
 exec --no-startup-id pulseaudio --start
+exec --no-startup-id nm-applet
+exec --no-startup-id xss-lock -- i3lock -n -i $HOME/Pictures/lockscreen-laptop.png &
