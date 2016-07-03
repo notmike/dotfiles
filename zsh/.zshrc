@@ -284,10 +284,10 @@ alias spotify='nohup spotify --force-device-scale-factor=1.0000001 &>/dev/null &
 alias tor='(/usr/bin/tor-browser-en &)'
 
 # VPN - US-east
-alias vpn1='sudo openvpn --config /etc/openvpn/US_East.conf'
+alias vpn1='openvpn --config /etc/openvpn/US_East.conf'
 
 # VPN - Swiss
-alias vpn2='sudo openvpn --config /etc/openvpn/Switzerland.conf'
+alias vpn2='openvpn --config /etc/openvpn/Switzerland.conf'
 
 # convert jpgs to 30% size and 90% of quality
 alias webconvert='for file in *.jpg; do convert "$file" -quality 90 -resize 30% "web_$file"; done'
