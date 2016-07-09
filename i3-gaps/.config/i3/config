@@ -23,10 +23,13 @@ mouse_warping output
 # i3 Gaps
 smart_gaps on
 smart_borders on
+# gaps between 2 open program windows
 gaps inner 8
+# gaps between monitor and open program windows
 gaps outer 4
 
 ### Borders ###
+# new_window doens't seem to affect anything?
 new_window pixel 1
 new_float pixel 0
 
@@ -40,7 +43,7 @@ floating_maximum_size -1 x -1
 font pango: Terminus, FontAwesome Regular 10
 
 # COLORS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-set $border                 #504945
+set $border                 #458588
 set $edge-color             #282828
 set $old-bg-color           #2f343f
 set $bg-color               #5e8395
@@ -81,7 +84,7 @@ bindsym $mod+d --release exec --no-startup-id "~/scripts/i3/rofi.sh"
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec urxvtc
+bindsym $mod+Return exec termite
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -148,7 +151,7 @@ set $workspace4 "4 "
 set $workspace5 "5   code"
 set $workspace6 "6 "
 set $workspace7 "7   steam"
-set $workspace8 "8 "
+set $workspace8 "8  "
 set $workspace9 "9   work"
 set $workspace10 "10   music"
 
@@ -361,7 +364,7 @@ bindcode Control+Mod1+Shift+58 exec remmina -c /home/mg/.remmina/1428266238982.r
 bindcode Control+Mod1+Shift+31 exec remmina -c /home/mg/.remmina/1437506957152.remmina
 
 # Ranger Shortcut
-bindcode Control+Mod1+38 exec urxvt -e ranger
+bindcode Control+Mod1+38 exec termite -e ranger
 
 
 #######################################################
@@ -371,12 +374,12 @@ bindcode Control+Mod1+38 exec urxvt -e ranger
 exec --no-startup-id xset s 3600 3600
 exec --no-startup-id xset -dpms
 exec --no-startup-id udiskie
-exec urxvtd -q -o -f
+#exec urxvtd -q -o -f
 # Nvidia command to fix weird tearing issues when watching video
 # exec --no-stacked-id nvidia-settings --assign CurrentMetaMode="nvidia-auto-select +0+0 { ForceFullCompositionPipeline = On }"
 
-# the -f for compton will give it fade transitioning
-exec_always --no-startup-id compton -f
+# the -f for compton will give it fade transitioning 
+exec_always --no-startup-id compton -f --inactive-dim 0.3 
 exec_always --no-startup-id numlockx on
 exec_always --no-startup-id xrdb ~/.Xresources
 exec_always --no-startup-id ~/scripts/setbg.sh

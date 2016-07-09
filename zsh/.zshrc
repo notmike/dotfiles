@@ -95,14 +95,13 @@ vim test.cpp
 
 
 # experimental colored man pages:
-
 man() {
 	env \
 		LESS_TERMCAP_mb=$(printf "\e[1;31m") \
 		LESS_TERMCAP_md=$(printf "\e[1;31m") \
 		LESS_TERMCAP_me=$(printf "\e[0m") \
 		LESS_TERMCAP_se=$(printf "\e[0m") \
-		LESS_TERMCAP_so=$(printf "\e[1;42;30m") \
+		LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
 		LESS_TERMCAP_ue=$(printf "\e[0m") \
 		LESS_TERMCAP_us=$(printf "\e[1;35m") \
 			man "$@"
@@ -165,13 +164,6 @@ alias dl='cd /mnt/R2D2/Downloads/LINUXDLS'
 
 #navigate to downloads folder
 alias drop='cd /mnt/R2D2/Dropbox'
-
-#espresso settings that i need for correct SoP logic minimizing
-#alias espresso='espresso -Dso -o eqntott'
-
-#espresso settings that i need for correct PoS logic minimizing 
-# just need to flip all the output bits of the orig file, and flip NOTs after also
-#alias espresso='espresso -o eqntott'
 
 # Firefox aliases
 alias ff='nohup firefox &>/dev/null &'
