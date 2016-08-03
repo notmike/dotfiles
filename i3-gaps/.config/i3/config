@@ -222,12 +222,19 @@ bindcode Control+Mod1+46 workspace next
 
 # Program Workspaces
 assign [class="(?)Steam"] $workspace7 
-assign [instance="spotify"] $workspace10
+assign [class="spotify"] $workspace10
+for_window [class="Spotify"] move to workspace $workspace10
 assign [class="Pavucontrol"] $workspace10
 
 # Floating windows
-for_window [class="Steam"] floating enable
-for_window [class="Wine"] floating enable
+set $floating_windows "^(Steam|Wine|Yad|Simplescreenrecorder|smplayer|Blink)$"
+
+# Enable floating mode for some windows
+for_window [class=$floating_windows] floating enable
+
+for_window [window_type="notification"] floating enable; border none;
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="task_dialog"] floating enable
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -379,7 +386,7 @@ exec --no-startup-id udiskie
 # exec --no-stacked-id nvidia-settings --assign CurrentMetaMode="nvidia-auto-select +0+0 { ForceFullCompositionPipeline = On }"
 
 # the -f for compton will give it fade transitioning 
-exec_always --no-startup-id compton -f --inactive-dim 0.3 
+#exec_always --no-startup-id compton -f --inactive-dim 0.3 
 exec_always --no-startup-id numlockx on
 exec_always --no-startup-id xrdb ~/.Xresources
 exec_always --no-startup-id ~/scripts/setbg.sh
@@ -396,3 +403,5 @@ exec --no-startup-id mpd ~/.config/mpd/mpd.conf
 exec --no-startup-id dunst 
 exec --no-startup-id pulseaudio --start
 exec --no-startup-id nm-applet
+exec --no-startup-id pavucontrol 
+exec --no-startup-id spotify
