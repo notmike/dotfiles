@@ -348,9 +348,9 @@ colors {
 }
 
 # Screenshots
-bindsym Print exec scrot 'Screenshot-$wx$h-%Y.%m.%d-%T.png' -e 'mv $f ~/Pictures/Screenshots/'
-bindsym Shift+Print exec scrot -u 'Screenshot-$wx$h-%Y.%m.%d-%T.png' -e 'mv $f ~/Pictures/Screenshots/'
-bindsym $mod+Print --release exec --no-startup-id "maim ~/Pictures/Screenshots/$(date +%F-%T).png -s -c 1,0,0,0.6"
+bindsym Print exec scrot '%m.%d.%Y-$wx$h-%T.png' -e 'mv $f `echo ~/Pictures/Screenshots/$f | tr ':' '.'` '
+bindsym Shift+Print exec scrot -u '%m.%d.%Y-$wx$h-%T.png' -e 'mv $f `echo ~/Pictures/Screenshots/$f | tr ':' '.'` '
+bindsym $mod+Print --release exec --no-startup-id "maim ~/Pictures/Screenshots/$(date +%m.%d.%Y--%H.%M.%S).png -s -c 1,0,0,0.6"
 
 # lock w/ suspend
 bindsym $mod+Shift+x exec ~/scripts/i3lock.sh
