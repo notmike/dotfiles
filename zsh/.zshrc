@@ -295,4 +295,5 @@ alias zshreload="source ~/.zshrc"
 # so the terminal app "ranger" can open new terminal in last directory
 cd "$AUTOCD"
 
+# needed FZF plugin for Vim 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
