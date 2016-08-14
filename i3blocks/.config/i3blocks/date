@@ -11,8 +11,9 @@
 ####################################################
 
 case $BLOCK_BUTTON in
-	1) notify-send -i "date" "$(date '+%A %d %B %Y')";;     # left click
-    3) yad --calendar --no-buttons --mouse --on-top --undecorated --skip-taskbar;;     # right click
+    1) yad --calendar --no-buttons --mouse --on-top --undecorated --skip-taskbar;;     # left click
+#	1) notify-send -i "date" "$(date '+%A %d %B %Y')";;     # left click
+#   3) yad --calendar --no-buttons --mouse --on-top --undecorated --skip-taskbar;;     # right click
 esac
 
 t=$(date +'%d %b')
