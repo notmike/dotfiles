@@ -34,7 +34,7 @@ getCurrWeather() {
 	local datas=$(curl --silent "wttr.in/${city}" | sed "s,\x1B\[[0-9;]*[a-zA-Z],,g")
 	local head=$(echo "$datas" | head -n 7)
 	local state=$(echo "$head" | head -n 3 | tail -n 1 | sed -e 's=.*\([A-Z].*\)=\1=')
-	local temperature=$(echo "$head" | grep -o "[0-9]*\ *°F")
+	local temperature=$(echo "$head" | grep -o "[0-9]*\ *°[CF]")
 
 	echo "${state} ${temperature}"
 }
@@ -63,5 +63,3 @@ for s in ${!state_icons[*]}; do
 done
 
 echo "$icon $temp"
-echo "$icon $temp"
-echo
