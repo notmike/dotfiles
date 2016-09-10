@@ -128,6 +128,9 @@ man() {
     # don't complete current directory
     zstyle ':completion:*' ignore-parents parent pwd
 
+# For using NPM and nodeJS packages
+PATH="$HOME/.node_modules/bin:$PATH"
+export npm_config_prefix=~/.node_modules
 
 # ####################################################################################
 # ############# ALIAS ############# ALIAS ############# ALIAS ############# ALIAS ####
