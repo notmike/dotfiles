@@ -1,6 +1,4 @@
-#!/bin/bash
-# Copyright (C) 2014 Julien Bonjean <julien@bonjean.info>
-# Copyright (C) 2014 Alexander Keller <github@nycroth.com>
+#!/usr/bin/perl
 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -15,47 +13,26 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#------------------------------------------------------------------------
+use strict;
+use warnings;
+use utf8;
+use LWP::Simple;
 
-# Use the provided interface, otherwise the device used for the default route.
-if [[ -n $BLOCK_INSTANCE ]]; then
-  IF=$BLOCK_INSTANCE
-else
-  IF=$(ip route | awk '/^default/ { print $5 ; exit }')
-fi
+binmode(STDOUT, ":utf8");
 
-#------------------------------------------------------------------------
+chomp (my $IPADDR = get('http://icanhazip.com'));
 
-# As per #36 -- It is transparent: e.g. if the machine has no battery or wireless
-# connection (think desktop), the corresponding block should not be displayed.
-[[ ! -d /sys/class/net/${IF} ]] && exit
+my $MYREALIP="207.38.197.16";
 
-#------------------------------------------------------------------------
+# not sure why, 
+# but gotta have this output twice in order for the color to work right
+print "$IPADDR\n";
+print "$IPADDR\n";
 
-if [[ "$(cat /sys/class/net/$IF/operstate)" = 'down' ]]; then
-  echo down # full text
-  echo down # short text
-  echo \#FF0000 # color
-  exit
-fi
-
-case $1 in
-  -4)
-    AF=inet ;;
-  -6)
-    AF=inet6 ;;
-  *)
-    AF=inet6? ;;
-esac
-
-# if no interface is found, use the first device with a global scope
-IPADDR=$(ip addr show $IF | perl -n -e "/$AF ([^\/]+).* scope global/ && print \$1 and exit")
-
-case $BLOCK_BUTTON in
-  3) echo -n "$IPADDR" | xclip -q -se c ;;
-esac
-
-#------------------------------------------------------------------------
-
-echo "$IPADDR" # full text
-echo "$IPADDR" # short text
+if ($IPADDR ne $MYREALIP) {     # VPN is ON - print in green if IP is hidden 
+    print "#83a598\n";
+}elsif ($IPADDR eq $MYREALIP) {  # VPN is OFF - print in red, IP is exposed
+    print "#fb4934\n";
+    exit(33);
+}
+exit 0;

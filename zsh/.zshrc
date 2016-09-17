@@ -74,6 +74,8 @@ source $ZSH/oh-my-zsh.sh
    export EDITOR='vim'
  fi
 
+export VIMRUNTIME=/usr/share/vim/vim74
+#export VIMRUNTIME=/usr/share/nvim/runtime
 
 throwaway_cpp() {
   local tdir=$(mktemp -d /tmp/deleteme-XXX)

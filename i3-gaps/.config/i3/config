@@ -381,6 +381,8 @@ bindcode Control+Mod1+38 exec termite -e ranger
 exec --no-startup-id xset s 3600 3600
 exec --no-startup-id xset -dpms
 exec --no-startup-id udiskie
+# xbindkeys is so the mouse side scroll now controls volume
+exec --no-startup-id xbindkeys
 #exec urxvtd -q -o -f
 # Nvidia command to fix weird tearing issues when watching video
 # exec --no-stacked-id nvidia-settings --assign CurrentMetaMode="nvidia-auto-select +0+0 { ForceFullCompositionPipeline = On }"
