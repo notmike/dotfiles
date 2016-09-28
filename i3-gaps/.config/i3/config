@@ -68,7 +68,7 @@ client.background       #ffffff
 
 
 # Program Menu Launcher
-bindsym $mod+d --release exec --no-startup-id "~/scripts/i3/rofi.sh"
+bindsym $mod+d exec --no-startup-id "~/scripts/i3/rofi.sh"
 
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -387,7 +387,7 @@ exec dropbox
 exec --no-startup-id guake
 exec --no-startup-id clipit
 exec --no-startup-id launchy
-exec deluge
+#exec deluge
 exec --no-startup-id dunst 
 exec --no-startup-id nm-applet
 exec --no-startup-id xss-lock -- i3lock -n -i $HOME/Pictures/lockscreen-laptop.png &
