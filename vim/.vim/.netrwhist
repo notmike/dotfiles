@@ -1,0 +1,10 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_1='/home/mg/Dropbox/Programming/Java/Assignment2'
+let g:netrw_dirhist_2='/home/mg/Dropbox/Programming/Java/Assignment2/src'
+let g:netrw_dirhist_3='/home/mg'
+let g:netrw_dirhist_4='/home/mg/Dropbox'
+let g:netrw_dirhist_5='/home/mg/Dropbox/Programming'
+let g:netrw_dirhist_6='/home/mg/Dropbox/Programming/Java'
+let g:netrw_dirhist_7='/home/mg/Dropbox/Programming/Java/Assignment2'
+let g:netrw_dirhist_8='/home/mg/Dropbox/Programming/Java/Assignment2/src'

@@ -65,6 +65,9 @@ function extract()      # Handy Extract Program
     fi
 }
 
+# SSH works better
+export TERM=xterm-256color
+
 # Default Editor
 export VISUAL="vim" 
 

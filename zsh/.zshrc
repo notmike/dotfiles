@@ -59,6 +59,9 @@ HISTSIZE=1000
 SAVEHIST=1000
 setopt HIST_IGNORE_DUPS
 
+# SSH works better
+export TERM=xterm-256color
+
 export PATH=$HOME/bin:/usr/local/bin:/opt/altera/quartus/bin:/opt/altera/modelsim_ase/bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -74,7 +77,7 @@ source $ZSH/oh-my-zsh.sh
    export EDITOR='vim'
  fi
 
-export VIMRUNTIME=/usr/share/vim/vim74
+export VIMRUNTIME=/usr/share/vim/vim80
 #export VIMRUNTIME=/usr/share/nvim/runtime
 
 throwaway_cpp() {
@@ -133,6 +136,9 @@ man() {
 # For using NPM and nodeJS packages
 PATH="$HOME/.node_modules/bin:$PATH"
 export npm_config_prefix=~/.node_modules
+
+# force Steam to use the Arch Package libs instead of the ones packaged w/ steam
+STEAM_RUNTIME=0
 
 # ####################################################################################
 # ############# ALIAS ############# ALIAS ############# ALIAS ############# ALIAS ####
@@ -223,16 +229,16 @@ alias pw0='cat /dev/urandom | tr -cd [:graph:] | fold -w $LENGTH | head -n 1'
 
 # Using diceware python script saved on git will produce diceware pw of specified length.
 # Default word length is 5, then copies to clipboard using xsel (must have installed also)
-alias pw='python2 /mnt/R2D2/Dropbox/git/diceware/diceware-v2 -w 4 | xsel -i -b'
-alias pw2='python2 /mnt/R2D2/Dropbox/git/diceware/diceware-v2 -w 1 | xsel -i -b'
-alias pw3='python2 /mnt/R2D2/Dropbox/git/diceware/diceware-v2 -w 2 | xsel -i -b'
-alias pw4='python2 /mnt/R2D2/Dropbox/git/diceware/diceware-v2 -w 3 | xsel -i -b'
-alias pw5='python2 /mnt/R2D2/Dropbox/git/diceware/diceware-v2 -w 4 | xsel -i -b'
-alias pw6='python2 /mnt/R2D2/Dropbox/git/diceware/diceware-v2 -w 5 | xsel -i -b'
-alias pw7='python2 /mnt/R2D2/Dropbox/git/diceware/diceware-v2 -w 6 | xsel -i -b'
-alias pw8='python2 /mnt/R2D2/Dropbox/git/diceware/diceware-v2 -w 7 | xsel -i -b'
-alias pw9='python2 /mnt/R2D2/Dropbox/git/diceware/diceware-v2 -w 8 | xsel -i -b'
-alias pw10='python2 /mnt/R2D2/Dropbox/git/diceware/diceware-v2 -w 9 | xsel -i -b'
+alias pw='python2 /mnt/R2D2/Dropbox/Programming/git/diceware/diceware-v2 -w 4 | xsel -i -b'
+alias pw2='python2 /mnt/R2D2/Dropbox/Programming/git/diceware/diceware-v2 -w 1 | xsel -i -b'
+alias pw3='python2 /mnt/R2D2/Dropbox/Programming/git/diceware/diceware-v2 -w 2 | xsel -i -b'
+alias pw4='python2 /mnt/R2D2/Dropbox/Programming/git/diceware/diceware-v2 -w 3 | xsel -i -b'
+alias pw5='python2 /mnt/R2D2/Dropbox/Programming/git/diceware/diceware-v2 -w 4 | xsel -i -b'
+alias pw6='python2 /mnt/R2D2/Dropbox/Programming/git/diceware/diceware-v2 -w 5 | xsel -i -b'
+alias pw7='python2 /mnt/R2D2/Dropbox/Programming/git/diceware/diceware-v2 -w 6 | xsel -i -b'
+alias pw8='python2 /mnt/R2D2/Dropbox/Programming/git/diceware/diceware-v2 -w 7 | xsel -i -b'
+alias pw9='python2 /mnt/R2D2/Dropbox/Programming/git/diceware/diceware-v2 -w 8 | xsel -i -b'
+alias pw10='python2 /mnt/R2D2/Dropbox/Programming/git/diceware/diceware-v2 -w 9 | xsel -i -b'
 
 # for running python scripts w/ 2.7
 alias python2=/usr/bin/python2.7
