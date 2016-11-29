@@ -12,5 +12,12 @@
 #
 ####################################################
 
-data=$(curl --silent "https://bitcoincharts.com" | grep coinbaseUSD -A 2 | tail -n 1 | awk '{print$2}' | grep -o -E "[[:digit:]]+\.[[:digit:]][[:digit:]]")
+
+case $BLOCK_BUTTON in
+    1) nohup google-chrome-stable https://www.gdax.com/trade/BTC-USD &>/dev/null & ;;     # left click
+    #2) pkill -RTMIN+2 i3blocks;;    # middle click
+esac
+
+#data=$(curl --silent "https://bitcoincharts.com" | grep coinbaseUSD -A 2 | tail -n 1 | awk '{print$2}' | grep -o -E "[[:digit:]]+\.[[:digit:]][[:digit:]]")
+data=$(curl --silent "https://bitcoincharts.com/markets/coinbaseUSD.html" | grep 'Last Trade' | awk '{print$2}' | grep -o -E "[[:digit:]]+\.[[:digit:]][[:digit:]]")
 echo "$data"
