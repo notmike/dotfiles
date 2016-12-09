@@ -1,0 +1,16 @@
+#!/bin/bash
+
+####################################################
+# CREATION     : 2016-11-19
+# MODIFICATION : 2016-11-19
+
+# I3block's blocklet which:
+# - Shows current coinbase bitcoin price in USD
+
+# Requirements:
+# - curl
+#
+####################################################
+
+data=$(curl --silent "https://bitcoincharts.com" | grep coinbaseUSD -A 2 | tail -n 1 | awk '{print$2}' | grep -o -E "[[:digit:]]+\.[[:digit:]][[:digit:]]")
+echo "$data"

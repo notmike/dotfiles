@@ -161,7 +161,7 @@ alias cleanupsu='sudo bleachbit --clean system.cache system.localizations system
 alias dl='cd /mnt/R2D2/Downloads/LINUXDLS'
 
 #navigate to downloads folder
-alias drop='cd /mnt/R2D2/Dropbox'
+alias drop='cd ~/Dropbox'
 
 #espresso settings that i need for correct SoP logic minimizing
 #alias espresso='espresso -Dso -o eqntott'
@@ -214,7 +214,7 @@ alias nvimrc='nvim ~/.config/nvim/init.vim'
 alias please='sudo $(history -p !!)'
 
 #navigate to programming folder
-alias prog='cd /mnt/R2D2/Dropbox/Programming'
+alias prog='cd ~/Dropbox/Programming'
 
 # will generate a random 15 character passwords if you have "pass" & "xsel" installed,
 # http://www.passwordstore.org/

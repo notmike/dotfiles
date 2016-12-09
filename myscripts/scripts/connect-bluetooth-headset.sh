@@ -6,7 +6,7 @@
 notify-send -h string:bgcolor:#393939 -h string:fgcolor:#99cc99 Bluetooth\ Headphones "CONNECTED" 
 
 # mute the HDMI output
-pacmd set-sink-mute alsa_output.pci-0000_01_00.1.hdmi-stereo-extra2 1
+pacmd set-sink-mute alsa_output.pci-0000_00_1b.0.analog-stereo 1
 
 # run the bluez prog and connect to my earbuds
 echo -e 'power on\nquit' | bluetoothctl
