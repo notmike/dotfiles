@@ -19,5 +19,6 @@ case $BLOCK_BUTTON in
 esac
 
 #data=$(curl --silent "https://bitcoincharts.com" | grep coinbaseUSD -A 2 | tail -n 1 | awk '{print$2}' | grep -o -E "[[:digit:]]+\.[[:digit:]][[:digit:]]")
-data=$(curl --silent "https://bitcoincharts.com/markets/coinbaseUSD.html" | grep 'Last Trade' | awk '{print$2}' | grep -o -E "[[:digit:]]+\.[[:digit:]][[:digit:]]")
+#data=$(curl --silent "https://bitcoincharts.com/markets/coinbaseUSD.html" | grep 'Last Trade' | awk '{print$2}' | grep -o -E "[[:digit:]]+\.[[:digit:]][[:digit:]]")
+data=$(curl --silent "https://bitcoinwisdom.com/markets/coinbase/btcusd" | grep 'init_price' | awk '{print$3}' | grep -o -E "[[:digit:]]+\.[[:digit:]]+")
 echo "$data"
