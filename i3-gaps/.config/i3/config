@@ -223,8 +223,8 @@ assign [instance="spotify"] $workspace10
 assign [class="Pavucontrol"] $workspace10
 
 # Floating windows
-for_window [class="Steam"] floating enable
-for_window [class="Wine"] floating enable
+set $floating_windows "^(Steam|Wine|Yad|Simplescreenrecorder)$"
+for_window [class=$floating_windows] floating enable
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
