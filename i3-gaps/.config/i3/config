@@ -69,6 +69,8 @@ client.urgent           $urgent-bg-color   $urgent-bg-color   $text-color       
 client.placeholder      $edge-color        $bg-color          $text-color           $bg-color
 client.background       #ffffff
 
+# Custom Tricks
+bindsym $mod+y fullscreen disable; floating enable; resize set 600 450; sticky enable; move window to position 1940 960
 
 # Program Menu Launcher
 bindsym $mod+d exec --no-startup-id "~/scripts/i3/rofi.sh"
