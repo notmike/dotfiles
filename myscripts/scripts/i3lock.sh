@@ -15,6 +15,7 @@
 #convert $IMAGE $TEXT -gravity center -geometry +0+200 -composite $IMAGE
 #convert $IMAGE $ICON -gravity center -composite -matte $IMAGE
 
+dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Pause
 #IMAGE=$HOME/Pictures/Wallpapers/bleeding-mountains.png
 IMAGE=$HOME/Pictures/lockscreen-laptop.png
-i3lock -n -i $IMAGE
+i3lock -i $IMAGE
