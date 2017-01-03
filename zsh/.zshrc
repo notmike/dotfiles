@@ -55,8 +55,8 @@ plugins=(git sublime web-search archlinux common-aliases emoji extract torrent z
 
 # History
 HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=10000
+SAVEHIST=10000
 setopt HIST_IGNORE_DUPS
 
 # SSH works better
