@@ -75,6 +75,22 @@ source $ZSH/oh-my-zsh.sh
  fi
 
 
+throwaway_c() {
+  local tdir=$(mktemp -d /tmp/deleteme-XXX)
+  cd $tdir
+  cp ~/.vim/skeletons/skeleton.make Makefile
+  cat > test.c <<"EOF"
+#include <stdio.h>
+#include <stdlib.h>
+          
+int main() {
+
+return 0;
+}
+EOF
+vim test.c
+}
+
 throwaway_cpp() {
   local tdir=$(mktemp -d /tmp/deleteme-XXX)
   cd $tdir
