@@ -112,10 +112,6 @@ man() {
 			man "$@"
 }
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-
 # Completion
     # faster?
     zstyle ':completion::complete:*' use-cache 1
@@ -155,10 +151,7 @@ STEAM_RUNTIME=0
 
 
 # see if my internet is working?
-alias alive='ping -c 2 google.com'
-
-# autostart gui for gnome
-alias autostart='gnome-session-properties'
+alias alive='ping -c 2 google.com | grep "% packet loss" -C 7'
 
 # For going to last directory
 alias back='cd -'
@@ -180,17 +173,11 @@ alias drop='cd /mnt/R2D2/Dropbox'
 alias ff='nohup firefox &>/dev/null &'
 alias fp='nohup firefox -private &>/dev/null &'
 
-# test if firstshred server is up/alive (does 4 pings)
-alias fsup='sudo hping3 -c 4 -V -S -p 3340 24.153.238.2'
-
-# test if firstshred server is up/alive (does unlimited pings)
-alias fsup2='sudo hping3 -V -S -p 3340 24.153.238.2'
-
-# shortcut for downloading subtitles in english
-alias getsubs='addic7ed -l english'
-
 # pretty grep
 alias grep='grep --color=auto'
+
+# test if gosharps server is up/alive (does 4 pings)
+alias gsup='sudo hping3 -c 4 -V -S -p 80 162.243.210.220'
 
 #navigate to downloads folder
 alias home='cd ~'
@@ -226,6 +213,7 @@ alias prog='cd /mnt/R2D2/Dropbox/Programming'
 # http://www.passwordstore.org/
 # This is the alternative to diceware incase site needs pw w/ symbols
 alias pw0='cat /dev/urandom | tr -cd [:graph:] | fold -w $LENGTH | head -n 1'
+alias ragner='ranger'
 
 # Using diceware python script saved on git will produce diceware pw of specified length.
 # Default word length is 5, then copies to clipboard using xsel (must have installed also)
@@ -247,13 +235,12 @@ alias python2=/usr/bin/python2.7
 # alias quartus='(~/altera/13.0sp1/quartus/bin/quartus --64bit &)'
 
 # for mispellings of "ranger"
-alias ragner='ranger'
 alias rg='ranger'
 
 # shortcut for reboot
 alias reboot='sudo reboot'
 
-# remove 
+# remove package
 alias remove='sudo pacman -Rs'
 
 # remove colons from filenames (and replace w/ underscores)
@@ -269,7 +256,7 @@ alias restartnetwork='sudo systemctl restart NetworkManager.service'
 # alias rootkit='sudo rkhunter -c --enable all --disable none --rwo'
 
 # Remove all EXIF data from files
-# alias scrubexif='for i in *.jpg; do echo "Processing $i"; exiftool -all= "$i"; done'
+alias scrubexif='for i in *.jpg; do echo "Processing $i"; exiftool -all= "$i"; done'
 
 # shredding program more secure then secure-delete
 alias shred='srm -v'
@@ -280,17 +267,8 @@ alias shutdown='sudo shutdown -h now'
 # check internet speeds!
 alias speedtest='speedtest-cli'
 
-# fix broken spotify
-alias spotify='nohup spotify --force-device-scale-factor=1.0000001 &>/dev/null &'
-
 # For opening Tor in background subshell
 alias tor='(/usr/bin/tor-browser-en &)'
-
-# VPN - US-east
-alias vpn1='openvpn --config /etc/openvpn/US_East.conf'
-
-# VPN - Swiss
-alias vpn2='openvpn --config /etc/openvpn/Switzerland.conf'
 
 # convert jpgs to 30% size and 90% of quality
 alias webconvert='for file in *.jpg; do convert "$file" -quality 90 -resize 30% "web_$file"; done'

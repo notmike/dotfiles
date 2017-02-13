@@ -40,7 +40,7 @@ floating_maximum_size -1 x -1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango: xos4 Terminus, Terminus, FontAwesome Regular 10
+font pango: xos4 Terminus, Misc Tamsyn, FontAwesome Regular 10
 
 # COLORS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 set $border                 #458588
@@ -365,15 +365,6 @@ bindcode Control+Mod1+56 exec ~/scripts/connect-bluetooth-headset.sh
 # cntrl+alt+shift+b
 bindcode Control+Mod1+Shift+56 exec ~/scripts/disconnect-bluetooth-headset.sh
 
-#remmina shortcuts
-#cntrl+alt+shift+m to launch my work login 
-bindcode Control+Mod1+Shift+58 exec remmina -c /home/mg/.remmina/1428266238982.remmina
-#cntrl+alt+shift+i to launch the main work server login 
-bindcode Control+Mod1+Shift+31 exec remmina -c /home/mg/.remmina/1437506957152.remmina
-
-# Ranger Shortcut
-bindcode Control+Mod1+38 exec termite -e ranger
-
 
 #######################################################
 #                  Auto Starts                        #
@@ -400,7 +391,7 @@ exec dropbox
 exec --no-startup-id guake
 exec --no-startup-id clipit
 exec --no-startup-id launchy
-exec deluge
+#exec deluge
 exec --no-startup-id google-musicmanager
 exec --no-startup-id mpd ~/.config/mpd/mpd.conf
 exec --no-startup-id dunst 
