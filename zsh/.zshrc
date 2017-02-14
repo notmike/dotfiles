@@ -59,6 +59,9 @@ HISTSIZE=10000
 SAVEHIST=10000
 setopt HIST_IGNORE_DUPS
 
+# Set Ranger to not use default settings
+export RANGER_LOAD_DEFAULT_RC=false
+
 # SSH works better
 export TERM=xterm-256color
 
@@ -80,6 +83,18 @@ source $ZSH/oh-my-zsh.sh
 export VIMRUNTIME=/usr/share/vim/vim80
 #export VIMRUNTIME=/usr/share/nvim/runtime
 
+
+# Start new ranger instance only if it is not running in current shell
+rg() {
+    if [ -z "$RANGER_LEVEL" ]
+    then
+        ranger
+    else
+        exit
+    fi
+}
+
+# Convenient c++ templates created in /tmp directory
 throwaway_cpp() {
   local tdir=$(mktemp -d /tmp/deleteme-XXX)
   cd $tdir
@@ -213,7 +228,6 @@ alias prog='cd /mnt/R2D2/Dropbox/Programming'
 # http://www.passwordstore.org/
 # This is the alternative to diceware incase site needs pw w/ symbols
 alias pw0='cat /dev/urandom | tr -cd [:graph:] | fold -w $LENGTH | head -n 1'
-alias ragner='ranger'
 
 # Using diceware python script saved on git will produce diceware pw of specified length.
 # Default word length is 5, then copies to clipboard using xsel (must have installed also)
@@ -235,7 +249,7 @@ alias python2=/usr/bin/python2.7
 # alias quartus='(~/altera/13.0sp1/quartus/bin/quartus --64bit &)'
 
 # for mispellings of "ranger"
-alias rg='ranger'
+# alias rg='ranger'
 
 # shortcut for reboot
 alias reboot='sudo reboot'
