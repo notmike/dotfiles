@@ -62,10 +62,26 @@ setopt HIST_IGNORE_DUPS
 export PATH=$HOME/bin:/usr/local/bin:/opt/altera/quartus/bin:/opt/altera/modelsim_ase/bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
 
+# To prevent Ranger from loading default & custom rc.conf
+export RANGER_LOAD_DEFAULT_RC=FALSE
+
+
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
+
+
+# Start a new ranger instance only if the shell is not running
+rg() {
+  if [ -z "$RANGER_LEVEL" ]
+  then
+    ranger
+  else
+    exit
+  fi
+}
+
 
 # Preferred editor for local and remote sessions
  if [[ -n $SSH_CONNECTION ]]; then
@@ -257,8 +273,7 @@ alias python2=/usr/bin/python2.7
 # alias quartus='(~/altera/13.0sp1/quartus/bin/quartus --64bit &)'
 
 # for mispellings of "ranger"
-alias ragner='ranger'
-alias rg='ranger'
+# alias rg='ranger'
 
 # shortcut for reboot
 alias reboot='sudo reboot'

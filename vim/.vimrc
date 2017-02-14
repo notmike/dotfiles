@@ -42,7 +42,7 @@ set ttyfast                " Indicate fast terminal more smoother redrawing.
 "}}}
 " Options - Behaviour {{{
 " -----------------------------------------------------------------------------
-set clipboard=unnamed
+set clipboard=unnamedplus
 set backspace=2            " Allow <BS> and <Del> over everything.
 set hidden                 " Hide when switching buffers instead of unloading.
 set mouse=a                " Enable use of the mouse in all modes.
