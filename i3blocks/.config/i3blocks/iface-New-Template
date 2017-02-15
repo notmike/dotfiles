@@ -1,0 +1,39 @@
+#!/usr/bin/perl
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+use strict;
+use warnings;
+use utf8;
+use LWP::Simple;
+
+binmode(STDOUT, ":utf8");
+
+chomp (my $IPADDR = get('http://icanhazip.com'));
+
+# put your real public IP below
+my $MYREALIP="PUT YOUR ACTUAL IP ADDRESS HERE";
+
+# not sure why, 
+# but gotta have this output twice in order for the color to work right
+print "$IPADDR\n";
+print "$IPADDR\n";
+
+if ($IPADDR ne $MYREALIP) {     # VPN is ON - print in green if IP is hidden 
+    print "#83a598\n";
+}elsif ($IPADDR eq $MYREALIP) {  # VPN is OFF - print in red, IP is exposed
+    print "#fb4934\n";
+    exit(33);
+}
+exit 0;
