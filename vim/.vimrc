@@ -42,7 +42,7 @@ set ttyfast                " Indicate fast terminal more smoother redrawing.
 "}}}
 " Options - Behaviour {{{
 " -----------------------------------------------------------------------------
-set clipboard=unnamed
+set clipboard=unnamedplus
 set backspace=2            " Allow <BS> and <Del> over everything.
 set hidden                 " Hide when switching buffers instead of unloading.
 set mouse=a                " Enable use of the mouse in all modes.
@@ -213,7 +213,7 @@ Plug 'majutsushi/tagbar'                " Display tags in a split window.
 Plug 'plasticboy/vim-markdown'          " Markdown Vim Mode.
 Plug 'tpope/vim-commentary'             " Commenting made simple.
 Plug 'tpope/vim-fugitive'               " Git wrapper.
-
+Plug 'Konfekt/FastFold'                 " FastFold <- required by neocomplete 
 
 " Plugins to enable only for Neovim.
 if has('nvim')

@@ -73,13 +73,7 @@ source $ZSH/oh-my-zsh.sh
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-# Preferred editor for local and remote sessions
- if [[ -n $SSH_CONNECTION ]]; then
-   export EDITOR='vim'
- else
-   export EDITOR='vim'
- fi
-
+export EDITOR=vim
 export VIMRUNTIME=/usr/share/vim/vim80
 #export VIMRUNTIME=/usr/share/nvim/runtime
 
@@ -94,6 +88,24 @@ rg() {
     fi
 }
 
+
+# Convenient c templates created in /tmp directory
+throwaway_c() {
+	local tdir=$(mktemp -d /tmp/deleteme-XXX)
+	cd $tdir
+	cp ~/.vim/skeletons/skeleton.make Makefile
+	cat > test.c <<"EOF"
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+	return 0;
+}
+EOF
+	vim test.c
+}
+
+
 # Convenient c++ templates created in /tmp directory
 throwaway_cpp() {
   local tdir=$(mktemp -d /tmp/deleteme-XXX)
@@ -104,6 +116,7 @@ throwaway_cpp() {
 #include <stdio.h>
 #include <stdlib.h>
 #include <iostream>
+using namespace std;
 
 int main() {
 

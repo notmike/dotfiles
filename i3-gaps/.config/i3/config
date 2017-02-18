@@ -30,7 +30,7 @@ gaps outer 4
 
 ### Borders ###
 # new_window changes the thickness of the border around a window
-new_window pixel 2
+new_window pixel 4
 new_float pixel 0
 
 # floating window sizes
