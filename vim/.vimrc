@@ -200,7 +200,7 @@ Plug 'majutsushi/tagbar'                " Display tags in a split window.
 Plug 'plasticboy/vim-markdown'          " Markdown Vim Mode.
 Plug 'tpope/vim-commentary'             " Commenting made simple.
 Plug 'tpope/vim-fugitive'               " Git wrapper.
-
+Plug 'Konfekt/FastFold'                 " Folder required by neocomplete
 
 " Plugins to enable only for Neovim.
 if has('nvim')

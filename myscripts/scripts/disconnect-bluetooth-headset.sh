@@ -4,10 +4,10 @@
 #
 #
 
-# unmute the HDMI output
+# unmute the speaker output
 pacmd set-sink-mute alsa_output.pci-0000_00_1b.0.analog-stereo 0 
 
-# set HDMI monitor as default output
+# set speakers as default output
 pacmd set-default-sink alsa_output.pci-0000_00_1b.0.analog-stereo 
 
 # set volume to something reasonable
