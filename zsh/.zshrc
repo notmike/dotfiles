@@ -297,6 +297,9 @@ alias speedtest='speedtest-cli'
 # For opening Tor in background subshell
 alias tor='(/usr/bin/tor-browser-en &)'
 
+# edit vim rc file quickly
+alias vimrc='vim ~/dotfiles/vim/.vimrc'
+
 # convert jpgs to 30% size and 90% of quality
 alias webconvert='for file in *.jpg; do convert "$file" -quality 90 -resize 30% "web_$file"; done'
 

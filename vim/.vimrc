@@ -73,7 +73,8 @@ autocmd FileType markdown setlocal foldmethod=marker
 " -----------------------------------------------------------------------------
 
 if has('gui_running')
-  set guifont=Monospace:h18   " Set the font to use.
+  " set guifont=Monospace:h18   " Set the font to use.
+  set guifont=Monospace 11   " Set the font to use.
   set guioptions=                 " Remove all GUI components and options.
   set guicursor+=a:block-blinkon0 " Use non-blinking block cursor.
 
@@ -214,6 +215,10 @@ Plug 'plasticboy/vim-markdown'          " Markdown Vim Mode.
 Plug 'tpope/vim-commentary'             " Commenting made simple.
 Plug 'tpope/vim-fugitive'               " Git wrapper.
 Plug 'Konfekt/FastFold'                 " FastFold <- required by neocomplete 
+Plug 'chrisbra/csv.vim'                 " Awesome for viewing CSVs
+Plug 'edkolev/tmuxline.vim'             " Tmux integration (airline extends this)
+Plug 'tpope/vim-capslock'               " disables capslock (airline extends this)
+Plug 'reedes/vim-lexical'               " Spell check /Dictionary
 
 " Plugins to enable only for Neovim.
 if has('nvim')
@@ -243,6 +248,11 @@ let g:airline_left_alt_sep = ''    " Remove arrow symbols.
 let g:airline_right_sep = ''       " Remove arrow symbols.
 let g:airline_right_alt_sep = ''   " Remove arrow symbols.
 let g:airline_theme = 'gruvbox'    " Use current theme.
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#wordcount#enabled = 1  " enable word counting
+let g:airline#extensions#tmuxline#enabled = 1   " enable tmux integration
+" let g:airline#extensions#capslock#enabled = 0   " enable caps lock block
+
 set laststatus=2
 
 
@@ -383,4 +393,16 @@ nnoremap <Leader>2 :TagbarToggle<CR>
 " -----------------------------------------------------------------------------
 
 nnoremap <leader>u :GundoToggle<CR>  " toggle gundo
+"}}}
+" Plugin Settings - Lexical Spellcheck {{{
+" -----------------------------------------------------------------------------
+
+augroup lexical
+  autocmd!
+  autocmd FileType markdown,mkd call lexical#init()
+  autocmd FileType textile call lexical#init()
+  autocmd FileType text call lexical#init({ 'spell': 0 })
+augroup END
+
+let g:lexical#spell = 1         " 0=disabled, 1=enabled
 "}}}

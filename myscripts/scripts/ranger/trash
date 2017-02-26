@@ -1,0 +1,26 @@
+#!/bin/sh
+# Used in combo w/ a ranger mappying to create these directories and move 
+# files to them when I delete from ranger. These are the folders thunar uses
+# for it's trash can, so everything deleted is in one folder.
+# Ranger rc.conf has mapping:
+# map dD shell ~/scripts/ranger/trash && mv -t ~/.local/share/Trash/files/ %s
+# (there is also an "empty" command added to commands.py that works in tandem.) 
+
+dir1="$HOME/.local/share/Trash"
+dir2="$HOME/.local/share/Trash/files"
+dir3="$HOME/.local/share/Trash/info"
+
+if [ ! -d "$dir1" ]; then
+  # Control will enter here if $DIRECTORY doesn't exist.
+  mkdir "$dir1"
+fi
+
+if [ ! -d "$dir2" ]; then
+  # Control will enter here if $DIRECTORY doesn't exist.
+  mkdir "$dir2"
+fi
+
+if [ ! -d "$dir3" ]; then
+  # Control will enter here if $DIRECTORY doesn't exist.
+  mkdir "$dir3"
+fi

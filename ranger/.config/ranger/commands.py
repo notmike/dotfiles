@@ -131,3 +131,16 @@ class extracthere(Command):
 
         obj.signal_bind('after', refresh)
         self.fm.loader.add(obj)
+
+
+# Empty Thunar Trashcan - I got off the arch wiki & modified path
+# ----------------------------------------------------------------------------
+class empty(Command):
+    """:empty
+    Empties the trash directory ~/.Trash
+    """
+
+    def execute(self):
+        # self.fm.run("rm -rf ~/.local/share/Trash/{*,.[^.]*}")
+        self.fm.run("echo 'Securely deleting files in Trash...'")
+        self.fm.run("srm -r ~/.local/share/Trash")
