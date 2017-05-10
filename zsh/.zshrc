@@ -255,16 +255,16 @@ alias pw0='cat /dev/urandom | tr -cd [:graph:] | fold -w $LENGTH | head -n 1'
 
 # Using diceware python script saved on git will produce diceware pw of specified length.
 # Default word length is 5, then copies to clipboard using xsel (must have installed also)
-alias pw='python2 /mnt/R2D2/Dropbox/git/diceware/diceware-v2 -w 4 | xsel -i -b'
-alias pw2='python2 /mnt/R2D2/Dropbox/git/diceware/diceware-v2 -w 1 | xsel -i -b'
-alias pw3='python2 /mnt/R2D2/Dropbox/git/diceware/diceware-v2 -w 2 | xsel -i -b'
-alias pw4='python2 /mnt/R2D2/Dropbox/git/diceware/diceware-v2 -w 3 | xsel -i -b'
-alias pw5='python2 /mnt/R2D2/Dropbox/git/diceware/diceware-v2 -w 4 | xsel -i -b'
-alias pw6='python2 /mnt/R2D2/Dropbox/git/diceware/diceware-v2 -w 5 | xsel -i -b'
-alias pw7='python2 /mnt/R2D2/Dropbox/git/diceware/diceware-v2 -w 6 | xsel -i -b'
-alias pw8='python2 /mnt/R2D2/Dropbox/git/diceware/diceware-v2 -w 7 | xsel -i -b'
-alias pw9='python2 /mnt/R2D2/Dropbox/git/diceware/diceware-v2 -w 8 | xsel -i -b'
-alias pw10='python2 /mnt/R2D2/Dropbox/git/diceware/diceware-v2 -w 9 | xsel -i -b'
+alias pw='python2 ~/diceware_laptop/diceware-v2 -w 4 | xsel -i -b'
+alias pw2='python2 ~/diceware_laptop/diceware-v2 -w 1 | xsel -i -b'
+alias pw3='python2 ~/diceware_laptop/diceware-v2 -w 2 | xsel -i -b'
+alias pw4='python2 ~/diceware_laptop/diceware-v2 -w 3 | xsel -i -b'
+alias pw5='python2 ~/diceware_laptop/diceware-v2 -w 4 | xsel -i -b'
+alias pw6='python2 ~/diceware_laptop/diceware-v2 -w 5 | xsel -i -b'
+alias pw7='python2 ~/diceware_laptop/diceware-v2 -w 6 | xsel -i -b'
+alias pw8='python2 ~/diceware_laptop/diceware-v2 -w 7 | xsel -i -b'
+alias pw9='python2 ~/diceware_laptop/diceware-v2 -w 8 | xsel -i -b'
+alias pw10='python2 ~/diceware_laptop/diceware-v2 -w 9 | xsel -i -b'
 
 # for running python scripts w/ 2.7
 alias python2=/usr/bin/python2.7
@@ -305,8 +305,8 @@ alias shutdown='sudo shutdown -h now'
 # check internet speeds!
 alias speedtest='speedtest-cli'
 
-# fix broken spotify
-alias spotify='nohup spotify --force-device-scale-factor=1.0000001 &>/dev/null &'
+# # fix broken spotify
+# alias spotify='nohup spotify --force-device-scale-factor=1.0000001 &>/dev/null &'
 
 # For opening Tor in background subshell
 alias tor='(/usr/bin/tor-browser-en &)'
