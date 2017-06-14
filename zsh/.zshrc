@@ -49,7 +49,7 @@ HIST_STAMPS="mm/dd/yyyy"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git sublime web-search archlinux common-aliases emoji extract torrent zsh-syntax-highlighting)
+plugins=(git sublime web-search archlinux common-aliases emoji extract torrent colorize zsh-syntax-highlighting)
 
 # User configuration
 
@@ -189,7 +189,7 @@ alias checknetwork='nethogs'
 
 # Clean all the tmp folders
 alias cleanup='bleachbit --clean system.cache system.localizations system.trash system.tmp'
-alias cleanupsu='sudo bleachbit --clean system.cache system.localizations system.trash system.tmp'
+alias cleanupsu='bleachbit --clean system.cache system.localizations system.trash system.tmp'
 
 #navigate to downloads folder
 alias dl='cd /mnt/R2D2/Downloads/LINUXDLS'
@@ -205,7 +205,7 @@ alias fp='nohup firefox -private &>/dev/null &'
 alias grep='grep --color=auto'
 
 # test if gosharps server is up/alive (does 4 pings)
-alias gsup='sudo hping3 -c 4 -V -S -p 80 162.243.210.220'
+alias gsup='hping3 -c 4 -V -S -p 80 162.243.210.220'
 
 #navigate to downloads folder
 alias home='cd ~'
@@ -230,9 +230,6 @@ alias nmapcommands='drop && cat ./Programs/LINUX/nmap-commands.txt'
 
 # nvim config shortcut
 alias nvimrc='nvim ~/.config/nvim/init.vim' 
-
-#Runs the last command with sudo.
-alias please='sudo $(history -p !!)'
 
 #navigate to programming folder
 alias prog='cd /mnt/R2D2/Dropbox/Programming'
@@ -264,12 +261,6 @@ alias python2=/usr/bin/python2.7
 # for mispellings of "ranger"
 # alias rg='ranger'
 
-# shortcut for reboot
-alias reboot='sudo reboot'
-
-# remove package
-alias remove='sudo pacman -Rs'
-
 # remove colons from filenames (and replace w/ underscores)
 alias removecolons='~/scripts/removecolon.sh'
 
@@ -277,10 +268,10 @@ alias removecolons='~/scripts/removecolon.sh'
 alias renamem='j=1;for i in *.jpg; do mv "$i" "$j".jpg; let j=j+1;done'
 
 # restart the network for LinuxMint 17.2 when troubleshooting
-alias restartnetwork='sudo systemctl restart NetworkManager.service'
+alias restartnetwork='systemctl restart NetworkManager.service'
 
 # Print out warnings from RKHunter (rootkit malware detection)
-# alias rootkit='sudo rkhunter -c --enable all --disable none --rwo'
+# alias rootkit='rkhunter -c --enable all --disable none --rwo'
 
 # Remove all EXIF data from files
 alias scrubexif='for i in *.jpg; do echo "Processing $i"; exiftool -all= "$i"; done'
@@ -289,7 +280,7 @@ alias scrubexif='for i in *.jpg; do echo "Processing $i"; exiftool -all= "$i"; d
 alias shred='srm -v'
 
 # shortcut for shutdown
-alias shutdown='sudo shutdown -h now'
+alias shutdown='shutdown -h now'
 
 # check internet speeds!
 alias speedtest='speedtest-cli'
