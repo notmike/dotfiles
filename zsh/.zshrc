@@ -69,6 +69,8 @@ export PATH=$HOME/bin:/usr/local/bin:/opt/altera/quartus/bin:/opt/altera/modelsi
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -290,6 +292,9 @@ alias tor='(/usr/bin/tor-browser-en &)'
 
 # edit vim rc file quickly
 alias vimrc='vim ~/dotfiles/vim/.vimrc'
+
+# visual arm emulator
+alias visual='/usr/local/bin/visual/VisUAL.sh'
 
 # convert jpgs to 30% size and 90% of quality
 alias webconvert='for file in *.jpg; do convert "$file" -quality 90 -resize 30% "web_$file"; done'

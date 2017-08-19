@@ -1,3 +1,11 @@
+" 
+"    ██████╗  █████╗ ████████╗    ██╗   ██╗██╗███╗   ███╗██████╗  ██████╗
+"    ██╔══██╗██╔══██╗╚══██╔══╝    ██║   ██║██║████╗ ████║██╔══██╗██╔════╝
+"    ██║  ██║███████║   ██║       ██║   ██║██║██╔████╔██║██████╔╝██║     
+"    ██║  ██║██╔══██║   ██║       ╚██╗ ██╔╝██║██║╚██╔╝██║██╔══██╗██║     
+"    ██████╔╝██║  ██║   ██║        ╚████╔╝ ██║██║ ╚═╝ ██║██║  ██║╚██████╗
+"    ╚═════╝ ╚═╝  ╚═╝   ╚═╝         ╚═══╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝
+"
 "
 " ~/.vimrc
 " vim: fdm=marker
@@ -219,6 +227,7 @@ Plug 'chrisbra/csv.vim'                 " Awesome for viewing CSVs
 Plug 'edkolev/tmuxline.vim'             " Tmux integration (airline extends this)
 Plug 'tpope/vim-capslock'               " disables capslock (airline extends this)
 Plug 'reedes/vim-lexical'               " Spell check /Dictionary
+Plug 'sheerun/vim-polyglot'             " Comprehensive language pack (only loads when needed)
 
 " Plugins to enable only for Neovim.
 if has('nvim')

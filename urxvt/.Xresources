@@ -42,11 +42,11 @@ URxvt.internalBorder: 5
 
 
 /* !-- Xft settings -- ! */
-/* Xft.dpi:        96 */
-/* Xft.antialias:  1 */
+Xft.dpi:        109
+Xft.antialias:  1
 /* Xft.rgba:       rgb */
-/* Xft.hinting:    true */
-/* Xft.hintstyle:  hintslight */
+Xft.hinting:    true
+Xft.hintstyle:  hintslight
 /* Xft.autohint:   0 */
 /* Xft.lcdfilter:  lcddefault */
 
