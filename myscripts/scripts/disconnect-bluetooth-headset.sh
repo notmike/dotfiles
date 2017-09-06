@@ -5,13 +5,13 @@
 #
 
 # unmute the HDMI output
-pacmd set-sink-mute alsa_output.pci-0000_01_00.1.hdmi-stereo-extra2 0 
+pacmd set-sink-mute alsa_output.pci-0000_02_00.1.hdmi-stereo-extra2 0 
 
 # set HDMI monitor as default output
-pacmd set-default-sink alsa_output.pci-0000_01_00.1.hdmi-stereo-extra2
+pacmd set-default-sink alsa_output.pci-0000_02_00.1.hdmi-stereo-extra2
 
 # set volume to something reasonable
-pacmd set-sink-volume alsa_output.pci-0000_01_00.1.hdmi-stereo-extra2 9830
+pacmd set-sink-volume alsa_output.pci-0000_02_00.1.hdmi-stereo-extra2 9830
 
 # run the bluez prog and disconnect to my earbuds
 echo -e 'disconnect 44:5E:F3:AB:67:A0\nquit' | bluetoothctl

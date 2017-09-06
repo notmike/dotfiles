@@ -23,14 +23,16 @@ else
   INTERFACE=$(ip route | awk '/^default/ { print $5 ; exit }')
 fi
 
+###### Optional Block that'll tell you when interface is "down"  ######
+#
 # Issue #36 compliant.
-if ! [ -e "/sys/class/net/${INTERFACE}/operstate" ] || ! [ "`cat /sys/class/net/${INTERFACE}/operstate`" = "up" ]
-then
-    echo "$INTERFACE down"
-    echo "$INTERFACE down"
-    echo "#FF0000"
-    exit 0
-fi
+# if ! [ -e "/sys/class/net/${INTERFACE}/operstate" ] || ! [ "`cat /sys/class/net/${INTERFACE}/operstate`" = "up" ]
+# then
+#     echo "$INTERFACE down"
+#     echo "$INTERFACE down"
+#     echo "#FF0000"
+#     exit 0
+# fi
 
 # path to store the old results in
 path="/dev/shm/$(basename $0)-${INTERFACE}"

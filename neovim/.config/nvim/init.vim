@@ -45,6 +45,13 @@ set incsearch              " Highlight search pattern as it is typed.
 set smartcase              " Override ignorecase if pattern contains upper case.
 
 "}}}
+" Options - Python {{{
+" -----------------------------------------------------------------------------
+
+let g:python_host_prog = '/usr/bin/python'
+let g:python3_host_prog = '/usr/bin/python3'
+
+"}}}
 " Mappings - General {{{
 " -----------------------------------------------------------------------------
 
@@ -65,6 +72,7 @@ vnoremap ; :
 vnoremap : ;
 
 " copy and paste
+set clipboard=unnamed
 vmap <C-c> "+yi
 vmap <C-x> "+c
 vmap <C-v> c<ESC>"+p
