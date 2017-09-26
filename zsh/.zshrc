@@ -65,6 +65,8 @@ export PATH=$HOME/bin:/usr/local/bin:/opt/altera/quartus/bin:/opt/altera/modelsi
 # To prevent Ranger from loading default & custom rc.conf
 export RANGER_LOAD_DEFAULT_RC=FALSE
 
+# SSH works better
+export TERM=xterm-256color
 
 source $ZSH/oh-my-zsh.sh
 
@@ -225,7 +227,10 @@ alias home='cd ~'
 alias i3config='vim ~/.config/i3/config'
 
 # lists personal fav imagemagick commands
-alias imagecommands='cat /mnt/R2D2/Dropbox/Programs/LINUX/imagemagick-commands.txt'
+alias imagecommands='cat ~/Dropbox/LINUX/imagemagick-commands.txt'
+
+# school linux lab ssh
+alias linuxlab='ssh garc6881@134.74.126.104'
 
 # lock PC when using i3
 alias lock='. ~/scripts/i3lock.sh'
@@ -310,6 +315,9 @@ alias speedtest='speedtest-cli'
 
 # For opening Tor in background subshell
 alias tor='(/usr/bin/tor-browser-en &)'
+
+# vISual arm emulator shortcut
+alias visual='/usr/local/bin/visual/VisUAL.sh'
 
 # VPN - US-east
 alias vpn1='sudo openvpn --config /etc/openvpn/US_East.conf'

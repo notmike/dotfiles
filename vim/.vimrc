@@ -205,6 +205,7 @@ Plug 'chrisbra/csv.vim'                 " Awesome for viewing CSVs
 Plug 'edkolev/tmuxline.vim'             " Tmux integration (airline extends this)
 Plug 'tpope/vim-capslock'               " disables capslock (airline extends this)
 Plug 'reedes/vim-lexical'               " Spell check /Dictionary
+Plug 'suan/vim-instant-markdown'        " Live Browser Preview of Markdown files
 
 " Plugins to enable only for Neovim.
 if has('nvim')
@@ -389,3 +390,11 @@ augroup lexical
 augroup END
 let g:lexical#spell = 1         " 0=disabled, 1=enabled
 "}}}
+" Plugin Settings - Instant-Markdown {{{
+" -----------------------------------------------------------------------------
+" let g:instant_markdown_slow = 1     " Will refresh browser less often if default is too taxing
+let g:instant_markdown_autostart = 0  " Will not launch broswer preview automatically
+" let g:instant_markdown_allow_external_content = 0 
+
+"}}}
+
