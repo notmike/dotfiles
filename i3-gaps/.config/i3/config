@@ -24,9 +24,11 @@ mouse_warping output
 smart_gaps on
 smart_borders on
 # gaps between 2 open program windows
-gaps inner 8
+# gaps inner 8
+gaps inner 2
 # gaps between monitor and open program windows
-gaps outer 4
+# gaps outer 4
+gaps outer 0
 
 ### Borders ###
 # new_window changes the thickness of the border around a window
