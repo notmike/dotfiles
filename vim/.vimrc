@@ -39,6 +39,7 @@ syntax on                  " Enable syntax highlighting.
 " -----------------------------------------------------------------------------
 set shortmess+=I           " Don't display intro message on vim startup
 set cursorline             " Highlights current line
+set cursorcolumn           " Highlights current column
 set colorcolumn=80         " Show right column in a highlighted colour.
 set completeopt-=preview   " Do not show preview window for ins-completion.
 set diffopt+=foldcolumn:0  " Do not show fold indicator column in diff mode.
@@ -47,6 +48,7 @@ set laststatus=2           " Always show status line.
 set linespace=6            " Increase line height spacing by pixels.
 set noshowmode             " Do not show current mode on the last line.
 set number                 " Precede each line with its line number.
+set relativenumber         " Adjust other line #'s based on highlighted line
 set showcmd                " Show command on last line of screen.
 set showmatch              " Show matching brackets.
 set t_Co=256               " Set the number of supported colours.
@@ -55,6 +57,7 @@ set ttyfast                " Indicate fast terminal more smoother redrawing.
 set scrolloff=8            " Keep 8 lines above or below the cursor when scrolling.
 set sidescroll=1           " Keep 15 columns next to the cursor when scrolling horizontally
 set sidescrolloff=15       " Keep 15 columns next to the cursor when scrolling horizontally
+" set lazyredraw             " Speeds up macro execution, might experience glitches?
 
 "}}}
 " Options - Behaviour {{{
@@ -283,9 +286,9 @@ Plug 'Chiel92/vim-autoformat'           " Integrate external code formatters.
 Plug 'Shougo/context_filetype.vim'      " Get current context for autocompletion.
 Plug 'benekastah/neomake'               " Asynchronous syntax checking with make.
 Plug 'majutsushi/tagbar'                " Display tags in a split window.
-Plug 'plasticboy/vim-markdown'          " Markdown Vim Mode.
 Plug 'tpope/vim-commentary'             " Commenting made simple.
 Plug 'tpope/vim-fugitive'               " Git wrapper.
+Plug 'airblade/vim-gitgutter'           " Shows git changes in file
 Plug 'Shougo/neocomplete.vim'           " Synchronous auto completion.
 Plug 'Konfekt/FastFold'                 " FastFold <- required by neocomplete 
 Plug 'chrisbra/csv.vim'                 " Awesome for viewing CSVs
@@ -293,8 +296,12 @@ Plug 'edkolev/tmuxline.vim'             " Tmux integration (airline extends this
 Plug 'tpope/vim-capslock'               " disables capslock (airline extends this)
 Plug 'reedes/vim-lexical'               " Spell check /Dictionary
 Plug 'sheerun/vim-polyglot'             " Comprehensive language pack (only loads when needed)
-" Plug 'jiangmiao/auto-pairs'             " Inserts and Deletes brackets, parens, quote paris.
 Plug 'maksimr/vim-jsbeautify'           " Gives formatting to html,css,json,js
+Plug 'ctrlpvim/ctrlp.vim'               " Command line fuzzy finder
+" Plug 'jiangmiao/auto-pairs'             " Inserts and Deletes brackets, parens, quote paris.
+Plug 'severin-lemaignan/vim-minimap'    " Minimap sidebar!
+Plug 'valloric/matchtagalways'          " Highlights enclosing tags
+
 " Plugins to enable only on the command line.
 if !has('gui_running')
   " Command-line fuzzy finder.

@@ -286,19 +286,19 @@ mode "  " {
 #bindcode Control+Mod1+Shift+20 exec --no-startup-id pulseaudio-ctl down
 # cntrl+alt+(shift)+- 
 # when using "shift" you adjust the bluetooth volume
-bindcode Control+Mod1+20 exec --no-startup-id pactl set-sink-volume alsa_output.pci-0000_02_00.1.hdmi-stereo -5%
+bindcode Control+Mod1+20 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindcode Control+Mod1+Shift+20 exec --no-startup-id pactl set-sink-volume bluez_sink.44_5E_F3_AB_67_A0.a2dp_sink -5%
 
 #bindcode Control+Mod1+Shift+21 exec --no-startup-id pulseaudio-ctl up
 # cntrl+alt+(shift)++
 # when using "shift" you adjust the bluetooth volume
-bindcode Control+Mod1+21 exec --no-startup-id pactl set-sink-volume alsa_output.pci-0000_02_00.1.hdmi-stereo +5%
+bindcode Control+Mod1+21 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindcode Control+Mod1+Shift+21 exec --no-startup-id pactl set-sink-volume bluez_sink.44_5E_F3_AB_67_A0.a2dp_sink +5%
 
 #bindcode Control+Mod1+Shift+19 exec --no-startup-id pulseaudio-ctl mute
 # cntrl+alt+(shift)+0
 # when using "shift" you adjust the bluetooth volume
-bindcode Control+Mod1+19 exec --no-startup-id pactl set-sink-mute alsa_output.pci-0000_02_00.1.hdmi-stereo toggle
+bindcode Control+Mod1+19 exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindcode Control+Mod1+Shift+19 exec --no-startup-id pactl set-sink-mute bluez_sink.44_5E_F3_AB_67_A0.a2dp_sink toggle
 
 # cntrl+alt+shift+z
