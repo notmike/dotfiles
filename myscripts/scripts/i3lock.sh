@@ -16,7 +16,7 @@
 #convert $IMAGE $ICON -gravity center -composite -matte $IMAGE
 
 dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Pause
-$HOME/scripts/disconnect-bluetooth-headset.sh
+# $HOME/scripts/disconnect-bluetooth-headset.sh
 #IMAGE=$HOME/Pictures/Wallpapers/bleeding-mountains.png
 IMAGE=$HOME/Pictures/lockscreen.png
 i3lock -i $IMAGE

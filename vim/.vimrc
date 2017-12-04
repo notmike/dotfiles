@@ -57,6 +57,8 @@ set ttyfast                " Indicate fast terminal more smoother redrawing.
 set scrolloff=8            " Keep 8 lines above or below the cursor when scrolling.
 set sidescroll=1           " Keep 15 columns next to the cursor when scrolling horizontally
 set sidescrolloff=15       " Keep 15 columns next to the cursor when scrolling horizontally
+set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
+" set list
 " set lazyredraw             " Speeds up macro execution, might experience glitches?
 
 "}}}
@@ -86,6 +88,7 @@ let g:tex_flavor = 'latex' " Treat *.tex file extensions as LaTeX files.
 " -----------------------------------------------------------------------------
 
 " Default folding options.
+set nofoldenable           " disable folding
 set foldignore=            " Do not ignore any characters for indent folding.
 set foldlevelstart=99      " Always start editing with all folds open. 0=all closed, 99=all open
 set foldmethod=indent      " Form folds by lines with equal indent.
@@ -126,7 +129,7 @@ set tabstop=4              " Spaces that a <Tab> in file counts for.
 
 " Indent and tab options for specific file types.
 autocmd FileType c,make setlocal noexpandtab shiftwidth=8 softtabstop=8 tabstop=8
-autocmd FileType json,less,ruby,sass,scss,sql,vim,zsh setlocal shiftwidth=2 softtabstop=2 tabstop=2
+autocmd FileType js,jsx,json,less,ruby,sass,scss,sql,vim,zsh setlocal shiftwidth=2 softtabstop=2 tabstop=2
 " Ali: to indent json files on save
 " autocmd FileType json autocmd BufWritePre <buffer> %!python -m json.tool
 
@@ -182,18 +185,7 @@ inoremap jj <esc>
 
 " Unmap the arrow keys, now UP & DOWN will move lines up & down
 no <down> ddp
-no <left> <Nop>
-no <right> <Nop>
 no <up> ddkP
-ino <down> <Nop>
-ino <left> <Nop>
-ino <right> <Nop>
-ino <up> <Nop>
-vno <down> <Nop>
-vno <left> <Nop>
-vno <right> <Nop>
-vno <up> <Nop>
-
 
 " Always focus on splited window.
 nnoremap <C-w>s <C-w>s<C-w>w
@@ -297,7 +289,7 @@ Plug 'tpope/vim-capslock'               " disables capslock (airline extends thi
 Plug 'reedes/vim-lexical'               " Spell check /Dictionary
 Plug 'sheerun/vim-polyglot'             " Comprehensive language pack (only loads when needed)
 Plug 'maksimr/vim-jsbeautify'           " Gives formatting to html,css,json,js
-Plug 'ctrlpvim/ctrlp.vim'               " Command line fuzzy finder
+" Plug 'ctrlpvim/ctrlp.vim'               " Command line fuzzy finder
 " Plug 'jiangmiao/auto-pairs'             " Inserts and Deletes brackets, parens, quote paris.
 Plug 'severin-lemaignan/vim-minimap'    " Minimap sidebar!
 Plug 'valloric/matchtagalways'          " Highlights enclosing tags

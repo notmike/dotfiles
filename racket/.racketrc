@@ -1,0 +1,3 @@
+#lang r5rs
+"(require xrepl)"
+"(compile-enforce-module-constants #f)"

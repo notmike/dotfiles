@@ -225,7 +225,10 @@ bindcode Control+Mod1+46 workspace next
 
 
 # Program Workspaces
+# (use "xprop" to get class names of applications)
 assign [class="(?)Steam"] $workspace7 
+assign [class="qbittorrent"] $workspace8
+for_window [class="qBittorrent"] move to workspace $workspace8 
 assign [class="spotify"] $workspace10
 for_window [class="Spotify"] move to workspace $workspace10
 assign [class="Pavucontrol"] $workspace10
@@ -394,7 +397,7 @@ exec --no-startup-id guake
 exec --no-startup-id clipit
 exec --no-startup-id launchy
 #exec deluge
-exec --no-startup-id google-musicmanager
+# exec --no-startup-id google-musicmanager
 exec --no-startup-id mpd ~/.config/mpd/mpd.conf
 exec --no-startup-id dunst 
 exec --no-startup-id pulseaudio --start

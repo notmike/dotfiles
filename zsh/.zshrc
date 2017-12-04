@@ -49,7 +49,7 @@ HIST_STAMPS="mm/dd/yyyy"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git sublime web-search archlinux common-aliases emoji extract torrent colorize zsh-syntax-highlighting)
+plugins=(per-directory-history git sublime web-search systemd archlinux common-aliases emoji extract torrent colorize zsh-syntax-highlighting)
 
 # User configuration
 
@@ -63,7 +63,7 @@ setopt HIST_IGNORE_DUPS
 export RANGER_LOAD_DEFAULT_RC=false
 
 # SSH works better
-export TERM=xterm-256color
+#export TERM=xterm-256color
 
 export PATH=$HOME/bin:/usr/local/bin:/opt/altera/quartus/bin:/opt/altera/modelsim_ase/bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -79,6 +79,13 @@ export EDITOR=vim
 export VIMRUNTIME=/usr/share/vim/vim80
 #export VIMRUNTIME=/usr/share/nvim/runtime
 
+# Allow for starting new window w/ CWD when pressing Ctrl+Shift+t
+# originally we check for $TERM == xterm-termite  but since we changed the
+# $TERM value above, I adjusted here
+if [[ $TERM == xterm-termite ]]; then
+  . /etc/profile.d/vte.sh
+  __vte_osc7
+fi
 
 # Start new ranger instance only if it is not running in current shell
 rg() {
