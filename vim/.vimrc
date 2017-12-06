@@ -1,8 +1,8 @@
-" 
+"
 "    ██████╗  █████╗ ████████╗    ██╗   ██╗██╗███╗   ███╗██████╗  ██████╗
 "    ██╔══██╗██╔══██╗╚══██╔══╝    ██║   ██║██║████╗ ████║██╔══██╗██╔════╝
-"    ██║  ██║███████║   ██║       ██║   ██║██║██╔████╔██║██████╔╝██║     
-"    ██║  ██║██╔══██║   ██║       ╚██╗ ██╔╝██║██║╚██╔╝██║██╔══██╗██║     
+"    ██║  ██║███████║   ██║       ██║   ██║██║██╔████╔██║██████╔╝██║
+"    ██║  ██║██╔══██║   ██║       ╚██╗ ██╔╝██║██║╚██╔╝██║██╔══██╗██║
 "    ██████╔╝██║  ██║   ██║        ╚████╔╝ ██║██║ ╚═╝ ██║██║  ██║╚██████╗
 "    ╚═════╝ ╚═╝  ╚═╝   ╚═╝         ╚═══╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝
 "
@@ -15,7 +15,7 @@
 set background=dark
 let base16colorspace=256
 let g:gruvbox_italic=1
-colorscheme gruvbox 
+colorscheme gruvbox
 let g:gruvbox_contrast_dark="soft"
 
 " Allow color schemes to do bright colors without forcing bold.
@@ -48,7 +48,7 @@ set laststatus=2           " Always show status line.
 set linespace=6            " Increase line height spacing by pixels.
 set noshowmode             " Do not show current mode on the last line.
 set number                 " Precede each line with its line number.
-set relativenumber         " Adjust other line #'s based on highlighted line
+" set relativenumber         " Adjust other line #'s based on highlighted line
 set showcmd                " Show command on last line of screen.
 set showmatch              " Show matching brackets.
 set t_Co=256               " Set the number of supported colours.
@@ -141,23 +141,16 @@ set hlsearch               " Highlight search pattern results.
 set ignorecase             " Ignore case of normal letters in a pattern.
 set incsearch              " Highlight search pattern as it is typed.
 set smartcase              " Override ignorecase if pattern contains upper case.
-" Auto center on matched string.
-nmap * *zz
-nmap # #zz
-nmap n nzz
-nmap N Nzz
-" noremap n nzz             
-" noremap N Nzz
 
-function! CenterSearch()
-  let cmdtype = getcmdtype()
-  if cmdtype == '/' || cmdtype == '?'
-    return "\<enter>zz"
-  endif
-  return "\<enter>"
-endfunction
+" function! CenterSearch()
+"   let cmdtype = getcmdtype()
+"   if cmdtype == '/' || cmdtype == '?'
+"     return "\<enter>zz"
+"   endif
+"   return "\<enter>"
+" endfunction
 
-cnoremap <silent> <expr> <enter> CenterSearch()
+" cnoremap <silent> <expr> <enter> CenterSearch()
 
 "}}}
 " Options - File Browser {{{
@@ -188,8 +181,8 @@ no <down> ddp
 no <up> ddkP
 
 " Always focus on splited window.
-nnoremap <C-w>s <C-w>s<C-w>w
-nnoremap <C-w>v <C-w>v<C-w>w
+" nnoremap <C-w>s <C-w>s<C-w>w
+" nnoremap <C-w>v <C-w>v<C-w>w
 
 " scroll the viewport faster
 nnoremap <C-e> 3<C-e>
@@ -282,7 +275,7 @@ Plug 'tpope/vim-commentary'             " Commenting made simple.
 Plug 'tpope/vim-fugitive'               " Git wrapper.
 Plug 'airblade/vim-gitgutter'           " Shows git changes in file
 Plug 'Shougo/neocomplete.vim'           " Synchronous auto completion.
-Plug 'Konfekt/FastFold'                 " FastFold <- required by neocomplete 
+Plug 'Konfekt/FastFold'                 " FastFold <- required by neocomplete
 Plug 'chrisbra/csv.vim'                 " Awesome for viewing CSVs
 Plug 'edkolev/tmuxline.vim'             " Tmux integration (airline extends this)
 Plug 'tpope/vim-capslock'               " disables capslock (airline extends this)
@@ -293,6 +286,7 @@ Plug 'maksimr/vim-jsbeautify'           " Gives formatting to html,css,json,js
 " Plug 'jiangmiao/auto-pairs'             " Inserts and Deletes brackets, parens, quote paris.
 Plug 'severin-lemaignan/vim-minimap'    " Minimap sidebar!
 Plug 'valloric/matchtagalways'          " Highlights enclosing tags
+Plug 'shime/vim-livedown'               " Live Markdown Preview
 
 " Plugins to enable only on the command line.
 if !has('gui_running')
@@ -459,4 +453,17 @@ autocmd FileType jsx vnoremap <buffer> <c-f> :call RangeJsxBeautify()<cr>
 autocmd FileType html vnoremap <buffer> <c-f> :call RangeHtmlBeautify()<cr>
 autocmd FileType css vnoremap <buffer> <c-f> :call RangeCSSBeautify()<cr>
 
+"}}}
+" Plugin Settings - livedown {{{
+" -----------------------------------------------------------------------------
+nnoremap gm :LivedownToggle<CR>
+
+" should markdown preview get shown automatically upon opening markdown buffer
+" let g:livedown_autorun = 0
+" should the browser window pop-up upon previewing
+" let g:livedown_open = 1
+" the port on which Livedown server will run
+" let g:livedown_port = 1337
+" the browser to use
+" let g:livedown_browser = "firefox"
 "}}}
