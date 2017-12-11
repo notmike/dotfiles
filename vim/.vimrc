@@ -1,3 +1,11 @@
+" 
+"    ██████╗  █████╗ ████████╗    ██╗   ██╗██╗███╗   ███╗██████╗  ██████╗
+"    ██╔══██╗██╔══██╗╚══██╔══╝    ██║   ██║██║████╗ ████║██╔══██╗██╔════╝
+"    ██║  ██║███████║   ██║       ██║   ██║██║██╔████╔██║██████╔╝██║     
+"    ██║  ██║██╔══██║   ██║       ╚██╗ ██╔╝██║██║╚██╔╝██║██╔══██╗██║     
+"    ██████╔╝██║  ██║   ██║        ╚████╔╝ ██║██║ ╚═╝ ██║██║  ██║╚██████╗
+"    ╚═════╝ ╚═╝  ╚═╝   ╚═╝         ╚═══╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝
+"
 "
 " ~/.vimrc
 " vim: fdm=marker
@@ -10,10 +18,16 @@ let g:gruvbox_italic=1
 colorscheme gruvbox 
 let g:gruvbox_contrast_dark="soft"
 
+" Allow color schemes to do bright colors without forcing bold.
+if &t_Co == 8 && $TERM !~# '^linux'
+  set t_Co=16
+endif
+
+"
 "}}}
 " Options - Compatibility {{{
 " -----------------------------------------------------------------------------
-
+set nomodeline             " Don't parse modelines, google vim modeline vulnerability
 set nocompatible           " Prefer Vim defaults over Vi-compatible defaults.
 set encoding=utf-8         " Set the character encoding to UTF-8.
 
@@ -23,8 +37,9 @@ syntax on                  " Enable syntax highlighting.
 "}}}
 " Options - Appearance {{{
 " -----------------------------------------------------------------------------
-
+set shortmess+=I           " Don't display intro message on vim startup
 set cursorline             " Highlights current line
+set cursorcolumn           " Highlights current column
 set colorcolumn=80         " Show right column in a highlighted colour.
 set completeopt-=preview   " Do not show preview window for ins-completion.
 set diffopt+=foldcolumn:0  " Do not show fold indicator column in diff mode.
@@ -33,23 +48,36 @@ set laststatus=2           " Always show status line.
 set linespace=6            " Increase line height spacing by pixels.
 set noshowmode             " Do not show current mode on the last line.
 set number                 " Precede each line with its line number.
+set relativenumber         " Adjust other line #'s based on highlighted line
 set showcmd                " Show command on last line of screen.
 set showmatch              " Show matching brackets.
 set t_Co=256               " Set the number of supported colours.
 set title                  " Set window title to 'filename [+=-] (path) - VIM'.
 set ttyfast                " Indicate fast terminal more smoother redrawing.
+set scrolloff=8            " Keep 8 lines above or below the cursor when scrolling.
+set sidescroll=1           " Keep 15 columns next to the cursor when scrolling horizontally
+set sidescrolloff=15       " Keep 15 columns next to the cursor when scrolling horizontally
+" set lazyredraw             " Speeds up macro execution, might experience glitches?
 
 "}}}
 " Options - Behaviour {{{
 " -----------------------------------------------------------------------------
-set clipboard=unnamedplus
 set backspace=2            " Allow <BS> and <Del> over everything.
 set hidden                 " Hide when switching buffers instead of unloading.
 set mouse=a                " Enable use of the mouse in all modes.
-set nowrap                 " Disable word wrap.
+
+" set nowrap                 " Disable word wrap.
+set wrap linebreak          " wrap lines by default & allow easy navigation
+set showbreak=" "
+vmap j gj
+vmap k gk
+nmap j gj
+nmap k gk
+
 set spelllang=en_us        " Check spelling in English
 set textwidth=0            " Do not break lines after a maximum width.
 set wildmenu               " Use enhanced command-line completion.
+set wildmode=longest,full  " for autocomplete, complete as much as you can
 
 let g:tex_flavor = 'latex' " Treat *.tex file extensions as LaTeX files.
 
@@ -73,7 +101,8 @@ autocmd FileType markdown setlocal foldmethod=marker
 " -----------------------------------------------------------------------------
 
 if has('gui_running')
-  set guifont=Monospace:h18   " Set the font to use.
+  " set guifont=Monospace:h18   " Set the font to use.
+  set guifont=Monospace 11   " Set the font to use.
   set guioptions=                 " Remove all GUI components and options.
   set guicursor+=a:block-blinkon0 " Use non-blinking block cursor.
 
@@ -97,7 +126,9 @@ set tabstop=4              " Spaces that a <Tab> in file counts for.
 
 " Indent and tab options for specific file types.
 autocmd FileType c,make setlocal noexpandtab shiftwidth=8 softtabstop=8 tabstop=8
-autocmd FileType json,less,ruby,sass,scss,sql,vim,zsh setlocal shiftwidth=2 softtabstop=2 tabstop=2
+autocmd FileType js,jsx,json,less,ruby,sass,scss,sql,vim,zsh setlocal shiftwidth=2 softtabstop=2 tabstop=2
+" Ali: to indent json files on save
+" autocmd FileType json autocmd BufWritePre <buffer> %!python -m json.tool
 
 "}}}
 " Options - Searching {{{
@@ -107,6 +138,36 @@ set hlsearch               " Highlight search pattern results.
 set ignorecase             " Ignore case of normal letters in a pattern.
 set incsearch              " Highlight search pattern as it is typed.
 set smartcase              " Override ignorecase if pattern contains upper case.
+" Auto center on matched string.
+nmap * *zz
+nmap # #zz
+nmap n nzz
+nmap N Nzz
+" noremap n nzz             
+" noremap N Nzz
+
+function! CenterSearch()
+  let cmdtype = getcmdtype()
+  if cmdtype == '/' || cmdtype == '?'
+    return "\<enter>zz"
+  endif
+  return "\<enter>"
+endfunction
+
+cnoremap <silent> <expr> <enter> CenterSearch()
+
+"}}}
+" Options - File Browser {{{
+" -----------------------------------------------------------------------------
+let g:netrw_banner = 0
+"let g:netrw_liststyle = 3
+let g:netrw_browse_split = 2
+"let g:netrw_altv = 1
+"let g:netrw_winsize = 20
+" augroup ProjectDrawer
+"   autocmd!
+"   autocmd VimEnter * :Vexplore
+" augroup END
 
 "}}}
 " Mappings - General {{{
@@ -118,6 +179,14 @@ let maplocalleader = ','
 
 " Exit insert mode.
 inoremap jj <esc>
+
+" Unmap the arrow keys, now UP & DOWN will move lines up & down
+no <down> ddp
+no <up> ddkP
+
+" Always focus on splited window.
+nnoremap <C-w>s <C-w>s<C-w>w
+nnoremap <C-w>v <C-w>v<C-w>w
 
 " scroll the viewport faster
 nnoremap <C-e> 3<C-e>
@@ -157,6 +226,12 @@ nnoremap g/t /\t<CR>
 " Write current file as superuser.
 cnoremap w!! w !sudo tee > /dev/null %
 
+"quick pairs
+imap <leader>' ''<ESC>i
+imap <leader>" ""<ESC>i
+imap <leader>( ()<ESC>i
+imap <leader>[ []<ESC>i
+
 "}}}
 " Mappings - Toggle Options {{{
 " -----------------------------------------------------------------------------
@@ -171,11 +246,15 @@ nnoremap cow :set wrap!<CR>
 "}}}
 " Mappings - Clipboard {{{
 " -----------------------------------------------------------------------------
+set clipboard=unnamedplus
 vmap <C-c> "+yi
 vmap <C-x> "+c
 vmap <C-v> c<ESC>"+p
 imap <C-v> <ESC>"+pa
 vnoremap yy "+y
+nnoremap Y "+y$
+" Visually select the text that was last edited/pasted (Vimcast#26).
+noremap gV `[v`]
 
 ""}}}
 " Plugins Install {{{
@@ -183,7 +262,6 @@ vnoremap yy "+y
 
 " Requires https://github.com/junegunn/vim-plug
 call plug#begin('~/.vim/plugged')
-
 Plug 'sjl/gundo.vim'                    " Fancy Undo Screen
 Plug 'scrooloose/nerdtree'              " File explorer window.
 Plug 'junegunn/vim-easy-align'          " Text alignment by characters.
@@ -197,25 +275,22 @@ Plug 'Chiel92/vim-autoformat'           " Integrate external code formatters.
 Plug 'Shougo/context_filetype.vim'      " Get current context for autocompletion.
 Plug 'benekastah/neomake'               " Asynchronous syntax checking with make.
 Plug 'majutsushi/tagbar'                " Display tags in a split window.
-Plug 'plasticboy/vim-markdown'          " Markdown Vim Mode.
 Plug 'tpope/vim-commentary'             " Commenting made simple.
 Plug 'tpope/vim-fugitive'               " Git wrapper.
-Plug 'Konfekt/FastFold'                 " Folder required by neocomplete
+Plug 'airblade/vim-gitgutter'           " Shows git changes in file
+Plug 'Shougo/neocomplete.vim'           " Synchronous auto completion.
+Plug 'Konfekt/FastFold'                 " FastFold <- required by neocomplete 
 Plug 'chrisbra/csv.vim'                 " Awesome for viewing CSVs
 Plug 'edkolev/tmuxline.vim'             " Tmux integration (airline extends this)
 Plug 'tpope/vim-capslock'               " disables capslock (airline extends this)
 Plug 'reedes/vim-lexical'               " Spell check /Dictionary
-Plug 'suan/vim-instant-markdown'        " Live Browser Preview of Markdown files
-
-" Plugins to enable only for Neovim.
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim'     " Asynchronous auto completion.
-endif
-
-" Plugins to enable only for Vim.
-if !has('nvim')
-  Plug 'Shougo/neocomplete.vim'   " Synchronous auto completion.
-endif
+Plug 'sheerun/vim-polyglot'             " Comprehensive language pack (only loads when needed)
+Plug 'maksimr/vim-jsbeautify'           " Gives formatting to html,css,json,js
+Plug 'ctrlpvim/ctrlp.vim'               " Command line fuzzy finder
+" Plug 'jiangmiao/auto-pairs'             " Inserts and Deletes brackets, parens, quote paris.
+Plug 'severin-lemaignan/vim-minimap'    " Minimap sidebar!
+Plug 'valloric/matchtagalways'          " Highlights enclosing tags
+" Plug 'shime/vim-livedown'               " Markdown live preview
 
 " Plugins to enable only on the command line.
 if !has('gui_running')
@@ -238,25 +313,9 @@ let g:airline_theme = 'gruvbox'    " Use current theme.
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#wordcount#enabled = 1  " enable word counting
 let g:airline#extensions#tmuxline#enabled = 1   " enable tmux integration
-" let g:airline#extensions#capslock#enabled = 0   " enable caps lock block
+let g:airline#extensions#capslock#enabled = 1   " enable caps lock block
+
 set laststatus=2
-
-
-"}}}
-" Plugin Settings - deoplete {{{
-" -----------------------------------------------------------------------------
-
-if exists('plugs') && has_key(plugs, 'deoplete.nvim')
-  let g:deoplete#enable_at_startup = 1 " Enable deoplete on startup.
-  let g:deoplete#enable_smart_case = 1 " Enable smart case.
-
-  " Tab completion.
-  inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-
-  " On backspace, delete previous completion and regenerate popup.
-  inoremap <expr><C-H> deoplete#mappings#smart_close_popup()."\<C-H>"
-  inoremap <expr><BS> deoplete#mappings#smart_close_popup()."\<C-H>"
-endif
 
 "}}}
 " Plugin Settings - easy-align {{{
@@ -294,7 +353,7 @@ if exists('plugs') && has_key(plugs, 'fzf.vim')
   nnoremap <Leader>r :FzfBTags<CR>
 
   " Find pattern in files with ag.
-  nnoremap <Leader>f :FzfAg<CR>
+  nnoremap <Leader>p :FzfAg<CR>
 endif
 
 "}}}
@@ -307,17 +366,15 @@ endif
 " Plugin Settings - neocomplete {{{
 " -----------------------------------------------------------------------------
 
-if exists('plugs') && has_key(plugs, 'neocomplete.vim')
-  let g:neocomplete#enable_at_startup = 1 " Enable neocomplete on startup.
-  let g:neocomplete#enable_smart_case = 1 " Enable smart case.
+let g:neocomplete#enable_at_startup = 1 " Enable neocomplete on startup.
+let g:neocomplete#enable_smart_case = 1 " Enable smart case.
 
-  " Tab completion.
-  inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" Tab completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
-  " On backspace, delete previous completion and regenerate popup.
-  inoremap <expr><C-H> neocomplete#smart_close_popup()."\<C-H>"
-  inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-H>"
-endif
+" On backspace, delete previous completion and regenerate popup.
+inoremap <expr><C-H> neocomplete#smart_close_popup()."\<C-H>"
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-H>"
 
 "}}}
 " Plugin Settings - neomake {{{
@@ -340,13 +397,6 @@ let g:neomake_php_phpmd_maker = {
       \ 'args': ['%:p', 'text', '~/.phpmd.xml'],
       \ 'errorformat': '%E%f:%l%\s%m'
       \ }
-
-if exists('plugs') && has_key(plugs, 'neomake')
-  if has('nvim')
-    " Execute syntax checkers on file save.
-    autocmd! BufWritePost * Neomake
-  endif
-endif
 
 "}}}
 " Plugin Settings - nerdtree {{{
@@ -382,19 +432,43 @@ nnoremap <leader>u :GundoToggle<CR>  " toggle gundo
 "}}}
 " Plugin Settings - Lexical Spellcheck {{{
 " -----------------------------------------------------------------------------
+
 augroup lexical
   autocmd!
   autocmd FileType markdown,mkd call lexical#init()
   autocmd FileType textile call lexical#init()
   autocmd FileType text call lexical#init({ 'spell': 0 })
 augroup END
+
 let g:lexical#spell = 1         " 0=disabled, 1=enabled
 "}}}
-" Plugin Settings - Instant-Markdown {{{
+" Plugin Settings - JsBeautify {{{
 " -----------------------------------------------------------------------------
-" let g:instant_markdown_slow = 1     " Will refresh browser less often if default is too taxing
-let g:instant_markdown_autostart = 0  " Will not launch broswer preview automatically
-" let g:instant_markdown_allow_external_content = 0 
+
+map <c-f> :call JsBeautify()<cr>
+autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
+autocmd FileType json noremap <buffer> <c-f> :call JsonBeautify()<cr>
+autocmd FileType jsx noremap <buffer> <c-f> :call JsxBeautify()<cr>
+autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
+autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
+autocmd FileType javascript vnoremap <buffer>  <c-f> :call RangeJsBeautify()<cr>
+autocmd FileType json vnoremap <buffer> <c-f> :call RangeJsonBeautify()<cr>
+autocmd FileType jsx vnoremap <buffer> <c-f> :call RangeJsxBeautify()<cr>
+autocmd FileType html vnoremap <buffer> <c-f> :call RangeHtmlBeautify()<cr>
+autocmd FileType css vnoremap <buffer> <c-f> :call RangeCSSBeautify()<cr>
 
 "}}}
+" Plugin Settings - livedown {{{
+" -----------------------------------------------------------------------------
+" nnoremap gm :LivedownToggle<CR>
 
+" should markdown preview get shown automatically upon opening markdown buffer
+" let g:livedown_autorun = 0
+" should the browser window pop-up upon previewing
+" let g:livedown_open = 1 
+" the port on which Livedown server will run
+" let g:livedown_port = 1337
+" the browser to use
+" let g:livedown_browser = "firefox-developer"
+
+"}}}

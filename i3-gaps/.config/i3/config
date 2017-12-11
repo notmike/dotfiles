@@ -23,12 +23,12 @@ mouse_warping output
 # i3 Gaps
 smart_gaps on
 smart_borders on
-gaps inner 5
-gaps outer 2
+gaps inner 1
+gaps outer 1
 
 ### Borders ###
 new_window pixel 4
-new_float pixel 0
+new_float pixel 4
 
 # floating window sizes
 floating_minimum_size 96 x 25

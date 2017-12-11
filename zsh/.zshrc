@@ -49,14 +49,14 @@ HIST_STAMPS="mm/dd/yyyy"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git sublime web-search archlinux common-aliases emoji extract torrent zsh-syntax-highlighting)
+plugins=(per-directory-history systemd git sublime archlinux common-aliases extract colorize zsh-syntax-highlighting)
 
 # User configuration
 
 # History
 HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=10000
+SAVEHIST=10000
 setopt HIST_IGNORE_DUPS
 
 export PATH=$HOME/bin:/usr/local/bin:/opt/altera/quartus/bin:/opt/altera/modelsim_ase/bin:$PATH
@@ -187,12 +187,12 @@ alias autostart='gnome-session-properties'
 # For going to last directory
 alias back='cd -'
 
+# Calculator
+alias ca='python3 -ic "from math import *"'
+
 # Clean all the tmp folders
 alias cleanup='bleachbit --clean system.cache system.localizations system.trash system.tmp'
 alias cleanupsu='sudo bleachbit --clean system.cache system.localizations system.trash system.tmp'
-
-#navigate to downloads folder
-alias dl='cd /mnt/R2D2/Downloads/LINUXDLS'
 
 #navigate to downloads folder
 alias drop='cd ~/Dropbox'
@@ -228,9 +228,6 @@ alias i3config='vim ~/.config/i3/config'
 
 # lists personal fav imagemagick commands
 alias imagecommands='cat ~/Dropbox/LINUX/imagemagick-commands.txt'
-
-# school linux lab ssh
-alias linuxlab='ssh garc6881@134.74.126.104'
 
 # lock PC when using i3
 alias lock='. ~/scripts/i3lock.sh'
@@ -274,12 +271,6 @@ alias pw10='python2 ~/diceware_laptop/diceware-v2 -w 9 | xsel -i -b'
 # for running python scripts w/ 2.7
 alias python2=/usr/bin/python2.7
 
-# For opening Quartus
-# alias quartus='(~/altera/13.0sp1/quartus/bin/quartus --64bit &)'
-
-# for mispellings of "ranger"
-# alias rg='ranger'
-
 # shortcut for reboot
 alias reboot='sudo reboot'
 
@@ -293,7 +284,7 @@ alias removecolons='~/scripts/removecolon.sh'
 alias renamem='j=1;for i in *.jpg; do mv "$i" "$j".jpg; let j=j+1;done'
 
 # restart the network for LinuxMint 17.2 when troubleshooting
-alias restartnetwork='sudo systemctl restart NetworkManager.service'
+alias restartnetwork='systemctl restart NetworkManager.service'
 
 # Print out warnings from RKHunter (rootkit malware detection)
 # alias rootkit='sudo rkhunter -c --enable all --disable none --rwo'
@@ -301,11 +292,13 @@ alias restartnetwork='sudo systemctl restart NetworkManager.service'
 # Remove all EXIF data from files
 # alias scrubexif='for i in *.jpg; do echo "Processing $i"; exiftool -all= "$i"; done'
 
+alias school='cd ~/Dropbox/School/City\ College/2017/2017\ Fall/'
+
 # shredding program more secure then secure-delete
 alias shred='srm -v'
 
 # shortcut for shutdown
-alias shutdown='sudo shutdown -h now'
+alias shutdown='shutdown -h now'
 
 # check internet speeds!
 alias speedtest='speedtest-cli'
@@ -316,14 +309,17 @@ alias speedtest='speedtest-cli'
 # For opening Tor in background subshell
 alias tor='(/usr/bin/tor-browser-en &)'
 
+# vim.rc file
+alias vimrc='vim ~/.vimrc'
+
 # vISual arm emulator shortcut
 alias visual='/usr/local/bin/visual/VisUAL.sh'
 
 # VPN - US-east
-alias vpn1='sudo openvpn --config /etc/openvpn/US_East.conf'
+# alias vpn1='sudo openvpn --config /etc/openvpn/US_East.conf'
 
 # VPN - Swiss
-alias vpn2='sudo openvpn --config /etc/openvpn/Switzerland.conf'
+# alias vpn2='sudo openvpn --config /etc/openvpn/Switzerland.conf'
 
 # convert jpgs to 30% size and 90% of quality
 alias webconvert='for file in *.jpg; do convert "$file" -quality 90 -resize 30% "web_$file"; done'
