@@ -54,7 +54,7 @@ set showmatch              " Show matching brackets.
 set t_Co=256               " Set the number of supported colours.
 set title                  " Set window title to 'filename [+=-] (path) - VIM'.
 set ttyfast                " Indicate fast terminal more smoother redrawing.
-set scrolloff=8            " Keep 8 lines above or below the cursor when scrolling.
+" set scrolloff=8            " Keep 8 lines above or below the cursor when scrolling.
 set sidescroll=1           " Keep 15 columns next to the cursor when scrolling horizontally
 set sidescrolloff=15       " Keep 15 columns next to the cursor when scrolling horizontally
 set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
@@ -142,16 +142,6 @@ set ignorecase             " Ignore case of normal letters in a pattern.
 set incsearch              " Highlight search pattern as it is typed.
 set smartcase              " Override ignorecase if pattern contains upper case.
 
-" function! CenterSearch()
-"   let cmdtype = getcmdtype()
-"   if cmdtype == '/' || cmdtype == '?'
-"     return "\<enter>zz"
-"   endif
-"   return "\<enter>"
-" endfunction
-
-" cnoremap <silent> <expr> <enter> CenterSearch()
-
 "}}}
 " Options - File Browser {{{
 " -----------------------------------------------------------------------------
@@ -181,8 +171,8 @@ no <down> ddp
 no <up> ddkP
 
 " Always focus on splited window.
-" nnoremap <C-w>s <C-w>s<C-w>w
-" nnoremap <C-w>v <C-w>v<C-w>w
+nnoremap <C-w>s <C-w>s<C-w>w
+nnoremap <C-w>v <C-w>v<C-w>w
 
 " scroll the viewport faster
 nnoremap <C-e> 3<C-e>
@@ -332,7 +322,7 @@ nnoremap <Leader>g :Gblame!<CR>
 "}}}
 " Plugin Settings - fzf {{{
 " -----------------------------------------------------------------------------
-let g:fzf_layout = { 'up': '12' } " Position the default fzf window layout.
+let g:fzf_layout = { 'down': '20' } " Position the default fzf window layout.
 let g:fzf_command_prefix = 'Fzf'  " Prefix fzf commands e.g. :FzfFiles.
 
 if exists('plugs') && has_key(plugs, 'fzf.vim')

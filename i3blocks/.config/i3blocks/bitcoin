@@ -14,7 +14,7 @@
 
 
 case $BLOCK_BUTTON in
-    1) nohup google-chrome-stable https://www.gdax.com/trade/BTC-USD &>/dev/null & ;;     # left click
+    1) nohup xdg-open https://www.gdax.com/trade/BTC-USD &>/dev/null & ;;     # left click
     #2) pkill -RTMIN+2 i3blocks;;    # middle click
 esac
 

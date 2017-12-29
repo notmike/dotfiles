@@ -56,14 +56,14 @@ set $urgent-bg-color        #E53935
 
 # window colors
 #
-# Note that for the window decorations, the color around the child window is the background color, 
+# Note that for the window decorations, the color around the child window is the background color,
 # and the border color is only the two thin lines at the top of the window.
-# The indicator color is used for indicating where a new window will be opened. For horizontal split 
-# containers, the right border will be painted in indicator color, for vertical split containers, 
-# the bottom border. This only applies to single windows within a split container, which are otherwise 
+# The indicator color is used for indicating where a new window will be opened. For horizontal split
+# containers, the right border will be painted in indicator color, for vertical split containers,
+# the bottom border. This only applies to single windows within a split container, which are otherwise
 # indistinguishable from single windows outside of a split container.
 #
-#                       border              background         text                 indicator           
+#                       border              background         text                 indicator
 client.focused          $border            $border            $text-color           $border
 client.focused_inactive $inactive-bg-color $inactive-bg-color $inactive-text-color  $inactive-bg-color
 client.unfocused        $edge-color 	   $inactive-bg-color $inactive-text-color  $inactive-bg-color
@@ -159,7 +159,7 @@ set $workspace8 "8  "
 set $workspace9 "9  "
 set $workspace10 "10  "
 
-# Switch to workspace 
+# Switch to workspace
 # Using "bindcode" you only put the keycode for the last key in the combo
 bindsym $mod+1 workspace $workspace1
 bindsym $mod+2 workspace $workspace2
@@ -194,7 +194,7 @@ bindcode Control+Mod1+Shift+90 workspace $workspace10
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $workspace1
-bindsym $mod+Shift+2 move container to workspace $workspace2  
+bindsym $mod+Shift+2 move container to workspace $workspace2
 bindsym $mod+Shift+3 move container to workspace $workspace3
 bindsym $mod+Shift+4 move container to workspace $workspace4
 bindsym $mod+Shift+5 move container to workspace $workspace5
@@ -226,9 +226,9 @@ bindcode Control+Mod1+46 workspace next
 
 # Program Workspaces
 # (use "xprop" to get class names of applications)
-assign [class="(?)Steam"] $workspace7 
+assign [class="(?)Steam"] $workspace7
 assign [class="qbittorrent"] $workspace8
-for_window [class="qBittorrent"] move to workspace $workspace8 
+for_window [class="qBittorrent"] move to workspace $workspace8
 assign [class="spotify"] $workspace10
 for_window [class="Spotify"] move to workspace $workspace10
 assign [class="Pavucontrol"] $workspace10
@@ -270,7 +270,7 @@ mode "  " {
      bindsym j resize shrink height 5 px or 5 ppt
      bindsym l resize grow width 5 px or 5 ppt
      bindsym Left resize shrink width 5 px or 5 ppt
-     bindsym Down resize grow height 5 px or 5 ppt 
+     bindsym Down resize grow height 5 px or 5 ppt
      bindsym Up resize shrink height 5 px or 5 ppt
      bindsym Right resize grow width 5 px or 5 ppt
      bindsym Return mode "default"
@@ -287,7 +287,7 @@ mode "  " {
   # bindsym XF86AudioPrev exec playerctl previous
 
 #bindcode Control+Mod1+Shift+20 exec --no-startup-id pulseaudio-ctl down
-# cntrl+alt+(shift)+- 
+# cntrl+alt+(shift)+-
 # when using "shift" you adjust the bluetooth volume
 bindcode Control+Mod1+20 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindcode Control+Mod1+Shift+20 exec --no-startup-id pactl set-sink-volume bluez_sink.44_5E_F3_AB_67_A0.a2dp_sink -5%
@@ -333,7 +333,7 @@ bindcode Control+$mod+Mod1+Shift+38 exec mpc prev
 bar {
      status_command i3blocks
      position top
-     height 21    
+     height 21
      workspace_buttons yes
      strip_workspace_numbers yes
      separator_symbol " "
@@ -341,7 +341,7 @@ bar {
      bindsym button4 nop
     # COMMENT OUT "tray_output none/primary" to get tray notifications back !
     #tray_output none
-    # tray_padding 0  
+    # tray_padding 0
 colors {
      separator #1d2021
      background #1d2021
@@ -384,8 +384,8 @@ exec --no-startup-id xbindkeys
 # Nvidia command to fix weird tearing issues when watching video
 # exec --no-stacked-id nvidia-settings --assign CurrentMetaMode="nvidia-auto-select +0+0 { ForceFullCompositionPipeline = On }"
 
-# the -f for compton will give it fade transitioning 
-#exec_always --no-startup-id compton -f --inactive-dim 0.3 
+# the -f for compton will give it fade transitioning
+# exec_always --no-startup-id compton -f
 exec_always --no-startup-id numlockx on
 exec_always --no-startup-id xrdb ~/.Xresources
 exec_always --no-startup-id ~/scripts/setbg.sh
@@ -399,9 +399,9 @@ exec --no-startup-id launchy
 #exec deluge
 # exec --no-startup-id google-musicmanager
 exec --no-startup-id mpd ~/.config/mpd/mpd.conf
-exec --no-startup-id dunst 
+exec --no-startup-id dunst
 exec --no-startup-id pulseaudio --start
 exec --no-startup-id nm-applet
 exec --no-startup-id ~/scripts/start-bluetooth.sh
-#exec --no-startup-id pavucontrol 
+#exec --no-startup-id pavucontrol
 #exec --no-startup-id spotify

@@ -85,7 +85,7 @@ export HISTIGNORE="&:ls:[bf]g:exit"
 export PROMPT_COMMAND='q="- $(date +%T)"; while [[ ${#q} -lt $COLUMNS ]]; do q="${q:0:1}$q"; done; echo -e;'
 
 #adds cool penguin
-cowsay -f small ciao | lolcat
+cowsay -f small r u my daddy? | lolcat
 
 
 #*******************************************************************************************************************
