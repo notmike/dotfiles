@@ -49,7 +49,7 @@ HIST_STAMPS="mm/dd/yyyy"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(per-directory-history git sublime web-search systemd archlinux common-aliases emoji extract torrent colorize zsh-syntax-highlighting)
+plugins=(per-directory-history git sublime web-search systemd archlinux common-aliases emoji extract torrent colorize fast-syntax-highlighting)
 
 # User configuration
 
@@ -311,3 +311,5 @@ alias zshreload="source ~/.zshrc"
 
 # so the terminal app "ranger" can open new terminal in last directory
 cd "$AUTOCD"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

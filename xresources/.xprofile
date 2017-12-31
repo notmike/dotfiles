@@ -1,0 +1,9 @@
+nm-applet &
+clipit &
+udiskie &
+xbindkeys &
+xset r rate 250 30 &
+redshift -r -l 40.742:-73.769 &
+guake &
+polybar -r -q v1 &
+pulseaudio --start &

@@ -18,6 +18,6 @@
 dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Pause
 # $HOME/scripts/disconnect-bluetooth-headset.sh
 #IMAGE=$HOME/Pictures/Wallpapers/bleeding-mountains.png
-IMAGE=$HOME/Pictures/lockscreen.png
+IMAGE=$HOME/Pictures/Wallpapers/nebula.jpg
 i3lock -i $IMAGE
 systemctl suspend

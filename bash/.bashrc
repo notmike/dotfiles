@@ -242,3 +242,5 @@ cd "$AUTOCD"
 export QSYS_ROOTDIR="/tmp/yaourt-tmp-mg/aur-quartus-lite/pkg/quartus-lite//opt/altera/quartus/sopc_builder/bin"
 
 export ALTERAOCLSDKROOT="/tmp/yaourt-tmp-mg/aur-quartus-lite/pkg/quartus-lite//opt/altera/hld"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
