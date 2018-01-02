@@ -100,18 +100,18 @@ rg() {
 
 # Convenient c templates created in /tmp directory
 throwaway_c() {
-	local tdir=$(mktemp -d /tmp/deleteme-XXX)
-	cd $tdir
-	cp ~/.vim/skeletons/skeleton.make Makefile
-	cat > test.c <<"EOF"
+  local tdir=$(mktemp -d /tmp/deleteme-XXX)
+  cd $tdir
+  cp ~/.vim/skeletons/skeleton.make Makefile
+  cat > test.c <<"EOF"
 #include <stdio.h>
 #include <stdlib.h>
 
 int main() {
-	return 0;
+  return 0;
 }
 EOF
-	vim test.c
+  vim test.c
 }
 
 
@@ -138,15 +138,15 @@ vim test.cpp
 
 # experimental colored man pages:
 man() {
-	env \
-		LESS_TERMCAP_mb=$(printf "\e[1;31m") \
-		LESS_TERMCAP_md=$(printf "\e[1;31m") \
-		LESS_TERMCAP_me=$(printf "\e[0m") \
-		LESS_TERMCAP_se=$(printf "\e[0m") \
-		LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
-		LESS_TERMCAP_ue=$(printf "\e[0m") \
-		LESS_TERMCAP_us=$(printf "\e[1;35m") \
-			man "$@"
+  env \
+    LESS_TERMCAP_mb=$(printf "\e[1;31m") \
+    LESS_TERMCAP_md=$(printf "\e[1;31m") \
+    LESS_TERMCAP_me=$(printf "\e[0m") \
+    LESS_TERMCAP_se=$(printf "\e[0m") \
+    LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
+    LESS_TERMCAP_ue=$(printf "\e[0m") \
+    LESS_TERMCAP_us=$(printf "\e[1;35m") \
+      man "$@"
 }
 
 # Completion
@@ -220,7 +220,7 @@ alias gsup='hping3 -c 4 -V -S -p 80 162.243.210.220'
 alias home='cd ~'
 
 #i3 config shortcut
-alias i3config='vim ~/.config/i3/config'
+alias i3config='$EDITOR ~/dotfiles/i3-gaps/.config/i3/config'
 
 # lists personal fav imagemagick commands
 alias imagecommands='cat /mnt/R2D2/Dropbox/Programs/LINUX/imagemagick-commands.txt'
@@ -238,7 +238,7 @@ alias myip='dig +short myip.opendns.com @resolver1.opendns.com'
 alias nmapcommands='drop && cat ./Programs/LINUX/nmap-commands.txt'
 
 # nvim config shortcut
-alias nvimrc='nvim ~/.config/nvim/init.vim' 
+alias nvimrc='$EDITOR ~/.config/nvim/init.vim'
 
 #navigate to programming folder
 alias prog='cd /mnt/R2D2/Dropbox/Programming'
@@ -294,11 +294,14 @@ alias shutdown='shutdown -h now'
 # check internet speeds!
 alias speedtest='speedtest-cli'
 
+# edit sxhkdrc key-bindings config
+alias sxrc='$EDITOR $HOME/dotfiles/bspwm/.config/sxhkd/sxhkdrc'
+
 # For opening Tor in background subshell
 alias tor='(/usr/bin/tor-browser-en &)'
 
 # edit vim rc file quickly
-alias vimrc='vim ~/dotfiles/vim/.vimrc'
+alias vimrc='$EDITOR ~/dotfiles/vim/.vimrc'
 
 # visual arm emulator
 alias visual='/usr/local/bin/visual/VisUAL.sh'
