@@ -53,14 +53,12 @@ allow_bold = true
 dynamic_title = true
 urgent_on_bell = true
 clickable_url = true
-#font = DejaVu Sans Mono 9 
-#font = Hack 10 
-# font = Inconsolata 11 
+font = FontAwesome 10
 font = Fantasque Sans Mono 10
-# font = Iosevka Term 10
-# font = PragmataPro Regular 10
+#font = DejaVu Sans Mono 9
+#font = Hack 10
+#font = Iosevka Term 10
 #font = Monospace 9
-# font = Misc Tamsyn 11
 scrollback_lines = 5000
 search_wrap = true
 #icon_name = terminal
@@ -73,7 +71,7 @@ cursor_blink = system
 cursor_shape = block
 
 # $BROWSER is used by default
-browser = google-chrome-stable
+browser = xdg-open
 
 # word characters used for word selection
 # (default if unset: all graphic non-punctuation/space characters)
@@ -81,4 +79,4 @@ browser = google-chrome-stable
 
 [hints]
 # padding = 20
-# border_width = 10 
+# border_width = 10
