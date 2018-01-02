@@ -1,12 +1,44 @@
-#
-# ***** My HotKeys *****
-#
-
-# Suspend CPU
+###### ***** My HotKeys ***** ##########
+# Lock & Suspend CPU
 super + shift + x
-    "/home/mg/scripts/i3lock.sh"
+    "$HOME/scripts/i3lock.sh"
+
+# Lock Only
+super + shift + ctrl + x
+    "$HOME/scripts/i3lock-no-suspend.sh"
 
 
+
+#
+# Volume/Music Controls
+#
+
+# Vol Increase/Decrease/Mute
+control + alt + {equal, minus, 0}
+    pulseaudio-ctl {up,down,mute}
+
+
+# Play/Pause - Next Track - Prev Track
+control + alt + shift + {z,s,a}
+    playerctl {play-pause,next,previous}
+
+
+#
+# Screenshots
+#
+
+# Select a Section to Screenshot
+Print
+    maim $HOME/Pictures/Screenshots/$(date +%m.%d.%Y--%H.%M.%S).png -s -c 1,0,0,0.6
+# Screenshot the ENTIRE desktop
+super + Print
+    scrot '%m.%d.%Y-$wx$h-%T.png' -e 'mv $f `echo ~/Pictures/Screenshots/$f | tr ':' '.'` '
+# Screenshot the current window
+shift + Print
+    scrot -u '%m.%d.%Y-$wx$h-%T.png' -e 'mv $f `echo ~/Pictures/Screenshots/$f | tr ':' '.'` '
+
+
+########################################
 #
 # wm independent hotkeys
 #
