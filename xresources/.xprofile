@@ -1,9 +1,39 @@
-nm-applet &
-clipit &
+# An xprofile file, ~/.xprofile and /etc/xprofile, allows you to execute commands
+# at the beginning of the X user session...
+# **** before the window manager is started. ****
+# The xprofile file is similar in style to xinitrc.
+
+# Setting up environment to find bspwm config files
+XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CONFIG_HOME
+
+
+# Programs to Auto Start as root, before Display Manager starts reg user
+
+## Udiskie automounts USB drives
 udiskie &
+## Xset - sets screen sleep time to 1 hour
+xset s 3600 3600 &
+xset -dpms &
+## xbindkeys (and xautomation) used to bind mx thumb wheel to vol+-
 xbindkeys &
+## xset - make the hold down key-rate faster
 xset r rate 250 30 &
+## numlock on by default
+numlockx on &
+## NetworkManager tray applet
+nm-applet &
+## Bluetooth tray applet
+blueman-applet &
+## Start redshift w/ rough location
 redshift -r -l 40.742:-73.769 &
-guake &
-polybar -r -q v1 &
+## Clipboard manager
+clipit &
+## Favorite calculator
+launchy &
+## Audio Server
 pulseaudio --start &
+## Dropdown Terminal
+guake &
+## Dropbox
+dropbox &
