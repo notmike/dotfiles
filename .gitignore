@@ -15,3 +15,4 @@
 /neovim/.config/nvim/plugged/
 /neovim/.config/nvim/.init.vim-rplugin~
 /zsh/.oh-my-zsh/cache/
+/polybar/.config/polybar/ip.sh

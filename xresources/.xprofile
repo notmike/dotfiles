@@ -37,3 +37,13 @@ pulseaudio --start &
 guake &
 ## Dropbox
 dropbox &
+## Set my background
+$HOME/scripts/setbg.sh &
+## Notifications
+dunst &
+## Hide the mouse when typing
+unclutter -b &
+## Transparencies
+compton &
+## Fixes Nvidia screen tearing
+nvidia-settings --assign CurrentMetaMode="nvidia-auto-select +0+0 { ForceFullCompositionPipeline = On }" &

@@ -240,6 +240,9 @@ alias nmapcommands='drop && cat ./Programs/LINUX/nmap-commands.txt'
 # nvim config shortcut
 alias nvimrc='$EDITOR ~/.config/nvim/init.vim'
 
+# polybar config file
+alias polyrc='$EDITOR ~/.config/polybar/config'
+
 #navigate to programming folder
 alias prog='cd /mnt/R2D2/Dropbox/Programming'
 
@@ -316,3 +319,9 @@ alias zshreload="source ~/.zshrc"
 cd "$AUTOCD"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+PATH="/home/mg/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/home/mg/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/home/mg/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/home/mg/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/mg/perl5"; export PERL_MM_OPT;

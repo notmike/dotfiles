@@ -232,17 +232,17 @@ nnoremap cow :set wrap!<CR>
 "}}}
 " Mappings - Clipboard {{{
 " -----------------------------------------------------------------------------
-set clipboard=unnamedplus
-vmap <C-c> "+yi
-vmap <C-x> "+c
-vmap <C-v> c<ESC>"+p
-imap <C-v> <ESC>"+pa
-vnoremap yy "+y
-nnoremap Y "+y$
-" Visually select the text that was last edited/pasted (Vimcast#26).
-noremap gV `[v`]
+ set clipboard=unnamedplus
+ vmap <C-c> "+yi
+ vmap <C-x> "+c
+ vmap <C-v> c<ESC>"+p
+ imap <C-v> <ESC>"+pa
+ vnoremap yy "+y
+ nnoremap Y "+y$
+ " Visually select the text that was last edited/pasted (Vimcast#26).
+ noremap gV `[v`]
 
-""}}}
+"}}}
 " Plugins Install {{{
 " -----------------------------------------------------------------------------
 
