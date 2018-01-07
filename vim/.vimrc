@@ -1,3 +1,6 @@
+" ~/.vimrc
+" vim: fdm=marker
+"
 "
 "    ██████╗  █████╗ ████████╗    ██╗   ██╗██╗███╗   ███╗██████╗  ██████╗
 "    ██╔══██╗██╔══██╗╚══██╔══╝    ██║   ██║██║████╗ ████║██╔══██╗██╔════╝
@@ -6,9 +9,6 @@
 "    ██████╔╝██║  ██║   ██║        ╚████╔╝ ██║██║ ╚═╝ ██║██║  ██║╚██████╗
 "    ╚═════╝ ╚═╝  ╚═╝   ╚═╝         ╚═══╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝
 "
-"
-" ~/.vimrc
-" vim: fdm=marker
 "
 " Options - Theme {{{
 " -----------------------------------------------------------------------------
@@ -30,9 +30,15 @@ endif
 set nomodeline             " Don't parse modelines, google vim modeline vulnerability
 set nocompatible           " Prefer Vim defaults over Vi-compatible defaults.
 set encoding=utf-8         " Set the character encoding to UTF-8.
+set noswapfile             " Disable swap files
+set modifiable             " Allow buffers to create new files/folders
 
 filetype plugin indent on  " Enable file type detection.
 syntax on                  " Enable syntax highlighting.
+
+"Enable persisted undo history
+set undofile
+set undodir=~/.vim-local/undofiles/
 
 "}}}
 " Options - Appearance {{{
@@ -58,8 +64,12 @@ set ttyfast                " Indicate fast terminal more smoother redrawing.
 set sidescroll=1           " Keep 15 columns next to the cursor when scrolling horizontally
 set sidescrolloff=15       " Keep 15 columns next to the cursor when scrolling horizontally
 set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
-" set list
-" set lazyredraw             " Speeds up macro execution, might experience glitches?
+" set list                 " Turns on viewing whitespace as special characters
+
+set lazyredraw             " Only redraw when needed
+
+" Highlight Trailing Spaces (ugly code)
+match ErrorMsg '\s\+$'
 
 "}}}
 " Options - Behaviour {{{
@@ -82,6 +92,17 @@ set wildmenu               " Use enhanced command-line completion.
 set wildmode=longest,full  " for autocomplete, complete as much as you can
 
 let g:tex_flavor = 'latex' " Treat *.tex file extensions as LaTeX files.
+
+" Remap ENTER & BACKSPACE to move one paragraph in normal mode
+nnoremap <BS> {
+onoremap <BS> {
+vnoremap <BS> {
+nnoremap <expr> <CR> empty(&buftype) ? '}' : '<CR>'
+onoremap <expr> <CR> empty(&buftype) ? '}' : '<CR>'
+vnoremap <CR> }
+
+set splitbelow             " New splits below, not above
+set splitright             " New splits on the right, not left
 
 "}}}
 " Options - Folding {{{
@@ -166,6 +187,9 @@ let maplocalleader = ','
 " Exit insert mode.
 inoremap jj <esc>
 
+"Change the current word to be UPPERCASE on U
+nnoremap U vawUew
+
 " Unmap the arrow keys, now UP & DOWN will move lines up & down
 no <down> ddp
 no <up> ddkP
@@ -212,11 +236,23 @@ nnoremap g/t /\t<CR>
 " Write current file as superuser.
 cnoremap w!! w !sudo tee > /dev/null %
 
-"quick pairs
+" Quick pairs
 imap <leader>' ''<ESC>i
 imap <leader>" ""<ESC>i
 imap <leader>( ()<ESC>i
 imap <leader>[ []<ESC>i
+
+" Keep selected text selected when fixing indentation
+vnoremap < <gv
+vnoremap > >gv
+
+" Sane Line Joins
+if v:version > 703 || v:version == 703 && has('patch541')
+  set formatoptions+=j
+endif
+
+" Run Python Files by pressing F9
+autocmd FileType python nnoremap <buffer> <F9> :exec '!clear;python' shellescape(@%, 1)<cr>
 
 "}}}
 " Mappings - Toggle Options {{{
@@ -232,6 +268,7 @@ nnoremap cow :set wrap!<CR>
 "}}}
 " Mappings - Clipboard {{{
 " -----------------------------------------------------------------------------
+" NOTE: You must install Gvim or vim w/ -xterm_clipboard to get this to work
  set clipboard=unnamedplus
  vmap <C-c> "+yi
  vmap <C-x> "+c
@@ -248,35 +285,38 @@ nnoremap cow :set wrap!<CR>
 
 " Requires https://github.com/junegunn/vim-plug
 call plug#begin('~/.vim/plugged')
+Plug 'morhetz/gruvbox'                  " Color scheme gruvbox
 Plug 'sjl/gundo.vim'                    " Fancy Undo Screen
 Plug 'scrooloose/nerdtree'              " File explorer window.
 Plug 'junegunn/vim-easy-align'          " Text alignment by characters.
 Plug 'tpope/vim-surround'               " Quoting/parenthesizing made simple.
 Plug 'tpope/vim-repeat'                 " Enable repeat for tpope's plugins.
+Plug 'tpope/vim-commentary'             " Commenting made simple.
+Plug 'tpope/vim-fugitive'               " Git wrapper.
 Plug 'vim-airline/vim-airline'          " Pretty Statusline
 Plug 'vim-airline/vim-airline-themes'   " Themes for Airline status bar
 Plug 'easymotion/vim-easymotion'        " Move around screen fast!
-Plug 'morhetz/gruvbox'                  " Color scheme gruvbox
-Plug 'Chiel92/vim-autoformat'           " Integrate external code formatters.
 Plug 'Shougo/context_filetype.vim'      " Get current context for autocompletion.
-Plug 'benekastah/neomake'               " Asynchronous syntax checking with make.
-Plug 'majutsushi/tagbar'                " Display tags in a split window.
-Plug 'tpope/vim-commentary'             " Commenting made simple.
-Plug 'tpope/vim-fugitive'               " Git wrapper.
-Plug 'airblade/vim-gitgutter'           " Shows git changes in file
 Plug 'Shougo/neocomplete.vim'           " Synchronous auto completion.
+Plug 'benekastah/neomake'               " Asynchronous syntax checking with make.
+Plug 'airblade/vim-gitgutter'           " Shows git changes in file
 Plug 'Konfekt/FastFold'                 " FastFold <- required by neocomplete
 Plug 'chrisbra/csv.vim'                 " Awesome for viewing CSVs
 Plug 'edkolev/tmuxline.vim'             " Tmux integration (airline extends this)
-Plug 'tpope/vim-capslock'               " disables capslock (airline extends this)
 Plug 'reedes/vim-lexical'               " Spell check /Dictionary
 Plug 'sheerun/vim-polyglot'             " Comprehensive language pack (only loads when needed)
-Plug 'maksimr/vim-jsbeautify'           " Gives formatting to html,css,json,js
+" Plug 'majutsushi/tagbar'                " Display tags in a split window.
 " Plug 'ctrlpvim/ctrlp.vim'               " Command line fuzzy finder
 " Plug 'jiangmiao/auto-pairs'             " Inserts and Deletes brackets, parens, quote paris.
 Plug 'severin-lemaignan/vim-minimap'    " Minimap sidebar!
 Plug 'valloric/matchtagalways'          " Highlights enclosing tags
 Plug 'shime/vim-livedown'               " Live Markdown Preview
+Plug 'vim-syntastic/syntastic'          " Syntax checker
+
+" Code Formatter (JS·CSS·SCSS·Less·JSX·GraphQL·JSON·Markdown
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown'] }
 
 " Plugins to enable only on the command line.
 if !has('gui_running')
@@ -428,20 +468,10 @@ augroup END
 
 let g:lexical#spell = 1         " 0=disabled, 1=enabled
 "}}}
-" Plugin Settings - JsBeautify {{{
+" Plugin Settings - Prettier {{{
 " -----------------------------------------------------------------------------
 
-map <c-f> :call JsBeautify()<cr>
-autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
-autocmd FileType json noremap <buffer> <c-f> :call JsonBeautify()<cr>
-autocmd FileType jsx noremap <buffer> <c-f> :call JsxBeautify()<cr>
-autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
-autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
-autocmd FileType javascript vnoremap <buffer>  <c-f> :call RangeJsBeautify()<cr>
-autocmd FileType json vnoremap <buffer> <c-f> :call RangeJsonBeautify()<cr>
-autocmd FileType jsx vnoremap <buffer> <c-f> :call RangeJsxBeautify()<cr>
-autocmd FileType html vnoremap <buffer> <c-f> :call RangeHtmlBeautify()<cr>
-autocmd FileType css vnoremap <buffer> <c-f> :call RangeCSSBeautify()<cr>
+"let g:prettier#exec_cmd_async = 1
 
 "}}}
 " Plugin Settings - livedown {{{
@@ -457,3 +487,29 @@ nnoremap gm :LivedownToggle<CR>
 " the browser to use
 " let g:livedown_browser = "firefox"
 "}}}
+" Plugin Settings - EasyMotion {{{
+" -----------------------------------------------------------------------------
+
+nmap F <Plug>(easymotion-prefix)s
+
+"}}}
+" Plugin Settings - Syntastic {{{
+" -----------------------------------------------------------------------------
+" let g:syntastic_html_eslint_exec = 'eslint_d'   "<-- only if using eslint_d
+" let g:syntastic_javascript_eslint_exec = 'eslint_d'  "<--  only if using eslint_d
+
+let g:syntastic_aggregate_errors = 1    " display all errors from all checkers together
+let g:syntastic_html_checkers = ['eslint', 'w3']
+let g:syntastic_javascript_checkers = ['jsxhint', 'eslint']
+let g:syntastic_python_checkers = ['prospector']
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+"}}}
+
