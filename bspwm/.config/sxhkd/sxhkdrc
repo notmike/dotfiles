@@ -14,12 +14,12 @@ super + shift + ctrl + x
 #
 
 # Vol Increase/Decrease/Mute
-control + alt + {equal, minus, 0}
-    pulseaudio-ctl {up,down,mute}
+control + super + {equal, minus, 0}
+    pulseaudio-ctl {up,down,set 1}
 
 
 # Play/Pause - Next Track - Prev Track
-control + alt + shift + {z,s,a}
+control + super + shift + {z,s,a}
     playerctl {play-pause,next,previous}
 
 

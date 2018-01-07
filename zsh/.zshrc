@@ -55,8 +55,8 @@ plugins=(per-directory-history git sublime web-search systemd archlinux common-a
 
 # History
 HISTFILE=~/.histfile
-HISTSIZE=10000
-SAVEHIST=10000
+HISTSIZE=50000
+SAVEHIST=50000
 setopt HIST_IGNORE_DUPS
 
 # Set Ranger to not use default settings
@@ -201,10 +201,10 @@ alias cleanup='bleachbit --clean system.cache system.localizations system.trash 
 alias cleanupsu='bleachbit --clean system.cache system.localizations system.trash system.tmp'
 
 #navigate to downloads folder
-alias dl='cd /mnt/R2D2/Downloads/LINUXDLS'
+alias dl='cd ~/Downloads'
 
 #navigate to downloads folder
-alias drop='cd /mnt/R2D2/Dropbox'
+alias drop='cd ~/Dropbox'
 
 # Firefox aliases
 alias ff='nohup firefox &>/dev/null &'
@@ -223,7 +223,7 @@ alias home='cd ~'
 alias i3config='$EDITOR ~/dotfiles/i3-gaps/.config/i3/config'
 
 # lists personal fav imagemagick commands
-alias imagecommands='cat /mnt/R2D2/Dropbox/Programs/LINUX/imagemagick-commands.txt'
+alias imagecommands='cat ~/Dropbox/Programs/LINUX/imagemagick-commands.txt'
 
 # lock PC when using i3
 alias lock='. ~/scripts/i3lock.sh'
@@ -244,7 +244,7 @@ alias nvimrc='$EDITOR ~/.config/nvim/init.vim'
 alias polyrc='$EDITOR ~/.config/polybar/config'
 
 #navigate to programming folder
-alias prog='cd /mnt/R2D2/Dropbox/Programming'
+alias prog='cd ~/Dropbox/Programming'
 
 # will generate a random 15 character passwords if you have "pass" & "xsel" installed,
 # http://www.passwordstore.org/
@@ -253,16 +253,16 @@ alias pw0='cat /dev/urandom | tr -cd [:graph:] | fold -w $LENGTH | head -n 1'
 
 # Using diceware python script saved on git will produce diceware pw of specified length.
 # Default word length is 5, then copies to clipboard using xsel (must have installed also)
-alias pw='python2 /mnt/R2D2/Dropbox/Programming/git/diceware/diceware-v2 -w 4 | xsel -i -b'
-alias pw2='python2 /mnt/R2D2/Dropbox/Programming/git/diceware/diceware-v2 -w 1 | xsel -i -b'
-alias pw3='python2 /mnt/R2D2/Dropbox/Programming/git/diceware/diceware-v2 -w 2 | xsel -i -b'
-alias pw4='python2 /mnt/R2D2/Dropbox/Programming/git/diceware/diceware-v2 -w 3 | xsel -i -b'
-alias pw5='python2 /mnt/R2D2/Dropbox/Programming/git/diceware/diceware-v2 -w 4 | xsel -i -b'
-alias pw6='python2 /mnt/R2D2/Dropbox/Programming/git/diceware/diceware-v2 -w 5 | xsel -i -b'
-alias pw7='python2 /mnt/R2D2/Dropbox/Programming/git/diceware/diceware-v2 -w 6 | xsel -i -b'
-alias pw8='python2 /mnt/R2D2/Dropbox/Programming/git/diceware/diceware-v2 -w 7 | xsel -i -b'
-alias pw9='python2 /mnt/R2D2/Dropbox/Programming/git/diceware/diceware-v2 -w 8 | xsel -i -b'
-alias pw10='python2 /mnt/R2D2/Dropbox/Programming/git/diceware/diceware-v2 -w 9 | xsel -i -b'
+alias pw='python2 ~/Dropbox/Programming/git/diceware/diceware-v2 -w 4 | xsel -i -b'
+alias pw2='python2 ~/Dropbox/Programming/git/diceware/diceware-v2 -w 1 | xsel -i -b'
+alias pw3='python2 ~/Dropbox/Programming/git/diceware/diceware-v2 -w 2 | xsel -i -b'
+alias pw4='python2 ~/Dropbox/Programming/git/diceware/diceware-v2 -w 3 | xsel -i -b'
+alias pw5='python2 ~/Dropbox/Programming/git/diceware/diceware-v2 -w 4 | xsel -i -b'
+alias pw6='python2 ~/Dropbox/Programming/git/diceware/diceware-v2 -w 5 | xsel -i -b'
+alias pw7='python2 ~/Dropbox/Programming/git/diceware/diceware-v2 -w 6 | xsel -i -b'
+alias pw8='python2 ~/Dropbox/Programming/git/diceware/diceware-v2 -w 7 | xsel -i -b'
+alias pw9='python2 ~/Dropbox/Programming/git/diceware/diceware-v2 -w 8 | xsel -i -b'
+alias pw10='python2 ~/Dropbox/Programming/git/diceware/diceware-v2 -w 9 | xsel -i -b'
 
 # for running python scripts w/ 2.7
 alias python2=/usr/bin/python2.7
