@@ -16,4 +16,4 @@ echo -e 'connect 44:5E:F3:AB:67:A0\nquit' | bluetoothctl
 pactl set-default-sink bluez_sink.44_5E_F3_AB_67_A0.a2dp_sink
 
 # confirm my connection
-notify-send -h string:bgcolor:#393939 -h string:fgcolor:#99cc99 Bluetooth\ Headphones "CONNECTED" 
+notify-send -h string:bgcolor:#393939 -h string:fgcolor:#99cc99 Bluetooth\ Headphones "CONNECTED"

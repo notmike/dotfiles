@@ -104,6 +104,17 @@ vnoremap <CR> }
 set splitbelow             " New splits below, not above
 set splitright             " New splits on the right, not left
 
+" SOURCE: https://github.com/Parth/dotfiles/blob/master/vim/vimrc.vim
+" Return to the same line you left off at
+augroup line_return
+  au!
+  au BufReadPost *
+    \ if line("'\"") > 0 && line("'\"") <= line("$") |
+    \	execute 'normal! g`"zvzz' |
+    \ endif
+augroup END
+
+
 "}}}
 " Options - Folding {{{
 " -----------------------------------------------------------------------------
@@ -213,7 +224,7 @@ cnoremap <C-N> <Down>
 cnoremap <C-P> <Up>
 
 " Stop the highlighting for the current search results.
-nnoremap <Space> :nohlsearch<CR>
+nnoremap <Space> :nohlsearch<CR><C-l>
 
 " Navigate split windows.
 nnoremap <C-H> <C-W>h

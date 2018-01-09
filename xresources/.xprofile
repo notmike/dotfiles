@@ -47,3 +47,5 @@ unclutter -b &
 compton &
 ## Fixes Nvidia screen tearing
 nvidia-settings --assign CurrentMetaMode="nvidia-auto-select +0+0 { ForceFullCompositionPipeline = On }" &
+##  Load Firefox profile to memory for faster response (and to load profile)
+firefox-sync &

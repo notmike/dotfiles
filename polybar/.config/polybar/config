@@ -39,8 +39,8 @@ font-1 = FontAwesome:size=12;0
 font-2 = Weather Icons:size=12;1
 
 modules-left = bspwm
-modules-center = music pulseaudio
-modules-right = bitcoin ip bandwidth filesystem memory cpu temperature openweathermap-fullfeatured date time powermenu
+modules-center = music
+modules-right = bitcoin pulseaudio ip bandwidth filesystem memory cpu temperature openweathermap-fullfeatured date time powermenu
 
 tray-position = right
 tray-padding = 2

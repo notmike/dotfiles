@@ -49,7 +49,9 @@ HIST_STAMPS="mm/dd/yyyy"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(per-directory-history git sublime web-search systemd archlinux common-aliases emoji extract torrent colorize fast-syntax-highlighting)
+plugins=(per-directory-history git sublime vi-mode systemd archlinux common-aliases emoji extract torrent colorize fast-syntax-highlighting)
+# AutoSuggestions Plugin -- https://github.com/zsh-users/zsh-autosuggestions#configuration
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # User configuration
 
