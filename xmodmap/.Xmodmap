@@ -1,0 +1,64 @@
+! .Xmodmap
+! HHKB emulator
+
+! Fn
+remove mod1 = Alt_R
+keysym Alt_R = Mode_switch
+add mod5 = Mode_switch
+
+! arrows
+keycode 34 = bracketleft braceleft Up NoSymbol
+keycode 47 = semicolon colon Left NoSymbol
+keycode 48 = apostrophe quotedbl Right NoSymbol
+keycode 61 = slash question Down NoSymbol
+
+! PgUp
+keycode 46 = l L Prior NoSymbol
+! PgDown
+keycode 60 = period greater Next NoSymbol
+! Home
+keycode 45 = k K Home NoSymbol
+! End
+keycode 59 = comma less End NoSymbol
+! Ins
+keycode 44 = j J Insert NoSymbol
+! Del
+keycode 58 = m M Delete NoSymbol
+
+! F1-F12
+keycode 10 = 1 exclam F1 NoSymbol
+keycode 11 = 2 at F2 NoSymbol
+keycode 12 = 3 numbersign F3 NoSymbol
+keycode 13 = 4 dollar F4 NoSymbol
+keycode 14 = 5 percent F5 NoSymbol
+keycode 15 = 6 asciicircum F6 NoSymbol
+keycode 16 = 7 ampersand F7 NoSymbol
+keycode 17 = 8 asterisk F8 NoSymbol
+keycode 18 = 9 parenleft F9 NoSymbol
+keycode 19 = 0 parenright F10 NoSymbol
+keycode 20 = minus underscore F11 NoSymbol
+keycode 21 = equal plus F12 NoSymbol
+
+! tenkeys
+keycode 36 = Return Return KP_Enter NoSymbol
+keycode 30 = u U KP_Multiply NoSymbol
+keycode 31 = i I KP_Divide NoSymbol
+keycode 32 = o O KP_Add NoSymbol
+keycode 33 = p P KP_Subtract NoSymbol
+
+! Swap Caps_Lock and Control_R
+remove Lock = Caps_Lock
+remove Control = Control_R
+keysym Control_R = Caps_Lock
+keysym Caps_Lock = Control_R
+add Lock = Caps_Lock
+add Control = Control_R
+
+! Swap LeftAlt & LeftSuper
+! mod1=alt and mod4=super by default
+clear Mod1
+clear Mod4
+add Mod1 = Super_L Super_R
+add Mod4 = Alt_L Alt_R
+! make the menu button = Super_R
+keycode 135 = Super_R NoSymbol NoSymbol NoSymbol
