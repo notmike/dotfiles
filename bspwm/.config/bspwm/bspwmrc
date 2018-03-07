@@ -16,8 +16,9 @@ bspc config click_to_focus       true
 #bspc rule -a Gimp-2.8 desktop='^8' state=floating follow=on
 bspc rule -a Zathura state=tiled
 bspc rule -a Chromium desktop='^2'
-bspc rule -a Main.py state=floating follow=on focus=on
+bspc rule -a Guake state=floating follow=on focus=on
 bspc rule -a Screenkey manage=off
+bspc rule -a Yad state=floating follow=on focus=on
 
 # Startup Polybar
 $HOME/.config/polybar/launch.sh

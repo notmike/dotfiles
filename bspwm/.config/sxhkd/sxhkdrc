@@ -1,11 +1,11 @@
 ###### ***** My HotKeys ***** ##########
 # Lock & Suspend CPU
 super + shift + x
-    "$HOME/scripts/i3lock.sh"
+    betterlockscreen -s
 
 # Lock Only
 super + shift + ctrl + x
-    "$HOME/scripts/i3lock-no-suspend.sh"
+    betterlockscreen -l
 
 # Connect Bluetooth Headphone
 super + ctrl + b
@@ -20,14 +20,31 @@ super + ctrl + shift + b
 #
 
 # Vol Increase/Decrease/Mute
-control + super + {equal, minus, 0}
-    pulseaudio-ctl {up,down,set 1}
+XF86Audio{RaiseVolume,LowerVolume,Mute}
+    pulseaudio-ctl {up,down,mute}
 
+control + super + {equal, minus, 0}
+    pulseaudio-ctl {up,down,mute}
 
 # Play/Pause - Next Track - Prev Track
+XF86Audio{Play,Prev,Next}
+    playerctl {play-pause,next,previous}
+
 control + super + shift + {z,s,a}
     playerctl {play-pause,next,previous}
 
+
+#
+# Random
+#
+
+## Hard Refresh Browser
+#XF86Reload
+#    xdotool search --name "Mozilla Firefox" key ctrl+F5
+#
+## Hide/Show Firefox Bookmakrs
+#Cancel
+#    xdotool search "Mozilla Firefox" windowactivate --sync key --delay 30 --clearmodifiers alt v t b
 
 #
 # Screenshots

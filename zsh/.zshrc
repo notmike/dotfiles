@@ -49,7 +49,7 @@ HIST_STAMPS="mm/dd/yyyy"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(per-directory-history git sublime vi-mode systemd archlinux common-aliases emoji extract torrent colorize fast-syntax-highlighting)
+plugins=(per-directory-history git sublime systemd archlinux common-aliases emoji extract torrent colorize fast-syntax-highlighting)
 # AutoSuggestions Plugin -- https://github.com/zsh-users/zsh-autosuggestions#configuration
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
@@ -195,6 +195,9 @@ alias alive='ping -c 2 google.com | grep "% packet loss" -C 7'
 # For going to last directory
 alias back='cd -'
 
+# Make cal give 3 months by default
+alias cal3='cal -n 3'
+
 # See what programs are using bandwidth
 alias checknetwork='nethogs'
 
@@ -279,7 +282,7 @@ alias python2=/usr/bin/python2.7
 alias removecolons='~/scripts/removecolon.sh'
 
 # rename multiple files in sequential order
-alias renamem='j=1;for i in *.jpg; do mv "$i" "$j".jpg; let j=j+1;done'
+alias renamem='j=1;for i in *.(jpg|png|bmp|jpeg); do mv "$i" "$j"."${i##*.}"; let j=j+1;done'
 
 # restart the network for LinuxMint 17.2 when troubleshooting
 alias restartnetwork='systemctl restart NetworkManager.service'
@@ -327,3 +330,6 @@ PERL5LIB="/home/mg/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
 PERL_LOCAL_LIB_ROOT="/home/mg/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
 PERL_MB_OPT="--install_base \"/home/mg/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/home/mg/perl5"; export PERL_MM_OPT;
+
+# Unbreak Pycharm in BSPWM (https://wiki.archlinux.org/index.php/Dwm#Fixing_misbehaving_Java_applications)
+export _JAVA_AWT_WM_NONREPARENTING=1

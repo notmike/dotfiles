@@ -105,6 +105,7 @@ type = custom/script
 interval = 600
 exec = ~/dotfiles/polybar/.config/polybar/openweathermap.sh
 click-left = "xdg-open https://www.wunderground.com/hourly/us/ny/astoria/11102?cm_ven=localwx_hour"
+double-click-left = "xdg-open http://www.weather.com/weather/hourbyhour/l/11106:4:US"
 label-font = 3
 format-underline = ${colors.secondary}
 
@@ -257,12 +258,15 @@ type = internal/date
 interval = 5
 
 date = %m.%d.%y
+label = %date%
 
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #a89984
 
-label = %date%
+click-left = yad --calendar --no-buttons --mouse --on-top --undecorated --skip-taskbar
+click-right = yad --calendar
+
 
 [module/time]
 type = internal/date
@@ -368,7 +372,7 @@ menu-0-0 = reboot
 menu-0-0-exec = menu-open-1
 menu-0-1 = power off
 menu-0-1-exec = menu-open-2
-menu-0-2 = lock
+menu-0-2 = logoff
 menu-0-2-exec = menu-open-3
 menu-0-3 = suspend
 menu-0-3-exec = menu-open-4
@@ -385,8 +389,8 @@ menu-2-1-exec = systemctl poweroff
 
 menu-3-0 = cancel
 menu-3-0-exec = menu-open-0
-menu-3-1 = lock
-menu-3-1-exec = ~/scripts/i3lock-no-suspend.sh
+menu-3-1 = logoff
+menu-3-1-exec = bspc quit
 
 menu-4-0 = cancel
 menu-4-0-exec = menu-open-0

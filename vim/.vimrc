@@ -265,6 +265,13 @@ endif
 " Run Python Files by pressing F9
 autocmd FileType python nnoremap <buffer> <F9> :exec '!clear;python' shellescape(@%, 1)<cr>
 
+" Easily edit any macro register by typing cr<register>
+fun! ChangeReg() abort
+  let x = nr2char(getchar())
+  call feedkeys("q:ilet @" . x . " = \<c-r>\<c-r>=string(@" . x . ")\<cr>\<esc>0f'", 'n')
+endfun
+nnoremap cr :call ChangeReg()<cr>
+
 "}}}
 " Mappings - Toggle Options {{{
 " -----------------------------------------------------------------------------
@@ -323,6 +330,7 @@ Plug 'severin-lemaignan/vim-minimap'    " Minimap sidebar!
 Plug 'valloric/matchtagalways'          " Highlights enclosing tags
 Plug 'shime/vim-livedown'               " Live Markdown Preview
 Plug 'vim-syntastic/syntastic'          " Syntax checker
+Plug 'ap/vim-css-color'                 " Color Highlighter
 
 " Code Formatter (JS·CSS·SCSS·Less·JSX·GraphQL·JSON·Markdown
 Plug 'prettier/vim-prettier', {
@@ -483,6 +491,7 @@ let g:lexical#spell = 1         " 0=disabled, 1=enabled
 " -----------------------------------------------------------------------------
 
 "let g:prettier#exec_cmd_async = 1
+let g:prettier#autoformat = 0
 
 "}}}
 " Plugin Settings - livedown {{{
@@ -523,4 +532,3 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 "}}}
-
