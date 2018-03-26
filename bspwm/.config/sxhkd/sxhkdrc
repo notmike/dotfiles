@@ -68,7 +68,7 @@ shift + Print
 
 # terminal emulator
 super + Return
-	termite
+	kitty
 
 # program launcher
 #super + @space
