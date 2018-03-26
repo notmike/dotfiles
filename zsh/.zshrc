@@ -65,7 +65,7 @@ setopt HIST_IGNORE_DUPS
 export RANGER_LOAD_DEFAULT_RC=false
 
 # SSH works better
-#export TERM=xterm-256color
+# export TERM=xterm-256color
 
 export PATH=$HOME/bin:/usr/local/bin:/opt/altera/quartus/bin:/opt/altera/modelsim_ase/bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -77,9 +77,9 @@ source /usr/share/fzf/completion.zsh
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-export EDITOR=vim
-export VIMRUNTIME=/usr/share/vim/vim80
-#export VIMRUNTIME=/usr/share/nvim/runtime
+export EDITOR=nvim
+#export VIMRUNTIME=/usr/share/vim/vim80
+export VIMRUNTIME=/usr/share/nvim/runtime
 
 # Allow for starting new window w/ CWD when pressing Ctrl+Shift+t
 # originally we check for $TERM == xterm-termite  but since we changed the
@@ -113,7 +113,7 @@ int main() {
   return 0;
 }
 EOF
-  vim test.c
+  $EDITOR test.c
 }
 
 
@@ -134,7 +134,7 @@ int main() {
 return 0;
 }
 EOF
-vim test.cpp
+$EDITOR test.cpp
 }
 
 
@@ -229,6 +229,9 @@ alias i3config='$EDITOR ~/dotfiles/i3-gaps/.config/i3/config'
 
 # lists personal fav imagemagick commands
 alias imagecommands='cat ~/Dropbox/Programs/LINUX/imagemagick-commands.txt'
+
+# Edit Kitty config
+alias kittyrc='$EDITOR ~/.config/kitty/kitty.conf'
 
 # lock PC when using i3
 alias lock='. ~/scripts/i3lock.sh'
