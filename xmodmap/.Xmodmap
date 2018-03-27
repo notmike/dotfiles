@@ -2,7 +2,7 @@
 ! HHKB emulator
 
 ! Fn
-remove mod1 = Alt_R
+clear mod1
 keysym Alt_R = Mode_switch
 add mod5 = Mode_switch
 
@@ -62,3 +62,8 @@ add Mod1 = Super_L Super_R
 add Mod4 = Alt_L Alt_R
 ! make the menu button = Super_R
 keycode 135 = Super_R NoSymbol NoSymbol NoSymbol
+
+! Swap "Backspace" button & the button right below it, the "\ |" button
+keycode 22 = backslash bar NoSymbol NoSymbol
+keycode 51 = BackSpace Delete NoSymbol NoSymbol
+
