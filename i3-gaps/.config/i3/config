@@ -9,7 +9,10 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
-set $mod Mod4
+# $alt = Alt
+# $win = Win Key
+set $alt Mod1
+set $win Mod4
 
 # Disable window title bar (have to do this in order to use Gaps)
 #for_window [class="^.*"] border pixel 0
@@ -51,14 +54,14 @@ set $urgent-bg-color        #E53935
 
 # window colors
 #
-# Note that for the window decorations, the color around the child window is the background color, 
+# Note that for the window decorations, the color around the child window is the background color,
 # and the border color is only the two thin lines at the top of the window.
-# The indicator color is used for indicating where a new window will be opened. For horizontal split 
-# containers, the right border will be painted in indicator color, for vertical split containers, 
-# the bottom border. This only applies to single windows within a split container, which are otherwise 
+# The indicator color is used for indicating where a new window will be opened. For horizontal split
+# containers, the right border will be painted in indicator color, for vertical split containers,
+# the bottom border. This only applies to single windows within a split container, which are otherwise
 # indistinguishable from single windows outside of a split container.
 #
-#                       border              background         text                 indicator           
+#                       border              background         text                 indicator
 client.focused          $border            $border            $text-color           $border
 client.focused_inactive $inactive-bg-color $inactive-bg-color $inactive-text-color  $inactive-bg-color
 client.unfocused        $edge-color 	   $inactive-bg-color $inactive-text-color  $inactive-bg-color
@@ -67,7 +70,7 @@ client.placeholder      $edge-color        $bg-color          $text-color       
 client.background       #ffffff
 
 # Program Menu Launcher
-bindsym $mod+d exec --no-startup-id "~/scripts/i3/rofi.sh"
+bindsym $win+d exec --no-startup-id "~/scripts/i3/rofi.sh"
 
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -76,68 +79,71 @@ bindsym $mod+d exec --no-startup-id "~/scripts/i3/rofi.sh"
 # X core fonts rendering does not support right-to-left and this being a bitmap
 # font, it doesn’t scale on retina/hidpi displays.
 
-# Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
+# Use Mouse+$win to drag floating windows to their wanted position
+floating_modifier $win
+
+# Custom Tricks
+bindsym $win+y fullscreen disable; floating enable; resize set 500 350; sticky enable; move window to position 1045 525
 
 # start a terminal
-bindsym $mod+Return exec termite
+bindsym $win+Return exec termite
 
 # kill focused window
-bindsym $mod+Shift+q kill
+bindsym $win+q kill
 
 
 # change focus
-bindsym $mod+h focus left
-bindsym $mod+j focus down
-bindsym $mod+k focus up
-bindsym $mod+l focus right
+bindsym $win+h focus left
+bindsym $win+j focus down
+bindsym $win+k focus up
+bindsym $win+l focus right
 
 # Alt Tab
-bindsym $mod+Tab workspace back_and_forth
+bindsym $win+Tab workspace back_and_forth
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+bindsym $win+Left focus left
+bindsym $win+Down focus down
+bindsym $win+Up focus up
+bindsym $win+Right focus right
 
 # move focused window
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
+bindsym $win+Shift+h move left
+bindsym $win+Shift+j move down
+bindsym $win+Shift+k move up
+bindsym $win+Shift+l move right
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+bindsym $win+Shift+Left move left
+bindsym $win+Shift+Down move down
+bindsym $win+Shift+Up move up
+bindsym $win+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+semicolon split h
+bindsym $win+semicolon split h
 
 # split in vertical orientation
-bindsym $mod+v split v
+bindsym $win+v split v
 
 # enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
+bindsym $win+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+bindsym $win+s layout stacking
+bindsym $win+w layout tabbed
+bindsym $win+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym $win+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+bindsym $win+space focus mode_toggle
 
 # focus the parent container
-bindsym $mod+a focus parent
+bindsym $win+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+#bindsym $win+d focus child
 
 # NAMES FOR WORKSPACES variables
 set $workspace1 "1  "
@@ -151,73 +157,73 @@ set $workspace8 "8  "
 set $workspace9 "9  "
 set $workspace10 "10  "
 
-# Switch to workspace 
+# Switch to workspace
 # Using "bindcode" you only put the keycode for the last key in the combo
-bindsym $mod+1 workspace $workspace1
-bindsym $mod+2 workspace $workspace2
-bindsym $mod+3 workspace $workspace3
-bindsym $mod+4 workspace $workspace4
-bindsym $mod+5 workspace $workspace5
-bindsym $mod+6 workspace $workspace6
-bindsym $mod+7 workspace $workspace7
-bindsym $mod+8 workspace $workspace8
-bindsym $mod+9 workspace $workspace9
-bindsym $mod+0 workspace $workspace10
+bindsym $win+1 workspace $workspace1
+bindsym $win+2 workspace $workspace2
+bindsym $win+3 workspace $workspace3
+bindsym $win+4 workspace $workspace4
+bindsym $win+5 workspace $workspace5
+bindsym $win+6 workspace $workspace6
+bindsym $win+7 workspace $workspace7
+bindsym $win+8 workspace $workspace8
+bindsym $win+9 workspace $workspace9
+bindsym $win+0 workspace $workspace10
 # Cntrl+Alt+Shift+KP_1
-bindcode Control+Mod1+Shift+87 workspace $workspace1
+bindcode Control+$alt+Shift+87 workspace $workspace1
 # Cntrl+Alt+Shift+KP_2
-bindcode Control+Mod1+Shift+88 workspace $workspace2
+bindcode Control+$alt+Shift+88 workspace $workspace2
 # Cntrl+Alt+Shift+KP_3
-bindcode Control+Mod1+Shift+89 workspace $workspace3
+bindcode Control+$alt+Shift+89 workspace $workspace3
 # Cntrl+Alt+Shift+KP_4
-bindcode Control+Mod1+Shift+83 workspace $workspace4
+bindcode Control+$alt+Shift+83 workspace $workspace4
 # Cntrl+Alt+Shift+KP_5
-bindcode Control+Mod1+Shift+84 workspace $workspace5
+bindcode Control+$alt+Shift+84 workspace $workspace5
 # Cntrl+Alt+Shift+KP_6
-bindcode Control+Mod1+Shift+85 workspace $workspace6
+bindcode Control+$alt+Shift+85 workspace $workspace6
 # Cntrl+Alt+Shift+KP_7
-bindcode Control+Mod1+Shift+79 workspace $workspace7
+bindcode Control+$alt+Shift+79 workspace $workspace7
 # Cntrl+Alt+Shift+KP_8
-bindcode Control+Mod1+Shift+80 workspace $workspace8
+bindcode Control+$alt+Shift+80 workspace $workspace8
 # Cntrl+Alt+Shift+KP_9
-bindcode Control+Mod1+Shift+81 workspace $workspace9
+bindcode Control+$alt+Shift+81 workspace $workspace9
 # Cntrl+Alt+Shift+KP_0
-bindcode Control+Mod1+Shift+90 workspace $workspace10
+bindcode Control+$alt+Shift+90 workspace $workspace10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace $workspace1
-bindsym $mod+Shift+2 move container to workspace $workspace2  
-bindsym $mod+Shift+3 move container to workspace $workspace3
-bindsym $mod+Shift+4 move container to workspace $workspace4
-bindsym $mod+Shift+5 move container to workspace $workspace5
-bindsym $mod+Shift+6 move container to workspace $workspace6
-bindsym $mod+Shift+7 move container to workspace $workspace7
-bindsym $mod+Shift+8 move container to workspace $workspace8
-bindsym $mod+Shift+9 move container to workspace $workspace9
-bindsym $mod+Shift+0 move container to workspace $workspace10
+bindsym $win+Shift+1 move container to workspace $workspace1
+bindsym $win+Shift+2 move container to workspace $workspace2
+bindsym $win+Shift+3 move container to workspace $workspace3
+bindsym $win+Shift+4 move container to workspace $workspace4
+bindsym $win+Shift+5 move container to workspace $workspace5
+bindsym $win+Shift+6 move container to workspace $workspace6
+bindsym $win+Shift+7 move container to workspace $workspace7
+bindsym $win+Shift+8 move container to workspace $workspace8
+bindsym $win+Shift+9 move container to workspace $workspace9
+bindsym $win+Shift+0 move container to workspace $workspace10
 #
-bindcode $mod+Shift+87 move container to workspace $workspace1
-bindcode $mod+Shift+88 move container to workspace $workspace2
-bindcode $mod+Shift+89 move container to workspace $workspace3
-bindcode $mod+Shift+83 move container to workspace $workspace4
-bindcode $mod+Shift+84 move container to workspace $workspace5
-bindcode $mod+Shift+85 move container to workspace $workspace6
-bindcode $mod+Shift+79 move container to workspace $workspace7
-bindcode $mod+Shift+80 move container to workspace $workspace8
-bindcode $mod+Shift+81 move container to workspace $workspace9
-bindcode $mod+Shift+90 move container to workspace $workspace10
+bindcode $win+Shift+87 move container to workspace $workspace1
+bindcode $win+Shift+88 move container to workspace $workspace2
+bindcode $win+Shift+89 move container to workspace $workspace3
+bindcode $win+Shift+83 move container to workspace $workspace4
+bindcode $win+Shift+84 move container to workspace $workspace5
+bindcode $win+Shift+85 move container to workspace $workspace6
+bindcode $win+Shift+79 move container to workspace $workspace7
+bindcode $win+Shift+80 move container to workspace $workspace8
+bindcode $win+Shift+81 move container to workspace $workspace9
+bindcode $win+Shift+90 move container to workspace $workspace10
 
-# cntrl+alt+l
+# cntrl+alt+l   or    win + ]
 # move through workspaces (to the right)
-bindcode Control+Mod1+43 workspace prev
-# cntrl+alt+h
+bindsym $win+bracketleft workspace prev
+# cntrl+alt+h   or    win + [
 # move through workspaces (to the left)
-bindcode Control+Mod1+46 workspace next
+bindsym $win+bracketright workspace next
 #|next_on_output|prev_on_output
 
 
 # Program Workspaces
-assign [class="(?)Steam"] $workspace7 
+assign [class="(?)Steam"] $workspace7
 assign [instance="spotify"] $workspace10
 assign [class="Pavucontrol"] $workspace10
 
@@ -226,14 +232,14 @@ set $floating_windows "^(Steam|Wine|Yad|Simplescreenrecorder)$"
 for_window [class=$floating_windows] floating enable
 
 # reload the configuration file
-bindsym $mod+Shift+c reload
+bindsym $win+Shift+c reload
 
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
+bindsym $win+Shift+r restart
 
 # Power menu
 set $sysmenu   "  [r]estart - [l]ogout - re[b]oot - po[w]eroff  "
-bindsym $mod+Shift+e      mode $sysmenu
+bindsym $win+Shift+e      mode $sysmenu
 
 mode $sysmenu {
     bindsym r         restart
@@ -245,7 +251,7 @@ mode $sysmenu {
 }
 
 # resize window
-bindsym $mod+r mode "  "
+bindsym $win+r mode "  "
 
 mode "  " {
      bindsym h resize shrink width 5 px or 5 ppt
@@ -253,7 +259,7 @@ mode "  " {
      bindsym j resize shrink height 5 px or 5 ppt
      bindsym l resize grow width 5 px or 5 ppt
      bindsym Left resize shrink width 5 px or 5 ppt
-     bindsym Down resize grow height 5 px or 5 ppt 
+     bindsym Down resize grow height 5 px or 5 ppt
      bindsym Up resize shrink height 5 px or 5 ppt
      bindsym Right resize grow width 5 px or 5 ppt
      bindsym Return mode "default"
@@ -265,45 +271,45 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 10
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10
 
 # Volume & Media Bindings
-  bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%  
-  bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%  
+  bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+  bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
   bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
   # bindsym XF86AudioPlay exec playerctl play-pause
   # bindsym XF86AudioNext exec playerctl next
   # bindsym XF86AudioPrev exec playerctl previous
 
-#bindcode Control+Mod1+Shift+20 exec --no-startup-id pulseaudio-ctl down
-# cntrl+alt+(shift)+- 
+#bindcode Control+$alt+Shift+20 exec --no-startup-id pulseaudio-ctl down
+# cntrl+alt+(shift)+-
 # when using "shift" you adjust the bluetooth volume
-bindcode Control+Mod1+20 exec --no-startup-id pactl set-sink-volume alsa_output.pci-0000_00_1b.0.analog-stereo -5%
-bindcode Control+Mod1+Shift+20 exec --no-startup-id pactl set-sink-volume bluez_sink.44_5E_F3_AB_67_A0.a2dp_sink -5% 
-#bindcode Control+Mod1+Shift+21 exec --no-startup-id pulseaudio-ctl up
+bindcode Control+$win+20 exec --no-startup-id pactl set-sink-volume alsa_output.pci-0000_00_1b.0.analog-stereo -5%
+bindcode Control+$win+Shift+20 exec --no-startup-id pactl set-sink-volume bluez_sink.44_5E_F3_AB_67_A0.a2dp_sink -5%
+#bindcode Control+$win+Shift+21 exec --no-startup-id pulseaudio-ctl up
 # cntrl+alt+(shift)++
 # when using "shift" you adjust the bluetooth volume
-bindcode Control+Mod1+21 exec --no-startup-id pactl set-sink-volume alsa_output.pci-0000_00_1b.0.analog-stereo +5%
-bindcode Control+Mod1+Shift+21 exec --no-startup-id pactl set-sink-volume bluez_sink.44_5E_F3_AB_67_A0.a2dp_sink +5%
+bindcode Control+$win+21 exec --no-startup-id pactl set-sink-volume alsa_output.pci-0000_00_1b.0.analog-stereo +5%
+bindcode Control+$win+Shift+21 exec --no-startup-id pactl set-sink-volume bluez_sink.44_5E_F3_AB_67_A0.a2dp_sink +5%
 
-#bindcode Control+Mod1+Shift+19 exec --no-startup-id pulseaudio-ctl mute
+#bindcode Control+$alt+Shift+19 exec --no-startup-id pulseaudio-ctl mute
 # cntrl+alt+(shift)+0
 # when using "shift" you adjust the bluetooth volume
-bindcode Control+Mod1+19 exec --no-startup-id pactl set-sink-mute alsa_output.pci-0000_00_1b.0.analog-stereo toggle
-bindcode Control+Mod1+Shift+19 exec --no-startup-id pactl set-sink-mute bluez_sink.44_5E_F3_AB_67_A0.a2dp_sink toggle
+bindcode Control+$win+19 exec --no-startup-id pactl set-sink-mute alsa_output.pci-0000_00_1b.0.analog-stereo toggle
+bindcode Control+$win+Shift+19 exec --no-startup-id pactl set-sink-mute bluez_sink.44_5E_F3_AB_67_A0.a2dp_sink toggle
 
 # cntrl+alt+shift+z
-bindcode Control+Mod1+Shift+52 exec playerctl play-pause
+bindcode Control+$alt+Shift+52 exec playerctl play-pause
 # cntrl+win+alt+shift+z (for ncmcpp)
-# bindcode Control+$mod+Mod1+Shift+52 exec mpc toggle
+# bindcode Control+$win+$alt+Shift+52 exec mpc toggle
 # cntrl+alt+shift+s
-bindcode Control+Mod1+Shift+39 exec playerctl next
+bindcode Control+$alt+Shift+39 exec playerctl next
 # cntrl+win+alt+shift+s (for ncmcpp)
-#bindcode Control+$mod+Mod1+Shift+39 exec mpc next
+#bindcode Control+$win+$alt+Shift+39 exec mpc next
 # cntrl+alt+shift+a
-bindcode Control+Mod1+Shift+38 exec playerctl previous
+bindcode Control+$alt+Shift+38 exec playerctl previous
 # cntrl+win+alt+shift+a (for ncmcpp)
-#bindcode Control+$mod+Mod1+Shift+38 exec mpc prev
+#bindcode Control+$win+$alt+Shift+38 exec mpc prev
 
 # If not using udiskie or someother automount tool, can use this binding
-#bindsym $mod+m exec --no-startup-id "udisksctl mount -b /dev/sdb1 && gnome-terminal -x ranger /media/$USER/"
+#bindsym $win+m exec --no-startup-id "udisksctl mount -b /dev/sdb1 && gnome-terminal -x ranger /media/$USER/"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -318,7 +324,7 @@ bindcode Control+Mod1+Shift+38 exec playerctl previous
 bar {
      status_command i3blocks
      position top
-     height 21    
+     height 21
      workspace_buttons yes
      strip_workspace_numbers yes
      separator_symbol " "
@@ -326,7 +332,7 @@ bar {
      bindsym button4 nop
     # COMMENT OUT "tray_output none/primary" to get tray notifications back !
     #tray_output none
-    # tray_padding 0  
+    # tray_padding 0
 colors {
      separator #1d2021
      background #1d2021
@@ -339,28 +345,19 @@ colors {
 }
 
 # Screenshots
-bindsym Print exec scrot '%m.%d.%Y-$wx$h-%T.png' -e 'mv $f `echo ~/Pictures/Screenshots/$f | tr ':' '.'` '
+bindsym $win+Print exec scrot '%m.%d.%Y-$wx$h-%T.png' -e 'mv $f `echo ~/Pictures/Screenshots/$f | tr ':' '.'` '
 bindsym Shift+Print exec scrot -u '%m.%d.%Y-$wx$h-%T.png' -e 'mv $f `echo ~/Pictures/Screenshots/$f | tr ':' '.'` '
-bindsym $mod+Print --release exec --no-startup-id "maim ~/Pictures/Screenshots/$(date +%m.%d.%Y--%H.%M.%S).png -s -c 1,0,0,0.6"
+bindsym Print --release exec --no-startup-id "maim ~/Pictures/Screenshots/$(date +%m.%d.%Y--%H.%M.%S).png -s -c 1,0,0,0.6"
 
 # lock screen (w/out suspend)
-bindsym $mod+Shift+x exec ~/scripts/i3lock.sh
+bindsym $win+Shift+x exec ~/scripts/i3lock.sh
 
 # connect my Bluetooth headphones
 # cntrl+alt+b
-bindcode Control+Mod1+56 exec ~/scripts/connect-bluetooth-headset.sh
+bindcode Control+$win+56 exec ~/scripts/connect-bluetooth-headset.sh
 # disconnect my Bluetooth headphones
 # cntrl+alt+shift+b
-bindcode Control+Mod1+Shift+56 exec ~/scripts/disconnect-bluetooth-headset.sh
-
-#remmina shortcuts
-#cntrl+alt+shift+m to launch my work login 
-bindcode Control+Mod1+Shift+58 exec remmina -c ~/.remmina/1428266238982.remmina
-#cntrl+alt+shift+i to launch the main work server login 
-bindcode Control+Mod1+Shift+31 exec remmina -c ~/.remmina/1437506957152.remmina
-
-# Ranger Shortcut
-bindcode Control+Mod1+38 exec termite -e ranger
+bindcode Control+$win+Shift+56 exec ~/scripts/disconnect-bluetooth-headset.sh
 
 
 #######################################################
@@ -384,7 +381,7 @@ exec --no-startup-id guake
 exec --no-startup-id clipit
 exec --no-startup-id launchy
 #exec deluge
-exec --no-startup-id dunst 
+exec --no-startup-id dunst
 exec --no-startup-id nm-applet
 exec --no-startup-id xss-lock -- i3lock -n -i $HOME/Pictures/lockscreen-laptop.png &
 exec --no-startup-id pulseaudio --start
