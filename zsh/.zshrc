@@ -50,7 +50,7 @@ HIST_STAMPS="mm/dd/yyyy"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 
-plugins=(per-directory-history git sublime vi-mode systemd archlinux common-aliases emoji extract torrent colorize fast-syntax-highlighting)
+plugins=(per-directory-history git sublime systemd archlinux common-aliases emoji extract torrent colorize fast-syntax-highlighting)
 # AutoSuggestions Plugin -- https://github.com/zsh-users/zsh-autosuggestions#configuration
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
@@ -103,7 +103,7 @@ throwaway_c() {
   cat > test.c <<"EOF"
 #include <stdio.h>
 #include <stdlib.h>
-          
+
 int main() {
 
 return 0;
@@ -203,7 +203,7 @@ alias drop='cd ~/Dropbox'
 #espresso settings that i need for correct SoP logic minimizing
 #alias espresso='espresso -Dso -o eqntott'
 
-#espresso settings that i need for correct PoS logic minimizing 
+#espresso settings that i need for correct PoS logic minimizing
 # just need to flip all the output bits of the orig file, and flip NOTs after also
 #alias espresso='espresso -o eqntott'
 
@@ -245,7 +245,7 @@ alias myip='dig +short myip.opendns.com @resolver1.opendns.com'
 alias nmapcommands='drop && cat ./Programs/LINUX/nmap-commands.txt'
 
 # nvim config shortcut
-alias nvimrc='nvim ~/.config/nvim/init.vim' 
+alias nvimrc='nvim ~/.config/nvim/init.vim'
 
 #Runs the last command with sudo.
 alias please='sudo $(history -p !!)'
@@ -277,7 +277,7 @@ alias python2=/usr/bin/python2.7
 # shortcut for reboot
 alias reboot='sudo reboot'
 
-# remove 
+# remove
 alias remove='sudo pacman -Rs'
 
 # remove colons from filenames (and replace w/ underscores)
@@ -312,6 +312,18 @@ alias speedtest='speedtest-cli'
 # For opening Tor in background subshell
 alias tor='(/usr/bin/tor-browser-en &)'
 
+# Disable Touchpad
+alias touchoff='synclient TouchpadOff=1'
+
+# Enable Touchpad
+alias touchon='synclient TouchpadOff=0'
+
+# Disable screen saver / blanking
+alias screensaver-off='xset s off'
+
+# Re-enable screensaver after 10 minutes of inactivity
+alias screensaver-on='xset s 600 600'
+
 # vim.rc file
 alias vimrc='vim ~/.vimrc'
 
@@ -333,5 +345,5 @@ alias zshreload="source ~/.zshrc"
 # so the terminal app "ranger" can open new terminal in last directory
 cd "$AUTOCD"
 
-# needed FZF plugin for Vim 
+# needed FZF plugin for Vim
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
