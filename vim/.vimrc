@@ -12,11 +12,9 @@
 "
 " Options - Theme {{{
 " -----------------------------------------------------------------------------
-set background=dark
-let base16colorspace=256
-let g:gruvbox_italic=1
 colorscheme gruvbox
-let g:gruvbox_contrast_dark="soft"
+
+set termguicolors
 
 " Allow color schemes to do bright colors without forcing bold.
 if &t_Co == 8 && $TERM !~# '^linux'
@@ -402,6 +400,14 @@ if exists('plugs') && has_key(plugs, 'fzf.vim')
 endif
 
 "}}}
+" Plugin Settings - Gruvbox settings {{{
+" -----------------------------------------------------------------------------
+set background=dark
+let base16colorspace=256
+let g:gruvbox_italic=1
+let g:gruvbox_contrast_dark="soft"
+
+""}}}
 " Plugin Settings - latex-box {{{
 " -----------------------------------------------------------------------------
 

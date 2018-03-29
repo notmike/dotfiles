@@ -65,7 +65,7 @@ setopt HIST_IGNORE_DUPS
 export RANGER_LOAD_DEFAULT_RC=false
 
 # SSH works better
-# export TERM=xterm-256color
+export TERM=xterm-256color
 
 export PATH=$HOME/bin:/usr/local/bin:/opt/altera/quartus/bin:/opt/altera/modelsim_ase/bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -77,6 +77,7 @@ source /usr/share/fzf/completion.zsh
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
+export VISUAL=nvim
 export EDITOR=nvim
 #export VIMRUNTIME=/usr/share/vim/vim80
 export VIMRUNTIME=/usr/share/nvim/runtime
