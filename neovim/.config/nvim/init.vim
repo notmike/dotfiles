@@ -57,12 +57,14 @@ vnoremap <CR> }
 set splitbelow             " New splits below, not above
 set splitright             " New splits on the right, not left
 
-" SOURCE: https://github.com/Parth/dotfiles/blob/master/vim/vimrc.vim
-" Return to the same line you left off at
+" Trim Whitespace On Save & Return to last line when opening file
 augroup line_return
   au!
+  " Trim whitespace onsave
+  au BufWritePre * %s/\s\+$//e
+  " Jump to last know cursor position if not the 1st line
   au BufReadPost *
-    \ if line("'\"") > 0 && line("'\"") <= line("$") |
+    \ if line("'\"") > 1 && line("'\"") <= line("$") |
     \	execute 'normal! g`"zvzz' |
     \ endif
 augroup END
