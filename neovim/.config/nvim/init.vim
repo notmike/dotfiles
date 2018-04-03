@@ -29,6 +29,7 @@ set cursorline             " Highlights current line
 set colorcolumn=80         " Show right column in a highlighted colour.
 set history=10000          " Number of commands and search patterns to remember.
 set number                 " Precede each line with its line number.
+set relativenumber         " Show other lines distance from current line
 set showmatch              " Show matching brackets.
 set title                  " Set window title to 'filename [+=-] (path) - NVIM'.
 
@@ -93,6 +94,18 @@ autocmd FileType js,jsx,json,less,ruby,sass,scss,sql,vim,zsh setlocal shiftwidth
 
 set ignorecase             " Ignore case of normal letters in a pattern.
 set smartcase              " Override ignorecase if pattern contains upper case.
+
+" Search for selected text, forwards or backwards.
+vnoremap <silent> * :<C-U>
+  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+  \gvy/<C-R><C-R>=substitute(
+  \escape(@", '/\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+  \gV:call setreg('"', old_reg, old_regtype)<CR>
+vnoremap <silent> # :<C-U>
+  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+  \gvy?<C-R><C-R>=substitute(
+  \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+  \gV:call setreg('"', old_reg, old_regtype)<CR>
 
 "}}}
 " Options - Python {{{
@@ -221,6 +234,7 @@ Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown'] }
 
+Plug 'tpope/vim-repeat'                 " Add .(dot) functionality to plugin motions
 Plug 'tpope/vim-surround'           	  " Quoting/parenthesizing made simple.
 call plug#end()
 
