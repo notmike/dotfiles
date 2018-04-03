@@ -203,6 +203,10 @@ fun! ChangeReg() abort
 endfun
 nnoremap cr :call ChangeReg()<cr>
 
+" edit neovim config file
+nnoremap <leader>ev :split $MYVIMRC<cr>
+" source neovim config file after editing
+nnoremap <leader>v :source $MYVIMRC<cr>
 "}}}
 " Plugins Install {{{
 " ----------------------------------------------------------------------------
