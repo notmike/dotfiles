@@ -226,7 +226,7 @@ alias gsup='hping3 -c 4 -V -S -p 80 162.243.210.220'
 alias home='cd ~'
 
 #i3 config shortcut
-alias i3config='$EDITOR ~/dotfiles/i3-gaps/.config/i3/config'
+alias i3config='$EDITOR ~/.config/i3/config'
 
 # lists personal fav imagemagick commands
 alias imagecommands='cat ~/Dropbox/Programs/LINUX/imagemagick-commands.txt'
@@ -307,13 +307,16 @@ alias shutdown='shutdown -h now'
 alias speedtest='speedtest-cli'
 
 # edit sxhkdrc key-bindings config
-alias sxrc='$EDITOR $HOME/dotfiles/bspwm/.config/sxhkd/sxhkdrc'
+alias sxrc='$EDITOR $HOME/.config/sxhkd/sxhkdrc'
+
+# edit Termite config file
+alias termiteconfig='$EDITOR $HOME/.config/termite/config'
 
 # For opening Tor in background subshell
 alias tor='(/usr/bin/tor-browser-en &)'
 
 # edit vim rc file quickly
-alias vimrc='$EDITOR ~/dotfiles/vim/.vimrc'
+alias vimrc='$EDITOR ~/.vimrc'
 
 # visual arm emulator
 alias visual='/usr/local/bin/visual/VisUAL.sh'
