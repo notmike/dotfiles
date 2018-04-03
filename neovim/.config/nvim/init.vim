@@ -233,6 +233,7 @@ Plug 'vim-airline/vim-airline-themes'   " Themes for Airline status bar
 Plug 'tpope/vim-commentary'             " Commenting made simple.
 Plug 'junegunn/vim-easy-align'	    	  " Text alignment by characters.
 Plug 'easymotion/vim-easymotion'        " navigate documents reallllly fast!
+Plug 'tpope/vim-fugitive'               " Track Git changes
 Plug 'airblade/vim-gitgutter'           " Shows git changes in file
 
 " Code Formatter (JS·CSS·SCSS·Less·JSX·GraphQL·JSON·Markdown
