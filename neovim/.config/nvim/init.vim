@@ -39,6 +39,7 @@ match ErrorMsg '\s\+$'
 "}}}
 " Options - Behavior {{{
 " -----------------------------------------------------------------------------
+set mouse=a                " Enable use of the mouse in all modes.
 set wrap linebreak          " wrap lines by default & allow easy navigation
 set showbreak=" "
 vmap j gj
@@ -82,13 +83,13 @@ set undodir=~/.vim-local/undofiles/
 " -----------------------------------------------------------------------------
 
 " Default indent and tab options.
-set expandtab              " Replace tabs with spaces in Insert mode.
 set shiftwidth=4           " Spaces for each (auto)indent.
 set softtabstop=4          " Spaces for tabs when inserting <Tab> or <BS>.
 set tabstop=4              " Spaces that a <Tab> in file counts for.
+set expandtab              " Replace tabs with spaces in Insert mode.
 
 " Indent and tab options for specific file types.
-autocmd FileType js,jsx,json,less,ruby,sass,scss,sql,vim,zsh setlocal shiftwidth=2 softtabstop=2 tabstop=2
+autocmd FileType js,jsx,json,less,ruby,sass,scss,sql,vim,yml,zsh setlocal shiftwidth=2 softtabstop=2 tabstop=2
 
 "}}}
 " Options - Searching {{{
@@ -97,7 +98,10 @@ autocmd FileType js,jsx,json,less,ruby,sass,scss,sql,vim,zsh setlocal shiftwidth
 set ignorecase             " Ignore case of normal letters in a pattern.
 set smartcase              " Override ignorecase if pattern contains upper case.
 
-" Search for selected text, forwards or backwards.
+" Search and Replace
+nnoremap <leader>h :%s//g<Left><Left>
+
+" Search for highlighted text, forwards or backwards.
 vnoremap <silent> * :<C-U>
   \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
   \gvy/<C-R><C-R>=substitute(
@@ -142,10 +146,6 @@ nnoremap U vawUew
 " Unmap the arrow keys, now UP & DOWN will move lines up & down
 no <down> ddp
 no <up> ddkP
-
-" Always focus on splited window.
-nnoremap <C-w>s <C-w>s<C-w>w
-nnoremap <C-w>v <C-w>v<C-w>w
 
 " copy and paste
 set clipboard+=unnamedplus
@@ -210,6 +210,14 @@ nnoremap <leader>ev :split $MYVIMRC<cr>
 " source neovim config file after editing
 nnoremap <leader>v :source $MYVIMRC<cr>
 "}}}
+" Mappings - Toggle Options {{{
+" -----------------------------------------------------------------------------
+
+" (mnemonic: 'co' = change option).
+nnoremap cos :set spell!<CR>
+nnoremap cow :set wrap!<CR>
+
+"}}}
 " Plugins Install {{{
 " ----------------------------------------------------------------------------
 
@@ -227,6 +235,7 @@ Plug 'junegunn/fzf.vim'
 
 Plug 'neomake/neomake'                  " Asynchronous syntax checking with make.
 Plug 'scrooloose/nerdtree'	            " File Manager
+Plug 'Xuyuanp/nerdtree-git-plugin'      " Shows git status of files in NERDtree menu
 Plug 'DougBeney/pickachu'               " Color / Date / File Picker
 Plug 'vim-airline/vim-airline'          " Pretty Statusline
 Plug 'vim-airline/vim-airline-themes'   " Themes for Airline status bar
@@ -243,6 +252,8 @@ Plug 'prettier/vim-prettier', {
 
 Plug 'tpope/vim-repeat'                 " Add .(dot) functionality to plugin motions
 Plug 'tpope/vim-surround'           	  " Quoting/parenthesizing made simple.
+" Always load this plugin last per developer
+Plug 'ryanoasis/vim-devicons'           " Cool icons in NERDtree menu for different filetypes
 call plug#end()
 
 "}}}
@@ -319,7 +330,19 @@ let NERDTreeQuitOnOpen = 1
 let NERDTreeAutoDeleteBuffer = 1
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
-
+let NERDTreeShowHidden=1
+let g:NERDTreeIndicatorMapCustom = {
+		\ "Modified"  : "✹",
+		\ "Staged"	  : "✚",
+		\ "Untracked" : "✭",
+		\ "Renamed"   : "➜",
+		\ "Unmerged"  : "═",
+		\ "Deleted"   : "✖",
+		\ "Dirty"	    : "✗",
+		\ "Clean"	    : "✔︎",
+		\ 'Ignored'   : '☒',
+		\ "Unknown"   : "?"
+		\ }
 "}}}
 " Plugin Settings - Prettier {{{
 " -----------------------------------------------------------------------------

@@ -3,7 +3,6 @@ ranger/.config/ranger/history
 ranger/.config/ranger/bookmarks
 ranger/.config/ranger/colorschemes/
 ranger/.config/ranger/tagged
-vim/.vim/plugged/
 mpd/.config/mpd/log
 mpd/.config/mpd/mpd.db
 mpd/.config/mpd/mpd.pid
@@ -14,6 +13,8 @@ ncmpcpp/.ncmpcpp/error.log
 ncmpcpp/.ncmpcpp/patterns.list
 neovim/.config/nvim/plugged/
 neovim/.config/nvim/.init.vim-rplugin~
-zsh/.oh-my-zsh/cache/
 polybar/.config/polybar/ip.sh
 vim/.vim-local/undofiles/*
+vim/.vim/.netrwhist
+vim/.vim/plugged/
+zsh/.oh-my-zsh/cache/

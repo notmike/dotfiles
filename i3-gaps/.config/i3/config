@@ -266,7 +266,7 @@ exec --no-startup-id nm-applet
 ## Bluetooth tray applet
 exec --no-startup-id blueman-applet
 ## Start redshift w/ rough location
-exec --no-startup-id redshift -r -l 40.742:-73.769
+exec --no-startup-id redshift -l 40.742:-73.769 -t 5000:1800
 ## Clipboard manager
 exec --no-startup-id clipit
 ## Favorite calculator
