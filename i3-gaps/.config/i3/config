@@ -266,7 +266,7 @@ exec --no-startup-id nm-applet
 ## Bluetooth tray applet
 exec --no-startup-id blueman-applet
 ## Start redshift w/ rough location
-exec --no-startup-id redshift -l 40.742:-73.769 -t 5000:1800
+exec --no-startup-id redshift -l 40.742:-73.769 -t 4500:2200
 ## Clipboard manager
 exec --no-startup-id clipit
 ## Favorite calculator
@@ -289,5 +289,3 @@ exec_always --no-startup-id compton
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 ## Nvidia command to fix weird tearing issues when watching video
 exec --no-startup-id nvidia-settings --assign CurrentMetaMode="nvidia-auto-select +0+0 { ForceFullCompositionPipeline = On }"
-## Load Firefox profile to memory for faster response (and to load profile)
-exec_always --no-startup-id firefox-sync &

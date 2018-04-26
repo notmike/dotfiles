@@ -246,9 +246,10 @@ Plug 'tpope/vim-fugitive'               " Track Git changes
 Plug 'airblade/vim-gitgutter'           " Shows git changes in file
 
 " Code Formatter (JS·CSS·SCSS·Less·JSX·GraphQL·JSON·Markdown
+" post install (yarn install | npm install) then load plugin only for editing supported files
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
-  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown'] }
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue'] }
 
 Plug 'tpope/vim-repeat'                 " Add .(dot) functionality to plugin motions
 Plug 'tpope/vim-surround'           	  " Quoting/parenthesizing made simple.
@@ -344,13 +345,6 @@ let g:NERDTreeIndicatorMapCustom = {
 		\ "Unknown"   : "?"
 		\ }
 "}}}
-" Plugin Settings - Prettier {{{
-" -----------------------------------------------------------------------------
-
-"let g:prettier#exec_cmd_async = 1
-let g:prettier#autoformat = 0
-
-"}}}
 " Plugin Settings - Pickachu {{{
 " -----------------------------------------------------------------------------
 nnoremap <A-c> :Pickachu<CR>
@@ -359,9 +353,12 @@ inoremap <A-c> :Pickachu<CR>
 "}}}
 " Plugin Settings - Prettier {{{
 " -----------------------------------------------------------------------------
-
-"let g:prettier#exec_cmd_async = 1
+" The command :Prettier by default is synchronous but can also be forced async
+let g:prettier#exec_cmd_async = 1
+" Disable auto formatting of files that have "@format" tag
 let g:prettier#autoformat = 0
+" Control+P calls :Prettier instead of default <Leader>P since taken by fzf
+nmap <C-P> <Plug>(Prettier)
 
 "}}}
 " Plugin Settings - airline {{{

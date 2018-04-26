@@ -244,7 +244,7 @@ alias mac='macchanger -s enp4s0'
 alias myip='dig +short myip.opendns.com @resolver1.opendns.com'
 
 # lists personal fav nmap commands
-alias nmapcommands='drop && cat ./Programs/LINUX/nmap-commands.txt'
+alias nmapcommands='cat ~/Dropbox/LINUX/nmap-commands.txt'
 
 # nvim config shortcut
 alias nvimrc='$EDITOR ~/.config/nvim/init.vim'
