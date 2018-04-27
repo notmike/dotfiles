@@ -306,8 +306,8 @@ alias shutdown='shutdown -h now'
 # check internet speeds!
 alias speedtest='speedtest-cli'
 
-# # fix broken spotify
-# alias spotify='nohup spotify --force-device-scale-factor=1.0000001 &>/dev/null &'
+# edit termite config
+alias termiteconfig='$EDITOR ~/.config/termite/config'
 
 # For opening Tor in background subshell
 alias tor='(/usr/bin/tor-browser-en &)'

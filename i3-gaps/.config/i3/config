@@ -89,7 +89,7 @@ bindsym $win+y fullscreen disable; floating enable; resize set 500 350; sticky e
 bindsym $win+Return exec termite
 
 # kill focused window
-bindsym $win+q kill
+bindsym $win+Shift+q kill
 
 
 # change focus
