@@ -62,7 +62,7 @@ set splitright             " New splits on the right, not left
 augroup line_return
   au!
   " Trim whitespace onsave
-  au BufWritePre * %s/\s\+$//e
+  " au BufWritePre * %s/\s\+$//e
   " Jump to last know cursor position if not the 1st line
   au BufReadPost *
     \ if line("'\"") > 1 && line("'\"") <= line("$") |

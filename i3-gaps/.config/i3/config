@@ -66,7 +66,7 @@ client.background       #ffffff
 
 # Custom Tricks
 # Picture-in-Picture that follows you
-bindsym $mod+y fullscreen disable; floating enable; resize set 600 450; sticky enable; move window to position 1940 960
+bindsym $mod+y fullscreen disable; floating enable; resize set 700 400; sticky enable; move window to position 1800 960
 
 # Scratchpad
 #

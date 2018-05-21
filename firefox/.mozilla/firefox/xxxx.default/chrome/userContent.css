@@ -7,3 +7,9 @@ input:not(.urlbar-input):not(.textbox-input):not(.form-control):not([type='check
 #downloads-indicator-counter {
     color: white;
 }
+
+/* hide the "Tree Style Tab" header at the top of the sidebar (only Tree Style Tab sidebar) */
+#sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] #sidebar-header {
+  display: none;
+}
+

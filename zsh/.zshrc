@@ -49,7 +49,7 @@ HIST_STAMPS="mm/dd/yyyy"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(per-directory-history git sublime systemd archlinux common-aliases emoji extract torrent colorize fast-syntax-highlighting)
+plugins=(git sublime per-directory-history archlinux common-aliases emoji extract torrent colorize fast-syntax-highlighting)
 # AutoSuggestions Plugin -- https://github.com/zsh-users/zsh-autosuggestions#configuration
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
@@ -205,6 +205,9 @@ alias checknetwork='nethogs'
 # Clean all the tmp folders
 alias cleanup='bleachbit --clean system.cache system.localizations system.trash system.tmp'
 alias cleanupsu='bleachbit --clean system.cache system.localizations system.trash system.tmp'
+
+# Pipe stdout to clipboard
+alias copy='xsel -i -b'
 
 #navigate to downloads folder
 alias dl='cd ~/Downloads'
