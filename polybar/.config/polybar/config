@@ -169,6 +169,7 @@ exec = ~/dotfiles/polybar/.config/polybar/bandwidth.sh
 type = custom/script
 interval = 1
 exec = ~/dotfiles/polybar/.config/polybar/pulseaudio-simple.sh
+click-left = pulseaudio-ctl mute
 
 [module/ip]
 type = custom/script
