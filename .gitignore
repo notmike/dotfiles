@@ -12,6 +12,7 @@ ncmpcpp/.ncmpcpp/config-BAK.txt
 ncmpcpp/.ncmpcpp/error.log
 ncmpcpp/.ncmpcpp/patterns.list
 neovim/.config/nvim/plugged/
+neovim/.config/nvim/log/
 neovim/.config/nvim/.init.vim-rplugin~
 polybar/.config/polybar/ip.sh
 vim/.vim-local/undofiles/*
