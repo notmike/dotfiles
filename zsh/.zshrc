@@ -67,7 +67,7 @@ export RANGER_LOAD_DEFAULT_RC=false
 # SSH works better
 export TERM=xterm-256color
 
-export PATH=$HOME/bin:/usr/local/bin:/opt/altera/quartus/bin:/opt/altera/modelsim_ase/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -343,3 +343,9 @@ PERL_MM_OPT="INSTALL_BASE=/home/mg/perl5"; export PERL_MM_OPT;
 
 # Unbreak Pycharm in BSPWM (https://wiki.archlinux.org/index.php/Dwm#Fixing_misbehaving_Java_applications)
 export _JAVA_AWT_WM_NONREPARENTING=1
+
+# Android Studio Exports
+export ANDROID_HOME=/home/mg/Android/Sdk
+export PATH=${PATH}:${ANDROID_HOME}/tools
+export PATH=${PATH}:${ANDROID_HOME}/platform-tools
+
