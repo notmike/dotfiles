@@ -70,6 +70,9 @@ augroup line_return
     \ endif
 augroup END
 
+" Wipe all the registers!
+command! WipeReg for i in range(34,122) | silent! call setreg(nr2char(i), []) | endfor
+
 "}}}
 " Options - Compatibility {{{
 " -----------------------------------------------------------------------------
@@ -89,7 +92,7 @@ set tabstop=4              " Spaces that a <Tab> in file counts for.
 set expandtab              " Replace tabs with spaces in Insert mode.
 
 " Indent and tab options for specific file types.
-autocmd FileType js,jsx,json,less,ruby,sass,scss,sql,vim,yml,zsh setlocal shiftwidth=2 softtabstop=2 tabstop=2
+autocmd FileType javascript,javascript.jsx,json,less,ruby,sass,scss,sql,vim,yml,zsh setlocal shiftwidth=2 softtabstop=2 tabstop=2
 
 "}}}
 " Options - Searching {{{
@@ -196,7 +199,16 @@ vnoremap < <gv
 vnoremap > >gv
 
 " Run Python Files by pressing F9
-autocmd FileType python nnoremap <buffer> <F9> :!python %<CR>
+fun! RunPy() abort
+  let @m = expand("%:t")
+  call feedkeys(":10Term python \<c-r>m\<cr>", 'n')
+endfun
+
+if has('nvim')
+    nnoremap <F9> :call RunPy()<cr>
+else
+    autocmd FileType python nnoremap <buffer> <F9> :!python %<CR>
+endif
 
 " Easily edit any macro register by typing cr<register>
 fun! ChangeReg() abort
@@ -223,7 +235,9 @@ nnoremap cow :set wrap!<CR>
 
 call plug#begin('~/.config/nvim/plugged')
 Plug 'ap/vim-css-color'                 " A very fast, color name highlighter
-Plug 'Shougo/deoplete.nvim'             " Asynchronous auto completion.
+Plug 'Shougo/deoplete.nvim', {
+  \ 'do': ':UpdateRemotePlugins' }      " Asynchronous auto completion.
+Plug 'wokalski/autocomplete-flow'       " Flow autocompletion for deoplete & snippets
 Plug 'zchee/deoplete-clang'             " Clang autocomplete
 Plug 'zchee/deoplete-jedi'              " Python autocomplete
 Plug 'morhetz/gruvbox'                  " Color scheme gruvbox
@@ -234,9 +248,19 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 Plug 'neomake/neomake'                  " Asynchronous syntax checking with make.
+
+" For func argument completion
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
+
+" Better Javascript Syntax Highlighting
+Plug 'neovim/node-host', { 'do': 'npm install' }
+Plug 'billyvg/tigris.nvim', { 'do': './install.sh' }
+
 Plug 'scrooloose/nerdtree'	            " File Manager
 Plug 'Xuyuanp/nerdtree-git-plugin'      " Shows git status of files in NERDtree menu
 Plug 'DougBeney/pickachu'               " Color / Date / File Picker
+Plug 'mklabs/split-term.vim'            " Better Neovim terminal commands
 Plug 'vim-airline/vim-airline'          " Pretty Statusline
 Plug 'vim-airline/vim-airline-themes'   " Themes for Airline status bar
 Plug 'tpope/vim-commentary'             " Commenting made simple.
@@ -311,17 +335,22 @@ endif
 "}}}
 " Plugin Settings - neomake {{{
 " -----------------------------------------------------------------------------
-" Use custom configuration file with ESLint:
-" https://github.com/w0ng/dotfiles/blob/master/.eslintrc
-let g:neomake_javascript_enabled_makers = ['jsxhint', 'eslint']
-let g:neomake_javascript_eslint_maker = {
-      \ 'args': ['-c', '~/.eslintrc', '-f', 'compact'],
-      \ 'errorformat': '%E%f: line %l\, col %c\, Error - %m,' .
-      \ '%W%f: line %l\, col %c\, Warning - %m'
-      \ }
+" When writing a buffer (no delay).
+call neomake#configure#automake('w')
+"
+let g:neomake_logfile = '/home/mg/.config/nvim/log/neomake.log'
+let g:neomake_javascript_enabled_makers = ['eslint']
+let g:neomake_jsx_enabled_makers = ['eslint']
+let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 
 let g:neomake_python_enabled_makers = ['pep8']
 
+" neomake error shortcuts
+nnoremap <Leader><Space>o :lopen<CR>      " open location window
+nnoremap <Leader><Space>c :lclose<CR>     " close location window
+nnoremap <Leader><Space>, :ll<CR>         " go to current error/warning
+nnoremap <Leader><Space>n :lnext<CR>      " next error/warning
+nnoremap <Leader><Space>p :lprev<CR>      " previous error/warning
 "}}}
 " Plugin Settings - nerdtree {{{
 " -----------------------------------------------------------------------------
@@ -345,6 +374,30 @@ let g:NERDTreeIndicatorMapCustom = {
 		\ "Unknown"   : "?"
 		\ }
 "}}}
+" Plugin Settings - neosnippet {{{
+" -----------------------------------------------------------------------------
+let g:neosnippet#enable_completed_snippet = 1
+" Plugin key-mappings.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+" Note: It must be 'imap' and 'smap'.  It uses <Plug> mappings.
+"imap <expr><TAB>
+" \ pumvisible() ? "\<C-n>" :
+" \ neosnippet#expandable_or_jumpable() ?
+" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
+
+"}}}
 " Plugin Settings - Pickachu {{{
 " -----------------------------------------------------------------------------
 nnoremap <A-c> :Pickachu<CR>
@@ -358,7 +411,11 @@ let g:prettier#exec_cmd_async = 1
 " Disable auto formatting of files that have "@format" tag
 let g:prettier#autoformat = 0
 " Control+P calls :Prettier instead of default <Leader>P since taken by fzf
-nmap <C-P> <Plug>(Prettier)
+nmap <C-P> <Plug>(PrettierAsync)
+
+" single quotes over double quotes
+" Prettier default: false
+let g:prettier#config#single_quote = 'true'
 
 "}}}
 " Plugin Settings - airline {{{
@@ -381,5 +438,13 @@ let g:airline#extensions#wordcount#enabled = 1  " enable word counting
 xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
+
+"}}}
+" Plugin Settings - Tigris {{{
+" -----------------------------------------------------------------------------
+let g:tigris#enabled = 1
+" on the fly highlighting
+" let g:tigris#on_the_fly_enabled = 1
+" let g:tigris#delay = 500
 
 "}}}
