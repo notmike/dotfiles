@@ -190,6 +190,9 @@ alias autostart='gnome-session-properties'
 # For going to last directory
 alias back='cd -'
 
+# Battery Status Shortcut
+alias battery='acpi -b'
+
 # Calculator
 alias ca='python3 -ic "from math import *"'
 
