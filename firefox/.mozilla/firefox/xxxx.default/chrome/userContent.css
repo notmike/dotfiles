@@ -7,3 +7,9 @@ input:not(.urlbar-input):not(.textbox-input):not(.form-control):not([type='check
 #downloads-indicator-counter {
     color: white;
 }
+
+/* Tab bar below Navigation & Bookmarks Toolbars For best results, show Title Bar or Menu Bar */
+#TabsToolbar { display: none !important }
+#nav-bar         { /* main toolbar */      -moz-box-ordinal-group: 1 !important; border-top-width: 0 !important; }
+#PersonalToolbar { /* bookmarks toolbar */ -moz-box-ordinal-group: 2 !important; }
+/* #TabsToolbar  {  /1* tab bar *1/           -moz-box-ordinal-group: 3 !important; } */
