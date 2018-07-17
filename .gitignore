@@ -1,3 +1,4 @@
+/awesome
 /i3blocks/.config/i3blocks/iface
 /ranger/.config/ranger/history
 /ranger/.config/ranger/bookmarks
@@ -15,6 +16,9 @@
 /neovim/.config/nvim/plugged/
 /neovim/.config/nvim/.init.vim-rplugin~
 /neovim/.config/nvim/autoload/plug.vim.old
+/neovim/.config/nvim/log/neomake.log
+/polybar
+/vim/.vim-local
 /zsh/.oh-my-zsh/custom/
 __pycache__
 __init__.py
