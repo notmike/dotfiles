@@ -102,7 +102,7 @@ set ignorecase             " Ignore case of normal letters in a pattern.
 set smartcase              " Override ignorecase if pattern contains upper case.
 
 " Search and Replace
-nnoremap <leader><space>h :%s//g<Left><Left>
+nnoremap <leader><leader>h :%s//g<Left><Left>
 
 " Search for highlighted text, forwards or backwards.
 vnoremap <silent> * :<C-U>
