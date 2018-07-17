@@ -1,4 +1,4 @@
-```      
+```
 ┳━┓┏━┓┏┓┓┳━┓o┳  ┳━┓┏━┓
 ┃ ┃┃ ┃ ┃ ┣━ ┃┃  ┣━ ┏━┛
 ┇━┛┛━┛ ┇ ┇  ┇┇━┛┻━┛┗━┛
@@ -10,7 +10,7 @@ Just a collection of my personal dotfiles
  compton        > minimal composite config for opacity
  conky          > desktop system info display
  dunst          > notification daemon
- i3-gaps        > minimal window manager 
+ i3-gaps        > minimal window manager
  i3-blocks      > taskbar system info for i3
  mpd            > music player daemon setup
  ncmpcpp        > ncurses mpc++ ui/color settings
@@ -21,7 +21,7 @@ Just a collection of my personal dotfiles
  urxvt          > sourcerer terminal colors and keyboard settings
  vim            > wizard status bar and sourcerer color scheme
  wallpaper      > desktop backgrounds
- zsh            > zshell settings, aliases, etc 
+ zsh            > zshell settings, aliases, etc
 
 
 ```
