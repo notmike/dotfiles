@@ -36,8 +36,8 @@ Just a collection of my personal dotfiles
 
 
 ```
-#clean desktop
-![](https://raw.githubusercontent.com/notmike/dotfiles/master/preview-pics/Screenshot00.png)
-
 #busy-work
 ![](https://raw.githubusercontent.com/notmike/dotfiles/master/preview-pics/Screenshot1.png)
+
+#clean desktop
+![](https://raw.githubusercontent.com/notmike/dotfiles/master/preview-pics/Screenshot00.png)
