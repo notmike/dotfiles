@@ -72,6 +72,18 @@ alias prog='cd ~/Dropbox/Programming'
 # http://www.passwordstore.org/
 # This is the alternative to diceware incase site needs pw w/ symbols
 alias pw0='cat /dev/urandom | tr -cd [:graph:] | fold -w $LENGTH | head -n 1'
+# Using diceware python script saved on git will produce diceware pw of specified length.
+# Default word length is 5, then copies to clipboard using xsel (must have installed also)
+alias pw='python2 ~/diceware/diceware -w 5 -s | xsel -i -b'
+alias pw2='python2 ~/diceware/diceware -w 1 -s | xsel -i -b'
+alias pw3='python2 ~/diceware/diceware -w 2 -s | xsel -i -b'
+alias pw4='python2 ~/diceware/diceware -w 3 -s | xsel -i -b'
+alias pw5='python2 ~/diceware/diceware -w 4 -s | xsel -i -b'
+alias pw6='python2 ~/diceware/diceware -w 5 -s | xsel -i -b'
+alias pw7='python2 ~/diceware/diceware -w 6 -s | xsel -i -b'
+alias pw8='python2 ~/diceware/diceware -w 7 -s | xsel -i -b'
+alias pw9='python2 ~/diceware/diceware -w 8 -s | xsel -i -b'
+alias pw10='python2 ~/diceware/diceware -w 9 -s | xsel -i -b'
 
 # for running python scripts w/ 2.7
 alias python2=/usr/bin/python2.7
