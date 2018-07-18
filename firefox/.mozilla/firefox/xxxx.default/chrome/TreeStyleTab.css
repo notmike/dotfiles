@@ -15,7 +15,7 @@
 }
 
 /* Hide sound playing/muted button. */
-.sound-button::before {
+.sound-button {
     display: none !important;
 }
 
