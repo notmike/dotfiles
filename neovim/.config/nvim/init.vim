@@ -247,6 +247,7 @@ Plug 'sjl/gundo.vim'                    " Fancy Undo Screen
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
+Plug 'Yggdroot/indentLine'              " Pretty line indentations
 Plug 'neomake/neomake'                  " Asynchronous syntax checking with make.
 
 " For func argument completion
@@ -331,6 +332,15 @@ if exists('plugs') && has_key(plugs, 'fzf.vim')
   " Find pattern in files with ag.
   nnoremap <Leader>p :FzfAg<CR>
 endif
+
+"}}}
+" Plugin Settings - indentLine {{{
+" -----------------------------------------------------------------------------
+" IndentLine
+let g:indentLine_enabled = 1
+let g:indentLine_concealcursor = 0
+let g:indentLine_char = '┆'
+let g:indentLine_faster = 1
 
 "}}}
 " Plugin Settings - neomake {{{
