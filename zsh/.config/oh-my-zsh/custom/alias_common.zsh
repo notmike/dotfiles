@@ -94,6 +94,12 @@ alias renamem='j=1;for i in *.(jpg|png|bmp|jpeg); do mv "$i" "$j"."${i##*.}"; le
 # restart network
 alias restartnetwork='systemctl restart NetworkManager.service'
 
+# search arch wiki
+alias sa='s -p archwiki'
+
+# search arch aur repo
+alias saur='s -p archpkg'
+
 # Remove all EXIF data from files
 alias scrubexif='for i in *.jpg; do echo "Processing $i"; exiftool -all= "$i"; done'
 
