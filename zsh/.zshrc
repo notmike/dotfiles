@@ -49,9 +49,10 @@ ZSH_CUSTOM=~/.config/oh-my-zsh/custom
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git sublime per-directory-history archlinux common-aliases emoji extract torrent colorize fast-syntax-highlighting)
-# AutoSuggestions Plugin -- https://github.com/zsh-users/zsh-autosuggestions#configuration
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+plugins=(git sublime per-directory-history archlinux common-aliases emoji extract torrent colorize zsh-autosuggestions fast-syntax-highlighting)
+# ******** For ZSH-AutoSuggestions and Fast-Syntax-Highlighting, need to git clone those into the custom/plugins folder  **********************
+# AutoSuggestions Plugin -- https://github.com/zsh-users/zsh-autosuggestions
+# Fast-Syntax-Highlighting Plugin -- https://github.com/zdharma/fast-syntax-highlighting
 
 # User configuration
 
