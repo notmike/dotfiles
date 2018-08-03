@@ -62,6 +62,9 @@ HISTSIZE=50000
 SAVEHIST=50000
 setopt HIST_IGNORE_DUPS
 
+# Set Firefox as default browser
+export BROWSER=/usr/bin/firefox
+
 # Set Ranger to not use default settings
 export RANGER_LOAD_DEFAULT_RC=false
 
