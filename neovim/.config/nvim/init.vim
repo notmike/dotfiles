@@ -102,7 +102,7 @@ set ignorecase             " Ignore case of normal letters in a pattern.
 set smartcase              " Override ignorecase if pattern contains upper case.
 
 " Search and Replace
-nnoremap <leader><leader>h :%s//g<Left><Left>
+nnoremap <leader><space>h :%s//g<Left><Left>
 
 " Search for highlighted text, forwards or backwards.
 vnoremap <silent> * :<C-U>
@@ -201,7 +201,7 @@ vnoremap > >gv
 " Run Python Files by pressing F9
 fun! RunPy() abort
   let @m = expand("%:t")
-  call feedkeys(":10Term python \<c-r>m\<cr>", 'n')
+  call feedkeys(":15Term python \<c-r>m\<cr>", 'n')
 endfun
 
 if has('nvim')
@@ -297,7 +297,7 @@ inoremap <expr><C-H> deoplete#mappings#smart_close_popup()."\<C-H>"
 
 let g:deoplete#sources#clang#libclang_path = "/usr/lib/libclang.so"
 let g:deoplete#sources#clang#clang_header = "/usr/lib/clang"
-let g:deoplete#sources#jedi#show_docstring = 1
+let g:deoplete#sources#jedi#show_docstring = 0
 
 "}}}
 " Plugin Settings - EasyMotion {{{
