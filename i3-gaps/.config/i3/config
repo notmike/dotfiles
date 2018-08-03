@@ -265,7 +265,7 @@ exec --no-startup-id xset -dpms
 ## xbindkeys is so the mouse side scroll now controls volume
 exec --no-startup-id xbindkeys
 ## "xset r rate ..." makes keyrate faster
-exec --no-startup-id xset r rate 250 30
+exec --no-startup-id xset r rate 210 50
 ## numlock on by default
 exec --no-startup-id numlockx on
 ## NetworkManager tray applet
@@ -279,7 +279,7 @@ exec --no-startup-id clipit
 ## Favorite calculator
 exec --no-startup-id launchy
 ## Audio Server
-exec --no-startup-id pulseaudio --start
+# exec --no-startup-id pulseaudio --start
 ## Dropdown Terminal (start hidden)
 exec --no-startup-id guake --hide
 ## Dropbox
