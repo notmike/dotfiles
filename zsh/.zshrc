@@ -65,10 +65,7 @@ setopt HIST_IGNORE_DUPS
 # Set Ranger to not use default settings
 export RANGER_LOAD_DEFAULT_RC=false
 
-# SSH works better
-export TERM=xterm-256color
-
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$HOME/go/bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -82,6 +79,10 @@ export VISUAL=nvim
 export EDITOR=nvim
 #export VIMRUNTIME=/usr/share/vim/vim80
 export VIMRUNTIME=/usr/share/nvim/runtime
+
+# SSH works better when $TERM = xterm-256color
+# export TERM=xterm-256color
+export TERM=xterm-termite
 
 # Allow for starting new window w/ CWD when pressing Ctrl+Shift+t
 # originally we check for $TERM == xterm-termite  but since we changed the
