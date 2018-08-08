@@ -72,6 +72,7 @@ alias prog='cd ~/Dropbox/Programming'
 # http://www.passwordstore.org/
 # This is the alternative to diceware incase site needs pw w/ symbols
 alias pw0='cat /dev/urandom | tr -cd [:graph:] | fold -w $LENGTH | head -n 1'
+#
 # Using diceware python script saved on git will produce diceware pw of specified length.
 # Default word length is 5, then copies to clipboard using xsel (must have installed also)
 alias pw='python2 ~/diceware/diceware -w 5 -s | xsel -i -b'
@@ -99,6 +100,9 @@ alias sa='s -p archwiki'
 
 # search arch aur repo
 alias saur='s -p archpkg'
+
+# search giphy
+alias sgif='s -p giphy'
 
 # Remove all EXIF data from files
 alias scrubexif='for i in *.jpg; do echo "Processing $i"; exiftool -all= "$i"; done'
