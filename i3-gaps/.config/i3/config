@@ -367,22 +367,20 @@ bindcode Control+$win+Shift+56 exec ~/scripts/disconnect-bluetooth-headset.sh
 exec --no-startup-id xset s 600 600
 exec --no-startup-id xset -dpms
 exec --no-startup-id udiskie
-#exec urxvtd -q -o -f
+# exec urxvtd -q -o -f
 
 # the -f for compton will give it fade transitioning
 exec_always --no-startup-id compton -f
 exec_always --no-startup-id xrdb ~/.Xresources
 exec_always --no-startup-id ~/scripts/setbg.sh
 # "xset r rate ..." makes keyrate faster
-exec_always --no-startup-id xset r rate 250 30
+exec_always --no-startup-id xset r rate 215 50
 exec --no-startup-id redshift -r -l 40.742:-73.769
 exec dropbox
 exec --no-startup-id guake
 exec --no-startup-id clipit
 exec --no-startup-id launchy
-#exec deluge
 exec --no-startup-id dunst
 exec --no-startup-id nm-applet
 exec --no-startup-id xss-lock -- i3lock -n -i $HOME/Pictures/lockscreen-laptop.png &
-# exec --no-startup-id pulseaudio --start
 exec --no-startup-id unclutter
