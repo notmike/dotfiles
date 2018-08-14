@@ -99,7 +99,10 @@ alias restartnetwork='systemctl restart NetworkManager.service'
 alias sa='s -p archwiki'
 
 # search arch aur repo
-alias saur='s -p archpkg'
+alias saur='s -p aur'
+
+# search arch aur repo
+alias spkg='s -p archpkg'
 
 # search giphy
 alias sgif='s -p giphy'
