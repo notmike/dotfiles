@@ -99,7 +99,13 @@ alias restartnetwork='systemctl restart NetworkManager.service'
 alias sa='s -p archwiki'
 
 # search arch aur repo
-alias saur='s -p archpkg'
+alias saur='s -p aur'
+
+# search arch aur repo
+alias spkg='s -p archpkg'
+
+# search giphy
+alias sgif='s -p giphy'
 
 # Remove all EXIF data from files
 alias scrubexif='for i in *.jpg; do echo "Processing $i"; exiftool -all= "$i"; done'
