@@ -64,8 +64,8 @@ setopt HIST_IGNORE_DUPS
 
 # Set Ranger to not use default settings
 export RANGER_LOAD_DEFAULT_RC=false
-
-export PATH=$HOME/bin:/usr/local/bin:$HOME/go/bin:$PATH
+export GOPATH=$HOME/go
+export PATH=$HOME/bin:/usr/local/bin:$GOPATH/bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
