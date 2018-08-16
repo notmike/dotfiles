@@ -101,9 +101,6 @@ autocmd FileType javascript,javascript.jsx,json,less,ruby,sass,scss,sql,vim,yml,
 set ignorecase             " Ignore case of normal letters in a pattern.
 set smartcase              " Override ignorecase if pattern contains upper case.
 
-" Search and Replace
-nnoremap <leader><space>h :%s//g<Left><Left>
-
 " Search for highlighted text, forwards or backwards.
 vnoremap <silent> * :<C-U>
   \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
@@ -198,6 +195,12 @@ imap <leader>[ []<ESC>i
 vnoremap < <gv
 vnoremap > >gv
 
+" Search and Replace
+noremap <leader>h :%s//g<Left><Left>
+
+" Trim all whitespace
+nnoremap <leader>t :%s/\s\+$//e<CR>
+
 " Run Python Files by pressing F9
 fun! RunPy() abort
   let @m = expand("%:t")
@@ -239,6 +242,7 @@ Plug 'Shougo/deoplete.nvim', {
   \ 'do': ':UpdateRemotePlugins' }      " Asynchronous auto completion.
 Plug 'wokalski/autocomplete-flow'       " Flow autocompletion for deoplete & snippets
 Plug 'zchee/deoplete-clang'             " Clang autocomplete
+Plug 'zchee/deoplete-go', { 'do': 'make'} " Go autocompletion
 Plug 'zchee/deoplete-jedi'              " Python autocomplete
 Plug 'morhetz/gruvbox'                  " Color scheme gruvbox
 Plug 'sjl/gundo.vim'                    " Fancy Undo Screen
@@ -295,20 +299,32 @@ inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><C-H> deoplete#mappings#smart_close_popup()."\<C-H>"
 " inoremap <expr><BS> deoplete#mappings#smart_close_popup()."\<C-H>"
 
+" disable docstring popup window
+autocmd FileType go,python setlocal completeopt-=preview
+
 let g:deoplete#sources#clang#libclang_path = "/usr/lib/libclang.so"
 let g:deoplete#sources#clang#clang_header = "/usr/lib/clang"
-let g:deoplete#sources#jedi#show_docstring = 0
 
+let g:deoplete#sources#go#gocode_binary = "/home/mg/go/bin/gocode"
+let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
+let g:deoplete#sources#go#pointer = 1
 "}}}
 " Plugin Settings - EasyMotion {{{
 " -----------------------------------------------------------------------------
-
 nmap F <Plug>(easymotion-prefix)s
+
+"}}}
+" Plugin Settings - GitGutter {{{
+" -----------------------------------------------------------------------------
+let g:gitgutter_sign_added='┃'
+let g:gitgutter_sign_modified='┃'
+let g:gitgutter_sign_removed='◢'
+let g:gitgutter_sign_removed_first_line='◥'
+let g:gitgutter_sign_modified_removed='◢'
 
 "}}}
 " Plugin Settings - Gundo Undo {{{
 " -----------------------------------------------------------------------------
-
 nnoremap <leader>u :GundoToggle<CR>  " toggle gundo
 "}}}
 " Plugin Settings - fzf {{{
