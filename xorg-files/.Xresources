@@ -1,53 +1,11 @@
-URxvt.perl-ext-common: default,clipboard,vtwheel,safe-paste,matcher,resize-font
-URxvt.matcher.button: 1
-URxvt.matcher.rend.0: Uline Bold fg5
-URxvt.url-launcher: /usr/bin/firefox
-!! URXVT Resize-Font Settings
-!!----------------------------------------------
-URxvt.font: xft:FantasqueSansMono Nerd Font:size=11
-/* URxvt.letterSpace: +1 */
-URxvt.resize-font.smaller: C-Down
-URxvt.resize-font.bigger: C-Up
-URxvt.iso14755: false
-URxvt.iso14755_52: false
-!!----------------------------------------------
-!! URXVT Copy Paste Settings
-!!------------------------------------------------
-URxvt.keysym.M-c: 			perl:clipboard:copy
-URxvt.keysym.M-v: 			perl:clipboard:pasteq
-!!------------------------------------------------
-!! URXVT Matcher Settings
-!!------------------------------------------------
-URxvt.keysym.C-Delete: perl:matcher:last
-URxvt.keysym.M-Delete: perl:matcher:list
-!!------------------------------------------------
-
-
-URxvt.urgentOnBell: true
-URxvt.scrollBar: false
-!URxvt.transparent:	true
-URxvt.shading:		15
-! Fade the text by the given percentage when focus is lost
-URxvt*fading:  30
-! Turn on/off hold window after exit support. If enabled, urxvt will not immediately destroy its window !when the program executed within it exits.
-! Instead, it will wait till it is being killed or closed by the user.
-URxvt*hold: true
-! terminal padding
-URxvt.internalBorder: 5
-!URxvt.externalBorder: 0
-
-
-
-
 /* !-- Xft settings -- ! */
-/* Xft.dpi:        109 */
+Xft.dpi:        109
 Xft.antialias:  1
 Xft.rgba:       rgb
 Xft.hinting:    true
 Xft.hintstyle:  hintslight
 Xft.autohint:   0
 Xft.lcdfilter:  lcddefault
-
 
 
 ! -----------------------------------------------------------------------------
@@ -86,3 +44,42 @@ Xft.lcdfilter:  lcddefault
 ! LightGrey + White
 *color7:  #a89984
 *color15: #ebdbb2
+
+
+URxvt.perl-ext-common: default,clipboard,vtwheel,safe-paste,matcher,resize-font
+URxvt.matcher.button: 1
+URxvt.matcher.rend.0: Uline Bold fg5
+URxvt.url-launcher: /usr/bin/firefox
+!! URXVT Resize-Font Settings
+!!----------------------------------------------
+URxvt.font: xft:FantasqueSansMono Nerd Font:size=11
+/* URxvt.letterSpace: +1 */
+URxvt.resize-font.smaller: C-Down
+URxvt.resize-font.bigger: C-Up
+URxvt.iso14755: false
+URxvt.iso14755_52: false
+!!----------------------------------------------
+!! URXVT Copy Paste Settings
+!!------------------------------------------------
+URxvt.keysym.M-c: 			perl:clipboard:copy
+URxvt.keysym.M-v: 			perl:clipboard:pasteq
+!!------------------------------------------------
+!! URXVT Matcher Settings
+!!------------------------------------------------
+URxvt.keysym.C-Delete: perl:matcher:last
+URxvt.keysym.M-Delete: perl:matcher:list
+!!------------------------------------------------
+
+
+URxvt.urgentOnBell: true
+URxvt.scrollBar: false
+!URxvt.transparent:	true
+URxvt.shading:		15
+! Fade the text by the given percentage when focus is lost
+URxvt*fading:  30
+! Turn on/off hold window after exit support. If enabled, urxvt will not immediately destroy its window !when the program executed within it exits.
+! Instead, it will wait till it is being killed or closed by the user.
+URxvt*hold: true
+! terminal padding
+URxvt.internalBorder: 5
+!URxvt.externalBorder: 0
