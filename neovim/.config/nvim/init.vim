@@ -474,3 +474,53 @@ let g:tigris#enabled = 1
 " let g:tigris#delay = 500
 
 "}}}
+" Plugin Settings - Vim-DevIcons {{{
+" -----------------------------------------------------------------------------
+" .bmp, .c, .coffee, .cpp, .css, .erb, .go, .hs, .html, .java, .jpg, .js, .json,
+" .jsx, .less, .lua, .markdown, .md, .php, .png, .pl, .py, .rb, .rs, .scala,
+" .scss, .sh, .sql, .vim
+" let s:brown = '905532'
+" let s:aqua =  '3AFFDB'
+" let s:blue = '689FB6'
+" let s:darkBlue = '44788E'
+" let s:purple = '834F79'
+" let s:lightPurple = '834F79'
+" let s:red = 'AE403F'
+" let s:beige = 'F5C06F'
+" let s:yellow = 'F09F17'
+" let s:orange = 'D4843E'
+" let s:darkOrange = 'F16529'
+" let s:pink = 'CB6F6F'
+" let s:salmon = 'EE6E73'
+" let s:green = '8FAA54'
+" let s:lightGreen = '31B53E'
+" let s:white = 'FFFFFF'
+" let s:rspec_red = 'FE405F'
+" let s:git_orange = 'F54D27'
+
+" NERDTress File highlighting only the glyph/icon
+" test highlight just the glyph (icons) in nerdtree:
+autocmd filetype nerdtree highlight cpp_icon ctermbg=none ctermfg=Red guifg=#689FB6
+autocmd filetype nerdtree highlight go_icon ctermbg=none ctermfg=Red guifg=#689FB6
+autocmd filetype nerdtree highlight haskell_icon ctermbg=none ctermfg=Red guifg=#f5c06f
+autocmd filetype nerdtree highlight html_icon ctermbg=none ctermfg=Red guifg=#F16529
+autocmd filetype nerdtree highlight markdown_icon ctermbg=none ctermfg=Red guifg=#F09F17
+autocmd filetype nerdtree highlight php_icon ctermbg=none ctermfg=Red guifg=#44788E
+autocmd filetype nerdtree highlight python_icon ctermbg=none ctermfg=Red guifg=#F09F17
+autocmd filetype nerdtree highlight shell_icon ctermbg=none ctermfg=Red guifg=#834f79
+autocmd filetype nerdtree highlight sql_icon ctermbg=none ctermfg=Red guifg=#689FB6
+
+" if you are using another syn highlight for a given line (e.g.
+" NERDTreeHighlightFile) need to give that name in the 'containedin' for this
+" other highlight to work with it
+autocmd filetype nerdtree syn match cpp_icon ## containedin=NERDTreeFile
+autocmd filetype nerdtree syn match go_icon ## containedin=NERDTreeFile
+autocmd filetype nerdtree syn match haskell_icon ## containedin=NERDTreeFile
+autocmd filetype nerdtree syn match html_icon ## containedin=NERDTreeFile,html
+autocmd filetype nerdtree syn match markdown_icon ## containedin=NERDTreeFile
+autocmd filetype nerdtree syn match php_icon ## containedin=NERDTreeFile
+autocmd filetype nerdtree syn match python_icon ## containedin=NERDTreeFile
+autocmd filetype nerdtree syn match shell_icon ## containedin=NERDTreeFile
+autocmd filetype nerdtree syn match sql_icon ## containedin=NERDTreeFile
+
+"}}}
