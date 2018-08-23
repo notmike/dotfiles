@@ -272,6 +272,7 @@ Plug 'tpope/vim-commentary'             " Commenting made simple.
 Plug 'junegunn/vim-easy-align'	    	  " Text alignment by characters.
 Plug 'easymotion/vim-easymotion'        " navigate documents reallllly fast!
 Plug 'tpope/vim-fugitive'               " Track Git changes
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }  " Go Lang Support
 Plug 'airblade/vim-gitgutter'           " Shows git changes in file
 
 " Code Formatter (JS·CSS·SCSS·Less·JSX·GraphQL·JSON·Markdown
