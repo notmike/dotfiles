@@ -525,3 +525,33 @@ autocmd filetype nerdtree syn match shell_icon ## containedin=NERDTreeFile
 autocmd filetype nerdtree syn match sql_icon ## containedin=NERDTreeFile
 
 "}}}
+" Plugin Settings - Vim-Go {{{
+" -----------------------------------------------------------------------------
+" Save file automatically when calling :GoBuild
+set autowrite
+
+" Easier navigation in quickfix menu
+nnoremap <leader><leader>n :cnext<CR>
+nnoremap <leader><leader>m :cprevious<CR>
+nnoremap <leader><leader>a :cclose<CR>
+
+" run :GoBuild or :GoTestCompile based on the go file
+function! s:build_go_files()
+  let l:file = expand('%')
+  if l:file =~# '^\f\+_test\.go$'
+    call go#test#Test(0, 1)
+  elseif l:file =~# '^\f\+\.go$'
+    call go#cmd#Build(0)
+  endif
+endfunction
+
+
+" shortcuts for GoBuild & GoRun & GoTest
+autocmd FileType go nmap <leader><leader>b :<C-u>call <SID>build_go_files()<CR>
+autocmd FileType go nmap <leader><leader>r  <Plug>(go-run)
+autocmd FileType go nmap <leader><leader>t  <Plug>(go-test)
+autocmd FileType go nmap <leader><leader>c  <Plug>(go-coverage-toggle)
+
+" makes all error lists of type 'quickfix' so they all appear in same window
+let g:go_list_type = "quickfix"
+"}}}
