@@ -201,14 +201,13 @@ noremap <leader>h :%s//g<Left><Left>
 " Trim all whitespace
 nnoremap <leader>t :%s/\s\+$//e<CR>
 
-" Run Python Files by pressing F9
-fun! RunPy() abort
-  let @m = expand("%:t")
-  call feedkeys(":15Term python \<c-r>m\<cr>", 'n')
-endfun
-
+" Run Python/Java files by pressing F9
 if has('nvim')
-    nnoremap <F9> :call RunPy()<cr>
+    " nnoremap <F9> :call RunFile()<cr>
+    let @m = expand("%:t")      " puts the filename (with extension) in register m
+    let @n = expand("%:t:r")    " puts the filename (withOUT extension) in register n
+    autocmd FileType python nnoremap <F9> :15Term python \<c-r>m\<CR>
+    autocmd FileType java nnoremap <F9> :15Term javac \<c-r>m && java \<c-r>n\<CR>
 else
     autocmd FileType python nnoremap <buffer> <F9> :!python %<CR>
 endif
