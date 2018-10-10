@@ -77,6 +77,7 @@ bindsym $mod+minus scratchpad show
 
 # Program Menu Launcher
 bindsym $mod+d exec --no-startup-id "~/scripts/i3/rofi.sh"
+bindsym $mod+Shift+d exec --no-startup-id "~/scripts/i3/openNewDesktop.sh ~/scripts/i3/rofi.sh"
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -265,7 +266,7 @@ exec --no-startup-id xset -dpms
 ## xbindkeys is so the mouse side scroll now controls volume
 exec --no-startup-id xbindkeys
 ## "xset r rate ..." makes keyrate faster
-exec --no-startup-id xset r rate 210 50
+exec --no-startup-id xset r rate 250 30
 ## numlock on by default
 exec --no-startup-id numlockx on
 ## NetworkManager tray applet
