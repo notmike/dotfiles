@@ -71,7 +71,8 @@ export RANGER_LOAD_DEFAULT_RC=false
 # SSH works better
 export TERM=xterm-256color
 
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+export GOPATH=$HOME/go
+export PATH=$HOME/bin:/usr/local/bin:$GOPATH/bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -89,7 +90,7 @@ export VIMRUNTIME=/usr/share/nvim/runtime
 # Allow for starting new window w/ CWD when pressing Ctrl+Shift+t
 # originally we check for $TERM == xterm-termite  but since we changed the
 # $TERM value above, I adjusted here
-if [[ $TERM == xterm-termite ]]; then
+if [[ $TERM == xterm-256color ]]; then
   . /etc/profile.d/vte.sh
   __vte_osc7
 fi
