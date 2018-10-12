@@ -101,9 +101,6 @@ autocmd FileType javascript,javascript.jsx,json,less,ruby,sass,scss,sql,vim,yml,
 set ignorecase             " Ignore case of normal letters in a pattern.
 set smartcase              " Override ignorecase if pattern contains upper case.
 
-" Search and Replace
-nnoremap <leader><space>h :%s//g<Left><Left>
-
 " Search for highlighted text, forwards or backwards.
 vnoremap <silent> * :<C-U>
   \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
@@ -193,19 +190,25 @@ imap <leader>' ''<ESC>i
 imap <leader>" ""<ESC>i
 imap <leader>( ()<ESC>i
 imap <leader>[ []<ESC>i
+imap <leader>{ {}<ESC>i
 
 " Keep selected text selected when fixing indentation
 vnoremap < <gv
 vnoremap > >gv
 
-" Run Python Files by pressing F9
-fun! RunPy() abort
-  let @m = expand("%:t")
-  call feedkeys(":10Term python \<c-r>m\<cr>", 'n')
-endfun
+" Search and Replace
+noremap <leader>h :%s//g<Left><Left>
 
+" Trim all whitespace
+nnoremap <leader>t :%s/\s\+$//e<CR>
+
+" Run Python/Java files by pressing F9
 if has('nvim')
-    nnoremap <F9> :call RunPy()<cr>
+    " nnoremap <F9> :call RunFile()<cr>
+    let @m = expand("%:t")      " puts the filename (with extension) in register m
+    let @n = expand("%:t:r")    " puts the filename (withOUT extension) in register n
+    autocmd FileType python nnoremap <F9> :15Term python \<c-r>m\<CR>
+    autocmd FileType java nnoremap <F9> :15Term javac \<c-r>m && java \<c-r>n\<CR>
 else
     autocmd FileType python nnoremap <buffer> <F9> :!python %<CR>
 endif
@@ -239,6 +242,7 @@ Plug 'Shougo/deoplete.nvim', {
   \ 'do': ':UpdateRemotePlugins' }      " Asynchronous auto completion.
 Plug 'wokalski/autocomplete-flow'       " Flow autocompletion for deoplete & snippets
 Plug 'zchee/deoplete-clang'             " Clang autocomplete
+Plug 'zchee/deoplete-go', { 'do': 'make'} " Go autocompletion
 Plug 'zchee/deoplete-jedi'              " Python autocomplete
 Plug 'morhetz/gruvbox'                  " Color scheme gruvbox
 Plug 'sjl/gundo.vim'                    " Fancy Undo Screen
@@ -268,6 +272,7 @@ Plug 'tpope/vim-commentary'             " Commenting made simple.
 Plug 'junegunn/vim-easy-align'	    	  " Text alignment by characters.
 Plug 'easymotion/vim-easymotion'        " navigate documents reallllly fast!
 Plug 'tpope/vim-fugitive'               " Track Git changes
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }  " Go Lang Support
 Plug 'airblade/vim-gitgutter'           " Shows git changes in file
 
 " Code Formatter (JS·CSS·SCSS·Less·JSX·GraphQL·JSON·Markdown
@@ -295,20 +300,32 @@ inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><C-H> deoplete#mappings#smart_close_popup()."\<C-H>"
 " inoremap <expr><BS> deoplete#mappings#smart_close_popup()."\<C-H>"
 
+" disable docstring popup window
+autocmd FileType go,python setlocal completeopt-=preview
+
 let g:deoplete#sources#clang#libclang_path = "/usr/lib/libclang.so"
 let g:deoplete#sources#clang#clang_header = "/usr/lib/clang"
-let g:deoplete#sources#jedi#show_docstring = 1
 
+let g:deoplete#sources#go#gocode_binary = "/home/mg/go/bin/gocode"
+let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
+let g:deoplete#sources#go#pointer = 1
 "}}}
 " Plugin Settings - EasyMotion {{{
 " -----------------------------------------------------------------------------
-
 nmap F <Plug>(easymotion-prefix)s
+
+"}}}
+" Plugin Settings - GitGutter {{{
+" -----------------------------------------------------------------------------
+let g:gitgutter_sign_added='┃'
+let g:gitgutter_sign_modified='┃'
+let g:gitgutter_sign_removed='◢'
+let g:gitgutter_sign_removed_first_line='◥'
+let g:gitgutter_sign_modified_removed='◢'
 
 "}}}
 " Plugin Settings - Gundo Undo {{{
 " -----------------------------------------------------------------------------
-
 nnoremap <leader>u :GundoToggle<CR>  " toggle gundo
 "}}}
 " Plugin Settings - fzf {{{
@@ -457,4 +474,84 @@ let g:tigris#enabled = 1
 " let g:tigris#on_the_fly_enabled = 1
 " let g:tigris#delay = 500
 
+"}}}
+" Plugin Settings - Vim-DevIcons {{{
+" -----------------------------------------------------------------------------
+" .bmp, .c, .coffee, .cpp, .css, .erb, .go, .hs, .html, .java, .jpg, .js, .json,
+" .jsx, .less, .lua, .markdown, .md, .php, .png, .pl, .py, .rb, .rs, .scala,
+" .scss, .sh, .sql, .vim
+" let s:brown = '905532'
+" let s:aqua =  '3AFFDB'
+" let s:blue = '689FB6'
+" let s:darkBlue = '44788E'
+" let s:purple = '834F79'
+" let s:lightPurple = '834F79'
+" let s:red = 'AE403F'
+" let s:beige = 'F5C06F'
+" let s:yellow = 'F09F17'
+" let s:orange = 'D4843E'
+" let s:darkOrange = 'F16529'
+" let s:pink = 'CB6F6F'
+" let s:salmon = 'EE6E73'
+" let s:green = '8FAA54'
+" let s:lightGreen = '31B53E'
+" let s:white = 'FFFFFF'
+" let s:rspec_red = 'FE405F'
+" let s:git_orange = 'F54D27'
+
+" NERDTress File highlighting only the glyph/icon
+" test highlight just the glyph (icons) in nerdtree:
+autocmd filetype nerdtree highlight cpp_icon ctermbg=none ctermfg=Red guifg=#689FB6
+autocmd filetype nerdtree highlight go_icon ctermbg=none ctermfg=Red guifg=#689FB6
+autocmd filetype nerdtree highlight haskell_icon ctermbg=none ctermfg=Red guifg=#f5c06f
+autocmd filetype nerdtree highlight html_icon ctermbg=none ctermfg=Red guifg=#F16529
+autocmd filetype nerdtree highlight markdown_icon ctermbg=none ctermfg=Red guifg=#F09F17
+autocmd filetype nerdtree highlight php_icon ctermbg=none ctermfg=Red guifg=#44788E
+autocmd filetype nerdtree highlight python_icon ctermbg=none ctermfg=Red guifg=#F09F17
+autocmd filetype nerdtree highlight shell_icon ctermbg=none ctermfg=Red guifg=#834f79
+autocmd filetype nerdtree highlight sql_icon ctermbg=none ctermfg=Red guifg=#689FB6
+
+" if you are using another syn highlight for a given line (e.g.
+" NERDTreeHighlightFile) need to give that name in the 'containedin' for this
+" other highlight to work with it
+autocmd filetype nerdtree syn match cpp_icon ## containedin=NERDTreeFile
+autocmd filetype nerdtree syn match go_icon ## containedin=NERDTreeFile
+autocmd filetype nerdtree syn match haskell_icon ## containedin=NERDTreeFile
+autocmd filetype nerdtree syn match html_icon ## containedin=NERDTreeFile,html
+autocmd filetype nerdtree syn match markdown_icon ## containedin=NERDTreeFile
+autocmd filetype nerdtree syn match php_icon ## containedin=NERDTreeFile
+autocmd filetype nerdtree syn match python_icon ## containedin=NERDTreeFile
+autocmd filetype nerdtree syn match shell_icon ## containedin=NERDTreeFile
+autocmd filetype nerdtree syn match sql_icon ## containedin=NERDTreeFile
+
+"}}}
+" Plugin Settings - Vim-Go {{{
+" -----------------------------------------------------------------------------
+" Save file automatically when calling :GoBuild
+set autowrite
+
+" Easier navigation in quickfix menu
+nnoremap <leader><leader>n :cnext<CR>
+nnoremap <leader><leader>m :cprevious<CR>
+nnoremap <leader><leader>a :cclose<CR>
+
+" run :GoBuild or :GoTestCompile based on the go file
+function! s:build_go_files()
+  let l:file = expand('%')
+  if l:file =~# '^\f\+_test\.go$'
+    call go#test#Test(0, 1)
+  elseif l:file =~# '^\f\+\.go$'
+    call go#cmd#Build(0)
+  endif
+endfunction
+
+
+" shortcuts for GoBuild & GoRun & GoTest
+autocmd FileType go nmap <leader><leader>b :<C-u>call <SID>build_go_files()<CR>
+autocmd FileType go nmap <leader><leader>r  <Plug>(go-run)
+autocmd FileType go nmap <leader><leader>t  <Plug>(go-test)
+autocmd FileType go nmap <leader><leader>c  <Plug>(go-coverage-toggle)
+
+" makes all error lists of type 'quickfix' so they all appear in same window
+let g:go_list_type = "quickfix"
 "}}}
