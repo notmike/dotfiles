@@ -16,6 +16,7 @@
 /neovim/.config/nvim/plugged/
 /neovim/.config/nvim/.init.vim-rplugin~
 /neovim/.config/nvim/log/neomake.log
+/neovim/.config/nvim/autoload/plug.vim
 /neovim/.config/nvim/autoload/plug.vim.old
 /neovim/.config/nvim/log/neomake.log
 /polybar
