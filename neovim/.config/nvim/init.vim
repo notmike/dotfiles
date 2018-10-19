@@ -219,6 +219,9 @@ fun! ChangeReg() abort
 endfun
 nnoremap cr :call ChangeReg()<cr>
 
+" Search word in documentation using Zeal
+nnoremap gz :!zeal "<cword>"&<CR><CR>
+
 " edit neovim config file
 nnoremap <leader>ev :split $MYVIMRC<cr>
 " source neovim config file after editing
