@@ -37,6 +37,9 @@ alias dl='cd ~/Downloads'
 #navigate to downloads folder
 alias drop='cd ~/Dropbox'
 
+# ls replacement (colorful)
+alias exa='exa -la --git --header --group-directories-first'
+
 # Firefox aliases
 alias ff='nohup firefox &>/dev/null &'
 alias fp='nohup firefox -private &>/dev/null &'
