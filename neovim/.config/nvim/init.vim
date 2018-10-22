@@ -296,7 +296,7 @@ let g:deoplete#enable_at_startup = 1 " Enable deoplete on startup.
 let g:deoplete#enable_smart_case = 1 " Enable smart case.
 
 " Tab completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " On backspace, delete previous completion and regenerate popup.
 inoremap <expr><C-H> deoplete#mappings#smart_close_popup()."\<C-H>"
