@@ -266,7 +266,7 @@ bindcode Control+$mod+Shift+56 exec ~/scripts/disconnect-bluetooth-headset.sh
 ## Udiskie automounts USB drives
 exec --no-startup-id udiskie
 ## Set screen blanking to 1 hour,  https://wiki.archlinux.org/index.php/Display_Power_Management_Signaling
-exec --no-startup-id xset s 3600 3600
+exec --no-startup-id xset s 600 600
 exec --no-startup-id xset -dpms
 ## xbindkeys is so the mouse side scroll now controls volume
 exec --no-startup-id xbindkeys
