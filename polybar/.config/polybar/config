@@ -1,0 +1,458 @@
+[colors]
+;background = ${xrdb:color0:#222}
+background = #222
+background-alt = #444
+;foreground = ${xrdb:color7:#222}
+foreground = #fbf1c7
+foreground-alt = #555
+primary = #b8bb26
+secondary = #928374
+alert = #fe8019
+
+; NOTE: make sure you update the bar name in "launch.sh"
+[bar/barTop]
+;monitor = ${env:MONITOR:HDMI-1}
+width = 100%
+height = 24
+offset-x = 0
+offset-y = 0
+radius = 0.0
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = #f00
+
+border-size = 0
+border-color = #00000000
+
+padding-left = 0
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 2
+
+font-0 = DejaVuSans:size=10;0
+font-1 = FontAwesome:size=12;0
+
+modules-left = i3
+modules-center =
+modules-right = battery eth wlan music pulseaudio ip bandwidth filesystem memory cpu temperature date time
+
+tray-position = center
+tray-padding = 2
+; tray-offset-x = -8
+; tray-offset-y = 1%
+;tray-transparent = true
+tray-background = #222
+
+; wm-restack = bspwm
+wm-restack = i3
+
+;override-redirect = true
+
+;scroll-up = bspwm-desknext
+;scroll-down = bspwm-deskprev
+
+; scroll-up = i3wm-wsnext
+; scroll-down = i3wm-wsprev
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+; enable-ipc must be true on parent bar for custom/ipc modules to work
+enable-ipc = true
+
+
+[module/i3]
+type = internal/i3
+
+ws-icon-0 = 0;*
+ws-icon-default = 
+
+; Only show workspaces defined on the same output as the bar
+; Useful if you want to show monitor specific workspaces
+; on different bars
+;
+; Default: false
+pin-workspaces = true
+
+; This will split the workspace name on ':'
+; Default: false
+strip-wsnumbers = false
+
+; Sort the workspaces by index instead of the default
+; sorting that groups the workspaces by output
+; Default: false
+index-sort = false
+
+; Create click handler used to focus workspace
+; Default: true
+enable-click = true
+enable-scroll = false
+
+; Use fuzzy (partial) matching on labels when assigning
+; icons to workspaces
+; Example: code;♚ will apply the icon to all workspaces
+; containing 'code' in the label
+; Default: false
+fuzzy-match = true
+
+; Available tags:
+;   <label-state> (default) - gets replaced with <label-(focused|unfocused|visible|urgent)>
+;   <label-mode> (default)
+format = <label-state> <label-mode>
+
+; Available tokens:
+;   %mode%
+; Default: %mode%
+label-mode = %mode%
+label-mode-padding = 2
+label-mode-background = #e60053
+
+; Available tokens:
+;   %name%  %icon% %index% %output%
+; Default: %icon%  %name%
+label-focused = %index%
+label-focused-foreground = #f9f5d7
+label-focused-background = #3f3f3f
+label-focused-underline = #b8bb26
+label-focused-padding = 2
+
+; Available tokens:
+;   %name% %icon% %index% %output%
+; Default: %icon%  %name%
+label-unfocused = %index%
+label-unfocused-padding = 2
+
+; Available tokens:
+;   %name% %icon% %index% %output%
+; Default: %icon%  %name%
+label-visible = %index%
+label-visible-underline = #555555
+label-visible-padding = 2
+
+; Available tokens:
+;   %name% %icon% %index% %output%
+; Default: %icon%  %name%
+label-urgent = %index%
+label-urgent-foreground = #000000
+label-urgent-background = #fb4934
+label-urgent-padding = 2
+
+; Separator in between workspaces
+label-separator = |
+label-separator-padding = 1
+label-separator-foreground = #928374
+
+
+
+[module/bitcoin]
+type = custom/ipc
+hook-0 = ~/dotfiles/polybar/.config/polybar/bitcoin.sh
+hook-1 = echo "%{F#928374} (muted) "
+hook-2 = "xdg-open https://www.gdax.com/trade/BTC-USD"
+initial = 2
+click-left = polybar-msg -p %pid% hook bitcoin 1
+click-right = polybar-msg -p %pid% hook bitcoin 2
+double-click-left = polybar-msg -p %pid% hook bitcoin 3
+
+[module/bandwidth]
+type = custom/script
+interval = 1
+exec = ~/dotfiles/polybar/.config/polybar/bandwidth.sh
+
+[module/pulseaudio]
+type = custom/script
+interval = 1
+exec = ~/dotfiles/polybar/.config/polybar/pulseaudio-simple.sh
+click-left = pulseaudio-ctl mute
+
+[module/ip]
+type = custom/script
+interval = 2
+exec = ~/dotfiles/polybar/.config/polybar/ip.sh
+click-left = "xdg-open https://ipleak.net/"
+
+[module/music]
+type = custom/script
+interval = 1
+label = %output:0:70:...%
+exec = ~/dotfiles/polybar/.config/polybar/mpris.sh
+click-left = playerctl play-pause
+click-right = playerctl next
+
+[module/openweathermap-fullfeatured]
+type = custom/script
+interval = 600
+exec = ~/dotfiles/polybar/.config/polybar/openweathermap.sh
+click-left = "xdg-open https://www.wunderground.com/hourly/us/ny/astoria/11102?cm_ven=localwx_hour"
+double-click-left = "xdg-open http://www.weather.com/weather/hourbyhour/l/11106:4:US"
+label-font = 3
+; format-underline = ${colors.secondary}
+
+[module/openvpn-isrunning]
+type = custom/script
+exec = pgrep openvpn
+interval = 5
+label = vpn
+format-prefix = "# "
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:30:...%
+
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground-alt}
+format-prefix-underline = ${colors.secondary}
+
+label-layout = %layout%
+label-layout-underline = ${colors.secondary}
+
+label-indicator-padding = 2
+label-indicator-margin = 1
+label-indicator-background = ${colors.secondary}
+label-indicator-underline = ${colors.secondary}
+
+[module/filesystem]
+type = internal/fs
+interval = 60
+mount-0 = /
+label-mounted = %{F#928374} %{F-}: %percentage_used%%
+label-unmounted = %mountpoint% not mounted
+label-unmounted-foreground = ${colors.foreground-alt}
+format-warn = <ramp> <label-warn>
+format-warn-underline = ${self.format-underline}
+
+; [module/bspwm]
+; type = internal/bspwm
+
+; label-focused = 
+; label-focused-foreground = #FE8019
+; label-focused-background = ${colors.background-alt}
+; label-focused-underline= ${colors.primary}
+; label-focused-padding = 2
+
+; label-occupied = %index%
+; label-occupied-padding = 2
+
+; label-urgent = %index%!
+; label-urgent-background = ${colors.alert}
+; label-urgent-padding = 2
+
+; label-empty = %index%
+; label-empty-foreground = ${colors.foreground-alt}
+; label-empty-padding = 2
+
+[module/mpd]
+type = internal/mpd
+format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
+
+icon-prev = 
+icon-stop = 
+icon-play = 
+icon-pause = 
+icon-next = 
+
+label-song-maxlen = 25
+label-song-ellipsis = true
+
+[module/xbacklight]
+type = internal/xbacklight
+
+format = <label> <bar>
+label = BL
+
+bar-width = 10
+bar-indicator = |
+bar-indicator-foreground = #ff
+bar-indicator-font = 2
+bar-fill = ─
+bar-fill-font = 2
+bar-fill-foreground = #9f78e1
+bar-empty = ─
+bar-empty-font = 2
+bar-empty-foreground = ${colors.foreground-alt}
+
+[module/backlight-acpi]
+inherit = module/xbacklight
+type = internal/backlight
+card = intel_backlight
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground-alt}
+; format-underline = #d79921
+format-warn = <ramp> <label-warn>
+format-warn-underline = ${self.format-underline}
+label = %percentage:2%%
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = "  "
+format-prefix-foreground = ${colors.foreground-alt}
+; format-underline = #689d6a
+label = %percentage_used%%
+
+[module/wlan]
+type = internal/network
+interface = wlp3s0
+interval = 3.0
+
+format-connected = <ramp-signal> <label-connected>
+format-connected-underline = #9f78e1
+label-connected = %essid%
+
+format-disconnected =
+;format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground-alt}
+
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-4 = 
+ramp-signal-foreground = ${colors.foreground-alt}
+
+[module/eth]
+type = internal/network
+interface = enp5s0
+interval = 3.0
+
+format-connected-underline = #55aa55
+format-connected-prefix = ""
+format-connected-prefix-foreground = ${colors.foreground-alt}
+label-connected = %local_ip%
+
+format-disconnected = DISC.
+;format-disconnected = <label-disconnected>
+format-disconnected-underline = ${self.format-connected-underline}
+label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground-alt}
+
+[module/date]
+type = internal/date
+interval = 5
+
+date = %m.%d.%y
+label = %date%
+
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground-alt}
+; format-underline = #a89984
+
+click-left = yad --calendar --no-buttons --mouse --on-top --undecorated --skip-taskbar
+click-right = yad --calendar
+
+
+[module/time]
+type = internal/date
+interval = 1
+
+time = %l:%M:%S
+
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground-alt}
+; format-underline = #a89984
+
+label = %time%
+
+[module/volume]
+type = internal/volume
+
+format-volume = <label-volume> <bar-volume>
+label-volume = 
+label-volume-foreground = ${root.foreground}
+
+format-muted-prefix = " "
+format-muted-foreground = ${colors.foreground-alt}
+label-muted = mute
+
+bar-volume-width = 10
+bar-volume-foreground-0 = #55aa55
+bar-volume-foreground-1 = #55aa55
+bar-volume-foreground-2 = #55aa55
+bar-volume-foreground-3 = #55aa55
+bar-volume-foreground-4 = #55aa55
+bar-volume-foreground-5 = #f5a70a
+bar-volume-foreground-6 = #ff5555
+bar-volume-gradient = false
+bar-volume-indicator = |
+bar-volume-indicator-font = 2
+bar-volume-fill = ─
+bar-volume-fill-font = 2
+bar-volume-empty = ─
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.foreground-alt}
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = ADP1
+full-at = 98
+
+format-charging = <animation-charging> <label-charging>
+format-charging-underline = #ffb52a
+
+format-discharging = <ramp-capacity> <label-discharging>
+format-discharging-underline = ${self.format-charging-underline}
+
+format-full-prefix = " "
+format-full-prefix-foreground = ${colors.foreground-alt}
+format-full-underline = ${self.format-charging-underline}
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-foreground = ${colors.foreground-alt}
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-foreground = ${colors.foreground-alt}
+animation-charging-framerate = 750
+
+[module/temperature]
+type = internal/temperature
+thermal-zone = 0
+warn-temperature = 60
+
+format = <ramp> <label>
+; format-underline = #d65d0e
+format-warn = <ramp> <label-warn>
+format-warn-underline = ${self.format-underline}
+
+label = %temperature%
+label-warn = %temperature%
+label-warn-foreground = ${colors.secondary}
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-foreground = ${colors.foreground-alt}
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+
+[global/wm]
+; Adjust the _NET_WM_STRUT_PARTIAL top value (used for top aligned bars)
+margin-top = 2
+; Adjust the _NET_WM_STRUT_PARTIAL bottom value (used for bottom aligned bars)
+margin-bottom = 2
+
+; vim:ft=dosini
