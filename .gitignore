@@ -17,7 +17,11 @@
 /neovim/.config/nvim/.init.vim-rplugin~
 /neovim/.config/nvim/log/neomake.log
 /neovim/.config/nvim/autoload/
-/neovim/.config/nvim/log/neomake.log
+!/neovim/.config/nvim/autoload/plug.vim
+/neovim/.config/nvim/log/
+!/neovim/.config/nvim/log/README.md
+/neovim/.vim-local/undofiles/
+!/neovim/.vim-local/undofiles/README.md
 /polybar
 /vim/.vim-local
 /zsh/.oh-my-zsh/custom/

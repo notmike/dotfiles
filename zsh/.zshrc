@@ -90,7 +90,7 @@ export VIMRUNTIME=/usr/share/nvim/runtime
 # Allow for starting new window w/ CWD when pressing Ctrl+Shift+t
 # originally we check for $TERM == xterm-termite  but since we changed the
 # $TERM value above, I adjusted here
-if [[ $TERM == xterm-256color ]]; then
+if [[ $TERM == xterm-termite ]]; then
   . /etc/profile.d/vte.sh
   __vte_osc7
 fi
