@@ -5,6 +5,7 @@ background-alt = #444
 ;foreground = ${xrdb:color7:#222}
 foreground = #fbf1c7
 foreground-alt = #555
+foreground-icon = #928374
 primary = #b8bb26
 secondary = #928374
 alert = #fe8019
@@ -39,9 +40,9 @@ font-1 = FontAwesome:size=12;0
 
 modules-left = i3
 modules-center =
-modules-right = battery eth wlan music pulseaudio ip bandwidth filesystem memory cpu temperature date time
+modules-right = eth wlan ip brightness battery music pulseaudio bandwidth filesystem memory cpu temperature date time
 
-tray-position = center
+tray-position = right
 tray-padding = 2
 ; tray-offset-x = -8
 ; tray-offset-y = 1%
@@ -147,22 +148,15 @@ label-separator = |
 label-separator-padding = 1
 label-separator-foreground = #928374
 
-
-
-[module/bitcoin]
-type = custom/ipc
-hook-0 = ~/dotfiles/polybar/.config/polybar/bitcoin.sh
-hook-1 = echo "%{F#928374} (muted) "
-hook-2 = "xdg-open https://www.gdax.com/trade/BTC-USD"
-initial = 2
-click-left = polybar-msg -p %pid% hook bitcoin 1
-click-right = polybar-msg -p %pid% hook bitcoin 2
-double-click-left = polybar-msg -p %pid% hook bitcoin 3
-
 [module/bandwidth]
 type = custom/script
 interval = 1
 exec = ~/dotfiles/polybar/.config/polybar/bandwidth.sh
+
+[module/brightness]
+type = custom/script
+interval = 1
+exec = ~/dotfiles/polybar/.config/polybar/brightness.sh
 
 [module/pulseaudio]
 type = custom/script
@@ -183,15 +177,6 @@ label = %output:0:70:...%
 exec = ~/dotfiles/polybar/.config/polybar/mpris.sh
 click-left = playerctl play-pause
 click-right = playerctl next
-
-[module/openweathermap-fullfeatured]
-type = custom/script
-interval = 600
-exec = ~/dotfiles/polybar/.config/polybar/openweathermap.sh
-click-left = "xdg-open https://www.wunderground.com/hourly/us/ny/astoria/11102?cm_ven=localwx_hour"
-double-click-left = "xdg-open http://www.weather.com/weather/hourbyhour/l/11106:4:US"
-label-font = 3
-; format-underline = ${colors.secondary}
 
 [module/openvpn-isrunning]
 type = custom/script
@@ -226,29 +211,9 @@ interval = 60
 mount-0 = /
 label-mounted = %{F#928374} %{F-}: %percentage_used%%
 label-unmounted = %mountpoint% not mounted
-label-unmounted-foreground = ${colors.foreground-alt}
+label-unmounted-foreground = ${colors.foreground-icon}
 format-warn = <ramp> <label-warn>
 format-warn-underline = ${self.format-underline}
-
-; [module/bspwm]
-; type = internal/bspwm
-
-; label-focused = 
-; label-focused-foreground = #FE8019
-; label-focused-background = ${colors.background-alt}
-; label-focused-underline= ${colors.primary}
-; label-focused-padding = 2
-
-; label-occupied = %index%
-; label-occupied-padding = 2
-
-; label-urgent = %index%!
-; label-urgent-background = ${colors.alert}
-; label-urgent-padding = 2
-
-; label-empty = %index%
-; label-empty-foreground = ${colors.foreground-alt}
-; label-empty-padding = 2
 
 [module/mpd]
 type = internal/mpd
@@ -263,33 +228,11 @@ icon-next = 
 label-song-maxlen = 25
 label-song-ellipsis = true
 
-[module/xbacklight]
-type = internal/xbacklight
-
-format = <label> <bar>
-label = BL
-
-bar-width = 10
-bar-indicator = |
-bar-indicator-foreground = #ff
-bar-indicator-font = 2
-bar-fill = ─
-bar-fill-font = 2
-bar-fill-foreground = #9f78e1
-bar-empty = ─
-bar-empty-font = 2
-bar-empty-foreground = ${colors.foreground-alt}
-
-[module/backlight-acpi]
-inherit = module/xbacklight
-type = internal/backlight
-card = intel_backlight
-
 [module/cpu]
 type = internal/cpu
 interval = 2
 format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
+format-prefix-foreground = ${colors.foreground-icon}
 ; format-underline = #d79921
 format-warn = <ramp> <label-warn>
 format-warn-underline = ${self.format-underline}
@@ -299,17 +242,17 @@ label = %percentage:2%%
 type = internal/memory
 interval = 2
 format-prefix = "  "
-format-prefix-foreground = ${colors.foreground-alt}
+format-prefix-foreground = ${colors.foreground-icon}
 ; format-underline = #689d6a
 label = %percentage_used%%
 
 [module/wlan]
 type = internal/network
-interface = wlp3s0
+interface = wlp2s0
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
-format-connected-underline = #9f78e1
+; format-connected-underline = #9f78e1
 label-connected = %essid%
 
 format-disconnected =
@@ -323,21 +266,22 @@ ramp-signal-1 = 
 ramp-signal-2 = 
 ramp-signal-3 = 
 ramp-signal-4 = 
-ramp-signal-foreground = ${colors.foreground-alt}
+ramp-signal-foreground = ${colors.foreground-icon}
+;${colors.foreground-alt}
 
 [module/eth]
 type = internal/network
-interface = enp5s0
+interface = enp1s0
 interval = 3.0
 
 format-connected-underline = #55aa55
 format-connected-prefix = ""
-format-connected-prefix-foreground = ${colors.foreground-alt}
+format-connected-prefix-foreground = ${colors.foreground-icon}
 label-connected = %local_ip%
 
-format-disconnected = DISC.
+format-disconnected =
 ;format-disconnected = <label-disconnected>
-format-disconnected-underline = ${self.format-connected-underline}
+; format-disconnected-underline = ${self.format-connected-underline}
 label-disconnected = %ifname% disconnected
 ;label-disconnected-foreground = ${colors.foreground-alt}
 
@@ -349,7 +293,7 @@ date = %m.%d.%y
 label = %date%
 
 format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
+format-prefix-foreground = ${colors.foreground-icon}
 ; format-underline = #a89984
 
 click-left = yad --calendar --no-buttons --mouse --on-top --undecorated --skip-taskbar
@@ -363,7 +307,7 @@ interval = 1
 time = %l:%M:%S
 
 format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
+format-prefix-foreground = ${colors.foreground-icon}
 ; format-underline = #a89984
 
 label = %time%
@@ -376,7 +320,7 @@ label-volume = 
 label-volume-foreground = ${root.foreground}
 
 format-muted-prefix = " "
-format-muted-foreground = ${colors.foreground-alt}
+format-muted-foreground = ${colors.foreground-icon}
 label-muted = mute
 
 bar-volume-width = 10
@@ -398,29 +342,36 @@ bar-volume-empty-foreground = ${colors.foreground-alt}
 
 [module/battery]
 type = internal/battery
-battery = BAT0
-adapter = ADP1
+battery = BAT1
+adapter = ACAD
 full-at = 98
 
 format-charging = <animation-charging> <label-charging>
-format-charging-underline = #ffb52a
+format-charging-underline =
+; format-charging-underline = #ffb52a
 
 format-discharging = <ramp-capacity> <label-discharging>
-format-discharging-underline = ${self.format-charging-underline}
+format-discharging-underline =
 
 format-full-prefix = " "
-format-full-prefix-foreground = ${colors.foreground-alt}
-format-full-underline = ${self.format-charging-underline}
+format-full-prefix-foreground = ${colors.foreground-icon}
+format-full-underline =
 
 ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-foreground = ${colors.foreground-alt}
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-foreground = ${colors.foreground-icon}
+ramp-capacity-0-foreground = #fb4934
+ramp-capacity-1-foreground = #d79921
 
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-foreground = ${colors.foreground-alt}
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-foreground = ${colors.foreground-icon}
 animation-charging-framerate = 750
 
 [module/temperature]
@@ -429,6 +380,7 @@ thermal-zone = 0
 warn-temperature = 60
 
 format = <ramp> <label>
+format-underline =
 ; format-underline = #d65d0e
 format-warn = <ramp> <label-warn>
 format-warn-underline = ${self.format-underline}
@@ -440,7 +392,7 @@ label-warn-foreground = ${colors.secondary}
 ramp-0 = 
 ramp-1 = 
 ramp-2 = 
-ramp-foreground = ${colors.foreground-alt}
+ramp-foreground = ${colors.foreground-icon}
 
 [settings]
 screenchange-reload = true

@@ -202,9 +202,3 @@ cd "$AUTOCD"
 
 # Unbreak Pycharm in BSPWM (https://wiki.archlinux.org/index.php/Dwm#Fixing_misbehaving_Java_applications)
 # export _JAVA_AWT_WM_NONREPARENTING=1
-
-# Android Studio Exports
-# export ANDROID_HOME=/home/mg/Android/Sdk
-# export PATH=${PATH}:${ANDROID_HOME}/tools
-# export PATH=${PATH}:${ANDROID_HOME}/platform-tools
-

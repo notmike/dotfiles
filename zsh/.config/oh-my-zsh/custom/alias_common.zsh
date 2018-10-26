@@ -11,6 +11,8 @@
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# alias config shortcut
+alias aliasrc='$EDITOR $HOME/.config/oh-my-zsh/custom/alias_common.zsh'
 
 # see if my internet is working?
 alias alive='ping -c 2 google.com | grep "% packet loss" -C 7'
@@ -18,8 +20,8 @@ alias alive='ping -c 2 google.com | grep "% packet loss" -C 7'
 # For going to last directory
 alias back='cd -'
 
-# Make cal give 3 months by default
-alias cal3='cal -n 3'
+# Make cal give 3 months (centered) by default
+alias cal='cal -n 3 -S'
 
 # See what programs are using bandwidth
 alias checknetwork='nethogs'
@@ -54,7 +56,7 @@ alias home='cd ~'
 alias i3config='$EDITOR ~/.config/i3/config'
 
 # lists personal fav imagemagick commands
-alias imagecommands='cat ~/Dropbox/Programs/LINUX/imagemagick-commands.txt'
+alias imagecommands='cat ~/Dropbox/LINUX/imagemagick-commands.txt'
 
 # lock PC when using i3
 alias lock='. ~/scripts/i3lock.sh'

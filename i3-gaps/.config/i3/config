@@ -18,14 +18,14 @@ smart_gaps on
 smart_borders on
 
 # gaps between 2 open program windows
-gaps inner 4
+gaps inner 3
 
 # gaps between monitor and open program windows
 gaps outer 0
 
 ### Borders ###
 # new_window changes the thickness of the border around a window
-new_window pixel 4
+new_window pixel 1
 new_float pixel 4
 
 # floating window sizes
@@ -245,10 +245,8 @@ bindsym $mod+Print exec scrot '%m.%d.%Y-$wx$h-%T.png' -e 'mv $f `echo ~/Pictures
 bindsym Shift+Print exec scrot -u '%m.%d.%Y-$wx$h-%T.png' -e 'mv $f `echo ~/Pictures/Screenshots/$f | tr ':' '.'` '
 bindsym Print exec --no-startup-id "maim ~/Pictures/Screenshots/$(date +%m.%d.%Y--%H.%M.%S).png -s -c 1,0,0,0.6"
 
-# lock w/ suspend
-bindsym $mod+Shift+x exec betterlockscreen -s
-# lock w/out suspend
-bindsym Control+$mod+Shift+x exec betterlockscreen -l
+# lock screen (w/out suspend)
+bindsym $mod+Shift+x exec $HOME/scripts/i3lock.sh
 
 # Connect my Bluetooth headphones
 # cntrl+alt+b
