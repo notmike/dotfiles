@@ -14,7 +14,7 @@ alert = #fe8019
 [bar/barTop]
 ;monitor = ${env:MONITOR:HDMI-1}
 width = 100%
-height = 24
+height = 22
 offset-x = 0
 offset-y = 0
 radius = 0.0
@@ -42,9 +42,9 @@ modules-left = i3
 modules-center =
 modules-right = eth wlan ip brightness battery music pulseaudio bandwidth filesystem memory cpu temperature date time
 
-tray-position = right
-tray-padding = 2
-; tray-offset-x = -8
+tray-position = center
+tray-padding = 5
+tray-offset-x = -300
 ; tray-offset-y = 1%
 ;tray-transparent = true
 tray-background = #222
@@ -166,7 +166,7 @@ click-left = pulseaudio-ctl mute
 
 [module/ip]
 type = custom/script
-interval = 2
+interval = 5
 exec = ~/dotfiles/polybar/.config/polybar/ip.sh
 click-left = "xdg-open https://ipleak.net/"
 
