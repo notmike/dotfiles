@@ -266,10 +266,10 @@ exec --no-startup-id udiskie
 ## Set screen blanking to 1 hour,  https://wiki.archlinux.org/index.php/Display_Power_Management_Signaling
 exec --no-startup-id xset s 600 600
 exec --no-startup-id xset -dpms
-## xbindkeys is so the mouse side scroll now controls volume
-exec --no-startup-id xbindkeys
 ## "xset r rate ..." makes keyrate faster
 exec --no-startup-id xset r rate 250 30
+## xbindkeys is so the mouse side scroll now controls volume
+exec --no-startup-id xbindkeys
 ## NetworkManager tray applet
 exec --no-startup-id nm-applet
 ## Bluetooth tray applet
@@ -286,12 +286,14 @@ exec --no-startup-id launchy
 exec --no-startup-id guake --hide
 ## Dropbox
 exec dropbox
+## i3Lock helper function for the laptop
+exec --no-startup-id xss-lock -- i3lock -n -i $HOME/Pictures/lockscreen-laptop.png
 ## Set my background
 exec_always --no-startup-id $HOME/scripts/setbg.sh
 ## Notifications
 exec --no-startup-id dunst
 ## Hide the mouse when typing
-exec --no-startup-id unclutter -b &
+exec --no-startup-id unclutter -b
 ## Transparencies
 exec_always --no-startup-id compton
 ## Battery Power Savings

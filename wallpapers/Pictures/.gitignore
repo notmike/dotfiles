@@ -1,0 +1,8 @@
+# Ignore everything in this directory
+*
+
+# Except this file & the README
+!.gitignore
+!lockscreen*
+!patterns
+!wallpapers

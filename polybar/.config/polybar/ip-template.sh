@@ -2,7 +2,7 @@
 
 realip="PUT YOUR REAL IP ADDRESS HERE!"
 
-addr="$(dig +short myip.opendns.com @resolver1.opendns.com)"
+addr="$(dig +short myip.opendns.com @resolver1.opendns.com 2> /dev/null)"
 
 if [[ $addr =~ ^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$ ]]; then
 
@@ -13,5 +13,5 @@ if [[ $addr =~ ^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$ ]]; then
     fi
 
 else
-    echo "%{F#d65d0e} $addr"     # red text
+    echo "%{F#d65d0e} "     # red text
 fi

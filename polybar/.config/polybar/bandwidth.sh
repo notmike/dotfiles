@@ -19,59 +19,67 @@
 # Use the provided interface, otherwise the device used for the default route.
 INTERFACE=$(ip route | awk '/^default/ { print $5 ; exit }')
 
-# path to store the old results in
-path="/dev/shm/$(basename $0)-${INTERFACE}"
+if [ "$INTERFACE" ]; then
+  # Control will enter here if $DIRECTORY doesn't exist.
 
-# grabbing data for each adapter.
-read rx < "/sys/class/net/${INTERFACE}/statistics/rx_bytes"
-read tx < "/sys/class/net/${INTERFACE}/statistics/tx_bytes"
+    # path to store the old results in
+    path="/dev/shm/$(basename $0)-${INTERFACE}"
 
-# get time
-time=$(date +%s)
+    # grabbing data for each adapter.
+    read rx < "/sys/class/net/${INTERFACE}/statistics/rx_bytes"
+    read tx < "/sys/class/net/${INTERFACE}/statistics/tx_bytes"
 
-# write current data if file does not exist. Do not exit, this will cause
-# problems if this file is sourced instead of executed as another process.
-if ! [[ -f "${path}" ]]; then
-  echo "${time} ${rx} ${tx}" > "${path}"
-  chmod 0666 "${path}"
-fi
+    # get time
+    time=$(date +%s)
 
-# read previous state and update data storage
-read old < "${path}"
-echo "${time} ${rx} ${tx}" > "${path}"
+    # write current data if file does not exist. Do not exit, this will cause
+    # problems if this file is sourced instead of executed as another process.
+    if ! [[ -f "${path}" ]]; then
+      echo "${time} ${rx} ${tx}" > "${path}"
+      chmod 0666 "${path}"
+    fi
 
-# parse old data and calc time passed
-old=(${old//;/ })
-time_diff=$(( $time - ${old[0]} ))
+    # read previous state and update data storage
+    read old < "${path}"
+    echo "${time} ${rx} ${tx}" > "${path}"
 
-# sanity check: has a positive amount of time passed
-[[ "${time_diff}" -gt 0 ]] || exit
+    # parse old data and calc time passed
+    old=(${old//;/ })
+    time_diff=$(( $time - ${old[0]} ))
 
-# calc bytes transferred, and their rate in byte/s
-rx_diff=$(( $rx - ${old[1]} ))
-tx_diff=$(( $tx - ${old[2]} ))
-rx_rate=$(( $rx_diff / $time_diff ))
-tx_rate=$(( $tx_diff / $time_diff ))
+    # sanity check: has a positive amount of time passed
+    [[ "${time_diff}" -gt 0 ]] || exit
 
-# shift by 10 bytes to get KiB/s. If the value is larger than
-# 1024^2 = 1048576, then display MiB/s instead
+    # calc bytes transferred, and their rate in byte/s
+    rx_diff=$(( $rx - ${old[1]} ))
+    tx_diff=$(( $tx - ${old[2]} ))
+    rx_rate=$(( $rx_diff / $time_diff ))
+    tx_rate=$(( $tx_diff / $time_diff ))
 
-# incoming
-echo -n "%{F#928374} "
-rx_kib=$(( $rx_rate >> 10 ))
-if [[ "$rx_rate" -gt 1048576 ]]; then
-  printf '%sM' "`echo "scale=1; $rx_kib / 1024" | bc`"
+    # shift by 10 bytes to get KiB/s. If the value is larger than
+    # 1024^2 = 1048576, then display MiB/s instead
+
+    # incoming
+    echo -n "%{F#928374} "
+    rx_kib=$(( $rx_rate >> 10 ))
+    if [[ "$rx_rate" -gt 1048576 ]]; then
+      printf '%sM' "`echo "scale=1; $rx_kib / 1024" | bc`"
+    else
+      echo -n "%{F#fbf1c7}${rx_kib}K"
+    fi
+
+    echo -n " "
+
+    # outgoing
+    echo -n "%{F#928374} "
+    tx_kib=$(( $tx_rate >> 10 ))
+    if [[ "$tx_rate" -gt 1048576 ]]; then
+      printf '%sM' "`echo "scale=1; $tx_kib / 1024" | bc`"
+    else
+      echo -n "%{F#fbf1c7}${tx_kib}K"
+    fi
+
 else
-  echo -n "%{F#fbf1c7}${rx_kib}K"
-fi
+    echo -n "%{F#928374}  -- %{F#928374}  --"
 
-echo -n " "
-
-# outgoing
-echo -n "%{F#928374} "
-tx_kib=$(( $tx_rate >> 10 ))
-if [[ "$tx_rate" -gt 1048576 ]]; then
-  printf '%sM' "`echo "scale=1; $tx_kib / 1024" | bc`"
-else
-  echo -n "%{F#fbf1c7}${tx_kib}K"
 fi
