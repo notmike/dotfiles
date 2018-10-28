@@ -189,8 +189,8 @@ click-right = playerctl next
 type = custom/script
 interval = 600
 exec = ~/dotfiles/polybar/.config/polybar/openweathermap.sh
-click-left = "xdg-open http://www.weather.com/weather/hourbyhour/l/11106:4:US"
-double-click-left = "xdg-open https://www.wunderground.com/hourly/us/ny/astoria/11102?cm_ven=localwx_hour"
+click-left = "xdg-open https://www.wunderground.com/hourly/us/ny/astoria/11102?cm_ven=localwx_hour"
+double-click-left = "xdg-open https://www.weather.com/weather/hourbyhour/l/11106:4:US"
 label-font = 3
 format-underline = ${colors.secondary}
 
