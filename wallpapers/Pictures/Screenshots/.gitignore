@@ -3,7 +3,3 @@
 
 # Except this file & the README
 !.gitignore
-!lockscreen*
-!patterns
-!wallpapers
-!Screenshots
