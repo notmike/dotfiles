@@ -89,8 +89,10 @@ export VIMRUNTIME=/usr/share/nvim/runtime
 
 # Allow for starting new window w/ CWD when pressing Ctrl+Shift+t
 # originally we check for $TERM == xterm-termite  but since we changed the
-# $TERM value above, I adjusted here
-if [[ $TERM == xterm-termite ]]; then
+# $TERM value above, I adjusted here by checking the parent process id
+# for the name of the terminal running.
+current_term=$(ps -p $(ps -p $$ -o ppid=) -o args=);
+if [[ $current_term == termite ]]; then
   . /etc/profile.d/vte.sh
   __vte_osc7
 fi
