@@ -287,7 +287,7 @@ exec --no-startup-id guake --hide
 ## Dropbox
 exec dropbox
 ## i3Lock helper function for the laptop
-exec --no-startup-id xss-lock -- i3lock -n -i $HOME/Pictures/lockscreen-laptop.png
+exec --no-startup-id xss-lock -- betterlockscreen --lock
 ## Set my background
 exec_always --no-startup-id $HOME/scripts/setbg.sh
 ## Notifications
