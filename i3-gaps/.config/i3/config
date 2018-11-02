@@ -246,7 +246,10 @@ bindsym Shift+Print exec scrot -u '%m.%d.%Y-$wx$h-%T.png' -e 'mv $f `echo ~/Pict
 bindsym Print exec --no-startup-id "maim ~/Pictures/Screenshots/$(date +%m.%d.%Y--%H.%M.%S).png -s -c 1,0,0,0.6"
 
 # lock screen (w/out suspend)
-bindsym $mod+Shift+x exec $HOME/scripts/i3lock.sh
+bindsym Control+$mod+Shift+x exec betterlockscreen --lock dim
+
+# lock screen (with suspend)
+bindsym $mod+Shift+x exec betterlockscreen --suspend
 
 # Connect my Bluetooth headphones
 # cntrl+alt+b
@@ -286,7 +289,7 @@ exec --no-startup-id launchy
 exec --no-startup-id guake --hide
 ## Dropbox
 exec dropbox
-## i3Lock helper function for the laptop
+## Allows use of external locker as X screen saver
 exec --no-startup-id xss-lock -- betterlockscreen --lock
 ## Set my background
 exec_always --no-startup-id $HOME/scripts/setbg.sh
@@ -296,7 +299,5 @@ exec --no-startup-id dunst
 exec --no-startup-id unclutter -b
 ## Transparencies
 exec_always --no-startup-id compton
-## Battery Power Savings
-exec --no-startup-id tlp start
 ## Launch Status Bar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
