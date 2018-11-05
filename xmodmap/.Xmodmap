@@ -1,5 +1,6 @@
 ! .Xmodmap
 ! HHKB emulator
+! Heavily copied from: https://gist.github.com/jlhg/4997893
 
 ! Fn
 clear mod1

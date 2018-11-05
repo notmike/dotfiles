@@ -6,6 +6,8 @@ background-alt = #444
 foreground = #fbf1c7
 foreground-alt = #555
 foreground-icon = #928374
+neutral_green = #98971a
+bright_green = #b8bb26
 primary = #b8bb26
 secondary = #928374
 alert = #fe8019
@@ -40,7 +42,7 @@ font-1 = FontAwesome:size=12;0
 
 modules-left = i3
 modules-center =
-modules-right = eth wlan ip brightness battery music pulseaudio bandwidth filesystem memory cpu temperature date time
+modules-right = eth wlan ip bandwidth brightness battery music pulseaudio filesystem memory cpu temperature date time
 
 tray-position = center
 tray-padding = 5
@@ -371,7 +373,7 @@ animation-charging-1 = 
 animation-charging-2 = 
 animation-charging-3 = 
 animation-charging-4 = 
-animation-charging-foreground = ${colors.foreground-icon}
+animation-charging-foreground = ${colors.bright_green}
 animation-charging-framerate = 750
 
 [module/temperature]
