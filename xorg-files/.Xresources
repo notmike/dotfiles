@@ -83,3 +83,8 @@ URxvt*hold: true
 ! terminal padding
 URxvt.internalBorder: 5
 !URxvt.externalBorder: 0
+
+!XTerm.vt100.facename: xft:FantasqueSansMono Nerd Font:size=9
+XTerm.vt100.faceName: FantasqueSansMono Nerd Font:size=10:style=Regular
+! XTerm.vt100.font: 7x13
+

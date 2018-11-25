@@ -62,8 +62,15 @@ HISTSIZE=50000
 SAVEHIST=50000
 setopt HIST_IGNORE_DUPS
 
+# Set Firefox as default browser
+export BROWSER=/usr/bin/firefox
+
 # Set Ranger to not use default settings
 export RANGER_LOAD_DEFAULT_RC=false
+
+# SSH works better
+export TERM=xterm-256color
+
 export GOPATH=$HOME/go
 export PATH=$HOME/bin:/usr/local/bin:$GOPATH/bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -80,14 +87,12 @@ export EDITOR=nvim
 #export VIMRUNTIME=/usr/share/vim/vim80
 export VIMRUNTIME=/usr/share/nvim/runtime
 
-# SSH works better when $TERM = xterm-256color
-export TERM=xterm-256color
-# export TERM=xterm-termite
-
 # Allow for starting new window w/ CWD when pressing Ctrl+Shift+t
 # originally we check for $TERM == xterm-termite  but since we changed the
-# $TERM value above, I adjusted here
-if [[ $TERM == xterm-256color ]]; then
+# $TERM value above, I adjusted here by checking the parent process id
+# for the name of the terminal running.
+current_term=$(ps -p $(ps -p $$ -o ppid=) -o args=);
+if [[ $current_term == termite ]]; then
   . /etc/profile.d/vte.sh
   __vte_osc7
 fi
@@ -188,6 +193,7 @@ STEAM_RUNTIME=0
 # so the terminal app "ranger" can open new terminal in last directory
 cd "$AUTOCD"
 
+# needed FZF plugin for Vim
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 PATH="/home/mg/perl5/bin${PATH:+:${PATH}}"; export PATH;

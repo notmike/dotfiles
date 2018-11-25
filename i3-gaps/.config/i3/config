@@ -76,8 +76,8 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 # Program Menu Launcher
-bindsym $mod+d exec --no-startup-id "~/scripts/i3/rofi.sh"
-bindsym $mod+Shift+d exec --no-startup-id "~/scripts/i3/openNewDesktop.sh ~/scripts/i3/rofi.sh"
+bindsym $mod+d exec --no-startup-id "~/.config/rofi/rofi.sh"
+bindsym $mod+Shift+d exec --no-startup-id "~/.config/i3/open-on-clean-desktop.sh ~/.config/rofi/rofi.sh"
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
