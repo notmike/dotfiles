@@ -99,7 +99,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * ,-------------------------------------------------------------.
      * |DFU|PLY1|PLY2|   |   |   |   |   |   |   |   |QWE|GME|UTL|DBG|
      * |-------------------------------------------------------------|
-     * |     |MLB |M-Up|MRB|MwU|   |Hom|PgD|PgU|End|   |   |   |     |
+     * |     |MLB |M-Up|MRB|MwU|   |Hom|PgD|PgU|End|Psc|   |   |     |
      * |-------------------------------------------------------------|
      * |      |M-Lt|M-Dn|M-R|MwD|   |LEF|DOW|UP |RIG|   |   |        |
      * |-------------------------------------------------------------|
@@ -112,7 +112,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [UTIL] = LAYOUT(
   RESET, DYN_MACRO_PLAY1, DYN_MACRO_PLAY2, ____,    ____,    ____,   ____,    ____,    ____,    ____,    ____, ____, TO(GAME), DF(UTIL), DEBUG, \
-  ____,  KC_BTN1,         KC_MS_U,         KC_BTN2, KC_WH_U, ____,   KC_HOME, KC_PGDN, KC_PGUP, KC_END,  ____, ____,     ____,     ____,        \
+  ____,  KC_BTN1,         KC_MS_U,         KC_BTN2, KC_WH_U, ____,   KC_HOME, KC_PGDN, KC_PGUP, KC_END, KC_PSCR, ____,     ____,     ____,        \
   ____,  KC_MS_L,         KC_MS_D,         KC_MS_R, KC_WH_D, ____,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, ____, ____,     ____,                  \
   ____,  ____,            ____,            ____,    ____,    KC_SPC, ____,    ____,    ____,    ____,    ____, ____,     ____,                  \
          ____,            ____,            ____,    ____,    ____),
