@@ -40,7 +40,7 @@ font-2 = Weather Icons:size=12;1
 
 modules-left = i3
 modules-center =
-modules-right = bitcoin music pulseaudio ip bandwidth filesystem memory cpu temperature openweathermap-fullfeatured date time
+modules-right = pulseaudio ip bandwidth filesystem memory cpu temperature openweathermap-fullfeatured date time
 
 tray-position = center
 tray-padding = 2

@@ -207,6 +207,7 @@ if has('nvim')
     let @m = expand("%:t")      " puts the filename (with extension) in register m
     let @n = expand("%:t:r")    " puts the filename (withOUT extension) in register n
     autocmd FileType python nnoremap <F9> :15Term python \<c-r>m\<CR>
+    autocmd FileType javascript nnoremap <F9> :15Term node \<c-r>m\<CR>
     autocmd FileType java nnoremap <F9> :15Term javac \<c-r>m && java \<c-r>n\<CR>
 else
     autocmd FileType python nnoremap <buffer> <F9> :!python %<CR>
@@ -242,10 +243,10 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'ap/vim-css-color'                 " A very fast, color name highlighter
 Plug 'Shougo/deoplete.nvim', {
   \ 'do': ':UpdateRemotePlugins' }      " Asynchronous auto completion.
-Plug 'wokalski/autocomplete-flow'       " Flow autocompletion for deoplete & snippets
 Plug 'zchee/deoplete-clang'             " Clang autocomplete
 Plug 'zchee/deoplete-go', { 'do': 'make'} " Go autocompletion
 Plug 'zchee/deoplete-jedi'              " Python autocomplete
+"Plug 'ludovicchabant/vim-gutentags'			" Jump to function definition
 Plug 'morhetz/gruvbox'                  " Color scheme gruvbox
 Plug 'sjl/gundo.vim'                    " Fancy Undo Screen
 
@@ -260,9 +261,13 @@ Plug 'neomake/neomake'                  " Asynchronous syntax checking with make
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
 
-" Better Javascript Syntax Highlighting
+" Javascript related
 Plug 'neovim/node-host', { 'do': 'npm install' }
 Plug 'billyvg/tigris.nvim', { 'do': './install.sh' }
+Plug 'wokalski/autocomplete-flow'       " Flow autocompletion for deoplete & snippets
+Plug 'ternjs/tern_for_vim', {
+  \ 'do': 'npm install && npm install -g tern' }  " Javascript autocomplete
+Plug 'carlitux/deoplete-ternjs'         " Javascript TernJS deoplete plugin
 
 Plug 'scrooloose/nerdtree'	            " File Manager
 Plug 'Xuyuanp/nerdtree-git-plugin'      " Shows git status of files in NERDtree menu
@@ -294,9 +299,19 @@ call plug#end()
 " -----------------------------------------------------------------------------
 let g:deoplete#enable_at_startup = 1 " Enable deoplete on startup.
 let g:deoplete#enable_smart_case = 1 " Enable smart case.
+let g:deoplete#enable_refresh_always = 1
+let g:deoplete#max_abbr_width = 0
+let g:deoplete#max_menu_width = 0
+let g:deoplete#omni#input_patterns = get(g:,'deoplete#omni#input_patterns',{})
+
+let g:tern_request_timeout = 1
+let g:tern_request_timeout = 6000
+let g:tern#command = ["tern"]
+let g:tern#arguments = [" — persistent"]
+let g:deoplete#sources#tss#javascript_support = 1
 
 " Tab completion.
-" inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " On backspace, delete previous completion and regenerate popup.
 inoremap <expr><C-H> deoplete#mappings#smart_close_popup()."\<C-H>"

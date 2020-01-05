@@ -30,8 +30,6 @@ l_dimblur="$folder/l_dimblur.png"
 
 
 prelock() {
-    # SAVE FIREFOX PROFILE TO MEMORY
-    firefox-sync &
     playerctl stop
     # TURN OFF THE BLUETOOTH SO SYSTEMCTL SUSPEND WORKS
     echo -e 'power off\nquit' | bluetoothctl
