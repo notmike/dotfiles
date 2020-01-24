@@ -246,7 +246,7 @@ Plug 'Shougo/deoplete.nvim', {
 Plug 'zchee/deoplete-clang'             " Clang autocomplete
 Plug 'zchee/deoplete-go', { 'do': 'make'} " Go autocompletion
 Plug 'zchee/deoplete-jedi'              " Python autocomplete
-"Plug 'ludovicchabant/vim-gutentags'			" Jump to function definition
+" Plug 'ludovicchabant/vim-gutentags'			" Jump to function definition
 Plug 'morhetz/gruvbox'                  " Color scheme gruvbox
 Plug 'sjl/gundo.vim'                    " Fancy Undo Screen
 
@@ -262,7 +262,7 @@ Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
 
 " Javascript related
-Plug 'neovim/node-host', { 'do': 'npm install' }
+" Plug 'neovim/node-host', { 'do': 'npm install' }  " **** THIS BREAKS :checkhealth
 Plug 'billyvg/tigris.nvim', { 'do': './install.sh' }
 Plug 'wokalski/autocomplete-flow'       " Flow autocompletion for deoplete & snippets
 Plug 'ternjs/tern_for_vim', {

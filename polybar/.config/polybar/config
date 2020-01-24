@@ -173,7 +173,7 @@ click-left = pulseaudio-ctl mute
 
 [module/ip]
 type = custom/script
-interval = 2
+interval = 9
 exec = ~/dotfiles/polybar/.config/polybar/ip.sh
 click-left = "xdg-open https://ipleak.net/"
 
