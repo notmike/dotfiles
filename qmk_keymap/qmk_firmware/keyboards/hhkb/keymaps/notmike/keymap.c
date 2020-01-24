@@ -31,7 +31,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |--------------------------------------------------------------|
      * |Tab  |Q/MREC|  W|  E|  R|  T|  Y|  U|  I|  O|  P|  [|  ]|Backs|
      * |--------------------------------------------------------------|
-     * |Ctrl  |     A|  S|  D|  F|  G|  H|  J|  K|  L|  ;|  '|Ent/Ctrl|
+     * |Ctrl  |     A|  S|  D|  F|  G|  H|  J|  K|  L|  ;|  '| Enter  |
      * |--------------------------------------------------------------|
      * |Shft/( |     Z|  X|  C|  V|  B|  N|  M|  ,|  .|  /|Shft/) |Fn0|
      * `--------------------------------------------------------------'
@@ -43,7 +43,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [QWER] = LAYOUT(
   KC_ESC,  KC_1,           KC_2,    KC_3,             KC_4,    KC_5,     KC_6, KC_7, KC_8,    KC_9,   KC_0,    KC_MINS, KC_EQL,        KC_BSLS, KC_GRV, \
   KC_TAB,  LT(MREC, KC_Q), KC_W,    KC_E,             KC_R,    KC_T,     KC_Y, KC_U, KC_I,    KC_O,   KC_P,    KC_LBRC, KC_RBRC,       KC_BSPC,         \
-  KC_LCTL, KC_A,           KC_S,    KC_D,             KC_F,    KC_G,     KC_H, KC_J, KC_K,    KC_L,   KC_SCLN, KC_QUOT, CTL_T(KC_ENT),                  \
+  KC_LCTL, KC_A,           KC_S,    KC_D,             KC_F,    KC_G,     KC_H, KC_J, KC_K,    KC_L,   KC_SCLN, KC_QUOT, KC_ENT,                  \
   KC_LSPO, KC_Z,           KC_X,    KC_C,             KC_V,    KC_B,     KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_RSPC, MO(HHKB),                       \
            KC_LALT,        KC_LGUI, LT(UTIL, KC_SPC), KC_RGUI, KC_RALT),
 
@@ -99,9 +99,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * ,-------------------------------------------------------------.
      * |DFU|PLY1|PLY2|   |   |   |   |   |   |   |   |QWE|GME|UTL|DBG|
      * |-------------------------------------------------------------|
-     * |     |MLB |M-Up|MRB|MwU|   |Hom|PgD|PgU|End|Psc|   |   |     |
+     * |     |    |MLB|M-Up|MRB|MwU|Hom|PgD|PgU|End|Psc|   |   |     |
      * |-------------------------------------------------------------|
-     * |      |M-Lt|M-Dn|M-R|MwD|   |LEF|DOW|UP |RIG|   |   |        |
+     * |      |   |M-Lt|M-Dn|M-R|MwD|LEF|DOW|UP |RIG|   |   |        |
      * |-------------------------------------------------------------|
      * |        |    |    |   |   |SPC|   |   |   |   |   |      |   |
      * `-------------------------------------------------------------'
@@ -112,10 +112,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [UTIL] = LAYOUT(
   RESET, DYN_MACRO_PLAY1, DYN_MACRO_PLAY2, ____,    ____,    ____,   ____,    ____,    ____,    ____,    ____, ____, TO(GAME), DF(UTIL), DEBUG, \
-  ____,  KC_BTN1,         KC_MS_U,         KC_BTN2, KC_WH_U, ____,   KC_HOME, KC_PGDN, KC_PGUP, KC_END, KC_PSCR, ____,     ____,     KC_DEL,        \
-  ____,  KC_MS_L,         KC_MS_D,         KC_MS_R, KC_WH_D, ____,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, ____, ____,     ____,                  \
-  ____,  ____,            ____,            ____,    ____,    KC_SPC, ____,    ____,    ____,    ____,    ____, ____,     ____,                  \
-         ____,            ____,            ____,    ____,    ____),
+  ____,  ____,  KC_BTN1,  KC_MS_U,  KC_BTN2, KC_WH_U, KC_HOME, KC_PGDN, KC_PGUP, KC_END, KC_PSCR, ____,     ____,     KC_DEL,        \
+  ____,  ____,  KC_MS_L,  KC_MS_D,  KC_MS_R, KC_WH_D, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, ____, ____,     ____,                  \
+  ____,  ____,   ____,    ____,    ____,    KC_SPC, ____,    ____,    ____,    ____,    ____, ____,     ____,                  \
+         ____,   ____,    ____,    ____,    ____),
 
 
     /* MREC Layer: Record macros by holding down `q` and tapping '1' or '2'
