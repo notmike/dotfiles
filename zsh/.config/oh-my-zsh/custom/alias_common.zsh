@@ -122,6 +122,9 @@ alias shutdown='shutdown -h now'
 # check internet speeds!
 alias speedtest='speedtest-cli'
 
+# sway config shortcut
+alias swayconfig='$EDITOR ~/.config/sway/config'
+
 # edit Termite config file
 alias termiteconfig='$EDITOR $HOME/.config/termite/config'
 
@@ -130,6 +133,9 @@ alias vimrc='$EDITOR ~/.vimrc'
 
 # visual arm emulator
 alias visual='/usr/local/bin/visual/VisUAL.sh'
+
+# waybar config
+alias waybarrc='$EDITOR ~/.config/waybar/config'
 
 # convert jpgs to 30% size and 90% of quality
 alias webconvert='for file in *.(jpg|png|bmp|jpeg); do convert "$file" -quality 90 -resize 30% "web_$file"; done'

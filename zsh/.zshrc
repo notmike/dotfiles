@@ -62,6 +62,9 @@ HISTSIZE=50000
 SAVEHIST=50000
 setopt HIST_IGNORE_DUPS
 
+# Waybar compatibility
+export XDG_CURRENT_DESKTOP=Unity
+
 # Set Firefox as default browser
 export BROWSER=/usr/bin/firefox
 

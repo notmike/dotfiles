@@ -11,9 +11,9 @@ alert = #fe8019
 
 ; NOTE: make sure you update the bar name in "launch.sh"
 [bar/barTop]
-;monitor = ${env:MONITOR:HDMI-1}
+monitor = ${env:MONITOR:DP-4}
 width = 100%
-height = 24
+height = 30
 offset-x = 0
 offset-y = 0
 radius = 0.0
@@ -34,13 +34,13 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = DejaVuSans:size=10;0
-font-1 = FontAwesome:size=12;0
-font-2 = Weather Icons:size=12;1
+font-0 = DejaVuSans:size=12;0
+font-1 = FontAwesome:size=13;0
+font-2 = Weather Icons:size=13;1
 
 modules-left = i3
 modules-center =
-modules-right = pulseaudio ip bandwidth filesystem memory cpu temperature openweathermap-fullfeatured date time
+modules-right = pulseaudio ip network-traffic filesystem memory cpu temperature openweathermap-fullfeatured date time
 
 tray-position = center
 tray-padding = 2
@@ -65,6 +65,17 @@ cursor-scroll = ns-resize
 
 ; enable-ipc must be true on parent bar for custom/ipc modules to work
 enable-ipc = true
+
+[bar/barSecond]
+inherit = bar/barTop
+
+monitor = ${env:MONITOR:DP-2}
+
+font-0 = DejaVuSans:size=10;0
+font-1 = FontAwesome:size=12;0
+font-2 = Weather Icons:size=12;1
+tray-position = 
+modules-right = music pulseaudio ip network-traffic filesystem memory cpu temperature openweathermap-fullfeatured date time
 
 
 [module/i3]
@@ -148,8 +159,6 @@ label-separator = |
 label-separator-padding = 1
 label-separator-foreground = #928374
 
-
-
 [module/bitcoin]
 type = custom/ipc
 hook-0 = ~/dotfiles/polybar/.config/polybar/bitcoin.sh
@@ -164,6 +173,11 @@ double-click-left = polybar-msg -p %pid% hook bitcoin 3
 type = custom/script
 interval = 1
 exec = ~/dotfiles/polybar/.config/polybar/bandwidth.sh
+
+[module/network-traffic]
+type = custom/script
+exec = ~/dotfiles/polybar/.config/polybar/network-traffic.sh
+tail = true
 
 [module/pulseaudio]
 type = custom/script
@@ -326,6 +340,7 @@ ramp-signal-foreground = ${colors.foreground-alt}
 type = internal/network
 interface = enp5s0
 interval = 3.0
+accumulate-stats = true
 
 format-connected-underline = #55aa55
 format-connected-prefix = ""
