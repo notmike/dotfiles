@@ -87,8 +87,13 @@ source /usr/share/fzf/completion.zsh
 
 export VISUAL=nvim
 export EDITOR=nvim
-#export VIMRUNTIME=/usr/share/vim/vim80
-export VIMRUNTIME=/usr/share/nvim/runtime
+# # Test if the shell is launched in Neovim's Terminal
+# if [[ -n "${NVIM_LISTEN_ADDRESS}" ]]
+# then
+#   # TODO: Update path each major vim update
+#   export VIMRUNTIME=/usr/share/vim/vim82
+# fi
+# export VIMRUNTIME=/usr/share/nvim/runtime
 
 # Allow for starting new window w/ CWD when pressing Ctrl+Shift+t
 # originally we check for $TERM == xterm-termite  but since we changed the

@@ -36,6 +36,8 @@ set title                  " Set window title to 'filename [+=-] (path) - NVIM'.
 " Highlight Trailing Spaces (ugly code)
 match ErrorMsg '\s\+$'
 
+set cmdheight=2            " Give more space for displaying messages
+
 "}}}
 " Options - Behavior {{{
 " -----------------------------------------------------------------------------
@@ -157,8 +159,8 @@ imap <C-v> <ESC>"+pa
 " Visually select the text that was last edited/pasted
 noremap gV `[v`]
 
-" yank whole line (w/out newline char)
-noremap Y y$
+" yank whole line from cursor
+nnoremap Y y$
 vnoremap Y y$
 
 " Stop the highlighting for the current search results.
@@ -227,6 +229,17 @@ nnoremap gz :!zeal "<cword>"&<CR><CR>
 nnoremap <leader>ev :split $MYVIMRC<cr>
 " source neovim config file after editing
 nnoremap <leader>v :source $MYVIMRC<cr>
+
+" Diff current buffer and the original file
+function! s:DiffWithSaved()
+  let filetype=&ft
+  diffthis
+  vnew | r # | normal! 1Gdd
+  diffthis
+  exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
+endfunction
+com! DiffSaved call s:DiffWithSaved()
+
 "}}}
 " Mappings - Toggle Options {{{
 " -----------------------------------------------------------------------------
@@ -240,13 +253,15 @@ nnoremap cow :set wrap!<CR>
 " ----------------------------------------------------------------------------
 
 call plug#begin('~/.config/nvim/plugged')
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}   " LSP support
+
 Plug 'ap/vim-css-color'                 " A very fast, color name highlighter
-Plug 'Shougo/deoplete.nvim', {
-  \ 'do': ':UpdateRemotePlugins' }      " Asynchronous auto completion.
-Plug 'zchee/deoplete-clang'             " Clang autocomplete
-Plug 'zchee/deoplete-go', { 'do': 'make'} " Go autocompletion
-Plug 'zchee/deoplete-jedi'              " Python autocomplete
-" Plug 'ludovicchabant/vim-gutentags'			" Jump to function definition
+" Plug 'Shougo/deoplete.nvim', {
+"   \ 'do': ':UpdateRemotePlugins' }      " Asynchronous auto completion.
+" Plug 'zchee/deoplete-clang'             " Clang autocomplete
+" Plug 'zchee/deoplete-go', { 'do': 'make'} " Go autocompletion
+" Plug 'zchee/deoplete-jedi'              " Python autocomplete
 Plug 'morhetz/gruvbox'                  " Color scheme gruvbox
 Plug 'sjl/gundo.vim'                    " Fancy Undo Screen
 
@@ -255,19 +270,22 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 Plug 'Yggdroot/indentLine'              " Pretty line indentations
-Plug 'neomake/neomake'                  " Asynchronous syntax checking with make.
+" Plug 'neomake/neomake'                  " Asynchronous syntax checking with make.
 
 " For func argument completion
-Plug 'Shougo/neosnippet'
-Plug 'Shougo/neosnippet-snippets'
+" Plug 'Shougo/neosnippet'
+" Plug 'Shougo/neosnippet-snippets'
 
 " Javascript related
 " Plug 'neovim/node-host', { 'do': 'npm install' }  " **** THIS BREAKS :checkhealth
-Plug 'billyvg/tigris.nvim', { 'do': './install.sh' }
-Plug 'wokalski/autocomplete-flow'       " Flow autocompletion for deoplete & snippets
-Plug 'ternjs/tern_for_vim', {
-  \ 'do': 'npm install && npm install -g tern' }  " Javascript autocomplete
-Plug 'carlitux/deoplete-ternjs'         " Javascript TernJS deoplete plugin
+" Plug 'billyvg/tigris.nvim', { 'do': './install.sh' }
+" Plug 'wokalski/autocomplete-flow'       " Flow autocompletion for deoplete & snippets
+" Plug 'ternjs/tern_for_vim', {
+"   \ 'do': 'npm install && npm install -g tern' }  " Javascript autocomplete
+" Plug 'carlitux/deoplete-ternjs'         " Javascript TernJS deoplete plugin
+
+"  GO Support
+" Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }  " Go Lang Support
 
 Plug 'scrooloose/nerdtree'	            " File Manager
 Plug 'Xuyuanp/nerdtree-git-plugin'      " Shows git status of files in NERDtree menu
@@ -279,7 +297,6 @@ Plug 'tpope/vim-commentary'             " Commenting made simple.
 Plug 'junegunn/vim-easy-align'	    	  " Text alignment by characters.
 Plug 'easymotion/vim-easymotion'        " navigate documents reallllly fast!
 Plug 'tpope/vim-fugitive'               " Track Git changes
-Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }  " Go Lang Support
 Plug 'airblade/vim-gitgutter'           " Shows git changes in file
 
 " Code Formatter (JS·CSS·SCSS·Less·JSX·GraphQL·JSON·Markdown
@@ -297,35 +314,33 @@ call plug#end()
 "}}}
 " Plugin Settings - deoplete {{{
 " -----------------------------------------------------------------------------
-let g:deoplete#enable_at_startup = 1 " Enable deoplete on startup.
-let g:deoplete#enable_smart_case = 1 " Enable smart case.
-let g:deoplete#enable_refresh_always = 1
-let g:deoplete#max_abbr_width = 0
-let g:deoplete#max_menu_width = 0
-let g:deoplete#omni#input_patterns = get(g:,'deoplete#omni#input_patterns',{})
+" let g:deoplete#enable_at_startup = 1 " Enable deoplete on startup.
+" let g:deoplete#max_abbr_width = 0
+" let g:deoplete#max_menu_width = 0
+" " let g:deoplete#omni#input_patterns = get(g:,'deoplete#omni#input_patterns',{})
 
-let g:tern_request_timeout = 1
-let g:tern_request_timeout = 6000
-let g:tern#command = ["tern"]
-let g:tern#arguments = [" — persistent"]
-let g:deoplete#sources#tss#javascript_support = 1
+" let g:tern_request_timeout = 1
+" let g:tern_request_timeout = 6000
+" let g:tern#command = ["tern"]
+" let g:tern#arguments = [" — persistent"]
+" let g:deoplete#sources#tss#javascript_support = 1
 
-" Tab completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" " Tab completion.
+" inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
-" On backspace, delete previous completion and regenerate popup.
-inoremap <expr><C-H> deoplete#mappings#smart_close_popup()."\<C-H>"
-" inoremap <expr><BS> deoplete#mappings#smart_close_popup()."\<C-H>"
+" " On backspace, delete previous completion and regenerate popup.
+" inoremap <expr><C-H> deoplete#mappings#smart_close_popup()."\<C-H>"
+" " inoremap <expr><BS> deoplete#mappings#smart_close_popup()."\<C-H>"
 
-" disable docstring popup window
-autocmd FileType go,python setlocal completeopt-=preview
+" " disable docstring popup window
+" autocmd FileType go,python setlocal completeopt-=preview
 
-let g:deoplete#sources#clang#libclang_path = "/usr/lib/libclang.so"
-let g:deoplete#sources#clang#clang_header = "/usr/lib/clang"
+" let g:deoplete#sources#clang#libclang_path = "/usr/lib/libclang.so"
+" let g:deoplete#sources#clang#clang_header = "/usr/lib/clang"
 
-let g:deoplete#sources#go#gocode_binary = "/home/mg/go/bin/gocode"
-let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
-let g:deoplete#sources#go#pointer = 1
+" let g:deoplete#sources#go#gocode_binary = "/home/mg/go/bin/gocode"
+" let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
+" let g:deoplete#sources#go#pointer = 1
 "}}}
 " Plugin Settings - EasyMotion {{{
 " -----------------------------------------------------------------------------
@@ -380,21 +395,21 @@ let g:indentLine_faster = 1
 " Plugin Settings - neomake {{{
 " -----------------------------------------------------------------------------
 " When writing a buffer (no delay).
-call neomake#configure#automake('w')
-"
-let g:neomake_logfile = '/home/mg/.config/nvim/log/neomake.log'
-let g:neomake_javascript_enabled_makers = ['eslint']
-let g:neomake_jsx_enabled_makers = ['eslint']
-let g:jsx_ext_required = 0 " Allow JSX in normal JS files
+"call neomake#configure#automake('w')
+""
+"let g:neomake_logfile = '/home/mg/.config/nvim/log/neomake.log'
+"let g:neomake_javascript_enabled_makers = ['eslint']
+"let g:neomake_jsx_enabled_makers = ['eslint']
+"let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 
-let g:neomake_python_enabled_makers = ['pep8']
+"let g:neomake_python_enabled_makers = ['pep8']
 
-" neomake error shortcuts
-nnoremap <Leader><Space>o :lopen<CR>      " open location window
-nnoremap <Leader><Space>c :lclose<CR>     " close location window
-nnoremap <Leader><Space>, :ll<CR>         " go to current error/warning
-nnoremap <Leader><Space>n :lnext<CR>      " next error/warning
-nnoremap <Leader><Space>p :lprev<CR>      " previous error/warning
+"" neomake error shortcuts
+"nnoremap <Leader><Space>o :lopen<CR>      " open location window
+"nnoremap <Leader><Space>c :lclose<CR>     " close location window
+"nnoremap <Leader><Space>, :ll<CR>         " go to current error/warning
+"nnoremap <Leader><Space>n :lnext<CR>      " next error/warning
+"nnoremap <Leader><Space>p :lprev<CR>      " previous error/warning
 "}}}
 " Plugin Settings - nerdtree {{{
 " -----------------------------------------------------------------------------
@@ -420,26 +435,26 @@ let g:NERDTreeIndicatorMapCustom = {
 "}}}
 " Plugin Settings - neosnippet {{{
 " -----------------------------------------------------------------------------
-let g:neosnippet#enable_completed_snippet = 1
-" Plugin key-mappings.
-" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
+"let g:neosnippet#enable_completed_snippet = 1
+"" Plugin key-mappings.
+"" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+"imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+"smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+"xmap <C-k>     <Plug>(neosnippet_expand_target)
 
-" SuperTab like snippets behavior.
-" Note: It must be 'imap' and 'smap'.  It uses <Plug> mappings.
-"imap <expr><TAB>
-" \ pumvisible() ? "\<C-n>" :
-" \ neosnippet#expandable_or_jumpable() ?
-" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+"" SuperTab like snippets behavior.
+"" Note: It must be 'imap' and 'smap'.  It uses <Plug> mappings.
+""imap <expr><TAB>
+"" \ pumvisible() ? "\<C-n>" :
+"" \ neosnippet#expandable_or_jumpable() ?
+"" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+"smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+"\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
-" For conceal markers.
-if has('conceal')
-  set conceallevel=2 concealcursor=niv
-endif
+"" For conceal markers.
+"if has('conceal')
+"  set conceallevel=2 concealcursor=niv
+"endif
 
 "}}}
 " Plugin Settings - Pickachu {{{
@@ -486,10 +501,10 @@ nmap ga <Plug>(EasyAlign)
 "}}}
 " Plugin Settings - Tigris {{{
 " -----------------------------------------------------------------------------
-let g:tigris#enabled = 1
-" on the fly highlighting
-" let g:tigris#on_the_fly_enabled = 1
-" let g:tigris#delay = 500
+" let g:tigris#enabled = 1
+" " on the fly highlighting
+" " let g:tigris#on_the_fly_enabled = 1
+" " let g:tigris#delay = 500
 
 "}}}
 " Plugin Settings - Vim-DevIcons {{{
@@ -544,31 +559,164 @@ autocmd filetype nerdtree syn match sql_icon ## containedin=NERDTreeFile
 "}}}
 " Plugin Settings - Vim-Go {{{
 " -----------------------------------------------------------------------------
-" Save file automatically when calling :GoBuild
-set autowrite
+" " Save file automatically when calling :GoBuild
+" set autowrite
 
-" Easier navigation in quickfix menu
-nnoremap <leader><leader>n :cnext<CR>
-nnoremap <leader><leader>m :cprevious<CR>
-nnoremap <leader><leader>a :cclose<CR>
+" " Easier navigation in quickfix menu
+" nnoremap <leader><leader>n :cnext<CR>
+" nnoremap <leader><leader>m :cprevious<CR>
+" nnoremap <leader><leader>a :cclose<CR>
 
-" run :GoBuild or :GoTestCompile based on the go file
-function! s:build_go_files()
-  let l:file = expand('%')
-  if l:file =~# '^\f\+_test\.go$'
-    call go#test#Test(0, 1)
-  elseif l:file =~# '^\f\+\.go$'
-    call go#cmd#Build(0)
+" " run :GoBuild or :GoTestCompile based on the go file
+" function! s:build_go_files()
+"   let l:file = expand('%')
+"   if l:file =~# '^\f\+_test\.go$'
+"     call go#test#Test(0, 1)
+"   elseif l:file =~# '^\f\+\.go$'
+"     call go#cmd#Build(0)
+"   endif
+" endfunction
+
+
+" " shortcuts for GoBuild & GoRun & GoTest
+" autocmd FileType go nmap <leader><leader>b :<C-u>call <SID>build_go_files()<CR>
+" autocmd FileType go nmap <leader><leader>r  <Plug>(go-run)
+" autocmd FileType go nmap <leader><leader>t  <Plug>(go-test)
+" autocmd FileType go nmap <leader><leader>c  <Plug>(go-coverage-toggle)
+
+" " makes all error lists of type 'quickfix' so they all appear in same window
+" let g:go_list_type = "quickfix"
+"}}}
+" Plugin Settings - Coc {{{
+" -----------------------------------------------------------------------------
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=300
+
+" Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
+
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved.
+set signcolumn=yes
+
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
+" position. Coc only does snippet and additional edit on confirm.
+" <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
+if exists('*complete_info')
+  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+else
+  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+endif
+
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
   endif
 endfunction
 
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
 
-" shortcuts for GoBuild & GoRun & GoTest
-autocmd FileType go nmap <leader><leader>b :<C-u>call <SID>build_go_files()<CR>
-autocmd FileType go nmap <leader><leader>r  <Plug>(go-run)
-autocmd FileType go nmap <leader><leader>t  <Plug>(go-test)
-autocmd FileType go nmap <leader><leader>c  <Plug>(go-coverage-toggle)
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
 
-" makes all error lists of type 'quickfix' so they all appear in same window
-let g:go_list_type = "quickfix"
+" Formatting selected code.
+xmap <leader><leader>f  <Plug>(coc-format-selected)
+nmap <leader><leader>f  <Plug>(coc-format-selected)
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder.
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+" Applying codeAction to the selected region.
+" Example: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap keys for applying codeAction to the current line.
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Apply AutoFix to problem on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Introduce function text object
+" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
+xmap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap if <Plug>(coc-funcobj-i)
+omap af <Plug>(coc-funcobj-a)
+
+" Use <TAB> for selections ranges.
+" NOTE: Requires 'textDocument/selectionRange' support from the language server.
+" coc-tsserver, coc-python are the examples of servers that support it.
+nmap <silent> <TAB> <Plug>(coc-range-select)
+xmap <silent> <TAB> <Plug>(coc-range-select)
+
+" Add `:Format` command to format current buffer.
+command! -nargs=0 Format :call CocAction('format')
+
+" Add `:Fold` command to fold current buffer.
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" Add `:OR` command for organize imports of the current buffer.
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
+" Add (Neo)Vim's native statusline support.
+" NOTE: Please see `:h coc-status` for integrations with external plugins that
+" provide custom statusline: lightline.vim, vim-airline.
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+" Mappings using CoCList:
+" Show all diagnostics.
+nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions.
+nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+" Show commands.
+nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document.
+nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols.
+nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list.
+nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 "}}}
