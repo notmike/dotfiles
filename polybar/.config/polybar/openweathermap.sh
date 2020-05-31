@@ -34,7 +34,7 @@ get_duration() {
 
 
 KEY="898745e8ae6cae6c370cc3860358f3a6"
-CITY="5125771"
+CITY="5125125"
 UNITS="imperial"
 SYMBOL="°"
 
@@ -43,6 +43,7 @@ forecast=$(curl -sf "http://api.openweathermap.org/data/2.5/forecast?APPID=$KEY&
 
 if [ ! -z "$current" ] && [ ! -z "$forecast" ]; then
     current_temp=$(echo "$current" | jq ".main.temp" | cut -d "." -f 1)
+    current_feels_like=$(echo "$current" | jq ".main.feels_like" | cut -d "." -f 1)
     current_icon=$(echo "$current" | jq -r ".weather[].icon")
 
     forecast_temp=$(echo "$forecast" | jq ".list[].main.temp" | cut -d "." -f 1)
@@ -70,7 +71,8 @@ if [ ! -z "$current" ] && [ ! -z "$forecast" ]; then
         daytime=" $(get_duration "$(("$sun_rise"-"$now"))")"
     fi
 
-    # echo "$(get_icon "$current_icon") $current_temp$SYMBOL  $trend  $(get_icon "$forecast_icon") $forecast_temp$SYMBOL   $daytime"
-    echo "$(get_icon "$current_icon") $current_temp$SYMBOL"
+#    echo "$(get_icon "$current_icon") $current_temp$SYMBOL  $trend  $(get_icon "$forecast_icon") $forecast_temp$SYMBOL   $daytime"
+    echo "$(get_icon "$current_icon") ~$current_feels_like$SYMBOL ($current_temp$SYMBOL)"
 
 fi
+
