@@ -22,10 +22,9 @@ echo -e 'power off\nquit' | bluetoothctl
 dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Pause
 
 # Display this image on lockscreen
-IMAGE=$HOME/Pictures/lockscreen.png
+IMAGE=$HOME/Pictures/lockscreen-laptop.png
 
-# --nofork makes sure i3lock doesn't return until it gets unlocked
-i3lock --nofork --image $IMAGE
+i3lock --image $IMAGE
 
 # Suspend System
 systemctl suspend

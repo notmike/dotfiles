@@ -42,7 +42,7 @@ font-1 = FontAwesome:size=12;0
 
 modules-left = i3
 modules-center =
-modules-right = eth wlan ip bandwidth brightness battery music pulseaudio filesystem memory cpu temperature date time
+modules-right = eth wlan ip bandwidth brightness battery pulseaudio filesystem memory cpu temperature date time
 
 tray-position = center
 tray-padding = 5

@@ -1,11 +1,11 @@
 #!/bin/bash
- 
+
 #depends on: imagemagick, i3lock, scrot
- 
+
 #IMAGE=/tmp/lockscreen.png
 #TEXT=/tmp/locktext.png
 #ICON=$HOME/.config/i3/Lock-icon.png
-# 
+#
 #scrot $IMAGE
 #convert $IMAGE -scale 10% -scale 1000% -fill black -colorize 25% $IMAGE
 #[ -f $TEXT ] || {
@@ -18,5 +18,5 @@
 dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Pause
 # $HOME/scripts/disconnect-bluetooth-headset.sh
 #IMAGE=$HOME/Pictures/Wallpapers/bleeding-mountains.png
-IMAGE=$HOME/Pictures/lockscreen.png
+IMAGE=$HOME/Pictures/lockscreen-laptop.png
 i3lock -n -i $IMAGE

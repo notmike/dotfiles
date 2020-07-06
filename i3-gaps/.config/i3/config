@@ -246,10 +246,10 @@ bindsym Shift+Print exec scrot -u '%m.%d.%Y-$wx$h-%T.png' -e 'mv $f `echo ~/Pict
 bindsym Print exec --no-startup-id "maim ~/Pictures/Screenshots/$(date +%m.%d.%Y--%H.%M.%S).png -s -c 1,0,0,0.6"
 
 # lock screen (w/out suspend)
-bindsym Control+$mod+Shift+x exec betterlockscreen --lock dim
+bindsym Control+$mod+Shift+x exec /home/mg/scripts/i3/i3lock-no-suspend.sh
 
 # lock screen (with suspend)
-bindsym $mod+Shift+x exec betterlockscreen --suspend
+bindsym $mod+Shift+x exec /home/mg/scripts/i3/i3lock.sh
 
 # Connect my Bluetooth headphones
 # cntrl+alt+b
