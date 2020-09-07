@@ -70,6 +70,9 @@ alias nmapcommands='cat ~/Dropbox/LINUX/nmap-commands.txt'
 # nvim config shortcut
 alias nvimrc='$EDITOR ~/.config/nvim/init.vim'
 
+# edit polybar rc
+alias polyrc='nvim ~/.config/polybar/config'
+
 #navigate to programming folder
 alias prog='cd ~/Dropbox/Programming'
 

@@ -113,6 +113,7 @@ bindsym Control+$mod+j split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
+bindsym $mod+Shift+f fullscreen toggle global
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
@@ -198,6 +199,22 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 
+
+## Manual management of external displays
+set $mode_display Display Menu: [3] 3 Screens, [2] 2 Screens, [1] Normal
+mode "$mode_display" {
+    bindsym 3 exec --no-startup-id ${HOME}/.screenlayout/3mon.sh
+    bindsym 2 exec --no-startup-id ${HOME}/.screenlayout/2mon.sh
+    bindsym 1 exec --no-startup-id ${HOME}/.screenlayout/normal.sh
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+# Declare here the shortcut to bring the display selection menu
+bindsym $mod+x mode "$mode_display"
+
+
 # Power menu
 set $sysmenu   "  [r]estart - [l]ogout - re[b]oot - po[w]eroff  "
 bindsym $mod+Shift+e      mode $sysmenu
@@ -210,6 +227,21 @@ mode $sysmenu {
     bindsym Return    mode "default"
     bindsym Escape    mode "default"
 }
+
+
+## Manual management of keyboard layouts
+set $mode_keyboard Keyboard Menu: [d] Default, [h] HHKB
+mode "$mode_keyboard" {
+    bindsym d exec --no-startup-id xmodmap ${HOME}/.Xmodmap
+    bindsym h exec --no-startup-id xmodmap ${HOME}/.Xmodmap-hhkb
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+# Declare here the shortcut to bring the keyboard selection menu
+bindsym $mod+z mode "$mode_keyboard"
+
 
 # resize window
 bindsym $mod+r mode "  "

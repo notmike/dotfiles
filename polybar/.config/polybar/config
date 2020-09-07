@@ -14,7 +14,7 @@ alert = #fe8019
 
 ; NOTE: make sure you update the bar name in "launch.sh"
 [bar/barTop]
-;monitor = ${env:MONITOR:HDMI-1}
+monitor = ${env:MONITOR:eDP-1}
 width = 100%
 height = 22
 offset-x = 0
@@ -68,6 +68,25 @@ cursor-scroll = ns-resize
 ; enable-ipc must be true on parent bar for custom/ipc modules to work
 enable-ipc = true
 
+[bar/barSecond]
+inherit = bar/barTop
+
+monitor = ${env:MONITOR:DVI-I-1-1}
+
+font-0 = DejaVuSans:size=10;0
+font-1 = FontAwesome:size=12;0
+tray-position = 
+modules-right = eth wlan ip bandwidth brightness battery pulseaudio filesystem memory cpu temperature date time
+
+[bar/barThird]
+inherit = bar/barTop
+
+monitor = ${env:MONITOR:HDMI-1}
+
+font-0 = DejaVuSans:size=10;0
+font-1 = FontAwesome:size=12;0
+tray-position = 
+modules-right = eth wlan ip bandwidth brightness battery pulseaudio filesystem memory cpu temperature date time
 
 [module/i3]
 type = internal/i3

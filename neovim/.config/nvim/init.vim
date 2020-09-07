@@ -241,12 +241,12 @@ nnoremap cow :set wrap!<CR>
 
 call plug#begin('~/.config/nvim/plugged')
 Plug 'ap/vim-css-color'                 " A very fast, color name highlighter
-Plug 'Shougo/deoplete.nvim', {
-  \ 'do': ':UpdateRemotePlugins' }      " Asynchronous auto completion.
+" Plug 'Shougo/deoplete.nvim', {
+  " \ 'do': ':UpdateRemotePlugins' }      " Asynchronous auto completion.
 Plug 'wokalski/autocomplete-flow'       " Flow autocompletion for deoplete & snippets
-Plug 'zchee/deoplete-clang'             " Clang autocomplete
-Plug 'zchee/deoplete-go', { 'do': 'make'} " Go autocompletion
-Plug 'zchee/deoplete-jedi'              " Python autocomplete
+" Plug 'zchee/deoplete-clang'             " Clang autocomplete
+" Plug 'zchee/deoplete-go', { 'do': 'make'} " Go autocompletion
+" Plug 'zchee/deoplete-jedi'              " Python autocomplete
 Plug 'morhetz/gruvbox'                  " Color scheme gruvbox
 Plug 'sjl/gundo.vim'                    " Fancy Undo Screen
 
@@ -293,25 +293,25 @@ call plug#end()
 "}}}
 " Plugin Settings - deoplete {{{
 " -----------------------------------------------------------------------------
-let g:deoplete#enable_at_startup = 1 " Enable deoplete on startup.
-let g:deoplete#enable_smart_case = 1 " Enable smart case.
+" let g:deoplete#enable_at_startup = 1 " Enable deoplete on startup.
+" let g:deoplete#enable_smart_case = 1 " Enable smart case.
 
-" Tab completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" " Tab completion.
+" inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
-" On backspace, delete previous completion and regenerate popup.
-inoremap <expr><C-H> deoplete#mappings#smart_close_popup()."\<C-H>"
-" inoremap <expr><BS> deoplete#mappings#smart_close_popup()."\<C-H>"
+" " On backspace, delete previous completion and regenerate popup.
+" inoremap <expr><C-H> deoplete#mappings#smart_close_popup()."\<C-H>"
+" " inoremap <expr><BS> deoplete#mappings#smart_close_popup()."\<C-H>"
 
-" disable docstring popup window
-autocmd FileType go,python setlocal completeopt-=preview
+" " disable docstring popup window
+" autocmd FileType go,python setlocal completeopt-=preview
 
-let g:deoplete#sources#clang#libclang_path = "/usr/lib/libclang.so"
-let g:deoplete#sources#clang#clang_header = "/usr/lib/clang"
+" let g:deoplete#sources#clang#libclang_path = "/usr/lib/libclang.so"
+" let g:deoplete#sources#clang#clang_header = "/usr/lib/clang"
 
-let g:deoplete#sources#go#gocode_binary = "/home/mg/go/bin/gocode"
-let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
-let g:deoplete#sources#go#pointer = 1
+" let g:deoplete#sources#go#gocode_binary = "/home/mg/go/bin/gocode"
+" let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
+" let g:deoplete#sources#go#pointer = 1
 "}}}
 " Plugin Settings - EasyMotion {{{
 " -----------------------------------------------------------------------------
