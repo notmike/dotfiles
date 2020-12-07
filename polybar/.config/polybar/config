@@ -71,9 +71,9 @@ inherit = bar/barTop
 
 monitor = ${env:MONITOR:DP-2}
 
-font-0 = DejaVuSans:size=10;0
-font-1 = FontAwesome:size=12;0
-font-2 = Weather Icons:size=12;1
+font-0 = DejaVuSans:size=12;0
+font-1 = FontAwesome:size=13;0
+font-2 = Weather Icons:size=13;1
 tray-position = 
 modules-right = music pulseaudio ip network-traffic filesystem memory cpu temperature openweathermap-fullfeatured date time
 

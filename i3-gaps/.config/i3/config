@@ -215,11 +215,12 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 ## Manual management of external displays
-set $mode_display Display Menu: [a] Dual Screen, [l] Only Left, [r] Only Right
+set $mode_display Display Menu: [a] Dual Screen, [l] Only Left, [r] Only Right, [w] Work
 mode "$mode_display" {
-    bindsym a exec --no-startup-id ${HOME}/.screenlayout/i3-4k-2k-LP.sh
+    bindsym a exec --no-startup-id ${HOME}/.screenlayout/i3-4k-4k-LP.sh
     bindsym l exec --no-startup-id ${HOME}/.screenlayout/i3-4k-L.sh
-    bindsym r exec --no-startup-id ${HOME}/.screenlayout/i3-2k-P.sh
+    bindsym r exec --no-startup-id ${HOME}/.screenlayout/i3-4k-P.sh
+    bindsym w exec --no-startup-id ${HOME}/.screenlayout/i3-work-4k4k-LP.sh
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
@@ -325,3 +326,4 @@ exec_always --no-startup-id compton
 exec_always --no-startup-id ${HOME}/.config/polybar/launch.sh
 ## Nvidia command to fix weird tearing issues when watching video
 #exec --no-startup-id nvidia-settings --assign CurrentMetaMode="nvidia-auto-select +0+0 { ForceFullCompositionPipeline = On }"
+# exec --no-startup-id solaar -w hide
