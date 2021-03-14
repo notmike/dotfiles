@@ -70,9 +70,7 @@ enable-ipc = true
 
 ; [bar/barSecond]
 ; inherit = bar/barTop
-
 ; monitor = ${env:MONITOR:DVI-I-1-1}
-
 ; font-0 = DejaVuSans:size=10;0
 ; font-1 = FontAwesome:size=12;0
 ; tray-position = 
@@ -80,9 +78,7 @@ enable-ipc = true
 
 ; [bar/barThird]
 ; inherit = bar/barTop
-
 ; monitor = ${env:MONITOR:HDMI-1}
-
 ; font-0 = DejaVuSans:size=10;0
 ; font-1 = FontAwesome:size=12;0
 ; tray-position = 
