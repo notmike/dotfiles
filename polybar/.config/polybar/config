@@ -40,7 +40,7 @@ font-2 = Weather Icons:size=13;1
 
 modules-left = i3
 modules-center =
-modules-right = pulseaudio ip network-traffic filesystem memory cpu temperature openweathermap-fullfeatured date time
+modules-right = pulseaudio nord-vpn network-traffic filesystem memory cpu temperature openweathermap-fullfeatured date time
 
 tray-position = center
 tray-padding = 2
@@ -75,7 +75,7 @@ font-0 = DejaVuSans:size=12;0
 font-1 = FontAwesome:size=13;0
 font-2 = Weather Icons:size=13;1
 tray-position = 
-modules-right = music pulseaudio ip network-traffic filesystem memory cpu temperature openweathermap-fullfeatured date time
+modules-right = music pulseaudio nord-vpn network-traffic filesystem memory cpu temperature openweathermap-fullfeatured date time
 
 
 [module/i3]
@@ -185,10 +185,10 @@ interval = 1
 exec = ~/dotfiles/polybar/.config/polybar/pulseaudio-simple.sh
 click-left = pulseaudio-ctl mute
 
-[module/ip]
+[module/nord-vpn]
 type = custom/script
 interval = 9
-exec = ~/dotfiles/polybar/.config/polybar/ip.sh
+exec = ~/dotfiles/polybar/.config/polybar/nord-vpn.sh
 click-left = "xdg-open https://ipleak.net/"
 
 [module/music]

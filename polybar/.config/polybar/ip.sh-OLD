@@ -1,0 +1,25 @@
+#!/bin/bash
+
+realip="207.38.248.102"
+# realip="209.122.208.198"
+# realip="207.96.108.184"
+
+addr="$(curl -sf ifconfig.co)"
+
+if [[ $realip = $addr ]]; then  # VPN OFF!
+    echo "%{F#fb4934} $addr"     # red text
+else
+    echo " $addr"
+fi
+
+# Kill qBittorrent if VPN is OFF
+vpnoff="$(nordvpn status | grep -ci 'status: disconnected')"
+torrent="$(pgrep qbittorrent)"
+if [[ $vpnoff -ne 0 && $torrent -gt 0 ]]; then
+    pkill -9 qbittorrent
+    notify-send -u critical -t 30000 "KILLING qBittorrent!
+KILLING qBittorrent!
+KILLING qBittorrent!
+KILLING qBittorrent!
+KILLING qBittorrent!"
+fi
