@@ -1,0 +1,147 @@
+// vim:ts=4:sw=4:et
+{
+    "border": "pixel",
+    "floating": "auto_off",
+    "layout": "splitv",
+    "percent": 0.333333333333333,
+    "type": "con",
+    "nodes": [
+        {
+            "border": "pixel",
+            "current_border_width": 4,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 1400,
+               "width": 1394,
+               "x": 0,
+               "y": 0
+            },
+            "name": "firefox1",
+            "percent": 0.5,
+            "swallows": [
+               {
+                  "class": "^firefox$"
+               }
+            ],
+            "type": "con"
+        },
+        {
+            "border": "pixel",
+            "current_border_width": 4,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 1400,
+               "width": 840,
+               "x": 433,
+               "y": 937
+            },
+            "name": "firefox2",
+            "percent": 0.5,
+            "swallows": [
+               {
+                  "class": "^firefox$"
+               }
+            ],
+            "type": "con"
+        }
+    ]
+}
+
+{
+    // splitv split container with 2 children
+    "border": "pixel",
+    "floating": "auto_off",
+    "layout": "splitv",
+    "percent": 0.333333333333333,
+    "type": "con",
+    "nodes": [
+        {
+            "border": "pixel",
+            "current_border_width": 4,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 1400,
+               "width": 1266,
+               "x": 1683,
+               "y": 565
+            },
+            "name": "firefox3",
+            "percent": 0.5,
+            "swallows": [
+               {
+                  "class": "^firefox$"
+               }
+            ],
+            "type": "con"
+        },
+        {
+            "border": "pixel",
+            "current_border_width": 4,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 1400,
+               "width": 841,
+               "x": 1474,
+               "y": 1050
+            },
+            "name": "firefox4",
+            "percent": 0.5,
+            "swallows": [
+               {
+                  "class": "^firefox$"
+               }
+            ],
+            "type": "con"
+        }
+    ]
+}
+
+{
+    // splitv split container with 2 children
+    "border": "pixel",
+    "floating": "auto_off",
+    "layout": "splitv",
+    "percent": 0.333333333333333,
+    "type": "con",
+    "nodes": [
+        {
+            "border": "pixel",
+            "current_border_width": 4,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 1416,
+               "width": 2560,
+               "x": 1039,
+               "y": 266
+            },
+            "name": "firefox5",
+            "percent": 0.5,
+            "swallows": [
+               {
+                  "class": "^firefox$"
+               }
+            ],
+            "type": "con"
+        },
+        {
+            "border": "pixel",
+            "current_border_width": 4,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 1400,
+               "width": 839,
+               "x": 2320,
+               "y": 703
+            },
+            "name": "firefox6",
+            "percent": 0.5,
+            "swallows": [
+               {
+                  "class": "^firefox$"
+               }
+            ],
+            "type": "con"
+        }
+    ]
+}
+
