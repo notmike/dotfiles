@@ -80,13 +80,13 @@ bindsym $mod+d exec --no-startup-id "~/.config/rofi/rofi.sh"
 bindsym $mod+Shift+d exec --no-startup-id "${HOME}/.config/i3/open-on-clean-desktop.sh ${HOME}/.config/rofi/rofi.sh"
 
 bindsym Control+$mod+v exec --no-startup-id "~/.config/rofi/roficlip.sh"
-bindsym Control+$mod+f exec --no-startup-id termite --class=popup --geometry=1400x1000 --exec=$HOME/.config/rofi/rofipreview.sh
+bindsym Control+$mod+f exec --no-startup-id alacritty --class=popup --geometry=1400x1000 --exec=$HOME/.config/rofi/rofipreview.sh
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec termite
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -306,8 +306,6 @@ exec --no-startup-id blueman-applet
 exec --no-startup-id redshift -l 40.742:-73.769 -t 5500:3500
 ## Clipboard manager
 exec --no-startup-id clipster -d
-## Favorite calculator
-exec --no-startup-id launchy
 ## Audio Server
 # exec --no-startup-id pulseaudio --start
 ## Dropdown Terminal (start hidden)

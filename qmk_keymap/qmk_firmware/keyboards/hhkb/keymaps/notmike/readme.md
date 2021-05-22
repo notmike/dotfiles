@@ -7,13 +7,16 @@ Keyboard Maintainer: QMK Community
 Hardware Supported: HHKB Alternate Controller
 Hardware Availability: https://geekhack.org/index.php?topic=12047.0
 
-Make example for this keyboard (after setting up your build environment):
+# Pre-Reqs
+[Documentation](https://docs.qmk.fm/#/newbs_flashing)
+1. install qmk-firmware
+2. copy over desired keymap to qmk-firmware repo directory *qmk_firmware/keyboards/hhkb/ansi/keymaps/notmike*
+3. cd to root of qmk-firmware repo
 
-    make hhkb:default
 
-In my case, it's :
+# Compile/Flash
 ```
-sudo make hhkb:notmike:dfu
+qmk compile -kb hhkb/ansi -km notmike
+qmk flash -kb hhkb/ansi -km notmike
 ```
 
-See [build environment setup](https://docs.qmk.fm/build_environment_setup.html) then the [make instructions](https://docs.qmk.fm/make_instructions.html) for more information.

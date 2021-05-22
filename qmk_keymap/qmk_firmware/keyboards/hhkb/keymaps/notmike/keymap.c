@@ -21,7 +21,6 @@ enum hhkb_keycodes
     DYNAMIC_MACRO_RANGE = SAFE_RANGE,
 };
 
-#include "dynamic_macro.h"
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -32,7 +31,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |--------------------------------------------------------------|
      * |Tab  |Q/MREC|  W|  E|  R|  T|  Y|  U|  I|  O|  P|  [|  ]|Backs|
      * |--------------------------------------------------------------|
-     * |Ctrl  |     A|  S|  D|  F|  G|  H|  J|  K|  L|  ;|  '| Enter  |
+     * |Ctrl/Esc|   A|  S|  D|  F|  G|  H|  J|  K|  L|  ;|  '| Enter  |
      * |--------------------------------------------------------------|
      * |Shft/( |     Z|  X|  C|  V|  B|  N|  M|  ,|  .|  /|Shft/) |Fn0|
      * `--------------------------------------------------------------'
@@ -44,7 +43,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [QWER] = LAYOUT(
   KC_ESC,  KC_1,           KC_2,    KC_3,             KC_4,    KC_5,     KC_6, KC_7, KC_8,    KC_9,   KC_0,    KC_MINS, KC_EQL,        KC_BSLS, KC_GRV, \
   KC_TAB,  LT(MREC, KC_Q), KC_W,    KC_E,             KC_R,    KC_T,     KC_Y, KC_U, KC_I,    KC_O,   KC_P,    KC_LBRC, KC_RBRC,       KC_BSPC,         \
-  KC_LCTL, KC_A,           KC_S,    LT(DBUG, KC_D),   KC_F,    KC_G,     KC_H, KC_J, KC_K,    KC_L,   KC_SCLN, KC_QUOT, KC_ENT,                  \
+  LCTL_T(KC_ESC), KC_A,           KC_S,    LT(DBUG, KC_D),   KC_F,    KC_G,     KC_H, KC_J, KC_K,    KC_L,   KC_SCLN, KC_QUOT, KC_ENT,                  \
   KC_LSPO, KC_Z,           KC_X,    KC_C,             KC_V,    KC_B,     KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_RSPC, MO(HHKB),                       \
            KC_LALT,        KC_LGUI, LT(UTIL, KC_SPC), KC_RGUI, KC_RALT),
 
@@ -168,23 +167,3 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         ____, ____,   ____, ____, ____)
 };
 
-
-
-const uint16_t PROGMEM fn_actions[] = {
-
-};
-
-const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
-{
-    return MACRO_NONE;
-};
-
-// For Dynamic Macros.
-bool process_record_user(uint16_t keycode, keyrecord_t *record)
-{
-    if (!process_record_dynamic_macro(keycode, record))
-    {
-        return false;
-    }
-    return true;
-}
