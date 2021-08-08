@@ -92,6 +92,9 @@ alias pw10='python2 ~/diceware/diceware -w 9 -s | xsel -i -b'
 # for running python scripts w/ 2.7
 alias python2=/usr/bin/python2.7
 
+# quit
+alias q='exit'
+
 # rename multiple files in sequential order
 alias renamem='j=1;for i in *.(jpg|png|bmp|jpeg); do mv "$i" "$j"."${i##*.}"; let j=j+1;done'
 
