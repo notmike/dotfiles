@@ -80,7 +80,7 @@ bindsym $mod+d exec --no-startup-id "~/.config/rofi/rofi.sh"
 bindsym $mod+Shift+d exec --no-startup-id "${HOME}/.config/i3/open-on-clean-desktop.sh ${HOME}/.config/rofi/rofi.sh"
 
 bindsym Control+$mod+v exec --no-startup-id "~/.config/rofi/roficlip.sh"
-bindsym Control+$mod+f exec --no-startup-id termite --class=popup --geometry=800x500 --exec=$HOME/.config/rofi/rofipreview.sh
+bindsym Control+$mod+f exec --no-startup-id termite --class=popup --exec=$HOME/.config/rofi/rofipreview.sh
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -188,7 +188,7 @@ for_window [class="Spotify"] move to workspace $workspace10
 assign [class="Pavucontrol"] $workspace10
 
 # Floating windows
-set $floating_windows "^(Steam|Wine|Yad|Simplescreenrecorder|smplayer|Blink|com-intellij-rt-execution-application-AppMain)$"
+set $floating_windows "^(Steam|Wine|Yad|Simplescreenrecorder|smplayer|Blink|com-intellij-rt-execution-application-AppMain|popup)$"
 
 # Enable floating mode for some windows
 for_window [class=$floating_windows] floating enable

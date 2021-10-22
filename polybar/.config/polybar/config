@@ -42,7 +42,7 @@ font-1 = FontAwesome:size=12;0
 
 modules-left = i3
 modules-center =
-modules-right = eth wlan nord-vpn bandwidth brightness battery pulseaudio filesystem memory cpu temperature date time
+modules-right = eth wlan mullvad-vpn bandwidth brightness battery pulseaudio filesystem memory cpu temperature date time
 
 tray-position = center
 tray-padding = 5
@@ -74,7 +74,7 @@ enable-ipc = true
 ; font-0 = DejaVuSans:size=10;0
 ; font-1 = FontAwesome:size=12;0
 ; tray-position = 
-; modules-right = eth wlan nord-vpn bandwidth brightness battery pulseaudio filesystem memory cpu temperature date time
+; modules-right = eth wlan mullvad-vpn bandwidth brightness battery pulseaudio filesystem memory cpu temperature date time
 
 ; [bar/barThird]
 ; inherit = bar/barTop
@@ -82,7 +82,7 @@ enable-ipc = true
 ; font-0 = DejaVuSans:size=10;0
 ; font-1 = FontAwesome:size=12;0
 ; tray-position = 
-; modules-right = eth wlan nord-vpn bandwidth brightness battery pulseaudio filesystem memory cpu temperature date time
+; modules-right = eth wlan mullvad-vpn bandwidth brightness battery pulseaudio filesystem memory cpu temperature date time
 
 [module/i3]
 type = internal/i3
@@ -185,6 +185,11 @@ click-left = pulseaudio-ctl mute
 type = custom/script
 interval = 5
 exec = ~/dotfiles/polybar/.config/polybar/nord-vpn.sh
+
+[module/mullvad-vpn]
+type = custom/script
+interval = 5
+exec = ~/dotfiles/polybar/.config/polybar/mullvad-vpn.sh
 
 [module/ip]
 type = custom/script
