@@ -247,6 +247,7 @@ com! DiffSaved call s:DiffWithSaved()
 " (mnemonic: 'co' = change option).
 nnoremap cos :set spell!<CR>
 nnoremap cow :set wrap!<CR>
+nnoremap cor :set relativenumber!<CR>
 
 "}}}
 " Plugins Install {{{
@@ -298,6 +299,7 @@ Plug 'junegunn/vim-easy-align'	    	  " Text alignment by characters.
 Plug 'easymotion/vim-easymotion'        " navigate documents reallllly fast!
 Plug 'tpope/vim-fugitive'               " Track Git changes
 Plug 'airblade/vim-gitgutter'           " Shows git changes in file
+Plug 'luukvbaal/stabilize.nvim'         " Stablize window from losing position
 
 " Code Formatter (JS·CSS·SCSS·Less·JSX·GraphQL·JSON·Markdown
 " post install (yarn install | npm install) then load plugin only for editing supported files
@@ -719,4 +721,11 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+"}}}
+" Plugin Settings - Stablize {{{
+" -----------------------------------------------------------------------------
+lua << EOF
+require("stabilize").setup()
+EOF
+
 "}}}
