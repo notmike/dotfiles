@@ -119,8 +119,8 @@ vnoremap <silent> # :<C-U>
 " Options - Python {{{
 " -----------------------------------------------------------------------------
 
-let g:python_host_prog = '/usr/bin/python'
-let g:python3_host_prog = '/usr/bin/python3'
+" let g:python_host_prog = '/usr/bin/python'
+" let g:python3_host_prog = '/Users/notmike/.pyenv/versions/3.10.0/bin/python3'
 
 "}}}
 " Mappings - General {{{
@@ -156,6 +156,13 @@ vmap <C-x> "+c
 vmap <C-v> c<ESC>"+p
 imap <C-v> <ESC>"+pa
 
+" Delete without yank
+nnoremap <leader>d "_d
+nnoremap x "_x
+
+" Select all
+nmap <C-a> gg<S-v>G
+
 " Visually select the text that was last edited/pasted
 noremap gV `[v`]
 
@@ -171,6 +178,12 @@ nnoremap <C-H> <C-W>h
 nnoremap <C-J> <C-W>j
 nnoremap <C-K> <C-W>k
 nnoremap <C-L> <C-W>l
+
+" Resize window
+nmap <C-w><left> <C-w><
+nmap <C-w><right> <C-w>>
+nmap <C-w><up> <C-w>+
+nmap <C-w><down> <C-w>-
 
 " Write current file as superuser.
 cnoremap w!! w !sudo tee > /dev/null %
@@ -222,9 +235,6 @@ fun! ChangeReg() abort
 endfun
 nnoremap cr :call ChangeReg()<cr>
 
-" Search word in documentation using Zeal
-nnoremap gz :!zeal "<cword>"&<CR><CR>
-
 " edit neovim config file
 nnoremap <leader>ev :split $MYVIMRC<cr>
 " source neovim config file after editing
@@ -260,38 +270,11 @@ endif
 
 call plug#begin('~/.config/nvim/plugged')
 
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}   " LSP support
-
 Plug 'ap/vim-css-color'                 " A very fast, color name highlighter
-" Plug 'Shougo/deoplete.nvim', {
-"   \ 'do': ':UpdateRemotePlugins' }      " Asynchronous auto completion.
-" Plug 'zchee/deoplete-clang'             " Clang autocomplete
-" Plug 'zchee/deoplete-go', { 'do': 'make'} " Go autocompletion
-" Plug 'zchee/deoplete-jedi'              " Python autocomplete
 Plug 'morhetz/gruvbox'                  " Color scheme gruvbox
-Plug 'sjl/gundo.vim'                    " Fancy Undo Screen
-
-" Command-line fuzzy finder.
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
+Plug 'simnalamburt/vim-mundo'           " Fancy Undo Screen
 
 Plug 'Yggdroot/indentLine'              " Pretty line indentations
-" Plug 'neomake/neomake'                  " Asynchronous syntax checking with make.
-
-" For func argument completion
-" Plug 'Shougo/neosnippet'
-" Plug 'Shougo/neosnippet-snippets'
-
-" Javascript related
-" Plug 'neovim/node-host', { 'do': 'npm install' }  " **** THIS BREAKS :checkhealth
-" Plug 'billyvg/tigris.nvim', { 'do': './install.sh' }
-" Plug 'wokalski/autocomplete-flow'       " Flow autocompletion for deoplete & snippets
-" Plug 'ternjs/tern_for_vim', {
-"   \ 'do': 'npm install && npm install -g tern' }  " Javascript autocomplete
-" Plug 'carlitux/deoplete-ternjs'         " Javascript TernJS deoplete plugin
-
-"  GO Support
-" Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }  " Go Lang Support
 
 Plug 'scrooloose/nerdtree'	            " File Manager
 Plug 'Xuyuanp/nerdtree-git-plugin'      " Shows git status of files in NERDtree menu
@@ -313,41 +296,27 @@ Plug 'prettier/vim-prettier', {
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue'] }
 
 Plug 'tpope/vim-repeat'                 " Add .(dot) functionality to plugin motions
-Plug 'tpope/vim-surround'           	  " Quoting/parenthesizing made simple.
+Plug 'tpope/vim-surround'           	" Quoting/parenthesizing made simple.
+
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+
+" For vsnip users.
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/vim-vsnip'
+
 " Always load this plugin last per developer
 Plug 'ryanoasis/vim-devicons'           " Cool icons in NERDtree menu for different filetypes
 call plug#end()
 
-"}}}
-" Plugin Settings - deoplete {{{
-" -----------------------------------------------------------------------------
-" let g:deoplete#enable_at_startup = 1 " Enable deoplete on startup.
-" let g:deoplete#max_abbr_width = 0
-" let g:deoplete#max_menu_width = 0
-" " let g:deoplete#omni#input_patterns = get(g:,'deoplete#omni#input_patterns',{})
-
-" let g:tern_request_timeout = 1
-" let g:tern_request_timeout = 6000
-" let g:tern#command = ["tern"]
-" let g:tern#arguments = [" — persistent"]
-" let g:deoplete#sources#tss#javascript_support = 1
-
-" " Tab completion.
-" inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-
-" " On backspace, delete previous completion and regenerate popup.
-" inoremap <expr><C-H> deoplete#mappings#smart_close_popup()."\<C-H>"
-" " inoremap <expr><BS> deoplete#mappings#smart_close_popup()."\<C-H>"
-
-" " disable docstring popup window
-" autocmd FileType go,python setlocal completeopt-=preview
-
-" let g:deoplete#sources#clang#libclang_path = "/usr/lib/libclang.so"
-" let g:deoplete#sources#clang#clang_header = "/usr/lib/clang"
-
-" let g:deoplete#sources#go#gocode_binary = "/home/mg/go/bin/gocode"
-" let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
-" let g:deoplete#sources#go#pointer = 1
 "}}}
 " Plugin Settings - EasyMotion {{{
 " -----------------------------------------------------------------------------
@@ -363,32 +332,9 @@ let g:gitgutter_sign_removed_first_line='◥'
 let g:gitgutter_sign_modified_removed='◢'
 
 "}}}
-" Plugin Settings - Gundo Undo {{{
+" Plugin Settings - Mundo Undo {{{
 " -----------------------------------------------------------------------------
-nnoremap <leader>u :GundoToggle<CR>  " toggle gundo
-"}}}
-" Plugin Settings - fzf {{{
-" -----------------------------------------------------------------------------
-let g:fzf_layout = { 'down': '20' } " Position the default fzf window layout.
-let g:fzf_command_prefix = 'Fzf'  " Prefix fzf commands e.g. :FzfFiles.
-
-if exists('plugs') && has_key(plugs, 'fzf.vim')
-  " Find buffers.
-  nnoremap <Leader>e :FzfBuffers<CR>
-
-  " Find files.
-  nnoremap <Leader>o :FzfFiles<CR>
-
-  " Find project tags (ctags -R).
-  nnoremap <Leader><S-O> :FzfTags<CR>
-
-  " Find tags in current buffer.
-  nnoremap <Leader>r :FzfBTags<CR>
-
-  " Find pattern in files with ag.
-  nnoremap <Leader>p :FzfAg<CR>
-endif
-
+nnoremap <leader>u :MundoToggle<CR>  " toggle mundo
 "}}}
 " Plugin Settings - indentLine {{{
 " -----------------------------------------------------------------------------
@@ -398,25 +344,6 @@ let g:indentLine_concealcursor = 0
 let g:indentLine_char = '┆'
 let g:indentLine_faster = 1
 
-"}}}
-" Plugin Settings - neomake {{{
-" -----------------------------------------------------------------------------
-" When writing a buffer (no delay).
-"call neomake#configure#automake('w')
-""
-"let g:neomake_logfile = '/home/mg/.config/nvim/log/neomake.log'
-"let g:neomake_javascript_enabled_makers = ['eslint']
-"let g:neomake_jsx_enabled_makers = ['eslint']
-"let g:jsx_ext_required = 0 " Allow JSX in normal JS files
-
-"let g:neomake_python_enabled_makers = ['pep8']
-
-"" neomake error shortcuts
-"nnoremap <Leader><Space>o :lopen<CR>      " open location window
-"nnoremap <Leader><Space>c :lclose<CR>     " close location window
-"nnoremap <Leader><Space>, :ll<CR>         " go to current error/warning
-"nnoremap <Leader><Space>n :lnext<CR>      " next error/warning
-"nnoremap <Leader><Space>p :lprev<CR>      " previous error/warning
 "}}}
 " Plugin Settings - nerdtree {{{
 " -----------------------------------------------------------------------------
@@ -439,30 +366,6 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
 		\ 'Ignored'   : '☒',
 		\ "Unknown"   : "?"
 		\ }
-"}}}
-" Plugin Settings - neosnippet {{{
-" -----------------------------------------------------------------------------
-"let g:neosnippet#enable_completed_snippet = 1
-"" Plugin key-mappings.
-"" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-"imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-"smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-"xmap <C-k>     <Plug>(neosnippet_expand_target)
-
-"" SuperTab like snippets behavior.
-"" Note: It must be 'imap' and 'smap'.  It uses <Plug> mappings.
-""imap <expr><TAB>
-"" \ pumvisible() ? "\<C-n>" :
-"" \ neosnippet#expandable_or_jumpable() ?
-"" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-"smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-"\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-
-"" For conceal markers.
-"if has('conceal')
-"  set conceallevel=2 concealcursor=niv
-"endif
-
 "}}}
 " Plugin Settings - Pickachu {{{
 " -----------------------------------------------------------------------------
@@ -504,14 +407,6 @@ let g:airline#extensions#wordcount#enabled = 1  " enable word counting
 xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
-
-"}}}
-" Plugin Settings - Tigris {{{
-" -----------------------------------------------------------------------------
-" let g:tigris#enabled = 1
-" " on the fly highlighting
-" " let g:tigris#on_the_fly_enabled = 1
-" " let g:tigris#delay = 500
 
 "}}}
 " Plugin Settings - Vim-DevIcons {{{
@@ -564,173 +459,67 @@ autocmd filetype nerdtree syn match shell_icon ## containedin=NERDTreeFile
 autocmd filetype nerdtree syn match sql_icon ## containedin=NERDTreeFile
 
 "}}}
-" Plugin Settings - Vim-Go {{{
-" -----------------------------------------------------------------------------
-" " Save file automatically when calling :GoBuild
-" set autowrite
-
-" " Easier navigation in quickfix menu
-" nnoremap <leader><leader>n :cnext<CR>
-" nnoremap <leader><leader>m :cprevious<CR>
-" nnoremap <leader><leader>a :cclose<CR>
-
-" " run :GoBuild or :GoTestCompile based on the go file
-" function! s:build_go_files()
-"   let l:file = expand('%')
-"   if l:file =~# '^\f\+_test\.go$'
-"     call go#test#Test(0, 1)
-"   elseif l:file =~# '^\f\+\.go$'
-"     call go#cmd#Build(0)
-"   endif
-" endfunction
-
-
-" " shortcuts for GoBuild & GoRun & GoTest
-" autocmd FileType go nmap <leader><leader>b :<C-u>call <SID>build_go_files()<CR>
-" autocmd FileType go nmap <leader><leader>r  <Plug>(go-run)
-" autocmd FileType go nmap <leader><leader>t  <Plug>(go-test)
-" autocmd FileType go nmap <leader><leader>c  <Plug>(go-coverage-toggle)
-
-" " makes all error lists of type 'quickfix' so they all appear in same window
-" let g:go_list_type = "quickfix"
-"}}}
-"" Plugin Settings - Coc {{{
-"" -----------------------------------------------------------------------------
-"" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
-"" delays and poor user experience.
-"set updatetime=300
-
-"" Don't pass messages to |ins-completion-menu|.
-"set shortmess+=c
-
-"" Always show the signcolumn, otherwise it would shift the text each time
-"" diagnostics appear/become resolved.
-"set signcolumn=yes
-
-"" Use tab for trigger completion with characters ahead and navigate.
-"" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-"" other plugin before putting this into your config.
-"inoremap <silent><expr> <TAB>
-"      \ pumvisible() ? "\<C-n>" :
-"      \ <SID>check_back_space() ? "\<TAB>" :
-"      \ coc#refresh()
-"inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-"function! s:check_back_space() abort
-"  let col = col('.') - 1
-"  return !col || getline('.')[col - 1]  =~# '\s'
-"endfunction
-
-"" Use <c-space> to trigger completion.
-"inoremap <silent><expr> <c-space> coc#refresh()
-
-"" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
-"" position. Coc only does snippet and additional edit on confirm.
-"" <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
-"if exists('*complete_info')
-"  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-"else
-"  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-"endif
-
-"" Use `[g` and `]g` to navigate diagnostics
-"nmap <silent> [g <Plug>(coc-diagnostic-prev)
-"nmap <silent> ]g <Plug>(coc-diagnostic-next)
-
-"" GoTo code navigation.
-"nmap <silent> gd <Plug>(coc-definition)
-"nmap <silent> gy <Plug>(coc-type-definition)
-"nmap <silent> gi <Plug>(coc-implementation)
-"nmap <silent> gr <Plug>(coc-references)
-
-"" Use K to show documentation in preview window.
-"nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-"function! s:show_documentation()
-"  if (index(['vim','help'], &filetype) >= 0)
-"    execute 'h '.expand('<cword>')
-"  else
-"    call CocAction('doHover')
-"  endif
-"endfunction
-
-"" Highlight the symbol and its references when holding the cursor.
-"autocmd CursorHold * silent call CocActionAsync('highlight')
-
-"" Symbol renaming.
-"nmap <leader>rn <Plug>(coc-rename)
-
-"" Formatting selected code.
-"xmap <leader><leader>f  <Plug>(coc-format-selected)
-"nmap <leader><leader>f  <Plug>(coc-format-selected)
-
-"augroup mygroup
-"  autocmd!
-"  " Setup formatexpr specified filetype(s).
-"  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-"  " Update signature help on jump placeholder.
-"  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-"augroup end
-
-"" Applying codeAction to the selected region.
-"" Example: `<leader>aap` for current paragraph
-"xmap <leader>a  <Plug>(coc-codeaction-selected)
-"nmap <leader>a  <Plug>(coc-codeaction-selected)
-
-"" Remap keys for applying codeAction to the current line.
-"nmap <leader>ac  <Plug>(coc-codeaction)
-"" Apply AutoFix to problem on the current line.
-"nmap <leader>qf  <Plug>(coc-fix-current)
-
-"" Introduce function text object
-"" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
-"xmap if <Plug>(coc-funcobj-i)
-"xmap af <Plug>(coc-funcobj-a)
-"omap if <Plug>(coc-funcobj-i)
-"omap af <Plug>(coc-funcobj-a)
-
-"" Use <TAB> for selections ranges.
-"" NOTE: Requires 'textDocument/selectionRange' support from the language server.
-"" coc-tsserver, coc-python are the examples of servers that support it.
-"nmap <silent> <TAB> <Plug>(coc-range-select)
-"xmap <silent> <TAB> <Plug>(coc-range-select)
-
-"" Add `:Format` command to format current buffer.
-"command! -nargs=0 Format :call CocAction('format')
-
-"" Add `:Fold` command to fold current buffer.
-"command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-
-"" Add `:OR` command for organize imports of the current buffer.
-"command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
-
-"" Add (Neo)Vim's native statusline support.
-"" NOTE: Please see `:h coc-status` for integrations with external plugins that
-"" provide custom statusline: lightline.vim, vim-airline.
-"set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-
-"" Mappings using CoCList:
-"" Show all diagnostics.
-"nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
-"" Manage extensions.
-"nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
-"" Show commands.
-"nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
-"" Find symbol of current document.
-"nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
-"" Search workspace symbols.
-"nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
-"" Do default action for next item.
-"nnoremap <silent> <space>j  :<C-u>CocNext<CR>
-"" Do default action for previous item.
-"nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
-"" Resume latest coc list.
-"nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
-""}}}
 " Plugin Settings - Stablize {{{
 " -----------------------------------------------------------------------------
 lua << EOF
 require("stabilize").setup()
 EOF
 
+"}}}
+" Plugin Settings - CMP Config {{{
+" -----------------------------------------------------------------------------
+set completeopt=menu,menuone,noselect
+lua << EOF
+  -- Setup nvim-cmp.
+  local cmp = require'cmp'
+
+  cmp.setup({
+    snippet = {
+      -- REQUIRED - you must specify a snippet engine
+      expand = function(args)
+        vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+      end,
+    },
+    mapping = {
+      ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+      ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+      ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+      ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+      ['<C-e>'] = cmp.mapping({
+        i = cmp.mapping.abort(),
+        c = cmp.mapping.close(),
+      }),
+      ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    },
+    sources = cmp.config.sources({
+      { name = 'nvim_lsp' },
+      { name = 'vsnip' }, -- For vsnip users.
+    }, {
+      { name = 'buffer' },
+    })
+  })
+
+  -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
+  cmp.setup.cmdline('/', {
+    sources = {
+      { name = 'buffer' }
+    }
+  })
+
+  -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+  cmp.setup.cmdline(':', {
+    sources = cmp.config.sources({
+      { name = 'path' }
+    }, {
+      { name = 'cmdline' }
+    })
+  })
+
+  -- Setup lspconfig.
+  local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+  -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
+  require('lspconfig')['pyright'].setup {
+    capabilities = capabilities
+  }
+EOF
 "}}}
