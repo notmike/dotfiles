@@ -250,6 +250,9 @@ function! s:DiffWithSaved()
 endfunction
 com! DiffSaved call s:DiffWithSaved()
 
+" Call figlet
+noremap tx :r !figlet -f future 
+
 "}}}
 " Mappings - Toggle Options {{{
 " -----------------------------------------------------------------------------
@@ -312,6 +315,7 @@ Plug 'hrsh7th/nvim-cmp'
 " For vsnip users.
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/vim-vsnip-integ'
 
 " Always load this plugin last per developer
 Plug 'ryanoasis/vim-devicons'           " Cool icons in NERDtree menu for different filetypes
@@ -463,6 +467,14 @@ autocmd filetype nerdtree syn match sql_icon ## containedin=NERDTreeFile
 " -----------------------------------------------------------------------------
 lua << EOF
 require("stabilize").setup()
+EOF
+
+"}}}
+" Plugin Settings - LSP Config {{{
+" -----------------------------------------------------------------------------
+lua << EOF
+require'lspconfig'.pyright.setup{}
+require'lspconfig'.gopls.setup{}
 EOF
 
 "}}}
