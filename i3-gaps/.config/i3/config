@@ -202,6 +202,9 @@ assign [class="Pavucontrol"] $workspace10
 # Floating windows
 set $floating_windows "^(Steam|Wine|Yad|Simplescreenrecorder|smplayer|Blink|com-intellij-rt-execution-application-AppMain|popup)$"
 
+# Fullscreen windows
+for_window [class="Wfica"] fullscreen global enable
+
 # Enable floating mode for some windows
 for_window [class=$floating_windows] floating enable
 for_window [window_type="notification"] floating enable; border none;
