@@ -41,7 +41,210 @@
                                 "type": "basic"
                             }
                         ]
-                    }
+                    },
+                    {
+                        "description": "map left shift to opening parenthesis",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "left_shift",
+                                    "modifiers": {
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "left_shift",
+                                        "modifiers": []
+                                    }
+                                ],
+                                "to_if_alone": [
+                                    {
+                                        "key_code": "9",
+                                        "modifiers": [
+                                            "left_shift"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "map right shift to closing parenthesis",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "right_shift",
+                                    "modifiers": {
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "right_shift",
+                                        "modifiers": []
+                                    }
+                                ],
+                                "to_if_alone": [
+                                    {
+                                        "key_code": "0",
+                                        "modifiers": [
+                                            "right_shift"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Change right_command+hjkl to arrow keys",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "h",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "right_command"
+                                        ],
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "left_arrow"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "j",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "right_command"
+                                        ],
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "down_arrow"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "k",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "right_command"
+                                        ],
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "up_arrow"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "l",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "right_command"
+                                        ],
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "right_arrow"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                      {
+                          "description": "Change right_command+Y-O-backspace to home-end-delete keys",
+                          "manipulators": [
+                              {
+                                  "from": {
+                                      "key_code": "y",
+                                      "modifiers": {
+                                          "mandatory": [
+                                              "right_command"
+                                          ],
+                                          "optional": [
+                                              "any"
+                                          ]
+                                      }
+                                  },
+                                  "to": [
+                                      {
+                                          "key_code": "home"
+                                      }
+                                  ],
+                                  "type": "basic"
+                              },
+                              {
+                                  "from": {
+                                      "key_code": "o",
+                                      "modifiers": {
+                                          "mandatory": [
+                                              "right_command"
+                                          ],
+                                          "optional": [
+                                              "any"
+                                          ]
+                                      }
+                                  },
+                                  "to": [
+                                      {
+                                          "key_code": "end"
+                                      }
+                                  ],
+                                  "type": "basic"
+                              },
+                              {
+                                  "from": {
+                                      "key_code": "delete_or_backspace",
+                                      "modifiers": {
+                                          "mandatory": [
+                                              "right_command"
+                                          ],
+                                          "optional": [
+                                              "any"
+                                          ]
+                                      }
+                                  },
+                                  "to": [
+                                      {
+                                          "key_code": "delete_forward"
+                                      }
+                                  ],
+                                  "type": "basic"
+                              }
+                          ]
+                      }
                 ]
             },
             "devices": [
