@@ -76,8 +76,8 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 # Program Menu Launcher
-bindsym $mod+d exec --no-startup-id "~/.config/rofi/rofi.sh"
-bindsym $mod+Shift+d exec --no-startup-id "${HOME}/.config/i3/open-on-clean-desktop.sh ${HOME}/.config/rofi/rofi.sh"
+bindsym $mod+d exec --no-startup-id rofi -show drun
+bindsym $mod+Shift+d exec --no-startup-id "${HOME}/.config/i3/open-on-clean-desktop.sh rofi -show drun"
 
 bindsym Control+$mod+v exec --no-startup-id "~/.config/rofi/roficlip.sh"
 bindsym Control+$mod+f exec --no-startup-id alacritty --class=popup --geometry=1400x1000 --exec=$HOME/.config/rofi/rofipreview.sh
@@ -203,7 +203,7 @@ assign [class="Pavucontrol"] $workspace10
 set $floating_windows "^(Steam|Wine|Yad|Simplescreenrecorder|smplayer|Blink|com-intellij-rt-execution-application-AppMain|popup)$"
 
 # Fullscreen windows
-for_window [class="Wfica"] fullscreen global enable
+# for_window [class="Wfica"] fullscreen global enable
 
 # Enable floating mode for some windows
 for_window [class=$floating_windows] floating enable

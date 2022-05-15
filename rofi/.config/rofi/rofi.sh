@@ -27,4 +27,4 @@
 # rofi -color-normal "#fdf6e3,#002b36,#eee8d5,#586e75,#eee8d5"
 
 
-rofi -modi "drun,calc,run,window" -show drun -color-window "#1d2021,#1d2021" -color-normal "#1d2021,#ffffff,#1d2021,#1d2021,#b8bb26" -lines 10 -line-margin 4 -eh 1 -width 800 -padding 30 -location 0 -bw 0 -font "Fantasque Sans Mono 15" -show-icons -no-show-match -no-sort
+rofi -modi "drun#calc#run#window" -show drun -color-window "#1d2021,#1d2021" -color-normal "#1d2021,#ffffff,#1d2021,#1d2021,#b8bb26" -lines 10 -line-margin 4 -eh 1 -width 800 -padding 30 -location 0 -bw 0 -font "Fantasque Sans Mono 15" -show-icons -no-show-match -no-sort
