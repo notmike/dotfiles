@@ -1,5 +1,5 @@
 configuration {
-	modi: "drun#calc#run#window";
+	modi: "drun#emoji:/usr/bin/rofimoji#calc#run#window";
 	font: "FantasqueSansMono Nerd Font Mono 16";
 	location: 0;
 	show-icons: true;
