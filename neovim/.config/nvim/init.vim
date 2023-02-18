@@ -88,9 +88,9 @@ set undodir=~/.vim-local/undofiles/
 " -----------------------------------------------------------------------------
 
 " Default indent and tab options.
-set shiftwidth=4           " Spaces for each (auto)indent.
+" set shiftwidth=4           " Spaces for each (auto)indent.
+" set tabstop=4              " Spaces that a <Tab> in file counts for.
 set softtabstop=4          " Spaces for tabs when inserting <Tab> or <BS>.
-set tabstop=4              " Spaces that a <Tab> in file counts for.
 set expandtab              " Replace tabs with spaces in Insert mode.
 
 " Indent and tab options for specific file types.
@@ -264,6 +264,8 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 nnoremap cos :set spell!<CR>
 nnoremap cow :set wrap!<CR>
 nnoremap cor :set relativenumber!<CR>
+nnoremap col :LspStop<CR>
+nnoremap coc :LspStart<CR>
 
 "}}}
 " Plugins Install {{{
@@ -347,7 +349,6 @@ nnoremap <leader>u :MundoToggle<CR>  " toggle mundo
 " -----------------------------------------------------------------------------
 " IndentLine
 let g:indentLine_enabled = 1
-let g:indentLine_concealcursor = 0
 let g:indentLine_char = '┆'
 let g:indentLine_faster = 1
 
@@ -560,7 +561,7 @@ lua << EOF
   })
 
   -- Setup lspconfig.
-  local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+  local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
   -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
   require('lspconfig')['pyright'].setup {
     capabilities = capabilities

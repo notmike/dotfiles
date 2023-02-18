@@ -183,68 +183,68 @@
                             }
                         ]
                     },
-                    {
-                        "description": "Change right_command+Y-O-backspace to home-end-delete keys",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "y",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "right_command"
-                                        ],
-                                        "optional": [
-                                            "any"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "home"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "o",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "right_command"
-                                        ],
-                                        "optional": [
-                                            "any"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "end"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "delete_or_backspace",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "right_command"
-                                        ],
-                                        "optional": [
-                                            "any"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "delete_forward"
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    }
+                      {
+                          "description": "Change right_command+Y-O-backspace to home-end-delete keys",
+                          "manipulators": [
+                              {
+                                  "from": {
+                                      "key_code": "y",
+                                      "modifiers": {
+                                          "mandatory": [
+                                              "right_command"
+                                          ],
+                                          "optional": [
+                                              "any"
+                                          ]
+                                      }
+                                  },
+                                  "to": [
+                                      {
+                                          "key_code": "home"
+                                      }
+                                  ],
+                                  "type": "basic"
+                              },
+                              {
+                                  "from": {
+                                      "key_code": "o",
+                                      "modifiers": {
+                                          "mandatory": [
+                                              "right_command"
+                                          ],
+                                          "optional": [
+                                              "any"
+                                          ]
+                                      }
+                                  },
+                                  "to": [
+                                      {
+                                          "key_code": "end"
+                                      }
+                                  ],
+                                  "type": "basic"
+                              },
+                              {
+                                  "from": {
+                                      "key_code": "delete_or_backspace",
+                                      "modifiers": {
+                                          "mandatory": [
+                                              "right_command"
+                                          ],
+                                          "optional": [
+                                              "any"
+                                          ]
+                                      }
+                                  },
+                                  "to": [
+                                      {
+                                          "key_code": "delete_forward"
+                                      }
+                                  ],
+                                  "type": "basic"
+                              }
+                          ]
+                      }
                 ]
             },
             "devices": [
