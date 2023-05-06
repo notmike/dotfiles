@@ -7,7 +7,8 @@ set $mod Mod4
 # for_window [class="^.*"] border pixel 0
 
 #thin borders
-hide_edge_borders both  # have to keep this as is to use gaps
+hide_edge_borders both
+default_border pixel
 
 # Mouse Settings
 focus_follows_mouse no
