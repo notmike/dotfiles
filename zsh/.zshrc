@@ -218,3 +218,5 @@ export ANDROID_HOME=/home/mg/Android/Sdk
 export PATH=${PATH}:${ANDROID_HOME}/tools
 export PATH=${PATH}:${ANDROID_HOME}/platform-tools
 
+# 1password completion
+# source <(op completion bash)
