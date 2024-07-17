@@ -1,0 +1,149 @@
+"""" Clipboard
+set clipboard+=unnamed
+set clipboard+=ideaput
+
+""" The escape button
+map <C-c> <Esc>
+
+""" The leader key
+let mapleader=","
+
+""" IdeaVimrc
+nnoremap <leader>ev :e ~\.ideavimrc<CR>
+nnoremap <leader>v :action IdeaVim.ReloadVimRc.reload<CR>
+
+""" Change to UPPERCASE
+nnoremap <leader>u vawUew
+
+""" Arrow keys move lines
+no <down> ddp
+no <up> ddkP
+
+""" Mnemonic settings
+nnoremap con :set number!<CR>
+nnoremap cos :set spell!<CR>
+nnoremap cow :set wrap!<CR>
+nnoremap cor :set number! relativenumber!<CR>
+
+""" Scroll faster
+nnoremap <C-e> 3<C-e>
+nnoremap <C-y> 3<C-y>
+
+""" Keep selected text selected when fixing indentation
+vnoremap < <gv
+vnoremap > >gv
+
+""" COPY / PASTE / CUT / DELETE
+""" Delete w/out yank
+nnoremap <leader>d "_d
+nnoremap x "_x
+""" Paste w/out overwriting clipboard
+vnoremap p "_dP
+""" Visually select the text that was edited/pasted
+noremap gV `[v`]
+""" Yank whole line from cursor
+noremap Y y$
+vnoremap Y y$
+
+""" Distraction Free Mode
+nnoremap <C-z> :action ToggleDistractionFreeMode<CR>
+
+""" Exit insert Mode
+inoremap jj <esc>
+nnoremap <C-\> :action SplitVertically<CR>
+nnoremap <C--> :action SplitHorizontally<CR>
+nnoremap <C-=> :action Unsplit<CR>
+nnoremap <C-m> :action MoveEditorToOppositeTabGroup<CR>
+sethandler <C-j> a:vim
+sethandler <C-k> a:vim
+
+""" Move to window split
+nnoremap <A-h> <c-w>h
+nnoremap <A-l> <c-w>l
+nnoremap <A-j> <c-w>j
+nnoremap <A-k> <c-w>k
+
+nnoremap <TAB> :action PreviousTab<CR>
+nnoremap <s-TAB> :action NextTab<CR>
+nnoremap <leader>en :action EditSourceInNewWindow<CR>
+nnoremap <leader>n :action NextWindow<CR>
+nnoremap <leader>q :action CloseContent<CR>
+nnoremap <leader>qa :action CloseAllEditors<CR>
+
+""" Editing source code
+set ideajoin
+set idearefactormode=keep
+nnoremap [[ :action MethodUp<CR>
+nnoremap ]] :action MethodDown<CR>
+nnoremap zc :action CollapseRegion<CR>
+nnoremap zo :action ExpandRegion<CR>
+nnoremap <leader>zc :action CollapseAllRegions<CR>
+nnoremap <leader>zo :action ExpandAllRegions<CR>
+noremap gc :action CommentByLineComment<CR>
+nnoremap gb :action CommentByBlockComment<CR>
+nnoremap <leader>r :action Refactorings.QuickListPopupAction<CR>
+nnoremap <leader>= :action ReformatCode<CR>
+nnoremap <leader>o :action OptimizeImports<CR>
+nnoremap <C-t> :action RecentFiles<CR>
+nnoremap <leader>l :action RecentLocations<CR>
+nnoremap <leader>h :action LocalHistory.ShowHistory<CR>
+nnoremap ge :action GotoNextError<CR>
+nnoremap gE :action GotoPreviousError<CR>
+nnoremap <leader>s :write<CR>
+""" Split the line here, aka Opposite of Join line
+nnoremap K a<CR><Esc>k$
+
+""" Searching and Source Code Navigation
+set hlsearch
+set ignorecase
+set incsearch
+set smartcase
+""" Search template
+noremap <leader>8 :%s//g<Left><Left>
+""" Stop highlighting for the current search results
+nnoremap <Space> :nohlsearch<CR><C-l>
+nnoremap <C-r> :action Replace<CR>
+noremap <leader><leader> :action SearchEverywhere<CR>
+nnoremap <C-/> :action FindInPath<CR>
+nnoremap <C-a> :action GotoAction<CR>
+nnoremap <C-f> :action GotoFile<CR>
+nnoremap <leader>H :action CallHierarchy<CR>
+nnoremap <leader>B :action ShowNavBar<CR>
+nnoremap <C-s> :action FileStructurePopup<CR>
+nnoremap <C-o> :action GotoSymbol<CR>
+nnoremap gi :action GotoImplementation<CR>
+nnoremap gd :action GotoDeclaration<CR>
+nnoremap gp :action GotoSuperMethod<CR>
+nnoremap gt :action GotoTest<CR>
+nnoremap gB :action Back<CR>
+nnoremap gF :action Forward<CR>
+nnoremap gu :action FindUsages<CR>
+
+""" Tool windows
+nnoremap <C-p> :action JumpToLastWindow<CR>
+""" I mostly use Shift-Escape to do this globally
+nnoremap <C-x> :action HideAllWindows<CR>
+nnoremap <leader>p :action ActivateProjectToolWindow<CR>
+nnoremap <leader>c :action ActivateCommitToolWindow<CR>
+
+""" Running / Debugging
+nnoremap <leader>b :action ViewBreakpoints<CR>
+
+""" Make using marks a lot better (mapping clashes w/ surround)
+nmap ' <Action>(ShowBookmarks)
+nmap m <Action>(ToggleBookmarkWithMnemonic)
+
+""" GIT
+noremap <leader>gb :action Annotate<CR>
+
+
+
+""" PLUGINS
+""" Press 'f' to activate AceJump
+map <leader>f :action AceAction<CR>
+
+
+
+
+
+
