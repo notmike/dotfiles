@@ -68,6 +68,9 @@ client.background       #ffffff
 # Custom Tricks
 # Picture-in-Picture that follows you
 bindsym $mod+y fullscreen disable; floating enable; resize set 700 400; sticky enable; move window to position 1800 960
+# Move Workspace to Left Screen
+bindsym $mod+m move workspace to output left
+
 
 # Scratchpad
 #
@@ -219,8 +222,9 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 ## Manual management of external displays
-set $mode_display Display Menu: [a] Dual Screen, [l] Only Left, [r] Only Right, [w] Work
+set $mode_display Display Menu: [2] Left2k, [a] Dual Screen, [l] Only Left, [r] Only Right, [w] Work
 mode "$mode_display" {
+    bindsym 2 exec --no-startup-id ${HOME}/.screenlayout/i3-2k-L.sh
     bindsym a exec --no-startup-id ${HOME}/.screenlayout/i3-4k-4k-LP.sh
     bindsym l exec --no-startup-id ${HOME}/.screenlayout/i3-4k-L.sh
     bindsym r exec --no-startup-id ${HOME}/.screenlayout/i3-4k-P.sh

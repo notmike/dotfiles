@@ -310,7 +310,7 @@ interval = 2
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #d79921
-label = %percentage:2%%
+label = %percentage%%
 
 [module/memory]
 type = internal/memory
@@ -453,7 +453,7 @@ format-warn-underline = ${self.format-underline}
 
 label = %temperature%
 label-warn = %temperature%
-label-warn-foreground = ${colors.secondary}
+label-warn-foreground = ${colors.alert}
 
 ramp-0 = 
 ramp-1 = 
